@@ -1,0 +1,228 @@
+
+/* Custom CSS for Cybersecurity Course */
+:root {
+    --cyber-green: #00ff88;
+    --cyber-blue: #00d4ff;
+    --cyber-purple: #64ffda;
+    --dark-bg: #0f172a;
+    --darker-bg: #1e293b;
+}
+
+body {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
+    border-radius: 16px;
+    margin: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.module-card {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+}
+
+.module-card.completed {
+    border-color: var(--cyber-green);
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.module-card.completed .module-icon {
+    color: var(--cyber-green);
+}
+
+.module-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--cyber-blue);
+}
+
+.difficulty-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+}
+
+.difficulty-beginner {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.difficulty-intermediate {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+}
+
+.difficulty-advanced {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.difficulty-expert {
+    background: rgba(147, 51, 234, 0.2);
+    color: #9333ea;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--cyber-green), #00cc70);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #00cc70, var(--cyber-green));
+    box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+}
+
+.bg-primary {
+    background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg)) !important;
+}
+
+.text-success {
+    color: var(--cyber-green) !important;
+}
+
+.text-info {
+    color: var(--cyber-blue) !important;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--cyber-green), var(--cyber-blue));
+}
+
+.modal-content {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Module content styles */
+.module-content h1 {
+    color: var(--cyber-green);
+    border-bottom: 3px solid var(--cyber-green);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.module-content h2 {
+    color: var(--cyber-blue);
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.module-content h3 {
+    color: var(--cyber-purple);
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.module-content .code-block {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.8));
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid var(--cyber-green);
+    overflow-x: auto;
+}
+
+.module-content .highlight {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.1));
+    border-left: 4px solid var(--cyber-green);
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.module-content .warning {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.module-content .info {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(100, 255, 218, 0.1));
+    border-left: 4px solid var(--cyber-blue);
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.module-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.module-content strong {
+    color: var(--cyber-green);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        margin: 10px;
+        padding: 2rem 1rem;
+    }
+    
+    .module-card {
+        margin-bottom: 1rem;
+    }
+    
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+}
+
+/* Scroll to top button */
+#scrollToTop {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

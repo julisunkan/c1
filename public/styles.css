@@ -140,6 +140,7 @@ ul, ol {
 
 li {
     margin-bottom: 5px;
+    color: #cbd5e1;
 }
 
 strong {
@@ -148,10 +149,6 @@ strong {
 }
 
 p {
-    color: #cbd5e1;
-}
-
-li {
     color: #cbd5e1;
 }
 
