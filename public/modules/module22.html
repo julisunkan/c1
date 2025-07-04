@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Modeling and Risk Assessment</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 22: Threat Modeling and Risk Assessment</h1>
+
+        <div class="image-container">
+            <img src="/images/threat-modeling.jpg" alt="Threat Modeling" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand systematic threat modeling methodologies</li>
+            <li>Learn quantitative and qualitative risk assessment techniques</li>
+            <li>Master popular threat modeling frameworks (STRIDE, PASTA, OCTAVE)</li>
+            <li>Develop threat models for various system architectures</li>
+            <li>Calculate and communicate risk metrics effectively</li>
+        </ul>
+
+        <h2>Introduction to Threat Modeling</h2>
+        <p>
+            Threat modeling is a structured approach to identifying, quantifying, and addressing 
+            security risks in software systems. It helps organizations proactively identify 
+            potential threats and vulnerabilities before they can be exploited.
+        </p>
+
+        <h3>Benefits of Threat Modeling</h3>
+        <ul>
+            <li>Early identification of security issues in the design phase</li>
+            <li>Cost-effective security improvements</li>
+            <li>Better understanding of system architecture</li>
+            <li>Improved communication between security and development teams</li>
+            <li>Compliance with regulatory requirements</li>
+        </ul>
+
+        <h2>STRIDE Threat Modeling</h2>
+        <p>STRIDE is Microsoft's threat modeling methodology that categorizes threats into six types:</p>
+
+        <h3>STRIDE Categories</h3>
+        <ul>
+            <li><strong>Spoofing:</strong> Impersonating users or systems</li>
+            <li><strong>Tampering:</strong> Unauthorized modification of data or code</li>
+            <li><strong>Repudiation:</strong> Denying actions or transactions</li>
+            <li><strong>Information Disclosure:</strong> Unauthorized access to sensitive information</li>
+            <li><strong>Denial of Service:</strong> Making systems unavailable</li>
+            <li><strong>Elevation of Privilege:</strong> Gaining unauthorized access rights</li>
+        </ul>
+
+        <h3>STRIDE Process</h3>
+        <ol>
+            <li><strong>Diagram:</strong> Create system architecture diagrams</li>
+            <li><strong>Identify Threats:</strong> Apply STRIDE categories to each component</li>
+            <li><strong>Mitigate:</strong> Develop countermeasures for identified threats</li>
+            <li><strong>Validate:</strong> Verify that mitigations are effective</li>
+        </ol>
+
+        <h2>PASTA Threat Modeling</h2>
+        <p>Process for Attack Simulation and Threat Analysis (PASTA) is a risk-centric methodology:</p>
+
+        <h3>PASTA Seven Stages</h3>
+        <ol>
+            <li><strong>Define Objectives:</strong> Establish business and security objectives</li>
+            <li><strong>Define Technical Scope:</strong> Identify system boundaries and components</li>
+            <li><strong>Application Decomposition:</strong> Break down the application architecture</li>
+            <li><strong>Threat Analysis:</strong> Identify relevant threat scenarios</li>
+            <li><strong>Weakness Analysis:</strong> Identify vulnerabilities and weaknesses</li>
+            <li><strong>Attack Modeling:</strong> Simulate attack scenarios</li>
+            <li><strong>Risk Analysis:</strong> Quantify and prioritize risks</li>
+        </ol>
+
+        <h2>OCTAVE Risk Assessment</h2>
+        <p>Operationally Critical Threat, Asset, and Vulnerability Evaluation focuses on organizational risk:</p>
+
+        <h3>OCTAVE Principles</h3>
+        <ul>
+            <li>Self-directed approach led by internal teams</li>
+            <li>Focus on organizational risk, not just technical vulnerabilities</li>
+            <li>Catalog assets based on business importance</li>
+            <li>Forward-looking approach to security planning</li>
+        </ul>
+
+        <h2>Risk Assessment Fundamentals</h2>
+        <p>Risk assessment quantifies potential security impacts using various methodologies:</p>
+
+        <h3>Risk Formula</h3>
+        <div class="code-block">
+            <pre><code>
+Risk = Threat × Vulnerability × Asset Value × Impact
+
+Where:
+- Threat: Likelihood of attack occurrence
+- Vulnerability: Weakness that can be exploited  
+- Asset Value: Business value of affected asset
+- Impact: Potential damage from successful attack
+            </code></pre>
+        </div>
+
+        <h3>Qualitative Risk Assessment</h3>
+        <p>Uses descriptive scales rather than numerical values:</p>
+        <ul>
+            <li><strong>Probability:</strong> Very Low, Low, Medium, High, Very High</li>
+            <li><strong>Impact:</strong> Negligible, Minor, Moderate, Major, Severe</li>
+            <li><strong>Risk Level:</strong> Combination of probability and impact</li>
+        </ul>
+
+        <h3>Quantitative Risk Assessment</h3>
+        <p>Uses numerical values and statistical methods:</p>
+        <ul>
+            <li><strong>Annual Loss Expectancy (ALE):</strong> SLE × ARO</li>
+            <li><strong>Single Loss Expectancy (SLE):</strong> Asset Value × Exposure Factor</li>
+            <li><strong>Annual Rate of Occurrence (ARO):</strong> Expected frequency per year</li>
+        </ul>
+
+        <h2>Threat Modeling Tools</h2>
+        <h3>Microsoft Threat Modeling Tool</h3>
+        <ul>
+            <li>Free tool supporting STRIDE methodology</li>
+            <li>Integrated with Visual Studio and Azure DevOps</li>
+            <li>Automated threat generation based on system diagrams</li>
+        </ul>
+
+        <h3>OWASP Threat Dragon</h3>
+        <ul>
+            <li>Open-source threat modeling tool</li>
+            <li>Web-based and desktop versions available</li>
+            <li>Supports multiple threat modeling methodologies</li>
+        </ul>
+
+        <h3>IriusRisk</h3>
+        <ul>
+            <li>Commercial platform with automated threat modeling</li>
+            <li>Integration with development tools and processes</li>
+            <li>Compliance mapping and reporting features</li>
+        </ul>
+
+        <h2>Creating Data Flow Diagrams</h2>
+        <p>Data Flow Diagrams (DFDs) are essential for threat modeling:</p>
+
+        <h3>DFD Components</h3>
+        <ul>
+            <li><strong>External Entities:</strong> Users, systems, or services outside control</li>
+            <li><strong>Processes:</strong> Applications, services, or functions</li>
+            <li><strong>Data Stores:</strong> Databases, files, or repositories</li>
+            <li><strong>Data Flows:</strong> Movement of data between components</li>
+            <li><strong>Trust Boundaries:</strong> Security perimeters and access control points</li>
+        </ul>
+
+        <h2>Practical Threat Modeling Exercise</h2>
+        <div class="code-block">
+            <h4>Example: Web Application Threat Model</h4>
+            <pre><code>
+System: E-commerce Web Application
+
+Components:
+1. Web Browser (External Entity)
+2. Load Balancer (Process)
+3. Web Server (Process)
+4. Application Server (Process)
+5. Database Server (Data Store)
+6. Payment Gateway (External Entity)
+
+Trust Boundaries:
+- Internet to DMZ
+- DMZ to Internal Network
+- Application to Database
+- Application to Payment Gateway
+
+STRIDE Analysis:
+Spoofing: Session hijacking, credential theft
+Tampering: SQL injection, price manipulation
+Repudiation: Transaction disputes
+Information Disclosure: Data breaches, information leakage
+Denial of Service: DDoS attacks, resource exhaustion
+Elevation of Privilege: Admin account compromise
+            </code></pre>
+        </div>
+
+        <h2>Risk Communication and Reporting</h2>
+        <p>Effective risk communication ensures stakeholders understand and act on findings:</p>
+
+        <h3>Executive Summary Guidelines</h3>
+        <ul>
+            <li>Focus on business impact rather than technical details</li>
+            <li>Use clear, non-technical language</li>
+            <li>Prioritize risks by business criticality</li>
+            <li>Provide actionable recommendations</li>
+            <li>Include timelines and resource requirements</li>
+        </ul>
+
+        <h3>Technical Report Components</h3>
+        <ul>
+            <li>Detailed threat scenarios and attack paths</li>
+            <li>Vulnerability descriptions and evidence</li>
+            <li>Risk ratings with supporting rationale</li>
+            <li>Specific remediation steps</li>
+            <li>Implementation timelines and dependencies</li>
+        </ul>
+
+        <div class="info">
+            <strong>Best Practice:</strong> Regularly update threat models as systems evolve. 
+            Threat modeling is not a one-time activity but an ongoing process that should be 
+            integrated into the software development lifecycle.
+        </div>
+
+        <h2>Integration with SDLC</h2>
+        <p>Embedding threat modeling into development processes:</p>
+        <ul>
+            <li><strong>Requirements Phase:</strong> Initial threat identification</li>
+            <li><strong>Design Phase:</strong> Comprehensive threat modeling</li>
+            <li><strong>Implementation Phase:</strong> Security code reviews</li>
+            <li><strong>Testing Phase:</strong> Validation of security controls</li>
+            <li><strong>Deployment Phase:</strong> Operational security verification</li>
+            <li><strong>Maintenance Phase:</strong> Ongoing threat model updates</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>Remember:</strong> The goal of threat modeling is not to eliminate all risks 
+            but to understand them well enough to make informed security decisions.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore advanced evasion techniques used to bypass security controls and detection systems.</p>
+    </div>
+</body>
+</html>

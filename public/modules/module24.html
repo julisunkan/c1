@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Team Operations</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 24: Red Team Operations</h1>
+
+        <div class="image-container">
+            <img src="/images/red-team-operations.jpg" alt="Red Team Operations" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand red team tactics, techniques, and procedures (TTPs)</li>
+            <li>Learn advanced persistent threat (APT) simulation methods</li>
+            <li>Master the MITRE ATT&CK framework for red team operations</li>
+            <li>Develop custom tools and infrastructure for red team exercises</li>
+            <li>Practice operational security (OPSEC) for long-term engagements</li>
+            <li>Execute end-to-end red team campaigns</li>
+        </ul>
+
+        <h2>Introduction to Red Team Operations</h2>
+        <p>
+            Red team operations simulate real-world adversaries to test an organization's 
+            detection and response capabilities. Unlike traditional penetration testing, 
+            red team exercises focus on stealth, persistence, and achieving specific 
+            business objectives while remaining undetected.
+        </p>
+
+        <h3>Red Team vs. Penetration Testing</h3>
+        <table class="comparison-table">
+            <tr>
+                <th>Aspect</th>
+                <th>Penetration Testing</th>
+                <th>Red Team Operations</th>
+            </tr>
+            <tr>
+                <td>Scope</td>
+                <td>Technical vulnerabilities</td>
+                <td>People, processes, technology</td>
+            </tr>
+            <tr>
+                <td>Duration</td>
+                <td>Days to weeks</td>
+                <td>Weeks to months</td>
+            </tr>
+            <tr>
+                <td>Stealth</td>
+                <td>Not always required</td>
+                <td>Essential</td>
+            </tr>
+            <tr>
+                <td>Goals</td>
+                <td>Find vulnerabilities</td>
+                <td>Test detection and response</td>
+            </tr>
+            <tr>
+                <td>Methodology</td>
+                <td>Systematic testing</td>
+                <td>APT simulation</td>
+            </tr>
+        </table>
+
+        <h2>MITRE ATT&CK Framework</h2>
+        <p>The MITRE ATT&CK framework provides a comprehensive knowledge base of adversary tactics and techniques:</p>
+
+        <h3>ATT&CK Tactics</h3>
+        <ol>
+            <li><strong>Initial Access:</strong> Gaining entry into the target network</li>
+            <li><strong>Execution:</strong> Running malicious code on target systems</li>
+            <li><strong>Persistence:</strong> Maintaining access across system restarts</li>
+            <li><strong>Privilege Escalation:</strong> Gaining higher-level permissions</li>
+            <li><strong>Defense Evasion:</strong> Avoiding detection by security controls</li>
+            <li><strong>Credential Access:</strong> Stealing user credentials</li>
+            <li><strong>Discovery:</strong> Learning about the target environment</li>
+            <li><strong>Lateral Movement:</strong> Moving through the network</li>
+            <li><strong>Collection:</strong> Gathering target information</li>
+            <li><strong>Command and Control:</strong> Communicating with compromised systems</li>
+            <li><strong>Exfiltration:</strong> Stealing data from the network</li>
+            <li><strong>Impact:</strong> Disrupting or destroying systems and data</li>
+        </ol>
+
+        <h2>Red Team Infrastructure</h2>
+        <p>Building resilient and stealthy infrastructure for red team operations:</p>
+
+        <h3>Command and Control (C2) Infrastructure</h3>
+        <ul>
+            <li><strong>Domain Fronting:</strong> Hide C2 traffic behind legitimate domains</li>
+            <li><strong>Redirectors:</strong> Proxy traffic through multiple servers</li>
+            <li><strong>Cloud-Based C2:</strong> Use cloud services for C2 operations</li>
+            <li><strong>DNS C2:</strong> Use DNS protocol for command and control</li>
+            <li><strong>Social Media C2:</strong> Use social platforms for communication</li>
+        </ul>
+
+        <h3>Popular C2 Frameworks</h3>
+        <ul>
+            <li><strong>Cobalt Strike:</strong> Commercial C2 platform with advanced features</li>
+            <li><strong>Empire:</strong> PowerShell and Python post-exploitation framework</li>
+            <li><strong>Covenant:</strong> .NET-based C2 framework</li>
+            <li><strong>Metasploit:</strong> Comprehensive exploitation and C2 platform</li>
+            <li><strong>Sliver:</strong> Modern cross-platform C2 framework</li>
+        </ul>
+
+        <div class="code-block">
+            <h4>Example: Cobalt Strike Team Server Setup</h4>
+            <pre><code>
+# Start team server
+./teamserver [external IP] [password] [malleable profile]
+
+# Example malleable profile for Gmail domain fronting
+set sample_name "Custom Gmail Profile";
+set sleeptime "30000";
+set jitter    "20";
+set useragent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36";
+
+http-get {
+    set uri "/mail/u/0/";
+    client {
+        header "Host" "mail.google.com";
+        header "Accept" "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+        header "Accept-Language" "en-US,en;q=0.5";
+        header "Accept-Encoding" "gzip, deflate";
+        metadata {
+            base64url;
+            parameter "ik";
+        }
+    }
+    server {
+        header "Server" "GSE";
+        output {
+            base64url;
+            prepend "<!DOCTYPE html><html><head>";
+            append "</head><body></body></html>";
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <h2>Initial Access Techniques</h2>
+        <p>Methods for gaining initial foothold in target environments:</p>
+
+        <h3>Spear Phishing</h3>
+        <ul>
+            <li><strong>Email Templates:</strong> Craft convincing phishing emails</li>
+            <li><strong>Social Engineering:</strong> Research targets for personalization</li>
+            <li><strong>Payload Delivery:</strong> Embed malicious attachments or links</li>
+            <li><strong>Credential Harvesting:</strong> Capture login credentials</li>
+        </ul>
+
+        <h3>Watering Hole Attacks</h3>
+        <ul>
+            <li><strong>Target Analysis:</strong> Identify frequently visited websites</li>
+            <li><strong>Website Compromise:</strong> Inject malicious code into legitimate sites</li>
+            <li><strong>Exploit Kits:</strong> Use browser exploit frameworks</li>
+            <li><strong>Strategic Web Compromise:</strong> Target industry-specific websites</li>
+        </ul>
+
+        <h3>Supply Chain Attacks</h3>
+        <ul>
+            <li><strong>Third-Party Compromise:</strong> Target vendor systems</li>
+            <li><strong>Software Updates:</strong> Compromise software update mechanisms</li>
+            <li><strong>Hardware Implants:</strong> Insert malicious hardware components</li>
+            <li><strong>Code Repository Attacks:</strong> Compromise source code repositories</li>
+        </ul>
+
+        <h2>Persistence and Privilege Escalation</h2>
+        <p>Techniques for maintaining access and gaining higher privileges:</p>
+
+        <h3>Windows Persistence</h3>
+        <ul>
+            <li><strong>Registry Run Keys:</strong> Autostart through registry entries</li>
+            <li><strong>Scheduled Tasks:</strong> Create scheduled persistence tasks</li>
+            <li><strong>Windows Services:</strong> Install malicious services</li>
+            <li><strong>WMI Event Subscriptions:</strong> Use WMI for persistence</li>
+            <li><strong>DLL Hijacking:</strong> Replace legitimate DLLs</li>
+        </ul>
+
+        <h3>Linux Persistence</h3>
+        <ul>
+            <li><strong>Cron Jobs:</strong> Schedule tasks for persistence</li>
+            <li><strong>Init Scripts:</strong> Modify system startup scripts</li>
+            <li><strong>SSH Keys:</strong> Install authorized SSH keys</li>
+            <li><strong>Library Injection:</strong> LD_PRELOAD manipulation</li>
+            <li><strong>Kernel Modules:</strong> Load malicious kernel modules</li>
+        </ul>
+
+        <div class="code-block">
+            <h4>Example: PowerShell Empire Persistence</h4>
+            <pre><code>
+# Registry persistence
+usemodule persistence/elevated/registry
+set Listener http
+set RegPath HKCU:Software\Microsoft\Windows\CurrentVersion\Run
+execute
+
+# WMI persistence  
+usemodule persistence/elevated/wmi
+set Listener http
+set SubName "WindowsUpdate"
+execute
+
+# Scheduled task persistence
+usemodule persistence/userland/schtasks
+set Listener http
+set TaskName "SystemUpdate"
+execute
+            </code></pre>
+        </div>
+
+        <h2>Lateral Movement</h2>
+        <p>Techniques for moving through the target network:</p>
+
+        <h3>Credential-Based Movement</h3>
+        <ul>
+            <li><strong>Pass-the-Hash:</strong> Use NTLM hashes for authentication</li>
+            <li><strong>Pass-the-Ticket:</strong> Use Kerberos tickets for access</li>
+            <li><strong>Golden Ticket:</strong> Forge Kerberos TGTs</li>
+            <li><strong>Silver Ticket:</strong> Forge Kerberos service tickets</li>
+            <li><strong>Overpass-the-Hash:</strong> Convert NTLM to Kerberos</li>
+        </ul>
+
+        <h3>Remote Execution Techniques</h3>
+        <ul>
+            <li><strong>PSExec:</strong> Execute commands via SMB</li>
+            <li><strong>WMI Execution:</strong> Use WMI for remote command execution</li>
+            <li><strong>PowerShell Remoting:</strong> Execute PowerShell commands remotely</li>
+            <li><strong>SSH:</strong> Secure Shell for Linux lateral movement</li>
+            <li><strong>RDP:</strong> Remote Desktop Protocol access</li>
+        </ul>
+
+        <h2>Command and Control Operations</h2>
+        <p>Maintaining communication with compromised systems:</p>
+
+        <h3>C2 Communication Channels</h3>
+        <ul>
+            <li><strong>HTTP/HTTPS:</strong> Web-based communication channels</li>
+            <li><strong>DNS:</strong> DNS-based communication</li>
+            <li><strong>ICMP:</strong> ICMP tunnel communication</li>
+            <li><strong>Social Media:</strong> Twitter, GitHub, Pastebin</li>
+            <li><strong>Cloud Services:</strong> Google Drive, Dropbox, OneDrive</li>
+        </ul>
+
+        <h3>Traffic Analysis Evasion</h3>
+        <ul>
+            <li><strong>Domain Fronting:</strong> Hide behind CDN domains</li>
+            <li><strong>Protocol Mimicry:</strong> Mimic legitimate protocols</li>
+            <li><strong>Jitter and Sleep:</strong> Randomize communication timing</li>
+            <li><strong>Encryption:</strong> Encrypt C2 communications</li>
+            <li><strong>Steganography:</strong> Hide communications in innocent content</li>
+        </ul>
+
+        <h2>Data Collection and Exfiltration</h2>
+        <p>Gathering and extracting target information:</p>
+
+        <h3>Data Discovery</h3>
+        <ul>
+            <li><strong>File System Search:</strong> Locate sensitive files</li>
+            <li><strong>Registry Analysis:</strong> Extract stored credentials and configuration</li>
+            <li><strong>Memory Dumping:</strong> Extract data from system memory</li>
+            <li><strong>Network Shares:</strong> Access shared network resources</li>
+            <li><strong>Database Access:</strong> Query databases for sensitive information</li>
+        </ul>
+
+        <h3>Exfiltration Methods</h3>
+        <ul>
+            <li><strong>HTTP/HTTPS Upload:</strong> Use web protocols for data transfer</li>
+            <li><strong>DNS Exfiltration:</strong> Embed data in DNS queries</li>
+            <li><strong>Cloud Storage:</strong> Upload to cloud services</li>
+            <li><strong>Email Exfiltration:</strong> Send data via email</li>
+            <li><strong>Physical Media:</strong> Copy data to removable storage</li>
+        </ul>
+
+        <h2>Operational Security (OPSEC)</h2>
+        <p>Maintaining operational security during red team exercises:</p>
+
+        <h3>OPSEC Principles</h3>
+        <ul>
+            <li><strong>Compartmentalization:</strong> Limit information sharing</li>
+            <li><strong>Cover and Concealment:</strong> Hide activities and intentions</li>
+            <li><strong>Minimal Footprint:</strong> Leave minimal evidence</li>
+            <li><strong>Attribution Avoidance:</strong> Prevent identification</li>
+            <li><strong>Communication Security:</strong> Secure team communications</li>
+        </ul>
+
+        <h3>OPSEC Considerations</h3>
+        <ul>
+            <li><strong>Infrastructure Isolation:</strong> Separate attack infrastructure</li>
+            <li><strong>Tool Customization:</strong> Modify tools to avoid signatures</li>
+            <li><strong>Timing Controls:</strong> Operate during business hours</li>
+            <li><strong>Log Management:</strong> Monitor and clean activity logs</li>
+            <li><strong>Backup Plans:</strong> Prepare alternative access methods</li>
+        </ul>
+
+        <h2>Red Team Reporting</h2>
+        <p>Documenting and presenting red team findings:</p>
+
+        <h3>Executive Summary</h3>
+        <ul>
+            <li>High-level overview of the engagement</li>
+            <li>Key findings and business impact</li>
+            <li>Recommendations for improvement</li>
+            <li>Timeline of compromise</li>
+        </ul>
+
+        <h3>Technical Findings</h3>
+        <ul>
+            <li>Detailed attack path documentation</li>
+            <li>Evidence and proof of concept</li>
+            <li>MITRE ATT&CK technique mapping</li>
+            <li>Detection recommendations</li>
+        </ul>
+
+        <div class="info">
+            <strong>Purple Team Collaboration:</strong> Red team operations should work closely 
+            with blue teams (defenders) to improve overall security posture. This collaborative 
+            approach is known as purple teaming.
+        </div>
+
+        <h2>Threat Simulation Scenarios</h2>
+        <p>Common APT simulation scenarios for red team exercises:</p>
+
+        <h3>Financial Sector APT</h3>
+        <ul>
+            <li>Target: Financial institutions and payment processors</li>
+            <li>Objectives: Access trading systems, steal customer data</li>
+            <li>TTPs: Supply chain attacks, living off the land techniques</li>
+        </ul>
+
+        <h3>Nation-State Actor Simulation</h3>
+        <ul>
+            <li>Target: Government agencies and critical infrastructure</li>
+            <li>Objectives: Long-term persistence, intelligence gathering</li>
+            <li>TTPs: Zero-day exploits, advanced persistence mechanisms</li>
+        </ul>
+
+        <h3>Ransomware Group Simulation</h3>
+        <ul>
+            <li>Target: Any organization with valuable data</li>
+            <li>Objectives: Data encryption, ransom payment</li>
+            <li>TTPs: Credential harvesting, lateral movement, data destruction</li>
+        </ul>
+
+        <div class="warning">
+            <strong>Important:</strong> Always conduct red team operations with proper authorization 
+            and within defined scope. Unauthorized red team activities may violate laws and 
+            organizational policies.
+        </div>
+
+        <div class="highlight">
+            <strong>Remember:</strong> The goal of red team operations is to improve organizational 
+            security, not to demonstrate technical prowess. Focus on realistic scenarios that 
+            help the organization understand and improve their security posture.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore incident response and digital forensics techniques used to investigate security incidents.</p>
+    </div>
+</body>
+</html>

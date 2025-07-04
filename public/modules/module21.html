@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Security Testing</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 21: API Security Testing</h1>
+
+        <div class="image-container">
+            <img src="/images/api-security.jpg" alt="API Security Testing" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand REST and GraphQL API security fundamentals</li>
+            <li>Learn to identify common API vulnerabilities</li>
+            <li>Master automated API security testing tools</li>
+            <li>Implement proper API authentication testing</li>
+            <li>Perform API rate limiting and input validation assessments</li>
+            <li>Document API security findings effectively</li>
+        </ul>
+
+        <h2>API Security Landscape</h2>
+        <p>
+            APIs (Application Programming Interfaces) have become the backbone of modern applications, 
+            enabling communication between different systems and services. However, they also present 
+            unique security challenges that require specialized testing approaches.
+        </p>
+
+        <h3>Common API Vulnerabilities</h3>
+        <ul>
+            <li><strong>Broken Authentication:</strong> Weak or missing authentication mechanisms</li>
+            <li><strong>Excessive Data Exposure:</strong> APIs returning more data than necessary</li>
+            <li><strong>Lack of Resources & Rate Limiting:</strong> No protection against DoS attacks</li>
+            <li><strong>Broken Function Level Authorization:</strong> Inadequate access controls</li>
+            <li><strong>Mass Assignment:</strong> Automatic binding of client inputs to code variables</li>
+            <li><strong>Security Misconfiguration:</strong> Poor security configurations</li>
+            <li><strong>Injection:</strong> SQL, NoSQL, Command injection vulnerabilities</li>
+            <li><strong>Improper Assets Management:</strong> Outdated API versions in production</li>
+            <li><strong>Insufficient Logging & Monitoring:</strong> Poor visibility into API usage</li>
+        </ul>
+
+        <h2>REST API Security Testing</h2>
+        <p>REST APIs follow specific principles that create unique security considerations:</p>
+
+        <h3>Testing Methodology</h3>
+        <ol>
+            <li><strong>Discovery & Enumeration:</strong>
+                <ul>
+                    <li>Identify API endpoints through documentation, source code, or traffic analysis</li>
+                    <li>Map API structure and understand request/response patterns</li>
+                    <li>Identify different HTTP methods supported</li>
+                </ul>
+            </li>
+            <li><strong>Authentication Testing:</strong>
+                <ul>
+                    <li>Test token-based authentication (JWT, OAuth)</li>
+                    <li>Verify session management security</li>
+                    <li>Check for authentication bypass vulnerabilities</li>
+                </ul>
+            </li>
+            <li><strong>Authorization Testing:</strong>
+                <ul>
+                    <li>Test vertical privilege escalation</li>
+                    <li>Test horizontal privilege escalation</li>
+                    <li>Verify role-based access controls</li>
+                </ul>
+            </li>
+            <li><strong>Input Validation Testing:</strong>
+                <ul>
+                    <li>Test for injection vulnerabilities</li>
+                    <li>Verify data type validation</li>
+                    <li>Check boundary value testing</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>GraphQL Security Testing</h2>
+        <p>GraphQL presents unique security challenges due to its flexible query structure:</p>
+
+        <h3>GraphQL-Specific Vulnerabilities</h3>
+        <ul>
+            <li><strong>Query Depth Limiting:</strong> Deep nested queries causing DoS</li>
+            <li><strong>Query Complexity Analysis:</strong> Complex queries consuming excessive resources</li>
+            <li><strong>Introspection Attacks:</strong> Information disclosure through schema introspection</li>
+            <li><strong>Field Suggestions:</strong> Error messages revealing schema information</li>
+            <li><strong>Batch Attack:</strong> Multiple operations in single request</li>
+        </ul>
+
+        <h2>API Testing Tools</h2>
+        <h3>Manual Testing Tools</h3>
+        <ul>
+            <li><strong>Burp Suite:</strong> Comprehensive API testing with specialized extensions</li>
+            <li><strong>OWASP ZAP:</strong> Free alternative with API scanning capabilities</li>
+            <li><strong>Postman:</strong> API development and testing platform</li>
+            <li><strong>Insomnia:</strong> REST and GraphQL client for testing</li>
+        </ul>
+
+        <h3>Automated Testing Tools</h3>
+        <ul>
+            <li><strong>OWASP API Security Top 10:</strong> Framework for API security testing</li>
+            <li><strong>Astra:</strong> Automated API security testing tool</li>
+            <li><strong>42Crunch:</strong> API security platform with static and dynamic analysis</li>
+            <li><strong>Akto:</strong> Open-source API security testing platform</li>
+        </ul>
+
+        <h2>Practical Testing Scenarios</h2>
+        <div class="code-block">
+            <h4>Example: Testing JWT Token Security</h4>
+            <pre><code>
+# 1. Decode JWT token
+echo "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." | base64 -d
+
+# 2. Test for weak signing algorithms
+# Change "alg" to "none" in header
+
+# 3. Test for key confusion attacks
+# Try using public key as HMAC secret
+
+# 4. Check token expiration handling
+# Use expired tokens to test validation
+            </code></pre>
+        </div>
+
+        <div class="code-block">
+            <h4>Example: GraphQL Introspection Query</h4>
+            <pre><code>
+query IntrospectionQuery {
+  __schema {
+    queryType {
+      name
+      fields {
+        name
+        type {
+          name
+          kind
+        }
+      }
+    }
+  }
+}
+            </code></pre>
+        </div>
+
+        <h2>Rate Limiting and DoS Testing</h2>
+        <p>Testing API resilience against abuse and denial of service attacks:</p>
+        <ul>
+            <li>Send rapid successive requests to test rate limiting</li>
+            <li>Test with different user agents and IP addresses</li>
+            <li>Verify error handling under high load conditions</li>
+            <li>Test timeout configurations and connection limits</li>
+        </ul>
+
+        <div class="warning">
+            <strong>Important:</strong> Always conduct API security testing with proper authorization 
+            and within the scope of your testing agreement. Unauthorized API testing may violate 
+            terms of service and applicable laws.
+        </div>
+
+        <h2>Best Practices for API Security</h2>
+        <ol>
+            <li><strong>Implement Strong Authentication:</strong> Use OAuth 2.0, JWT with proper validation</li>
+            <li><strong>Apply Principle of Least Privilege:</strong> Restrict access to minimum required</li>
+            <li><strong>Input Validation:</strong> Validate all inputs server-side</li>
+            <li><strong>Rate Limiting:</strong> Implement proper throttling mechanisms</li>
+            <li><strong>HTTPS Everywhere:</strong> Encrypt all API communications</li>
+            <li><strong>API Versioning:</strong> Maintain and secure multiple API versions</li>
+            <li><strong>Logging and Monitoring:</strong> Implement comprehensive API activity logging</li>
+        </ol>
+
+        <div class="highlight">
+            <strong>Remember:</strong> API security is not just about the API itself but also about 
+            the entire ecosystem including client applications, infrastructure, and data flow.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore threat modeling and risk assessment methodologies to systematically identify and evaluate security risks.</p>
+    </div>
+</body>
+</html>

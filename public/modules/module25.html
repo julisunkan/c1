@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Response and Forensics</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 25: Incident Response and Forensics</h1>
+
+        <div class="image-container">
+            <img src="/images/incident-response.jpg" alt="Incident Response and Forensics" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand incident response procedures and frameworks</li>
+            <li>Learn digital forensics investigation techniques</li>
+            <li>Master evidence collection and preservation methods</li>
+            <li>Practice memory and disk forensics analysis</li>
+            <li>Develop incident response plans and playbooks</li>
+            <li>Understand legal and regulatory requirements</li>
+        </ul>
+
+        <h2>Introduction to Incident Response</h2>
+        <p>
+            Incident response is the organized approach to addressing and managing security 
+            incidents. It involves preparation, detection, analysis, containment, eradication, 
+            recovery, and lessons learned. Effective incident response minimizes damage, 
+            reduces recovery time, and helps prevent future incidents.
+        </p>
+
+        <h3>Types of Security Incidents</h3>
+        <ul>
+            <li><strong>Malware Infections:</strong> Viruses, worms, trojans, ransomware</li>
+            <li><strong>Data Breaches:</strong> Unauthorized access to sensitive information</li>
+            <li><strong>Denial of Service:</strong> Attacks that disrupt service availability</li>
+            <li><strong>Insider Threats:</strong> Malicious or negligent insider activities</li>
+            <li><strong>Advanced Persistent Threats:</strong> Long-term, stealthy attacks</li>
+            <li><strong>Social Engineering:</strong> Phishing, pretexting, baiting attacks</li>
+        </ul>
+
+        <h2>NIST Incident Response Framework</h2>
+        <p>The NIST SP 800-61 framework provides a structured approach to incident response:</p>
+
+        <h3>Phase 1: Preparation</h3>
+        <ul>
+            <li><strong>Incident Response Plan:</strong> Develop comprehensive response procedures</li>
+            <li><strong>Team Formation:</strong> Establish incident response team (IRT)</li>
+            <li><strong>Tool Preparation:</strong> Deploy monitoring and analysis tools</li>
+            <li><strong>Training:</strong> Regular training and simulation exercises</li>
+            <li><strong>Communication Plans:</strong> Establish internal and external communication procedures</li>
+        </ul>
+
+        <h3>Phase 2: Detection and Analysis</h3>
+        <ul>
+            <li><strong>Incident Detection:</strong> Identify potential security incidents</li>
+            <li><strong>Initial Assessment:</strong> Determine incident scope and severity</li>
+            <li><strong>Evidence Collection:</strong> Gather relevant digital evidence</li>
+            <li><strong>Impact Analysis:</strong> Assess business and technical impact</li>
+            <li><strong>Incident Classification:</strong> Categorize incident type and priority</li>
+        </ul>
+
+        <h3>Phase 3: Containment, Eradication, and Recovery</h3>
+        <ul>
+            <li><strong>Short-term Containment:</strong> Immediate actions to limit damage</li>
+            <li><strong>Long-term Containment:</strong> Sustainable isolation measures</li>
+            <li><strong>Eradication:</strong> Remove threat from environment</li>
+            <li><strong>Recovery:</strong> Restore systems to normal operations</li>
+            <li><strong>Monitoring:</strong> Watch for signs of recurring issues</li>
+        </ul>
+
+        <h3>Phase 4: Post-Incident Activity</h3>
+        <ul>
+            <li><strong>Lessons Learned:</strong> Document findings and improvements</li>
+            <li><strong>Evidence Retention:</strong> Preserve evidence for legal proceedings</li>
+            <li><strong>Process Improvement:</strong> Update procedures based on experience</li>
+            <li><strong>Report Writing:</strong> Create comprehensive incident reports</li>
+        </ul>
+
+        <h2>Digital Forensics Fundamentals</h2>
+        <p>Digital forensics is the scientific process of collecting, analyzing, and presenting digital evidence:</p>
+
+        <h3>Forensics Principles</h3>
+        <ul>
+            <li><strong>Chain of Custody:</strong> Document evidence handling throughout investigation</li>
+            <li><strong>Evidence Integrity:</strong> Ensure evidence remains unaltered</li>
+            <li><strong>Repeatability:</strong> Other investigators should reach same conclusions</li>
+            <li><strong>Admissibility:</strong> Evidence must be legally admissible in court</li>
+            <li><strong>Documentation:</strong> Thoroughly document all investigative steps</li>
+        </ul>
+
+        <h3>Types of Digital Evidence</h3>
+        <ul>
+            <li><strong>Volatile Data:</strong> Memory contents, network connections, running processes</li>
+            <li><strong>Non-Volatile Data:</strong> Hard drives, solid-state drives, optical media</li>
+            <li><strong>Network Data:</strong> Packet captures, network logs, flow data</li>
+            <li><strong>Application Data:</strong> Database records, log files, configuration files</li>
+            <li><strong>Mobile Data:</strong> Smartphone and tablet data</li>
+        </ul>
+
+        <h2>Evidence Collection and Preservation</h2>
+        <p>Proper evidence collection is critical for forensic investigation success:</p>
+
+        <h3>Order of Volatility</h3>
+        <p>Collect evidence in order of volatility (most volatile first):</p>
+        <ol>
+            <li>CPU registers and cache memory</li>
+            <li>System memory (RAM)</li>
+            <li>Network state and connections</li>
+            <li>Running processes and services</li>
+            <li>File system and swap files</li>
+            <li>System logs and audit trails</li>
+            <li>Physical storage media</li>
+            <li>Backup media and archives</li>
+        </ol>
+
+        <h3>Live Response Tools</h3>
+        <ul>
+            <li><strong>Volatility:</strong> Memory analysis framework</li>
+            <li><strong>KAPE:</strong> Kroll Artifact Parser and Extractor</li>
+            <li><strong>FTK Imager:</strong> Disk imaging and evidence collection</li>
+            <li><strong>SANS SIFT:</strong> Forensics investigation toolkit</li>
+            <li><strong>Rekall:</strong> Advanced memory analysis platform</li>
+        </ul>
+
+        <div class="code-block">
+            <h4>Example: Memory Acquisition with FTK Imager</h4>
+            <pre><code>
+# Create memory dump
+FTKImager.exe --memory-dump --output-path C:\Evidence --case-number 2024-001
+
+# Verify memory dump integrity
+sha256sum memory_dump.mem > memory_dump.sha256
+
+# Basic memory analysis with Volatility
+python vol.py -f memory_dump.mem --profile=Win10x64_19041 pslist
+python vol.py -f memory_dump.mem --profile=Win10x64_19041 netscan
+python vol.py -f memory_dump.mem --profile=Win10x64_19041 malfind
+            </code></pre>
+        </div>
+
+        <h2>Disk Forensics</h2>
+        <p>Analysis of storage media to recover and examine digital evidence:</p>
+
+        <h3>Disk Imaging</h3>
+        <ul>
+            <li><strong>Bit-for-bit Copy:</strong> Create exact duplicate of storage media</li>
+            <li><strong>Write Blocking:</strong> Prevent modification of original evidence</li>
+            <li><strong>Hash Verification:</strong> Verify image integrity with cryptographic hashes</li>
+            <li><strong>Documentation:</strong> Record imaging process and tool information</li>
+        </ul>
+
+        <h3>File System Analysis</h3>
+        <ul>
+            <li><strong>File Recovery:</strong> Recover deleted files from unallocated space</li>
+            <li><strong>Timeline Analysis:</strong> Reconstruct chronological events</li>
+            <li><strong>Metadata Examination:</strong> Analyze file timestamps and attributes</li>
+            <li><strong>Hidden Data:</strong> Examine slack space and alternative data streams</li>
+        </ul>
+
+        <div class="code-block">
+            <h4>Example: Disk Analysis with Autopsy</h4>
+            <pre><code>
+# Create new case in Autopsy
+1. File → New Case
+2. Enter case information and evidence details
+3. Add disk image as data source
+4. Run ingest modules for automated analysis
+
+# Manual analysis commands
+# View file system timeline
+mmls disk_image.dd
+fls -r -m "/" disk_image.dd > timeline.txt
+
+# Recover deleted files
+tsk_recover disk_image.dd recovered_files/
+
+# Extract strings from unallocated space
+blkls -s disk_image.dd | strings > unallocated_strings.txt
+            </code></pre>
+        </div>
+
+        <h2>Memory Forensics</h2>
+        <p>Analysis of system memory to identify malicious activity and artifacts:</p>
+
+        <h3>Memory Analysis Techniques</h3>
+        <ul>
+            <li><strong>Process Analysis:</strong> Identify running processes and their properties</li>
+            <li><strong>Network Analysis:</strong> Examine network connections and sockets</li>
+            <li><strong>Malware Detection:</strong> Identify injected code and rootkits</li>
+            <li><strong>Credential Extraction:</strong> Recover passwords and authentication tokens</li>
+            <li><strong>Registry Analysis:</strong> Examine Windows registry in memory</li>
+        </ul>
+
+        <h3>Volatility Framework</h3>
+        <p>Volatility is the most popular memory analysis framework:</p>
+
+        <div class="code-block">
+            <h4>Essential Volatility Commands</h4>
+            <pre><code>
+# Identify memory profile
+python vol.py -f memory.dmp imageinfo
+
+# List running processes
+python vol.py -f memory.dmp --profile=Win10x64_19041 pslist
+python vol.py -f memory.dmp --profile=Win10x64_19041 pstree
+
+# Network connections
+python vol.py -f memory.dmp --profile=Win10x64_19041 netscan
+python vol.py -f memory.dmp --profile=Win10x64_19041 netstat
+
+# Malware detection
+python vol.py -f memory.dmp --profile=Win10x64_19041 malfind
+python vol.py -f memory.dmp --profile=Win10x64_19041 hollowfind
+
+# Registry analysis
+python vol.py -f memory.dmp --profile=Win10x64_19041 hivelist
+python vol.py -f memory.dmp --profile=Win10x64_19041 printkey -K "Software\Microsoft\Windows\CurrentVersion\Run"
+
+# Extract process memory
+python vol.py -f memory.dmp --profile=Win10x64_19041 procdump -p 1234 -D extracted/
+            </code></pre>
+        </div>
+
+        <h2>Network Forensics</h2>
+        <p>Analysis of network traffic to investigate security incidents:</p>
+
+        <h3>Network Evidence Sources</h3>
+        <ul>
+            <li><strong>Packet Captures:</strong> Full packet data from network sensors</li>
+            <li><strong>Flow Data:</strong> Connection metadata (NetFlow, sFlow)</li>
+            <li><strong>IDS/IPS Logs:</strong> Security alert and event data</li>
+            <li><strong>Firewall Logs:</strong> Network access control records</li>
+            <li><strong>DNS Logs:</strong> Domain name resolution records</li>
+        </ul>
+
+        <h3>Network Analysis Tools</h3>
+        <ul>
+            <li><strong>Wireshark:</strong> Network protocol analyzer</li>
+            <li><strong>tcpdump:</strong> Command-line packet analyzer</li>
+            <li><strong>NetworkMiner:</strong> Network forensic analysis tool</li>
+            <li><strong>Zeek (Bro):</strong> Network security monitor</li>
+            <li><strong>Moloch:</strong> Large-scale packet capture system</li>
+        </ul>
+
+        <div class="code-block">
+            <h4>Example: Network Analysis with Wireshark</h4>
+            <pre><code>
+# Common Wireshark filters for incident response
+# HTTP traffic
+http
+
+# Suspicious file transfers
+ftp-data or http.request.method == "POST"
+
+# DNS exfiltration
+dns and frame.len > 100
+
+# Encrypted traffic analysis
+ssl.handshake.type == 1
+
+# Command and control traffic
+tcp.flags == 0x18 and tcp.len > 0 and tcp.port != 80 and tcp.port != 443
+
+# Extract files from HTTP traffic
+File → Export Objects → HTTP
+            </code></pre>
+        </div>
+
+        <h2>Malware Analysis</h2>
+        <p>Analyzing malicious software to understand its behavior and impact:</p>
+
+        <h3>Static Analysis</h3>
+        <ul>
+            <li><strong>File Properties:</strong> Hash values, file size, timestamps</li>
+            <li><strong>String Analysis:</strong> Extract readable strings</li>
+            <li><strong>Disassembly:</strong> Reverse engineer assembly code</li>
+            <li><strong>Import Analysis:</strong> Examine API calls and libraries</li>
+            <li><strong>Packing Detection:</strong> Identify packed or encrypted malware</li>
+        </ul>
+
+        <h3>Dynamic Analysis</h3>
+        <ul>
+            <li><strong>Sandbox Analysis:</strong> Execute malware in controlled environment</li>
+            <li><strong>Behavioral Analysis:</strong> Monitor system changes and network activity</li>
+            <li><strong>Debugger Analysis:</strong> Step through malware execution</li>
+            <li><strong>Network Monitoring:</strong> Capture malware network communications</li>
+        </ul>
+
+        <h2>Incident Response Playbooks</h2>
+        <p>Standardized procedures for responding to specific incident types:</p>
+
+        <h3>Malware Incident Playbook</h3>
+        <ol>
+            <li><strong>Detection:</strong> Antivirus alert or suspicious behavior</li>
+            <li><strong>Isolation:</strong> Disconnect infected systems from network</li>
+            <li><strong>Evidence Collection:</strong> Create memory and disk images</li>
+            <li><strong>Analysis:</strong> Analyze malware and determine impact</li>
+            <li><strong>Eradication:</strong> Remove malware and close attack vectors</li>
+            <li><strong>Recovery:</strong> Restore systems from clean backups</li>
+            <li><strong>Monitoring:</strong> Watch for signs of reinfection</li>
+        </ol>
+
+        <h3>Data Breach Playbook</h3>
+        <ol>
+            <li><strong>Confirmation:</strong> Verify unauthorized data access</li>
+            <li><strong>Containment:</strong> Stop ongoing data exfiltration</li>
+            <li><strong>Assessment:</strong> Determine scope and type of compromised data</li>
+            <li><strong>Notification:</strong> Inform management, legal, and regulatory bodies</li>
+            <li><strong>Investigation:</strong> Determine attack vector and timeline</li>
+            <li><strong>Remediation:</strong> Fix vulnerabilities and improve controls</li>
+            <li><strong>Communication:</strong> Notify affected customers and stakeholders</li>
+        </ol>
+
+        <h2>Legal and Regulatory Considerations</h2>
+        <p>Understanding legal requirements for incident response and forensics:</p>
+
+        <h3>Evidence Admissibility</h3>
+        <ul>
+            <li><strong>Relevance:</strong> Evidence must be relevant to the case</li>
+            <li><strong>Authenticity:</strong> Prove evidence is what it claims to be</li>
+            <li><strong>Reliability:</strong> Evidence must be reliable and accurate</li>
+            <li><strong>Chain of Custody:</strong> Document all evidence handling</li>
+        </ul>
+
+        <h3>Compliance Requirements</h3>
+        <ul>
+            <li><strong>GDPR:</strong> European data protection regulation</li>
+            <li><strong>HIPAA:</strong> Healthcare information privacy requirements</li>
+            <li><strong>SOX:</strong> Financial reporting and auditing requirements</li>
+            <li><strong>PCI DSS:</strong> Payment card industry security standards</li>
+        </ul>
+
+        <div class="warning">
+            <strong>Legal Notice:</strong> Always consult with legal counsel before conducting 
+            forensic investigations. Different jurisdictions have varying requirements for 
+            evidence collection and preservation.
+        </div>
+
+        <h2>Reporting and Communication</h2>
+        <p>Effective communication throughout the incident response process:</p>
+
+        <h3>Stakeholder Communication</h3>
+        <ul>
+            <li><strong>Executive Leadership:</strong> High-level impact and business implications</li>
+            <li><strong>Technical Teams:</strong> Detailed technical findings and remediation steps</li>
+            <li><strong>Legal Department:</strong> Evidence preservation and legal implications</li>
+            <li><strong>Public Relations:</strong> External communication and media response</li>
+            <li><strong>Customers:</strong> Breach notification and protective measures</li>
+        </ul>
+
+        <h3>Incident Report Components</h3>
+        <ul>
+            <li><strong>Executive Summary:</strong> High-level overview and business impact</li>
+            <li><strong>Incident Timeline:</strong> Chronological sequence of events</li>
+            <li><strong>Technical Analysis:</strong> Detailed forensic findings</li>
+            <li><strong>Root Cause Analysis:</strong> Underlying causes and contributing factors</li>
+            <li><strong>Lessons Learned:</strong> Improvements and recommendations</li>
+            <li><strong>Appendices:</strong> Supporting evidence and technical details</li>
+        </ul>
+
+        <div class="info">
+            <strong>Best Practice:</strong> Regularly test incident response procedures through 
+            tabletop exercises and simulations. This helps identify gaps and improve response 
+            effectiveness before real incidents occur.
+        </div>
+
+        <div class="highlight">
+            <strong>Remember:</strong> Incident response is a team effort that requires coordination 
+            between technical, legal, business, and communications teams. Clear procedures and 
+            regular training are essential for effective response.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore cryptography and PKI assessment techniques for evaluating cryptographic implementations and security.</p>
+    </div>
+</body>
+</html>

