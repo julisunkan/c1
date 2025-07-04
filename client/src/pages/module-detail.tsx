@@ -14,7 +14,7 @@ export default function ModuleDetail() {
   const [content, setContent] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const { getModuleProgress, markModuleComplete } = useProgress();
+  const { getModuleProgress, markModuleCompleted } = useProgress();
 
   const module = modules.find(m => m.id === params?.id);
   const progress = module ? getModuleProgress(module.id) : 0;
@@ -45,7 +45,7 @@ export default function ModuleDetail() {
 
   const handleMarkComplete = () => {
     if (module) {
-      markModuleComplete(module.id);
+      markModuleCompleted(module.id);
     }
   };
 
