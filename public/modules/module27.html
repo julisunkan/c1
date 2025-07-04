@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 27: SCADA and Industrial Control Systems</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 27: SCADA and Industrial Control Systems</h1>
+
+        <div class="image-container">
+            <img src="/images/industrial-security.jpg" alt="SCADA and Industrial Control Systems" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand industrial control systems architecture and protocols</li>
+            <li>Learn SCADA system security assessment techniques</li>
+            <li>Master specialized industrial protocol analysis</li>
+            <li>Explore human-machine interface (HMI) security testing</li>
+            <li>Understand industrial network segmentation and security controls</li>
+        </ul>
+
+        <h2>Industrial Control Systems Overview</h2>
+        <p>
+            Industrial Control Systems (ICS) encompass SCADA (Supervisory Control and Data Acquisition), 
+            DCS (Distributed Control Systems), and PLC (Programmable Logic Controllers). These systems 
+            control critical infrastructure including power grids, water treatment, manufacturing, and transportation.
+        </p>
+
+        <h3>ICS Architecture Components</h3>
+        <ul>
+            <li><strong>SCADA Servers:</strong> Central monitoring and control systems</li>
+            <li><strong>Human Machine Interfaces (HMI):</strong> Operator workstations</li>
+            <li><strong>PLCs/RTUs:</strong> Field devices controlling physical processes</li>
+            <li><strong>Engineering Workstations:</strong> Programming and configuration systems</li>
+            <li><strong>Historians:</strong> Data archiving and trending systems</li>
+        </ul>
+
+        <h2>Industrial Communication Protocols</h2>
+        
+        <h3>Common ICS Protocols</h3>
+        <ul>
+            <li><strong>Modbus:</strong> Serial and TCP-based communication protocol</li>
+            <li><strong>DNP3:</strong> Distributed Network Protocol for utilities</li>
+            <li><strong>IEC 61850:</strong> Power system automation standard</li>
+            <li><strong>EtherNet/IP:</strong> Industrial Ethernet protocol</li>
+            <li><strong>PROFINET:</strong> Real-time Ethernet for automation</li>
+            <li><strong>BACnet:</strong> Building automation and control networks</li>
+        </ul>
+
+        <h3>Protocol Analysis Tools</h3>
+        <div class="code-block">
+            <pre><code># Wireshark with industrial protocol dissectors
+wireshark -i eth0 -f "port 502 or port 20000 or port 44818"
+
+# Modbus scanning with nmap
+nmap --script modbus-discover -p 502 target_range
+
+# PLCScan for PLC enumeration
+plcscan.py -r 192.168.1.0/24
+
+# S7comm scanning for Siemens PLCs
+nmap --script s7-info -p 102 target</code></pre>
+        </div>
+
+        <h2>SCADA Security Assessment</h2>
+        
+        <h3>Reconnaissance and Discovery</h3>
+        <ul>
+            <li>Industrial device discovery and enumeration</li>
+            <li>Network topology mapping</li>
+            <li>Protocol identification and analysis</li>
+            <li>Vendor and version fingerprinting</li>
+        </ul>
+
+        <div class="code-block">
+            <pre><code># Industrial device discovery
+nmap -sS -O -sV --script scada* target_range
+nmap --script enip-info -p 44818 target_range
+
+# Shodan search for industrial systems
+shodan search "port:502 modbus"
+shodan search "port:102 siemens"
+shodan search "port:20000 dnp3"</code></pre>
+        </div>
+
+        <h3>Common ICS Vulnerabilities</h3>
+        <ul>
+            <li><strong>Default Credentials:</strong> Unchanged default passwords</li>
+            <li><strong>Unencrypted Communications:</strong> Clear-text protocol transmissions</li>
+            <li><strong>Network Segmentation Issues:</strong> Poor isolation from corporate networks</li>
+            <li><strong>Firmware Vulnerabilities:</strong> Outdated and unpatched systems</li>
+            <li><strong>Weak Authentication:</strong> Lack of multi-factor authentication</li>
+        </ul>
+
+        <h2>HMI Security Testing</h2>
+        
+        <h3>HMI Vulnerability Assessment</h3>
+        <ul>
+            <li>Authentication bypass techniques</li>
+            <li>Configuration file analysis</li>
+            <li>Memory corruption vulnerabilities</li>
+            <li>Web-based HMI security testing</li>
+        </ul>
+
+        <div class="code-block">
+            <pre><code># HMI web interface testing
+nikto -h http://hmi-interface.local
+dirb http://hmi-interface.local /usr/share/dirb/wordlists/common.txt
+
+# Configuration file analysis
+find / -name "*.cfg" -o -name "*.conf" -o -name "*.ini" 2>/dev/null
+grep -r "password\|secret\|key" /opt/hmi/config/</code></pre>
+        </div>
+
+        <h2>PLC Security Assessment</h2>
+        
+        <h3>PLC Programming and Logic Analysis</h3>
+        <ul>
+            <li>Ladder logic vulnerability analysis</li>
+            <li>Function block security review</li>
+            <li>Safety instrumented system (SIS) assessment</li>
+            <li>Control logic manipulation testing</li>
+        </ul>
+
+        <h3>Specialized PLC Testing Tools</h3>
+        <div class="code-block">
+            <pre><code># Redpoint for PLC security testing
+redpoint --scan --target 192.168.1.0/24
+
+# SAGE for Siemens S7 PLCs
+sage --target 192.168.1.100 --function read_memory
+
+# SCADA Shutdown Tool (for authorized testing)
+scadashutdowntool --target 192.168.1.100 --protocol modbus</code></pre>
+        </div>
+
+        <h2>Industrial Network Security</h2>
+        
+        <h3>Network Segmentation Assessment</h3>
+        <ul>
+            <li>DMZ configuration evaluation</li>
+            <li>Firewall rule analysis for industrial zones</li>
+            <li>VPN and remote access security</li>
+            <li>Network monitoring and intrusion detection</li>
+        </ul>
+
+        <div class="warning">
+            <strong>Critical Safety Warning:</strong> Industrial system testing can impact critical 
+            infrastructure and safety systems. Always coordinate with operations teams and 
+            follow established safety procedures. Never test on production systems without explicit authorization.
+        </div>
+
+        <h2>ICS-Specific Attack Techniques</h2>
+        
+        <h3>Common Attack Vectors</h3>
+        <ul>
+            <li><strong>Protocol Fuzzing:</strong> Testing protocol implementations for crashes</li>
+            <li><strong>Man-in-the-Middle:</strong> Intercepting and modifying industrial communications</li>
+            <li><strong>Replay Attacks:</strong> Replaying captured control commands</li>
+            <li><strong>Firmware Modification:</strong> Altering PLC firmware and logic</li>
+        </ul>
+
+        <div class="code-block">
+            <pre><code># Protocol fuzzing with Peach
+peach.exe -c modbus_fuzzer.xml
+
+# Metasploit industrial modules
+use auxiliary/scanner/scada/modbusdetect
+use auxiliary/scanner/scada/digi_addp_reboot</code></pre>
+        </div>
+
+        <h2>Compliance and Standards</h2>
+        
+        <h3>Industrial Security Frameworks</h3>
+        <ul>
+            <li><strong>NIST Cybersecurity Framework:</strong> Risk-based approach for critical infrastructure</li>
+            <li><strong>IEC 62443:</strong> Industrial communication networks security standards</li>
+            <li><strong>NERC CIP:</strong> Critical Infrastructure Protection for power systems</li>
+            <li><strong>ISA/IEC 99:</strong> Security for industrial automation and control systems</li>
+        </ul>
+
+        <h2>Industrial Incident Response</h2>
+        
+        <h3>ICS-Specific Response Considerations</h3>
+        <ul>
+            <li>Safety system impact assessment</li>
+            <li>Production continuity planning</li>
+            <li>Forensic evidence preservation in industrial environments</li>
+            <li>Coordination with safety and operations teams</li>
+        </ul>
+
+        <div class="info">
+            <strong>Best Practice:</strong> Industrial system security requires specialized knowledge 
+            of operational technology (OT) environments. Collaborate with control system engineers 
+            and operations personnel for effective security assessment.
+        </div>
+
+        <div class="highlight">
+            <strong>Remember:</strong> Industrial systems prioritize availability and safety over 
+            confidentiality. Security controls must not interfere with critical operations or 
+            safety systems functionality.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore legal and ethical considerations for penetration testing, including compliance requirements and professional responsibilities.</p>
+    </div>
+</body>
+</html>

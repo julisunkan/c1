@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 29: Capstone Project - Comprehensive Penetration Test</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 29: Capstone Project - Comprehensive Penetration Test</h1>
+
+        <div class="image-container">
+            <img src="/images/capstone-project.jpg" alt="Capstone Penetration Testing Project" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Apply comprehensive penetration testing methodology to a complex scenario</li>
+            <li>Demonstrate mastery of technical skills across multiple domains</li>
+            <li>Develop professional-grade penetration testing reports</li>
+            <li>Practice real-world client communication and project management</li>
+            <li>Integrate ethical and legal considerations into testing activities</li>
+        </ul>
+
+        <h2>Project Overview</h2>
+        <p>
+            This capstone project simulates a comprehensive penetration testing engagement for 
+            "TechCorp Industries," a fictional technology company. You'll conduct a full-scope 
+            assessment including external and internal network testing, web application analysis, 
+            and social engineering evaluation.
+        </p>
+
+        <h3>Project Scenario</h3>
+        <div class="info">
+            <strong>Client Background:</strong> TechCorp Industries is a software development 
+            company with 500 employees across three locations. They develop custom enterprise 
+            software and host client applications in their data center and cloud environments.
+        </div>
+
+        <h3>Engagement Scope</h3>
+        <ul>
+            <li><strong>External Network:</strong> Internet-facing infrastructure and services</li>
+            <li><strong>Internal Network:</strong> Corporate LAN and server environments</li>
+            <li><strong>Web Applications:</strong> Customer portal and internal applications</li>
+            <li><strong>Wireless Networks:</strong> Corporate and guest Wi-Fi infrastructure</li>
+            <li><strong>Social Engineering:</strong> Limited phishing and physical security testing</li>
+        </ul>
+
+        <h2>Project Phases</h2>
+
+        <h3>Phase 1: Planning and Reconnaissance (Week 1)</h3>
+        
+        <h4>Deliverables:</h4>
+        <ul>
+            <li>Detailed test plan and methodology</li>
+            <li>Risk assessment and safety procedures</li>
+            <li>Passive information gathering report</li>
+            <li>Attack surface analysis</li>
+        </ul>
+
+        <div class="code-block">
+            <pre><code># Reconnaissance Activities
+# OSINT gathering
+theHarvester -d techcorp.com -b all
+recon-ng
+shodan search org:"TechCorp Industries"
+
+# DNS enumeration
+dnsrecon -d techcorp.com -t axfr
+fierce --domain techcorp.com
+
+# Social media and document analysis
+google-dorking "site:techcorp.com filetype:pdf"
+exiftool *.pdf</code></pre>
+        </div>
+
+        <h3>Phase 2: External Assessment (Week 2)</h3>
+
+        <h4>Testing Activities:</h4>
+        <ul>
+            <li>Network scanning and service enumeration</li>
+            <li>Vulnerability identification and validation</li>
+            <li>Web application security testing</li>
+            <li>Email and DNS security assessment</li>
+        </ul>
+
+        <div class="code-block">
+            <pre><code># External network assessment
+nmap -sS -sV -sC -O -A --script vuln 203.0.113.0/24
+masscan -p1-65535 203.0.113.0/24 --rate=1000
+
+# Web application testing
+nikto -h https://portal.techcorp.com
+dirb https://portal.techcorp.com /usr/share/dirb/wordlists/common.txt
+sqlmap -u "https://portal.techcorp.com/login" --forms --dbs
+
+# SSL/TLS assessment
+sslyze --regular portal.techcorp.com
+testssl.sh portal.techcorp.com</code></pre>
+        </div>
+
+        <h4>Key Findings Template:</h4>
+        <div class="warning">
+            <strong>Critical Finding Example:</strong>
+            <ul>
+                <li><strong>Vulnerability:</strong> SQL Injection in login form</li>
+                <li><strong>Risk Level:</strong> Critical</li>
+                <li><strong>Impact:</strong> Complete database compromise</li>
+                <li><strong>Proof of Concept:</strong> [Screenshot and steps]</li>
+                <li><strong>Recommendation:</strong> Implement parameterized queries</li>
+            </ul>
+        </div>
+
+        <h3>Phase 3: Internal Assessment (Week 3)</h3>
+
+        <h4>Testing Activities:</h4>
+        <ul>
+            <li>Internal network enumeration</li>
+            <li>Active Directory security assessment</li>
+            <li>Privilege escalation and lateral movement</li>
+            <li>Data exfiltration simulation</li>
+        </ul>
+
+        <div class="code-block">
+            <pre><code># Internal network reconnaissance
+nmap -sn 10.0.0.0/8
+nbtscan 192.168.1.0/24
+enum4linux 192.168.1.10
+
+# Active Directory enumeration
+bloodhound-python -d techcorp.local -u user -p password -ns 192.168.1.5
+ldapsearch -x -h 192.168.1.5 -s base namingcontexts
+
+# Privilege escalation
+winPEAS.exe
+linpeas.sh
+sudo -l</code></pre>
+        </div>
+
+        <h3>Phase 4: Specialized Testing (Week 4)</h3>
+
+        <h4>Advanced Assessment Areas:</h4>
+        <ul>
+            <li>Wireless network security testing</li>
+            <li>Mobile application analysis</li>
+            <li>API security assessment</li>
+            <li>Social engineering campaigns</li>
+        </ul>
+
+        <div class="code-block">
+            <pre><code># Wireless assessment
+airodump-ng wlan0mon
+reaver -i wlan0mon -b [BSSID] -vv
+
+# API testing
+postman collection import
+burp suite API scanner
+
+# Social engineering
+gophish campaign setup
+set phishing email templates</code></pre>
+        </div>
+
+        <h2>Reporting Requirements</h2>
+
+        <h3>Executive Summary Structure</h3>
+        <ul>
+            <li><strong>Assessment Overview:</strong> Scope, methodology, and timeline</li>
+            <li><strong>Key Findings:</strong> High-level security posture assessment</li>
+            <li><strong>Risk Summary:</strong> Categorized vulnerability statistics</li>
+            <li><strong>Business Impact:</strong> Potential consequences of identified risks</li>
+            <li><strong>Recommendations:</strong> Prioritized remediation roadmap</li>
+        </ul>
+
+        <h3>Technical Report Components</h3>
+        <div class="highlight">
+            <strong>Required Sections:</strong>
+            <ul>
+                <li>Methodology and approach</li>
+                <li>Detailed findings with proof of concept</li>
+                <li>Risk ratings and CVSS scores</li>
+                <li>Remediation recommendations</li>
+                <li>Appendices with tool outputs</li>
+            </ul>
+        </div>
+
+        <h3>Risk Rating Matrix</h3>
+        <div class="code-block">
+            <pre><code>RISK CALCULATION FORMULA:
+Risk = Likelihood × Impact
+
+LIKELIHOOD SCALE:
+- Low (1): Requires specialized skills and access
+- Medium (2): Requires some technical knowledge
+- High (3): Can be exploited by script kiddies
+
+IMPACT SCALE:
+- Low (1): Minimal business impact
+- Medium (2): Moderate business disruption
+- High (3): Severe business consequences
+
+RISK LEVELS:
+- Critical (8-9): Immediate action required
+- High (6-7): Remediate within 30 days
+- Medium (4-5): Remediate within 90 days
+- Low (1-3): Remediate when possible</code></pre>
+        </div>
+
+        <h2>Project Deliverables</h2>
+
+        <h3>Required Artifacts</h3>
+        <ul>
+            <li><strong>Project Plan:</strong> Detailed testing methodology and timeline</li>
+            <li><strong>Executive Report:</strong> 5-10 page business-focused summary</li>
+            <li><strong>Technical Report:</strong> 30-50 page detailed technical findings</li>
+            <li><strong>Remediation Guide:</strong> Step-by-step fix instructions</li>
+            <li><strong>Presentation:</strong> 30-minute executive briefing</li>
+        </ul>
+
+        <h3>Quality Standards</h3>
+        <ul>
+            <li>Professional formatting and presentation</li>
+            <li>Clear and actionable recommendations</li>
+            <li>Accurate technical details and proof of concepts</li>
+            <li>Appropriate risk ratings and business context</li>
+            <li>Proper grammar and spelling throughout</li>
+        </ul>
+
+        <h2>Evaluation Criteria</h2>
+
+        <h3>Technical Competency (40%)</h3>
+        <ul>
+            <li>Comprehensive vulnerability identification</li>
+            <li>Accurate risk assessment and prioritization</li>
+            <li>Effective use of testing tools and techniques</li>
+            <li>Quality of proof-of-concept demonstrations</li>
+        </ul>
+
+        <h3>Communication Skills (30%)</h3>
+        <ul>
+            <li>Clarity and professionalism of reports</li>
+            <li>Appropriate audience targeting (executive vs. technical)</li>
+            <li>Effective visual presentation of findings</li>
+            <li>Quality of oral presentation</li>
+        </ul>
+
+        <h3>Methodology and Process (20%)</h3>
+        <ul>
+            <li>Systematic approach to testing</li>
+            <li>Proper documentation and evidence gathering</li>
+            <li>Adherence to ethical guidelines</li>
+            <li>Project management and timeline adherence</li>
+        </ul>
+
+        <h3>Innovation and Critical Thinking (10%)</h3>
+        <ul>
+            <li>Creative attack scenarios and techniques</li>
+            <li>Insightful analysis and recommendations</li>
+            <li>Business-focused risk assessment</li>
+            <li>Proactive security suggestions</li>
+        </ul>
+
+        <h2>Success Tips</h2>
+
+        <div class="info">
+            <strong>Project Management Tips:</strong>
+            <ul>
+                <li>Start early and maintain regular progress</li>
+                <li>Document everything as you work</li>
+                <li>Take detailed screenshots for proof of concepts</li>
+                <li>Review and proofread all deliverables</li>
+                <li>Practice your presentation multiple times</li>
+            </ul>
+        </div>
+
+        <div class="highlight">
+            <strong>Remember:</strong> This capstone project demonstrates your readiness for 
+            professional penetration testing. Approach it with the same rigor and attention 
+            to detail you would use in a real client engagement.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the final module, we'll provide a comprehensive course review and guide you through continued professional development in cybersecurity.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 26: Cryptography and PKI Assessment</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 26: Cryptography and PKI Assessment</h1>
+
+        <div class="image-container">
+            <img src="/images/cryptography-security.jpg" alt="Cryptography and PKI Security" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand cryptographic fundamentals and assessment techniques</li>
+            <li>Learn to evaluate Public Key Infrastructure (PKI) implementations</li>
+            <li>Master cryptographic vulnerability identification and exploitation</li>
+            <li>Explore certificate validation and SSL/TLS security testing</li>
+            <li>Understand key management and cryptographic protocol analysis</li>
+        </ul>
+
+        <h2>Cryptographic Fundamentals</h2>
+        <p>
+            Cryptography assessment involves evaluating the implementation and configuration of 
+            cryptographic systems, protocols, and Public Key Infrastructure. This includes 
+            analyzing encryption algorithms, key management practices, and certificate handling.
+        </p>
+
+        <h3>Common Cryptographic Vulnerabilities</h3>
+        <ul>
+            <li><strong>Weak Encryption Algorithms:</strong> Use of deprecated or weak ciphers (DES, RC4)</li>
+            <li><strong>Poor Key Management:</strong> Hardcoded keys, weak key generation</li>
+            <li><strong>Implementation Flaws:</strong> Side-channel attacks, timing attacks</li>
+            <li><strong>Protocol Weaknesses:</strong> SSL/TLS misconfigurations</li>
+            <li><strong>Certificate Issues:</strong> Self-signed certificates, weak validation</li>
+        </ul>
+
+        <h2>PKI Assessment Methodology</h2>
+        
+        <h3>Certificate Analysis</h3>
+        <div class="code-block">
+            <pre><code># Certificate examination with OpenSSL
+openssl x509 -in certificate.crt -text -noout
+openssl x509 -in certificate.crt -purpose -noout
+
+# Check certificate chain
+openssl verify -CAfile ca-bundle.crt certificate.crt
+
+# Test SSL/TLS configuration
+openssl s_client -connect target.com:443 -cipher 'ALL:!aNULL'</code></pre>
+        </div>
+
+        <h3>SSL/TLS Security Testing</h3>
+        <ul>
+            <li><strong>SSLyze:</strong> Comprehensive SSL/TLS scanner</li>
+            <li><strong>testssl.sh:</strong> Command-line SSL/TLS tester</li>
+            <li><strong>sslscan:</strong> Fast SSL/TLS security scanner</li>
+            <li><strong>nmap SSL scripts:</strong> Built-in SSL/TLS testing capabilities</li>
+        </ul>
+
+        <div class="code-block">
+            <pre><code># SSL/TLS testing with various tools
+sslyze --regular target.com:443
+testssl.sh target.com
+sslscan target.com:443
+nmap --script ssl-enum-ciphers -p 443 target.com</code></pre>
+        </div>
+
+        <h2>Cryptographic Protocol Testing</h2>
+        
+        <h3>Common Protocol Vulnerabilities</h3>
+        <ul>
+            <li><strong>BEAST Attack:</strong> Browser Exploit Against SSL/TLS</li>
+            <li><strong>CRIME/BREACH:</strong> Compression-based attacks</li>
+            <li><strong>POODLE:</strong> Padding Oracle On Downgraded Legacy Encryption</li>
+            <li><strong>Heartbleed:</strong> OpenSSL buffer over-read vulnerability</li>
+            <li><strong>FREAK:</strong> Factoring RSA Export Keys attack</li>
+        </ul>
+
+        <h3>Advanced Cryptographic Analysis</h3>
+        <div class="code-block">
+            <pre><code># Check for specific vulnerabilities
+nmap --script ssl-heartbleed target.com
+nmap --script ssl-poodle target.com
+nmap --script ssl-ccs-injection target.com
+
+# Analyze cipher suites
+nmap --script ssl-enum-ciphers -p 443 target.com | grep -E "(weak|broken|insecure)"</code></pre>
+        </div>
+
+        <h2>Key Management Assessment</h2>
+        
+        <h3>Key Storage Security</h3>
+        <ul>
+            <li>Hardware Security Modules (HSM) evaluation</li>
+            <li>Key escrow and recovery procedures</li>
+            <li>Key rotation and lifecycle management</li>
+            <li>Access controls and authentication</li>
+        </ul>
+
+        <h3>Cryptographic Implementation Review</h3>
+        <div class="warning">
+            <strong>Critical:</strong> Never rely solely on encryption algorithms. Always verify 
+            proper implementation, key management, and protocol configuration for comprehensive security.
+        </div>
+
+        <h2>Practical Assessment Tools</h2>
+        
+        <h3>Specialized Cryptographic Tools</h3>
+        <ul>
+            <li><strong>HashCat:</strong> Advanced password recovery and hash cracking</li>
+            <li><strong>John the Ripper:</strong> Password cracking with cryptographic support</li>
+            <li><strong>CrypTool:</strong> Educational cryptography and cryptanalysis</li>
+            <li><strong>SAGE:</strong> Mathematical software for cryptographic analysis</li>
+        </ul>
+
+        <div class="code-block">
+            <pre><code># Hash analysis and cracking
+hashcat -m 1000 -a 0 hashes.txt wordlist.txt
+john --format=NT hashes.txt
+
+# Certificate and key analysis
+openssl rsa -in private.key -text -noout
+openssl req -in csr.csr -text -noout</code></pre>
+        </div>
+
+        <h2>PKI Infrastructure Testing</h2>
+        
+        <h3>Certificate Authority (CA) Assessment</h3>
+        <ul>
+            <li>Root CA security evaluation</li>
+            <li>Certificate issuance validation</li>
+            <li>Revocation mechanisms (CRL, OCSP)</li>
+            <li>Cross-certification analysis</li>
+        </ul>
+
+        <h3>Certificate Validation Testing</h3>
+        <div class="code-block">
+            <pre><code># OCSP testing
+openssl ocsp -issuer ca.crt -cert certificate.crt -url http://ocsp.example.com
+
+# CRL checking
+openssl crl -in crl.pem -text -noout
+
+# Certificate transparency logs
+curl -s "https://ct.googleapis.com/logs/argon2023/ct/v1/get-entries?start=0&end=0"</code></pre>
+        </div>
+
+        <div class="info">
+            <strong>Best Practice:</strong> Regularly audit cryptographic implementations and 
+            configurations. Cryptographic security requires ongoing assessment as new 
+            vulnerabilities and attack techniques emerge.
+        </div>
+
+        <div class="highlight">
+            <strong>Remember:</strong> Cryptographic assessment requires both technical analysis 
+            and understanding of business requirements. Balance security with usability and 
+            performance considerations.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore SCADA and Industrial Control Systems security, focusing on specialized protocols and industrial security challenges.</p>
+    </div>
+</body>
+</html>
