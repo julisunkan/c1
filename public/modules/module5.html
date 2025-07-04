@@ -1,4 +1,7 @@
+The code adds images and screenshot to all course contents
+```
 
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,18 +210,21 @@ nmap -sX target                           # Xmas scan
             </ul>
         </div>
 
-        <h2>Popular Vulnerability Scanners</h2>
+        <h2>Automated Vulnerability Scanning Tools</h2>
+
+        <div class="image-container">
+            <img src="/images/vulnerability-scanning.jpg" alt="Vulnerability Scanning Process" />
+        </div>
 
         <h3>Nessus</h3>
-        <p>Commercial vulnerability scanner with extensive plugin library:</p>
-        <div class="code">
-# Nessus scan types
-- Basic Network Scan: Standard vulnerability detection
-- Credentialed Patch Audit: Authenticated scanning for missing patches
-- Web Application Tests: OWASP Top 10 and web-specific vulnerabilities
-- Malware Scan: Detect malicious files and processes
-- Policy Compliance: Check against security standards
-</div>
+        <p>
+            Nessus is a comprehensive vulnerability scanner that can identify thousands of vulnerabilities, 
+            malware, and configuration issues across various platforms and applications.
+        </p>
+
+        <div class="image-container">
+            <img src="/images/nessus-interface.jpg" alt="Nessus Scanner Interface" />
+        </div>
 
         <h4>Nessus Advantages:</h4>
         <ul>
@@ -373,7 +379,7 @@ sqlmap -u "target.com" --proxy="http://proxy:8080" # Use proxy
 
         <h3>Common Vulnerability Scoring System (CVSS)</h3>
         <p>Industry standard for assessing vulnerability severity:</p>
-        
+
         <h4>CVSS v3.1 Metrics</h4>
         <ul>
             <li><strong>Base Score:</strong> Intrinsic characteristics (0.0-10.0)</li>
@@ -585,3 +591,4 @@ pipeline {
     </div>
 </body>
 </html>
+</replit_final_file>
