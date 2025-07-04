@@ -1,280 +1,98 @@
 [
   {
     "id": "module1",
-    "title": "Getting Started",
-    "summary": "What is penetration testing, ethics, and course objectives",
-    "file": "/modules/module1.html",
-    "icon": "fas fa-play",
-    "color": "from-green-400 to-green-600",
-    "duration": "45 min",
-    "lessons": 5,
-    "difficulty": "Beginner"
-  },
-  {
-    "id": "module2",
-    "title": "Linux Basics for Pen Testers",
-    "summary": "Terminal, file system, permissions, networking commands",
-    "file": "/modules/module2.html",
-    "icon": "fas fa-terminal",
-    "color": "from-blue-400 to-blue-600",
-    "duration": "2 hours",
-    "lessons": 8,
-    "difficulty": "Beginner"
-  },
-  {
-    "id": "module3",
-    "title": "Lab Setup",
-    "summary": "Installing Kali & Parrot OS, Metasploitable2, DVWA, network setup",
-    "file": "/modules/module3.html",
-    "icon": "fas fa-cogs",
-    "color": "from-purple-400 to-purple-600",
-    "duration": "3 hours",
-    "lessons": 12,
-    "difficulty": "Intermediate"
-  },
-  {
-    "id": "module4",
-    "title": "Reconnaissance & Information Gathering",
-    "summary": "Passive/active recon, Nmap, DNS, Shodan, banner grabbing",
-    "file": "/modules/module4.html",
-    "icon": "fas fa-search",
-    "color": "from-yellow-400 to-yellow-600",
-    "duration": "2.5 hours",
-    "lessons": 10,
-    "difficulty": "Intermediate"
-  },
-  {
-    "id": "module5",
-    "title": "Vulnerability Scanning",
-    "summary": "Nikto, OpenVAS, Searchsploit, Nessus",
-    "file": "/modules/module5.html",
-    "icon": "fas fa-bug",
-    "color": "from-red-400 to-red-600",
-    "duration": "2 hours",
-    "lessons": 9,
-    "difficulty": "Intermediate"
-  },
-  {
-    "id": "module6",
-    "title": "Exploitation Basics",
-    "summary": "Metasploit, msfvenom, CVE exploitation, payloads",
-    "file": "/modules/module6.html",
-    "icon": "fas fa-bomb",
-    "color": "from-indigo-400 to-indigo-600",
-    "duration": "3.5 hours",
-    "lessons": 14,
-    "difficulty": "Advanced"
-  },
-  {
-    "id": "module7",
-    "title": "Gaining Access",
-    "summary": "Brute force (Hydra), SSH/FTP/SMB exploits, credential attacks",
-    "file": "/modules/module7.html",
-    "icon": "fas fa-key",
-    "color": "from-cyan-400 to-cyan-600",
-    "duration": "2.5 hours",
-    "lessons": 11,
-    "difficulty": "Advanced"
-  },
-  {
-    "id": "module8",
-    "title": "Post-Exploitation",
-    "summary": "Privilege escalation, persistence, looting, pivoting",
-    "file": "/modules/module8.html",
-    "icon": "fas fa-crown",
-    "color": "from-orange-400 to-orange-600",
-    "duration": "2.5 hours",
-    "lessons": 10,
-    "difficulty": "Advanced"
-  },
-  {
-    "id": "module9",
-    "title": "Web App Testing",
-    "summary": "OWASP Top 10, Burp Suite, XSS, SQLi, CSRF, file upload exploits",
-    "file": "/modules/module9.html",
-    "icon": "fas fa-globe",
-    "color": "from-pink-400 to-pink-600",
-    "duration": "4 hours",
-    "lessons": 16,
-    "difficulty": "Advanced"
-  },
-  {
-    "id": "module10",
-    "title": "Wireless Network Attacks",
-    "summary": "WPA/WPA2 cracking, MITM, Evil Twin, Aircrack-ng",
-    "file": "/modules/module10.html",
-    "icon": "fas fa-wifi",
-    "color": "from-emerald-400 to-emerald-600",
-    "duration": "2 hours",
-    "lessons": 8,
-    "difficulty": "Advanced"
-  },
-  {
-    "id": "module11",
-    "title": "Pen Test Reporting",
-    "summary": "Writing reports, CVSS scoring, evidence screenshots",
-    "file": "/modules/module11.html",
-    "icon": "fas fa-file-alt",
-    "color": "from-violet-400 to-violet-600",
-    "duration": "1.5 hours",
-    "lessons": 6,
-    "difficulty": "Intermediate"
-  },
-  {
-    "id": "module12",
-    "title": "Next Steps & Certifications",
-    "summary": "OSCP, PNPT, TryHackMe/HTB challenges, community links",
-    "file": "/modules/module12.html",
-    "icon": "fas fa-graduation-cap",
-    "color": "from-teal-400 to-teal-600",
-    "duration": "1 hour",
-    "lessons": 4,
-    "difficulty": "Beginner"
-  }
-]
-[
-  {
-    "id": "module1",
-    "title": "Introduction to Penetration Testing",
-    "description": "Learn the fundamentals of ethical hacking and penetration testing methodology.",
+    "title": "Introduction to Cybersecurity",
+    "description": "Learn the fundamentals of cybersecurity, including key concepts, threat landscape, and security principles.",
     "duration": "45 minutes",
     "difficulty": "Beginner",
-    "objectives": [
-      "Understand the penetration testing process",
-      "Learn about legal and ethical considerations",
-      "Explore different types of security assessments"
-    ]
+    "category": "Fundamentals"
   },
   {
     "id": "module2", 
-    "title": "Reconnaissance and Information Gathering",
-    "description": "Master the art of passive and active reconnaissance techniques.",
+    "title": "Network Security Basics",
+    "description": "Understanding network security concepts, protocols, and basic protection mechanisms.",
     "duration": "60 minutes",
     "difficulty": "Beginner",
-    "objectives": [
-      "Perform passive reconnaissance",
-      "Use OSINT tools effectively",
-      "Conduct active information gathering"
-    ]
+    "category": "Network Security"
   },
   {
     "id": "module3",
-    "title": "Network Scanning and Enumeration", 
-    "description": "Learn to identify live hosts, open ports, and running services.",
-    "duration": "75 minutes",
-    "difficulty": "Intermediate",
-    "objectives": [
-      "Perform network discovery",
-      "Enumerate services and versions",
-      "Analyze scan results effectively"
-    ]
+    "title": "Password Security & Authentication",
+    "description": "Best practices for password security, multi-factor authentication, and identity management.",
+    "duration": "40 minutes",
+    "difficulty": "Beginner", 
+    "category": "Authentication"
   },
   {
     "id": "module4",
-    "title": "Vulnerability Assessment",
-    "description": "Identify and classify security vulnerabilities in target systems.",
-    "duration": "90 minutes", 
+    "title": "Social Engineering & Phishing",
+    "description": "Recognize and defend against social engineering attacks and phishing attempts.",
+    "duration": "50 minutes",
     "difficulty": "Intermediate",
-    "objectives": [
-      "Use automated vulnerability scanners",
-      "Perform manual vulnerability assessment",
-      "Prioritize findings by risk"
-    ]
+    "category": "Social Engineering"
   },
   {
     "id": "module5",
-    "title": "Web Application Security Testing",
-    "description": "Explore common web application vulnerabilities and testing methods.",
-    "duration": "120 minutes",
-    "difficulty": "Advanced",
-    "objectives": [
-      "Test for OWASP Top 10 vulnerabilities", 
-      "Perform manual web app testing",
-      "Use web application testing tools"
-    ]
+    "title": "Malware & Virus Protection",
+    "description": "Understanding different types of malware and how to protect against them.",
+    "duration": "55 minutes",
+    "difficulty": "Intermediate",
+    "category": "Malware Protection"
   },
   {
     "id": "module6",
-    "title": "Network Penetration Testing",
-    "description": "Learn to exploit network services and gain unauthorized access.",
-    "duration": "135 minutes",
-    "difficulty": "Advanced", 
-    "objectives": [
-      "Exploit network services",
-      "Perform lateral movement",
-      "Maintain persistent access"
-    ]
+    "title": "Web Application Security",
+    "description": "Security vulnerabilities in web applications and how to mitigate them.",
+    "duration": "70 minutes",
+    "difficulty": "Intermediate",
+    "category": "Web Security"
   },
   {
     "id": "module7",
-    "title": "Wireless Security Testing",
-    "description": "Assess the security of wireless networks and protocols.",
-    "duration": "105 minutes",
-    "difficulty": "Intermediate",
-    "objectives": [
-      "Audit wireless network security",
-      "Crack wireless encryption",
-      "Test wireless client security"
-    ]
+    "title": "Digital Forensics Fundamentals", 
+    "description": "Introduction to digital forensics, evidence collection, and analysis techniques.",
+    "duration": "65 minutes",
+    "difficulty": "Advanced",
+    "category": "Forensics"
   },
   {
     "id": "module8",
-    "title": "Social Engineering",
-    "description": "Understand human-based attack vectors and psychological manipulation.",
-    "duration": "60 minutes", 
-    "difficulty": "Beginner",
-    "objectives": [
-      "Recognize social engineering techniques",
-      "Conduct phishing simulations", 
-      "Implement security awareness training"
-    ]
+    "title": "Incident Response Planning",
+    "description": "Creating and implementing effective incident response plans and procedures.",
+    "duration": "60 minutes",
+    "difficulty": "Advanced",
+    "category": "Incident Response"
   },
   {
     "id": "module9",
-    "title": "Post-Exploitation Techniques",
-    "description": "Learn advanced techniques for maintaining access and data exfiltration.",
-    "duration": "150 minutes",
-    "difficulty": "Expert",
-    "objectives": [
-      "Establish persistence mechanisms",
-      "Perform privilege escalation",
-      "Conduct data exfiltration"
-    ]
+    "title": "Cryptography Essentials",
+    "description": "Understanding encryption, hashing, and cryptographic protocols.",
+    "duration": "75 minutes",
+    "difficulty": "Advanced",
+    "category": "Cryptography"
   },
   {
     "id": "module10",
-    "title": "Reporting and Documentation",
-    "description": "Master the art of professional penetration testing reports.",
-    "duration": "90 minutes",
-    "difficulty": "Intermediate", 
-    "objectives": [
-      "Write executive summaries",
-      "Document technical findings",
-      "Provide actionable remediation steps"
-    ]
+    "title": "Risk Assessment & Management",
+    "description": "Conducting security risk assessments and developing risk management strategies.",
+    "duration": "50 minutes",
+    "difficulty": "Intermediate",
+    "category": "Risk Management"
   },
   {
     "id": "module11",
-    "title": "Legal and Ethical Considerations",
-    "description": "Navigate the legal landscape of ethical hacking and compliance.",
-    "duration": "75 minutes",
-    "difficulty": "Beginner",
-    "objectives": [
-      "Understand legal frameworks",
-      "Create proper documentation",
-      "Maintain ethical standards"
-    ]
+    "title": "Compliance & Regulations",
+    "description": "Understanding cybersecurity compliance requirements and regulatory frameworks.",
+    "duration": "45 minutes",
+    "difficulty": "Intermediate",
+    "category": "Compliance"
   },
   {
     "id": "module12",
-    "title": "Advanced Exploitation Techniques", 
-    "description": "Explore cutting-edge attack vectors and defensive measures.",
-    "duration": "180 minutes",
-    "difficulty": "Expert",
-    "objectives": [
-      "Develop custom exploits",
-      "Bypass modern security controls",
-      "Research zero-day vulnerabilities"
-    ]
+    "title": "Advanced Threat Detection",
+    "description": "Advanced techniques for detecting and analyzing sophisticated cyber threats.",
+    "duration": "80 minutes",
+    "difficulty": "Advanced", 
+    "category": "Threat Detection"
   }
 ]
