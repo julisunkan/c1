@@ -19,20 +19,23 @@ export default function ModuleDetail() {
 
   useEffect(() => {
     if (module) {
+      console.log(`Attempting to load module content: /modules/${module.id}.html`);
       fetch(`/modules/${module.id}.html`)
         .then(response => {
+          console.log(`Fetch response status: ${response.status}`);
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
           return response.text();
         })
         .then(html => {
+          console.log(`Module content loaded successfully, length: ${html.length}`);
           setContent(html);
           setLoading(false);
         })
         .catch(error => {
           console.error("Error loading module content:", error);
-          setContent("<p>Error loading module content. Please try again later.</p>");
+          setContent(`<div class="text-red-400"><h3>Error loading module content</h3><p>Failed to load content for ${module.id}. Please check that the file exists and try again.</p><p>Error: ${error.message}</p></div>`);
           setLoading(false);
         });
     }

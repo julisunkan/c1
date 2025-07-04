@@ -69,24 +69,24 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         <nav className="flex-1 overflow-y-auto p-4">
           <div className="space-y-2">
             <Link href="/">
-              <a className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors group ${
+              <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors group cursor-pointer ${
                 location === '/' 
                   ? 'bg-slate-800 text-[var(--cyber-green)]' 
                   : 'text-slate-300 hover:text-[var(--cyber-green)] hover:bg-slate-800'
               }`}>
                 <Home className="w-5 h-5" />
                 <span>Home</span>
-              </a>
+              </div>
             </Link>
             <Link href="/modules">
-              <a className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors group ${
+              <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors group cursor-pointer ${
                 location === '/modules' 
                   ? 'bg-slate-800 text-[var(--cyber-green)]' 
                   : 'text-slate-300 hover:text-[var(--cyber-green)] hover:bg-slate-800'
               }`}>
                 <Book className="w-5 h-5" />
                 <span>All Modules</span>
-              </a>
+              </div>
             </Link>
             
             {/* Module List */}
