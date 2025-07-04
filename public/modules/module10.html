@@ -1,392 +1,643 @@
-<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
-  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 10: Social Engineering and Physical Security</h1>
-  
-  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-    Social engineering attacks target the human element of security, often the weakest link in organizational defenses. This module covers psychological manipulation techniques, physical security assessments, and defense strategies against human-based attacks.
-  </p>
 
-  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <ul class="text-slate-300 space-y-2">
-      <li>• Understand psychological principles underlying social engineering attacks</li>
-      <li>• Master various social engineering techniques and attack vectors</li>
-      <li>• Learn physical security assessment methodologies and tools</li>
-      <li>• Practice email phishing and vishing attack simulations</li>
-      <li>• Implement security awareness training and defense strategies</li>
-      <li>• Execute comprehensive human-based penetration testing scenarios</li>
-    </ul>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Engineering and Physical Security</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .subtitle {
+            margin-top: 10px;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .content {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        h2 {
+            color: #f59e0b;
+            border-bottom: 2px solid #f59e0b;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #10b981;
+        }
+        .command-box {
+            background: #0f172a;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #10b981;
+        }
+        .warning {
+            background: linear-gradient(135deg, #7c2d12 0%, #dc2626 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ef4444;
+        }
+        .technique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .technique-card {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        .attack-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .attack-table th,
+        .attack-table td {
+            border: 1px solid #374151;
+            padding: 10px;
+            text-align: left;
+        }
+        .attack-table th {
+            background: #1e293b;
+            color: #f59e0b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Social Engineering and Physical Security</h1>
+            <p class="subtitle">Master social engineering techniques and physical security assessment methodologies</p>
+        </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Psychology of Social Engineering</h3>
-  <p class="text-slate-300 mb-4">
-    Understanding human psychology is essential for effective social engineering attacks and defenses.
-  </p>
+        <div class="content">
+            <h2>Introduction</h2>
+            <p>
+                Human factors often represent the weakest link in organizational security. This module explores 
+                comprehensive social engineering techniques and physical security assessment methods. You'll learn 
+                to identify human vulnerabilities, assess physical controls, and understand how these elements 
+                integrate with technical security measures to create a complete security posture.
+            </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Psychological Principles</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Authority:</strong> People comply with perceived authority figures</li>
-        <li>• <strong>Reciprocity:</strong> Obligation to return favors</li>
-        <li>• <strong>Social Proof:</strong> Following others' behavior</li>
-        <li>• <strong>Commitment:</strong> Consistency with previous commitments</li>
-        <li>• <strong>Liking:</strong> More likely to help people we like</li>
-        <li>• <strong>Scarcity:</strong> Urgency and limited availability</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Cognitive Biases</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Confirmation Bias:</strong> Seeking confirming information</li>
-        <li>• <strong>Availability Heuristic:</strong> Recent information priority</li>
-        <li>• <strong>Anchoring:</strong> Relying on first information received</li>
-        <li>• <strong>Halo Effect:</strong> Overall impression influences perception</li>
-        <li>• <strong>Loss Aversion:</strong> Fear of losing something valuable</li>
-        <li>• <strong>Bandwagon Effect:</strong> Following popular choices</li>
-      </ul>
-    </div>
-  </div>
+            <h2>Learning Objectives</h2>
+            <ul>
+                <li>Understand psychological principles behind social engineering</li>
+                <li>Master various social engineering attack vectors</li>
+                <li>Learn physical security assessment techniques</li>
+                <li>Develop pretexting and impersonation skills</li>
+                <li>Assess organizational security awareness</li>
+                <li>Understand legal and ethical boundaries</li>
+                <li>Create effective security awareness programs</li>
+            </ul>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Email Phishing Attacks</h3>
-  <p class="text-slate-300 mb-4">
-    Email phishing remains one of the most effective social engineering attack vectors in modern cybersecurity.
-  </p>
+            <h2>Psychology of Social Engineering</h2>
 
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Phishing Campaign Development</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Target Research (OSINT)</h5>
-        <p class="text-slate-300 text-sm">Gather information about targets from social media and public sources</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Template Creation</h5>
-        <p class="text-slate-300 text-sm">Design convincing email templates mimicking legitimate organizations</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Landing Page Development</h5>
-        <p class="text-slate-300 text-sm">Create fake websites to capture credentials and personal information</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Campaign Tracking</h5>
-        <p class="text-slate-300 text-sm">Monitor email opens, clicks, and credential submissions</p>
-      </div>
-    </div>
-  </div>
+            <h3>Psychological Principles</h3>
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>🧠 Authority</h4>
+                    <p>People tend to obey authority figures without question</p>
+                    <ul>
+                        <li>Impersonating executives</li>
+                        <li>Using official titles</li>
+                        <li>Leveraging organizational hierarchy</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>🤝 Reciprocity</h4>
+                    <p>People feel obligated to return favors</p>
+                    <ul>
+                        <li>Offering small gifts</li>
+                        <li>Providing helpful information</li>
+                        <li>Creating artificial obligations</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>👥 Social Proof</h4>
+                    <p>People follow what others are doing</p>
+                    <ul>
+                        <li>Claiming others have complied</li>
+                        <li>Creating false consensus</li>
+                        <li>Using testimonials</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>⏰ Urgency</h4>
+                    <p>Time pressure reduces critical thinking</p>
+                    <ul>
+                        <li>Creating artificial deadlines</li>
+                        <li>Emergency scenarios</li>
+                        <li>Limited-time offers</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>❤️ Liking</h4>
+                    <p>People are more likely to help those they like</p>
+                    <ul>
+                        <li>Finding common ground</li>
+                        <li>Compliments and flattery</li>
+                        <li>Mimicking behavior</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>🏆 Commitment</h4>
+                    <p>People want to be consistent with commitments</p>
+                    <ul>
+                        <li>Getting small agreements first</li>
+                        <li>Written commitments</li>
+                        <li>Public declarations</li>
+                    </ul>
+                </div>
+            </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Phishing Tools and Frameworks</h3>
-  <p class="text-slate-300 mb-4">
-    Professional phishing frameworks automate campaign creation and management for security testing.
-  </p>
+            <h2>Social Engineering Attack Vectors</h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Commercial Solutions</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>GoPhish:</strong> Open-source phishing framework</li>
-        <li>• <strong>King Phisher:</strong> Campaign management platform</li>
-        <li>• <strong>SpeedPhish:</strong> Rapid deployment framework</li>
-        <li>• <strong>Lucy:</strong> Commercial awareness testing</li>
-        <li>• <strong>Proofpoint:</strong> Enterprise security awareness</li>
-        <li>• <strong>KnowBe4:</strong> Security awareness training</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Custom Development</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Email Servers:</strong> SMTP configuration and reputation</li>
-        <li>• <strong>Domain Registration:</strong> Typosquatting and lookalikes</li>
-        <li>• <strong>SSL Certificates:</strong> Legitimate appearance</li>
-        <li>• <strong>Analytics Integration:</strong> Campaign effectiveness tracking</li>
-        <li>• <strong>Automation Scripts:</strong> Large-scale campaigns</li>
-        <li>• <strong>Evasion Techniques:</strong> Bypass email filters</li>
-      </ul>
-    </div>
-  </div>
+            <h3>Phishing Attacks</h3>
+            <table class="attack-table">
+                <thead>
+                    <tr>
+                        <th>Attack Type</th>
+                        <th>Target</th>
+                        <th>Method</th>
+                        <th>Success Indicators</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Spear Phishing</td>
+                        <td>Specific individuals</td>
+                        <td>Personalized emails</td>
+                        <td>Click rates, credential harvest</td>
+                    </tr>
+                    <tr>
+                        <td>Whaling</td>
+                        <td>C-level executives</td>
+                        <td>Executive-targeted attacks</td>
+                        <td>High-value account compromise</td>
+                    </tr>
+                    <tr>
+                        <td>Clone Phishing</td>
+                        <td>Email recipients</td>
+                        <td>Replicated legitimate emails</td>
+                        <td>Malware delivery, credentials</td>
+                    </tr>
+                    <tr>
+                        <td>Watering Hole</td>
+                        <td>Website visitors</td>
+                        <td>Compromised trusted sites</td>
+                        <td>Drive-by downloads</td>
+                    </tr>
+                    <tr>
+                        <td>Smishing</td>
+                        <td>Mobile users</td>
+                        <td>SMS/text messages</td>
+                        <td>App downloads, credential theft</td>
+                    </tr>
+                    <tr>
+                        <td>Vishing</td>
+                        <td>Phone users</td>
+                        <td>Voice calls</td>
+                        <td>Information disclosure</td>
+                    </tr>
+                </tbody>
+            </table>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Voice-based Attacks (Vishing)</h3>
-  <p class="text-slate-300 mb-4">
-    Voice-based social engineering attacks exploit trust built through direct human interaction.
-  </p>
+            <h3>Phishing Campaign Development</h3>
+            <div class="command-box">
+# Phishing framework setup
+# Gophish installation
+git clone https://github.com/gophish/gophish.git
+cd gophish
+go build
 
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Vishing Techniques</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Pretexting</h5>
-        <p class="text-slate-300 text-sm">Create believable scenarios to justify information requests</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Authority Impersonation</h5>
-        <p class="text-slate-300 text-sm">Pose as executives, IT staff, or external authorities</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Technical Support Scams</h5>
-        <p class="text-slate-300 text-sm">Fake support calls to gain system access</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Emergency Scenarios</h5>
-        <p class="text-slate-300 text-sm">Create urgency to bypass normal security procedures</p>
-      </div>
-    </div>
-  </div>
+# Email template creation
+# Subject: Urgent: Account Verification Required
+# Body: Click here to verify your account within 24 hours
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Physical Security Assessment</h3>
-  <p class="text-slate-300 mb-4">
-    Physical security testing evaluates an organization's ability to protect against unauthorized physical access.
-  </p>
+# Landing page creation
+# Replica of legitimate login page
+# Credential harvesting form
+# Redirect to legitimate site after capture
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Physical Assessment Areas</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Perimeter Security:</strong> Fences, gates, barriers</li>
-        <li>• <strong>Building Access:</strong> Doors, windows, locks</li>
-        <li>• <strong>Access Controls:</strong> Badges, biometrics, guards</li>
-        <li>• <strong>Surveillance Systems:</strong> Cameras, monitoring</li>
-        <li>• <strong>Server Rooms:</strong> Critical infrastructure protection</li>
-        <li>• <strong>Workstation Security:</strong> Desk and device access</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Assessment Techniques</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Reconnaissance:</strong> Site observation and mapping</li>
-        <li>• <strong>Tailgating:</strong> Following authorized personnel</li>
-        <li>• <strong>Badge Cloning:</strong> RFID/NFC badge duplication</li>
-        <li>• <strong>Lock Picking:</strong> Mechanical lock bypass</li>
-        <li>• <strong>Impersonation:</strong> Pose as contractors or vendors</li>
-        <li>• <strong>Social Engineering:</strong> Manipulate security personnel</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Lock Picking and Bypass Techniques</h3>
-  <p class="text-slate-300 mb-4">
-    Understanding mechanical security helps assess physical access controls and identify weaknesses.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Lock Types and Vulnerabilities</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Pin Tumbler Locks</h5>
-        <p class="text-slate-300 text-sm">Most common lock type, vulnerable to picking and bumping</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Wafer Locks</h5>
-        <p class="text-slate-300 text-sm">Simpler mechanism, often found in filing cabinets</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Electronic Locks</h5>
-        <p class="text-slate-300 text-sm">Keypad and card-based systems with bypass techniques</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">High-Security Locks</h5>
-        <p class="text-slate-300 text-sm">Medeco, Mul-T-Lock with advanced pick resistance</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">RFID and Badge Cloning</h3>
-  <p class="text-slate-300 mb-4">
-    Many organizations use RFID-based access control systems that may be vulnerable to cloning attacks.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">RFID Technologies</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Low Frequency (125kHz):</strong> Simple prox cards</li>
-        <li>• <strong>High Frequency (13.56MHz):</strong> MIFARE, iClass</li>
-        <li>• <strong>Ultra High Frequency:</strong> Long-range systems</li>
-        <li>• <strong>Near Field Communication:</strong> NFC-enabled devices</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Cloning Tools</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Proxmark3:</strong> RFID research and cloning tool</li>
-        <li>• <strong>RFID Thief:</strong> Proximity card reader/writer</li>
-        <li>• <strong>HID ProxPro:</strong> Professional card programming</li>
-        <li>• <strong>Chameleon Mini:</strong> Programmable RFID emulator</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">USB Drop Attacks</h3>
-  <p class="text-slate-300 mb-4">
-    USB drop attacks exploit human curiosity and trust by deploying malicious USB devices in target environments.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">USB Attack Devices</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Rubber Ducky</h5>
-        <p class="text-slate-300 text-sm">Programmable USB device that types predefined commands</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Bash Bunny</h5>
-        <p class="text-slate-300 text-sm">Multi-function attack tool with various payload options</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">LAN Turtle</h5>
-        <p class="text-slate-300 text-sm">Covert network access and persistence tool</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">WiFi Pineapple</h5>
-        <p class="text-slate-300 text-sm">Wireless auditing and man-in-the-middle platform</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Dumpster Diving and OSINT</h3>
-  <p class="text-slate-300 mb-4">
-    Information gathering from physical and digital waste can reveal sensitive organizational information.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Physical Information Sources</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Discarded Documents:</strong> Passwords, network diagrams</li>
-        <li>• <strong>Hardware Disposal:</strong> Hard drives, USB devices</li>
-        <li>• <strong>Office Supplies:</strong> Branded materials with info</li>
-        <li>• <strong>Business Cards:</strong> Contact information and titles</li>
-        <li>• <strong>Shipping Labels:</strong> Vendor and partner relationships</li>
-        <li>• <strong>Employee Badges:</strong> Access card information</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Digital OSINT Sources</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Social Media:</strong> Employee information and photos</li>
-        <li>• <strong>Company Websites:</strong> Organizational structure</li>
-        <li>• <strong>Job Postings:</strong> Technology stack information</li>
-        <li>• <strong>LinkedIn:</strong> Professional relationships</li>
-        <li>• <strong>Public Records:</strong> Business registrations and filings</li>
-        <li>• <strong>Search Engines:</strong> Cached and indexed content</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Pretexting and Impersonation</h3>
-  <p class="text-slate-300 mb-4">
-    Pretexting involves creating fictional scenarios to extract information or gain unauthorized access.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Common Pretexts</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">IT Support</h5>
-        <p class="text-slate-300 text-sm">Pose as internal or external IT support requiring system access</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Vendor/Contractor</h5>
-        <p class="text-slate-300 text-sm">Impersonate legitimate business partners or service providers</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Authority Figures</h5>
-        <p class="text-slate-300 text-sm">Government agents, auditors, or law enforcement</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Emergency Response</h5>
-        <p class="text-slate-300 text-sm">Fire marshal, building inspector, or safety personnel</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Security Awareness Training</h3>
-  <p class="text-slate-300 mb-4">
-    Effective security awareness training helps organizations build human firewalls against social engineering attacks.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Training Components</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Phishing Simulations:</strong> Regular testing campaigns</li>
-        <li>• <strong>Security Policies:</strong> Clear guidelines and procedures</li>
-        <li>• <strong>Incident Reporting:</strong> How to report suspicious activity</li>
-        <li>• <strong>Physical Security:</strong> Tailgating and access control</li>
-        <li>• <strong>Information Handling:</strong> Data classification and protection</li>
-        <li>• <strong>Social Media:</strong> Oversharing and privacy risks</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Training Delivery Methods</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Interactive Workshops:</strong> Hands-on learning experiences</li>
-        <li>• <strong>E-learning Modules:</strong> Self-paced online training</li>
-        <li>• <strong>Lunch and Learn:</strong> Informal educational sessions</li>
-        <li>• <strong>Simulated Attacks:</strong> Real-world testing scenarios</li>
-        <li>• <strong>Gamification:</strong> Competitive learning elements</li>
-        <li>• <strong>Regular Reminders:</strong> Ongoing awareness campaigns</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Legal and Ethical Considerations</h3>
-  <p class="text-slate-300 mb-4">
-    Social engineering testing requires careful consideration of legal and ethical boundaries.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Testing Guidelines</h4>
-    <ul class="text-slate-300 space-y-2">
-      <li>• <strong>Explicit Authorization:</strong> Written permission for all testing activities</li>
-      <li>• <strong>Scope Limitations:</strong> Clear boundaries for testing activities</li>
-      <li>• <strong>Employee Consent:</strong> Consider notification requirements</li>
-      <li>• <strong>Data Protection:</strong> Secure handling of collected information</li>
-      <li>• <strong>Psychological Impact:</strong> Minimize trauma and embarrassment</li>
-      <li>• <strong>Legal Compliance:</strong> Follow local laws and regulations</li>
-    </ul>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
-  <p class="text-slate-300 mb-4">
-    Practice exercises help develop social engineering assessment skills in controlled environments.
-  </p>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Phishing Campaign</h5>
-      <p class="text-slate-300 text-sm mb-2">Design and execute a phishing simulation:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Research target organization using OSINT techniques</li>
-        <li>• Create convincing email templates and landing pages</li>
-        <li>• Execute campaign and track user interactions</li>
-        <li>• Analyze results and provide training recommendations</li>
-      </ul>
-    </div>
-    
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Physical Security Assessment</h5>
-      <p class="text-slate-300 text-sm mb-2">Conduct comprehensive physical security testing:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Perform reconnaissance and facility mapping</li>
-        <li>• Test physical access controls and surveillance</li>
-        <li>• Attempt tailgating and social engineering</li>
-        <li>• Document vulnerabilities and recommend improvements</li>
-      </ul>
-    </div>
-    
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 3: Voice-based Social Engineering</h5>
-      <p class="text-slate-300 text-sm mb-2">Practice vishing techniques and scenarios:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Develop pretexting scenarios and personas</li>
-        <li>• Conduct controlled vishing exercises</li>
-        <li>• Practice information extraction techniques</li>
-        <li>• Analyze effectiveness and identify improvements</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
-  <p class="text-slate-300 mb-6">
-    Social engineering and physical security testing reveal critical vulnerabilities in the human element of organizational security. This module covered psychological principles, phishing attacks, physical security assessment, and defense strategies. Remember that social engineering testing requires careful consideration of legal, ethical, and psychological impacts on target individuals. Effective security programs combine technical controls with comprehensive security awareness training to build resilient human firewalls. Always obtain proper authorization and follow ethical guidelines when conducting social engineering assessments.
-  </p>
+# Campaign metrics
+# Open rates
+# Click rates
+# Credential submission rates
+# Reporting rates
 </div>
+
+            <h3>Pretexting Scenarios</h3>
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>🔧 IT Support</h4>
+                    <ul>
+                        <li>"System maintenance required"</li>
+                        <li>"Password reset needed"</li>
+                        <li>"Security update installation"</li>
+                        <li>"Network troubleshooting"</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>📊 Vendor/Contractor</h4>
+                    <ul>
+                        <li>"Audit requirements"</li>
+                        <li>"Service verification"</li>
+                        <li>"Equipment upgrade"</li>
+                        <li>"Contract renewal"</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>🏢 Executive Assistant</h4>
+                    <ul>
+                        <li>"CEO needs information"</li>
+                        <li>"Board meeting preparation"</li>
+                        <li>"Urgent travel arrangements"</li>
+                        <li>"Confidential project"</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>👨‍💼 New Employee</h4>
+                    <ul>
+                        <li>"First day orientation"</li>
+                        <li>"System access needed"</li>
+                        <li>"Training materials"</li>
+                        <li>"Mentor assignment"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Physical Security Assessment</h2>
+
+            <h3>Physical Security Controls</h3>
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>🚪 Access Controls</h4>
+                    <ul>
+                        <li>Key cards and fobs</li>
+                        <li>Biometric scanners</li>
+                        <li>PIN pads</li>
+                        <li>Mantrap systems</li>
+                        <li>Turnstiles and gates</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>📹 Surveillance Systems</h4>
+                    <ul>
+                        <li>CCTV cameras</li>
+                        <li>Motion detectors</li>
+                        <li>Guard stations</li>
+                        <li>Recording systems</li>
+                        <li>Monitoring centers</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>🚨 Alarm Systems</h4>
+                    <ul>
+                        <li>Intrusion detection</li>
+                        <li>Door/window sensors</li>
+                        <li>Glass break detectors</li>
+                        <li>Silent alarms</li>
+                        <li>Central monitoring</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>🏗️ Physical Barriers</h4>
+                    <ul>
+                        <li>Fencing and walls</li>
+                        <li>Security doors</li>
+                        <li>Reinforced windows</li>
+                        <li>Vehicle barriers</li>
+                        <li>Safe rooms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Physical Penetration Techniques</h3>
+            <div class="command-box">
+# Lock picking techniques
+# Pin tumbler locks
+# Wafer locks
+# Disc detainer locks
+# Electronic locks
+
+# Lock bypass methods
+# Lock bumping
+# Lock impressioning
+# Decoder tools
+# Shim attacks
+
+# RFID/Badge cloning
+# Proxmark3 usage
+rfidtool clone &lt;source_card&gt; &lt;target_card&gt;
+
+# Badge skimming
+# HID Proxmark readers
+# Magnetic stripe cloning
+
+# Tailgating scenarios
+# Following authorized personnel
+# Creating distractions
+# Carrying legitimate-looking items
+# Timing entry with groups
+</div>
+
+            <h2>Telephone-Based Social Engineering</h2>
+
+            <h3>Vishing (Voice Phishing) Techniques</h3>
+            <div class="technique-card">
+                <h4>📞 Vishing Scenarios</h4>
+                <ul>
+                    <li><strong>Bank Security:</strong> "Suspicious activity on your account"</li>
+                    <li><strong>IT Helpdesk:</strong> "System maintenance requires verification"</li>
+                    <li><strong>Service Provider:</strong> "Account verification for service upgrade"</li>
+                    <li><strong>Government Agency:</strong> "Tax audit requires immediate information"</li>
+                    <li><strong>Insurance Company:</strong> "Policy update verification needed"</li>
+                </ul>
+            </div>
+
+            <h3>Voice Manipulation Tools</h3>
+            <div class="command-box">
+# Voice changing software
+# Voicemod
+# Clownfish Voice Changer
+# MorphVOX
+
+# SpoofCard usage
+# Caller ID spoofing
+# Voice recording
+# Call recording
+
+# Social engineering toolkit (SET)
+# Vishing attack vectors
+# Automated calling systems
+# Voice message phishing
+</div>
+
+            <h2>OSINT for Social Engineering</h2>
+
+            <h3>Target Information Gathering</h3>
+            <div class="command-box">
+# Social media reconnaissance
+# LinkedIn for organizational structure
+# Facebook for personal information
+# Twitter for communication patterns
+# Instagram for lifestyle information
+
+# Search engine investigations
+site:linkedin.com "Company Name"
+site:facebook.com "Employee Name"
+"employee email pattern" site:company.com
+
+# Public records and databases
+# Property records
+# Business registrations
+# Court documents
+# Professional licenses
+
+# Dumpster diving alternatives
+# Digital footprint analysis
+# Metadata extraction from documents
+# Wayback machine investigations
+</div>
+
+            <h3>Creating Believable Pretexts</h3>
+            <div class="highlight">
+                <strong>Pretext Development Process:</strong>
+                <ol>
+                    <li><strong>Research Target:</strong> Gather organizational and personal information</li>
+                    <li><strong>Identify Motivation:</strong> Find compelling reasons for contact</li>
+                    <li><strong>Build Credibility:</strong> Use insider knowledge and terminology</li>
+                    <li><strong>Create Urgency:</strong> Develop time-sensitive scenarios</li>
+                    <li><strong>Establish Authority:</strong> Reference known individuals or processes</li>
+                    <li><strong>Plan Responses:</strong> Anticipate questions and objections</li>
+                </ol>
+            </div>
+
+            <h2>Physical Security Testing Tools</h2>
+
+            <h3>Lock Picking Tools</h3>
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>🔧 Basic Tools</h4>
+                    <ul>
+                        <li>Hook picks</li>
+                        <li>Rake picks</li>
+                        <li>Tension wrenches</li>
+                        <li>Ball picks</li>
+                        <li>Diamond picks</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>⚡ Advanced Tools</h4>
+                    <ul>
+                        <li>Electric pick guns</li>
+                        <li>Bump keys</li>
+                        <li>Snap guns</li>
+                        <li>Impressioning tools</li>
+                        <li>Decoder tools</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>📡 Electronic Tools</h4>
+                    <ul>
+                        <li>RFID cloners</li>
+                        <li>Proxmark3</li>
+                        <li>HID card readers</li>
+                        <li>Flipper Zero</li>
+                        <li>Badge scanners</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Social Engineering Framework</h2>
+
+            <h3>SET (Social Engineer Toolkit)</h3>
+            <div class="command-box">
+# SET installation and usage
+git clone https://github.com/trustedsec/social-engineer-toolkit/
+cd social-engineer-toolkit/
+python setup.py install
+
+# SET attack vectors
+# Spear-phishing attack vectors
+# Website attack vectors
+# Infectious media generator
+# Create payload and listener
+# Mass mailer attack
+# Arduino-based attacks
+# Wireless access point attacks
+# QR code generator
+# PowerShell attack vectors
+
+# SET automation
+# Custom phishing templates
+# Automated social engineering
+# Multi-vector attacks
+</div>
+
+            <h3>Campaign Planning and Execution</h3>
+            <div class="highlight">
+                <strong>Social Engineering Test Phases:</strong>
+                <ol>
+                    <li><strong>Pre-engagement:</strong> Define scope and rules of engagement</li>
+                    <li><strong>Information Gathering:</strong> OSINT and target reconnaissance</li>
+                    <li><strong>Pretext Development:</strong> Create believable scenarios</li>
+                    <li><strong>Attack Execution:</strong> Implement social engineering techniques</li>
+                    <li><strong>Post-engagement:</strong> Document findings and provide training</li>
+                </ol>
+            </div>
+
+            <h2>Measuring Social Engineering Effectiveness</h2>
+
+            <h3>Key Metrics</h3>
+            <table class="attack-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Description</th>
+                        <th>Measurement</th>
+                        <th>Target Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Click Rate</td>
+                        <td>Percentage who clicked phishing links</td>
+                        <td>Clicks / Total Sent</td>
+                        <td>&lt; 5%</td>
+                    </tr>
+                    <tr>
+                        <td>Credential Submission</td>
+                        <td>Percentage who entered credentials</td>
+                        <td>Submissions / Clicks</td>
+                        <td>&lt; 2%</td>
+                    </tr>
+                    <tr>
+                        <td>Reporting Rate</td>
+                        <td>Percentage who reported suspicious activity</td>
+                        <td>Reports / Total Sent</td>
+                        <td>&gt; 30%</td>
+                    </tr>
+                    <tr>
+                        <td>Physical Access</td>
+                        <td>Successful unauthorized entry</td>
+                        <td>Success / Attempts</td>
+                        <td>&lt; 10%</td>
+                    </tr>
+                    <tr>
+                        <td>Information Disclosure</td>
+                        <td>Sensitive information obtained</td>
+                        <td>Successful Calls / Total Calls</td>
+                        <td>&lt; 15%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Building Security Awareness</h2>
+
+            <h3>Effective Training Components</h3>
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>📚 Education</h4>
+                    <ul>
+                        <li>Threat landscape overview</li>
+                        <li>Attack technique explanation</li>
+                        <li>Real-world examples</li>
+                        <li>Company-specific risks</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>🎯 Simulation</h4>
+                    <ul>
+                        <li>Phishing simulations</li>
+                        <li>Vishing exercises</li>
+                        <li>Physical security tests</li>
+                        <li>Social engineering drills</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>📊 Measurement</h4>
+                    <ul>
+                        <li>Baseline assessments</li>
+                        <li>Progress tracking</li>
+                        <li>Improvement metrics</li>
+                        <li>Regular evaluations</li>
+                    </ul>
+                </div>
+                <div class="technique-card">
+                    <h4>🔄 Reinforcement</h4>
+                    <ul>
+                        <li>Regular reminders</li>
+                        <li>Policy updates</li>
+                        <li>Incident discussions</li>
+                        <li>Success recognition</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>Legal and Ethical Considerations:</strong>
+                <ul>
+                    <li>Always obtain explicit written authorization before testing</li>
+                    <li>Define clear boundaries and limitations in contracts</li>
+                    <li>Avoid causing psychological harm or embarrassment</li>
+                    <li>Respect privacy laws and regulations</li>
+                    <li>Use findings constructively for security improvement</li>
+                    <li>Maintain confidentiality of all obtained information</li>
+                    <li>Consider the impact on employee morale and trust</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <strong>Key Takeaway:</strong> Effective social engineering testing requires understanding human 
+                psychology, cultural context, and organizational dynamics. The goal is not to embarrass or 
+                trick employees, but to identify vulnerabilities and improve overall security awareness 
+                through education and training.
+            </div>
+
+            <h2>Next Steps</h2>
+            <p>In the next module, we'll explore password security and cracking techniques, learning how to assess password policies and implement effective authentication security measures.</p>
+        </div>
+    </div>
+</body>
+</html>
