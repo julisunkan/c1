@@ -1,151 +1,112 @@
-import { useLocation, Link } from "wouter";
-import { Shield, Home, Book, Moon, Sun, Check, X } from "lucide-react";
+import { Book, Home, Shield, Terminal, Users, Settings } from "lucide-react";
+import { Link, useLocation } from "wouter";
 import { useProgress } from "@/hooks/use-progress";
-import { useTheme } from "@/components/theme-provider";
-import modules from "@/data/modules.json";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import modules from "@/data/modules.json";
 
-interface SidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+export default function Sidebar() {
   const [location] = useLocation();
-  const { getProgressPercentage, getCompletedCount, isModuleCompleted } = useProgress();
-  const { theme, setTheme } = useTheme();
+  const { getModuleProgress, getTotalProgress } = useProgress();
 
-  const progressPercentage = getProgressPercentage();
-  const completedCount = getCompletedCount();
-  const estimatedHoursLeft = Math.max(0, 24 - (completedCount * 2));
+  const totalProgress = getTotalProgress();
 
   return (
-    <aside 
-      className={`fixed inset-y-0 left-0 z-50 w-80 bg-slate-900 border-r border-slate-800 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
-        isOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}
-    >
-      <div className="flex flex-col h-full">
-        {/* Sidebar Header */}
-        <div className="flex items-center justify-between p-6 border-b border-slate-800">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[var(--cyber-green)] to-[var(--cyber-green-dark)] rounded-lg flex items-center justify-center">
-              <Shield className="text-slate-950 w-5 h-5" />
-            </div>
-            <div>
-              <h1 className="text-lg font-bold text-[var(--cyber-green)]">PenTest Pro</h1>
-              <p className="text-xs text-slate-400">Debian Course</p>
-            </div>
-          </div>
-          <button 
-            onClick={onClose}
-            className="lg:hidden text-slate-400 hover:text-slate-100 transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* Progress Overview */}
-        <div className="p-6 border-b border-slate-800">
-          <div className="mb-4">
-            <div className="flex justify-between text-sm mb-2">
-              <span className="text-slate-300">Course Progress</span>
-              <span className="text-[var(--cyber-green)] font-medium">{progressPercentage}%</span>
-            </div>
-            <div className="w-full bg-slate-800 rounded-full h-2">
-              <div 
-                className="bg-gradient-to-r from-[var(--cyber-green)] to-[var(--cyber-green-dark)] h-2 rounded-full transition-all duration-500"
-                style={{ width: `${progressPercentage}%` }}
-              />
-            </div>
-          </div>
-          <div className="flex justify-between text-xs text-slate-400">
-            <span>{completedCount} of 12 modules completed</span>
-            <span>~{estimatedHoursLeft} hours left</span>
+    <aside className="w-80 bg-slate-900 border-r border-slate-800 flex flex-col h-screen">
+      <div className="p-6 border-b border-slate-800">
+        <div className="flex items-center space-x-3 mb-4">
+          <Shield className="w-8 h-8 text-[var(--cyber-green)]" />
+          <div>
+            <h2 className="text-xl font-bold text-slate-100">PenTest Pro</h2>
+            <p className="text-sm text-slate-400">Debian Security Course</p>
           </div>
         </div>
+        <div className="space-y-2">
+          <div className="flex justify-between text-sm">
+            <span className="text-slate-400">Overall Progress</span>
+            <span className="text-[var(--cyber-green)]">{totalProgress.toFixed(0)}%</span>
+          </div>
+          <Progress value={totalProgress} className="h-2" />
+        </div>
+      </div>
 
-        {/* Navigation Menu */}
-        <nav className="flex-1 overflow-y-auto p-4">
-          <div className="space-y-2">
-            <Link href="/">
-              <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors group cursor-pointer ${
-                location === '/' 
-                  ? 'bg-slate-800 text-[var(--cyber-green)]' 
-                  : 'text-slate-300 hover:text-[var(--cyber-green)] hover:bg-slate-800'
-              }`}>
-                <Home className="w-5 h-5" />
-                <span>Home</span>
-              </div>
-            </Link>
-            <Link href="/modules">
-              <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors group cursor-pointer ${
-                location === '/modules' 
-                  ? 'bg-slate-800 text-[var(--cyber-green)]' 
-                  : 'text-slate-300 hover:text-[var(--cyber-green)] hover:bg-slate-800'
-              }`}>
-                <Book className="w-5 h-5" />
-                <span>All Modules</span>
-              </div>
-            </Link>
-            
-            {/* Module List */}
-            <div className="mt-6">
-              <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
-                Course Modules
-              </h3>
-              <div className="space-y-1">
-                {modules.map((module) => {
-                  const isCompleted = isModuleCompleted(module.id);
-                  const moduleNumber = parseInt(module.id.replace('module', ''));
-                  
-                  return (
-                    <Link key={module.id} href={`/module/${module.id}`}>
-                      <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors group cursor-pointer ${
-                        location === `/module/${module.id}`
-                          ? 'bg-slate-800 text-[var(--cyber-green)]'
-                          : 'text-slate-300 hover:text-[var(--cyber-green)] hover:bg-slate-800'
-                      }`}>
-                        <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
-                          isCompleted 
-                            ? 'bg-[var(--cyber-green)]' 
-                            : 'border-2 border-slate-600'
-                        }`}>
-                          {isCompleted ? (
-                            <Check className="text-slate-950 w-3 h-3" />
-                          ) : (
-                            <span className="text-slate-400 text-xs">{moduleNumber}</span>
-                          )}
+      <nav className="flex-1 overflow-y-auto p-4">
+        <div className="space-y-2">
+          <Link href="/">
+            <Button
+              variant={location === "/" ? "default" : "ghost"}
+              className={`w-full justify-start ${
+                location === "/" 
+                  ? "bg-slate-800 text-[var(--cyber-green)] hover:bg-slate-800" 
+                  : "text-slate-300 hover:text-[var(--cyber-green)] hover:bg-slate-800"
+              }`}
+            >
+              <Home className="w-5 h-5 mr-3" />
+              Home
+            </Button>
+          </Link>
+
+          <Link href="/modules">
+            <Button
+              variant={location === "/modules" ? "default" : "ghost"}
+              className={`w-full justify-start ${
+                location === "/modules" 
+                  ? "bg-slate-800 text-[var(--cyber-green)] hover:bg-slate-800" 
+                  : "text-slate-300 hover:text-[var(--cyber-green)] hover:bg-slate-800"
+              }`}
+            >
+              <Book className="w-5 h-5 mr-3" />
+              All Modules
+            </Button>
+          </Link>
+
+          <div className="pt-4">
+            <h3 className="text-sm font-medium text-slate-400 mb-2 px-3">MODULES</h3>
+            <div className="space-y-1">
+              {modules.map((module) => {
+                const progress = getModuleProgress(module.id);
+                const isActive = location === `/module/${module.id}`;
+
+                return (
+                  <Link key={module.id} href={`/module/${module.id}`}>
+                    <Button
+                      variant="ghost"
+                      className={`w-full justify-start text-left p-3 h-auto ${
+                        isActive 
+                          ? "bg-slate-800 text-[var(--cyber-green)]" 
+                          : "text-slate-300 hover:text-[var(--cyber-green)] hover:bg-slate-800"
+                      }`}
+                    >
+                      <div className="flex items-center space-x-3 w-full">
+                        <Terminal className="w-4 h-4 flex-shrink-0" />
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-medium truncate">
+                            {module.title}
+                          </div>
+                          <div className="text-xs text-slate-400 truncate">
+                            {module.description}
+                          </div>
                         </div>
-                        <span className="text-sm truncate">{module.title}</span>
+                        {progress === 100 && (
+                          <Badge variant="secondary" className="bg-[var(--cyber-green)] text-black text-xs">
+                            ✓
+                          </Badge>
+                        )}
                       </div>
-                    </Link>
-                  );
-                })}
-              </div>
+                    </Button>
+                  </Link>
+                );
+              })}
             </div>
           </div>
-        </nav>
+        </div>
+      </nav>
 
-        {/* Dark Mode Toggle */}
-        <div className="p-4 border-t border-slate-800">
-          <Button
-            variant="ghost"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="flex items-center justify-between w-full px-3 py-2 text-slate-300 hover:text-[var(--cyber-green)] hover:bg-slate-800 transition-colors"
-          >
-            <div className="flex items-center space-x-3">
-              {theme === "dark" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-              <span>Dark Mode</span>
-            </div>
-            <div className={`w-12 h-6 rounded-full relative transition-colors ${
-              theme === "dark" ? 'bg-[var(--cyber-green)]' : 'bg-slate-600'
-            }`}>
-              <div className={`w-5 h-5 bg-slate-950 rounded-full absolute top-0.5 transition-transform ${
-                theme === "dark" ? 'translate-x-6' : 'translate-x-0.5'
-              }`} />
-            </div>
-          </Button>
+      <div className="p-4 border-t border-slate-800">
+        <div className="flex items-center space-x-3 text-sm text-slate-400">
+          <Users className="w-4 h-4" />
+          <span>Debian PenTest Course</span>
         </div>
       </div>
     </aside>
