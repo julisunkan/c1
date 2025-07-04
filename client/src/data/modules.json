@@ -3,241 +3,331 @@
   {
     "id": "module1",
     "title": "Introduction to Cybersecurity",
-    "description": "Learn the fundamentals of cybersecurity, including key concepts, threat landscape, and security principles.",
-    "duration": "45 minutes",
+    "summary": "Learn the fundamentals of cybersecurity, including key concepts, threat landscape, and security principles.",
+    "duration": "2 hours",
+    "lessons": 8,
     "difficulty": "Beginner",
-    "category": "Fundamentals"
+    "category": "Fundamentals",
+    "color": "from-blue-500 to-cyan-500",
+    "icon": "fas fa-shield-alt"
   },
   {
-    "id": "module2", 
+    "id": "module2",
     "title": "Network Security Basics",
-    "description": "Understanding network security concepts, protocols, and basic protection mechanisms.",
-    "duration": "60 minutes",
+    "summary": "Understanding network security concepts, protocols, and basic protection mechanisms.",
+    "duration": "2.5 hours",
+    "lessons": 7,
     "difficulty": "Beginner",
-    "category": "Network Security"
+    "category": "Network Security",
+    "color": "from-green-500 to-emerald-500",
+    "icon": "fas fa-network-wired"
   },
   {
     "id": "module3",
     "title": "Linux Fundamentals for Penetration Testing",
-    "description": "Master essential Linux commands, file systems, and tools required for penetration testing.",
-    "duration": "90 minutes",
-    "difficulty": "Beginner", 
-    "category": "Operating Systems"
+    "summary": "Master essential Linux commands, file systems, and tools required for penetration testing.",
+    "duration": "3 hours",
+    "lessons": 9,
+    "difficulty": "Beginner",
+    "category": "Operating Systems",
+    "color": "from-orange-500 to-red-500",
+    "icon": "fab fa-linux"
   },
   {
     "id": "module4",
     "title": "Penetration Testing Methodology",
-    "description": "Learn systematic approaches to penetration testing including OWASP, NIST, and PTES frameworks.",
-    "duration": "75 minutes",
+    "summary": "Learn systematic approaches to penetration testing including OWASP, NIST, and PTES frameworks.",
+    "duration": "2 hours",
+    "lessons": 6,
     "difficulty": "Intermediate",
-    "category": "Methodology"
+    "category": "Methodology",
+    "color": "from-purple-500 to-pink-500",
+    "icon": "fas fa-clipboard-list"
   },
   {
     "id": "module5",
     "title": "Vulnerability Scanning and Assessment",
-    "description": "Master automated and manual vulnerability scanning techniques using industry-standard tools.",
-    "duration": "85 minutes",
+    "summary": "Master automated and manual vulnerability scanning techniques using industry-standard tools.",
+    "duration": "2.5 hours",
+    "lessons": 8,
     "difficulty": "Intermediate",
-    "category": "Vulnerability Assessment"
+    "category": "Vulnerability Assessment",
+    "color": "from-yellow-500 to-orange-500",
+    "icon": "fas fa-search"
   },
   {
     "id": "module6",
     "title": "Information Gathering and Reconnaissance",
-    "description": "Learn passive and active information gathering techniques to map target environments.",
-    "duration": "95 minutes",
+    "summary": "Learn passive and active information gathering techniques to map target environments.",
+    "duration": "3 hours",
+    "lessons": 7,
     "difficulty": "Intermediate",
-    "category": "Reconnaissance"
+    "category": "Reconnaissance",
+    "color": "from-indigo-500 to-purple-500",
+    "icon": "fas fa-binoculars"
   },
   {
     "id": "module7",
-    "title": "Network Enumeration and Scanning", 
-    "description": "Discover live hosts, open ports, and running services using advanced scanning techniques.",
-    "duration": "80 minutes",
+    "title": "Network Enumeration and Scanning",
+    "summary": "Discover live hosts, open ports, and running services using advanced scanning techniques.",
+    "duration": "2.5 hours",
+    "lessons": 6,
     "difficulty": "Intermediate",
-    "category": "Enumeration"
+    "category": "Enumeration",
+    "color": "from-teal-500 to-cyan-500",
+    "icon": "fas fa-radar"
   },
   {
     "id": "module8",
     "title": "Web Application Security Testing",
-    "description": "Comprehensive web application security testing including OWASP Top 10 vulnerabilities.",
-    "duration": "120 minutes",
+    "summary": "Comprehensive web application security testing including OWASP Top 10 vulnerabilities.",
+    "duration": "4 hours",
+    "lessons": 10,
     "difficulty": "Advanced",
-    "category": "Web Security"
+    "category": "Web Security",
+    "color": "from-rose-500 to-pink-500",
+    "icon": "fas fa-globe"
   },
   {
     "id": "module9",
-    "title": "System Exploitation Techniques",
-    "description": "Learn to exploit system vulnerabilities and gain unauthorized access to target systems.",
-    "duration": "110 minutes",
+    "title": "Wireless Network Security Testing",
+    "summary": "Assess wireless network security including WEP, WPA, and enterprise wireless protocols.",
+    "duration": "3 hours",
+    "lessons": 8,
     "difficulty": "Advanced",
-    "category": "Exploitation"
+    "category": "Wireless Security",
+    "color": "from-lime-500 to-green-500",
+    "icon": "fas fa-wifi"
   },
   {
     "id": "module10",
-    "title": "Post-Exploitation and Privilege Escalation",
-    "description": "Master post-exploitation techniques including privilege escalation and maintaining persistence.",
-    "duration": "100 minutes",
-    "difficulty": "Advanced",
-    "category": "Post-Exploitation"
+    "title": "Social Engineering and Physical Security",
+    "summary": "Master social engineering techniques and physical security assessment methodologies.",
+    "duration": "2.5 hours",
+    "lessons": 7,
+    "difficulty": "Intermediate",
+    "category": "Social Engineering",
+    "color": "from-amber-500 to-yellow-500",
+    "icon": "fas fa-user-secret"
   },
   {
     "id": "module11",
     "title": "Password Security and Cracking",
-    "description": "Understanding password security, hash cracking, and authentication bypass techniques.",
-    "duration": "85 minutes",
-    "difficulty": "Intermediate",
-    "category": "Authentication"
+    "summary": "Learn password hashing, cracking techniques, and security policy assessment methods.",
+    "duration": "3 hours",
+    "lessons": 8,
+    "difficulty": "Advanced",
+    "category": "Authentication",
+    "color": "from-red-500 to-pink-500",
+    "icon": "fas fa-key"
   },
   {
     "id": "module12",
-    "title": "Social Engineering and Human Factors",
-    "description": "Explore social engineering tactics, phishing campaigns, and human vulnerability exploitation.",
-    "duration": "70 minutes",
+    "title": "Reporting and Documentation",
+    "summary": "Master professional reporting frameworks and documentation best practices for penetration testing.",
+    "duration": "2 hours",
+    "lessons": 6,
     "difficulty": "Intermediate",
-    "category": "Social Engineering"
+    "category": "Reporting",
+    "color": "from-slate-500 to-gray-500",
+    "icon": "fas fa-file-alt"
   },
   {
     "id": "module13",
-    "title": "Wireless Network Security Testing",
-    "description": "Learn wireless security assessment including Wi-Fi, Bluetooth, and mobile communication testing.",
-    "duration": "90 minutes",
+    "title": "System Exploitation and Metasploit",
+    "summary": "Learn system exploitation techniques using Metasploit framework and manual methods.",
+    "duration": "4 hours",
+    "lessons": 9,
     "difficulty": "Advanced",
-    "category": "Wireless Security"
+    "category": "Exploitation",
+    "color": "from-red-600 to-rose-600",
+    "icon": "fas fa-bomb"
   },
   {
     "id": "module14",
-    "title": "Database Security and SQL Injection",
-    "description": "Master database security testing and advanced SQL injection techniques.",
-    "duration": "95 minutes",
+    "title": "Post-Exploitation and Privilege Escalation",
+    "summary": "Master post-exploitation techniques including privilege escalation and persistence mechanisms.",
+    "duration": "3.5 hours",
+    "lessons": 8,
     "difficulty": "Advanced",
-    "category": "Database Security"
+    "category": "Post-Exploitation",
+    "color": "from-violet-500 to-purple-600",
+    "icon": "fas fa-crown"
   },
   {
     "id": "module15",
-    "title": "Mobile Application Security",
-    "description": "Comprehensive mobile app security testing for Android and iOS applications.",
-    "duration": "105 minutes",
+    "title": "Database Security Testing",
+    "summary": "Comprehensive database security assessment including SQL injection and NoSQL vulnerabilities.",
+    "duration": "3 hours",
+    "lessons": 7,
     "difficulty": "Advanced",
-    "category": "Mobile Security"
+    "category": "Database Security",
+    "color": "from-blue-600 to-indigo-600",
+    "icon": "fas fa-database"
   },
   {
     "id": "module16",
-    "title": "Cloud Security Assessment",
-    "description": "Cloud infrastructure security testing including AWS, Azure, and GCP environments.",
-    "duration": "100 minutes",
+    "title": "Mobile Application Security",
+    "summary": "Test mobile application security for Android and iOS platforms including static and dynamic analysis.",
+    "duration": "3.5 hours",
+    "lessons": 8,
     "difficulty": "Advanced",
-    "category": "Cloud Security"
+    "category": "Mobile Security",
+    "color": "from-green-600 to-emerald-600",
+    "icon": "fas fa-mobile-alt"
   },
   {
     "id": "module17",
-    "title": "Active Directory and Domain Testing",
-    "description": "Windows Active Directory security assessment and domain exploitation techniques.",
-    "duration": "110 minutes",
+    "title": "Cloud Security Assessment",
+    "summary": "Learn cloud security testing for AWS, Azure, and GCP including misconfigurations and IAM issues.",
+    "duration": "3 hours",
+    "lessons": 7,
     "difficulty": "Advanced",
-    "category": "Windows Security"
+    "category": "Cloud Security",
+    "color": "from-sky-500 to-blue-600",
+    "icon": "fas fa-cloud"
   },
   {
     "id": "module18",
-    "title": "Cryptography and Encryption Analysis",
-    "description": "Understanding cryptographic implementations and encryption vulnerability analysis.",
-    "duration": "85 minutes",
+    "title": "IoT and Embedded Systems Security",
+    "summary": "Assess Internet of Things devices and embedded systems for security vulnerabilities.",
+    "duration": "2.5 hours",
+    "lessons": 6,
     "difficulty": "Advanced",
-    "category": "Cryptography"
+    "category": "IoT Security",
+    "color": "from-teal-600 to-cyan-600",
+    "icon": "fas fa-microchip"
   },
   {
     "id": "module19",
-    "title": "Malware Analysis and Reverse Engineering",
-    "description": "Learn static and dynamic malware analysis techniques and reverse engineering fundamentals.",
-    "duration": "120 minutes",
-    "difficulty": "Expert",
-    "category": "Malware Analysis"
+    "title": "Active Directory Security Testing",
+    "summary": "Comprehensive Active Directory security assessment including Kerberos attacks and domain enumeration.",
+    "duration": "4 hours",
+    "lessons": 9,
+    "difficulty": "Advanced",
+    "category": "Windows Security",
+    "color": "from-blue-700 to-indigo-700",
+    "icon": "fab fa-windows"
   },
   {
     "id": "module20",
-    "title": "Digital Forensics for Penetration Testers",
-    "description": "Digital forensics techniques and evidence collection during penetration testing engagements.",
-    "duration": "95 minutes",
+    "title": "Container and Kubernetes Security",
+    "summary": "Learn container security testing including Docker and Kubernetes vulnerability assessment.",
+    "duration": "3 hours",
+    "lessons": 7,
     "difficulty": "Advanced",
-    "category": "Digital Forensics"
+    "category": "Container Security",
+    "color": "from-cyan-600 to-blue-700",
+    "icon": "fab fa-docker"
   },
   {
     "id": "module21",
-    "title": "SCADA and IoT Security Testing",
-    "description": "Industrial control systems and Internet of Things security assessment methodologies.",
-    "duration": "105 minutes",
-    "difficulty": "Expert",
-    "category": "Industrial Security"
+    "title": "API Security Testing",
+    "summary": "Master REST and GraphQL API security testing techniques and automated assessment tools.",
+    "duration": "2.5 hours",
+    "lessons": 6,
+    "difficulty": "Advanced",
+    "category": "API Security",
+    "color": "from-emerald-600 to-green-700",
+    "icon": "fas fa-code"
   },
   {
     "id": "module22",
-    "title": "Red Team Operations and TTPs",
-    "description": "Advanced red team tactics, techniques, and procedures for realistic adversary simulation.",
-    "duration": "115 minutes",
-    "difficulty": "Expert",
-    "category": "Red Teaming"
+    "title": "Threat Modeling and Risk Assessment",
+    "summary": "Learn systematic threat modeling methodologies and quantitative risk assessment techniques.",
+    "duration": "2 hours",
+    "lessons": 5,
+    "difficulty": "Intermediate",
+    "category": "Risk Management",
+    "color": "from-orange-600 to-red-600",
+    "icon": "fas fa-chart-line"
   },
   {
     "id": "module23",
-    "title": "Evasion Techniques and Anti-Forensics",
-    "description": "Learn detection evasion, anti-forensics, and steganography techniques.",
-    "duration": "100 minutes",
+    "title": "Advanced Evasion Techniques",
+    "summary": "Master advanced evasion techniques for bypassing security controls and detection systems.",
+    "duration": "3 hours",
+    "lessons": 7,
     "difficulty": "Expert",
-    "category": "Evasion"
+    "category": "Evasion",
+    "color": "from-slate-600 to-gray-700",
+    "icon": "fas fa-mask"
   },
   {
     "id": "module24",
-    "title": "Physical Security Assessment",
-    "description": "Physical penetration testing including lock picking, RFID cloning, and social engineering.",
-    "duration": "90 minutes",
-    "difficulty": "Advanced",
-    "category": "Physical Security"
+    "title": "Red Team Operations",
+    "summary": "Learn red team tactics, techniques, and procedures for advanced persistent threat simulation.",
+    "duration": "4 hours",
+    "lessons": 8,
+    "difficulty": "Expert",
+    "category": "Red Teaming",
+    "color": "from-red-700 to-rose-700",
+    "icon": "fas fa-skull"
   },
   {
     "id": "module25",
-    "title": "Threat Intelligence and OSINT",
-    "description": "Open source intelligence gathering and threat intelligence analysis for penetration testing.",
-    "duration": "85 minutes",
-    "difficulty": "Intermediate",
-    "category": "Threat Intelligence"
+    "title": "Incident Response and Forensics",
+    "summary": "Understand incident response procedures and digital forensics techniques for security investigations.",
+    "duration": "3.5 hours",
+    "lessons": 8,
+    "difficulty": "Advanced",
+    "category": "Incident Response",
+    "color": "from-purple-600 to-violet-700",
+    "icon": "fas fa-search-plus"
   },
   {
     "id": "module26",
-    "title": "Incident Response and Blue Team Tactics",
-    "description": "Understanding defensive measures and incident response from an attacker's perspective.",
-    "duration": "80 minutes",
+    "title": "Cryptography and PKI Assessment",
+    "summary": "Assess cryptographic implementations and Public Key Infrastructure security configurations.",
+    "duration": "3 hours",
+    "lessons": 7,
     "difficulty": "Advanced",
-    "category": "Incident Response"
+    "category": "Cryptography",
+    "color": "from-indigo-600 to-purple-700",
+    "icon": "fas fa-lock"
   },
   {
     "id": "module27",
-    "title": "Automated Penetration Testing",
-    "description": "Automation frameworks, custom tool development, and CI/CD security integration.",
-    "duration": "95 minutes",
-    "difficulty": "Expert",
-    "category": "Automation"
+    "title": "SCADA and Industrial Control Systems",
+    "summary": "Learn industrial control systems security testing including SCADA and ICS vulnerabilities.",
+    "duration": "2.5 hours",
+    "lessons": 6,
+    "difficulty": "Advanced",
+    "category": "Industrial Security",
+    "color": "from-yellow-600 to-orange-700",
+    "icon": "fas fa-industry"
   },
   {
     "id": "module28",
     "title": "Legal and Ethical Considerations",
-    "description": "Legal frameworks, ethical guidelines, and compliance requirements for penetration testing.",
-    "duration": "60 minutes",
+    "summary": "Understand legal frameworks, ethical guidelines, and compliance requirements for penetration testing.",
+    "duration": "2 hours",
+    "lessons": 5,
     "difficulty": "Intermediate",
-    "category": "Legal & Ethics"
+    "category": "Legal & Ethics",
+    "color": "from-emerald-700 to-teal-700",
+    "icon": "fas fa-balance-scale"
   },
   {
     "id": "module29",
-    "title": "Advanced Reporting and Communication",
-    "description": "Professional reporting techniques, executive communication, and remediation guidance.",
-    "duration": "75 minutes",
-    "difficulty": "Advanced",
-    "category": "Reporting"
+    "title": "Career Development and Certifications",
+    "summary": "Explore penetration testing career paths, certification roadmaps, and professional development.",
+    "duration": "1.5 hours",
+    "lessons": 4,
+    "difficulty": "Beginner",
+    "category": "Career",
+    "color": "from-blue-800 to-indigo-800",
+    "icon": "fas fa-graduation-cap"
   },
   {
     "id": "module30",
-    "title": "Career Development and Certification Prep",
-    "description": "Industry certifications, career paths, and continuous learning in cybersecurity.",
-    "duration": "55 minutes",
-    "difficulty": "Beginner",
-    "category": "Career Development"
+    "title": "Capstone Project and Portfolio",
+    "summary": "Complete comprehensive penetration testing project and build professional portfolio.",
+    "duration": "6 hours",
+    "lessons": 10,
+    "difficulty": "Expert",
+    "category": "Project",
+    "color": "from-gradient-to-r from-gold-500 to-yellow-600",
+    "icon": "fas fa-trophy"
   }
 ]

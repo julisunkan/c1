@@ -1,435 +1,316 @@
 <div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
-  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 11: Advanced Attack Techniques</h1>
-  
+  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 11: Password Security and Cracking</h1>
+
   <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-    Advanced attack techniques represent sophisticated methodologies used by experienced penetration testers and threat actors. This module covers complex attack chains, emerging technologies, and cutting-edge exploitation methods.
+    Password security is a fundamental aspect of cybersecurity, and understanding password cracking techniques is essential for security professionals. This module covers password policies, hashing algorithms, and various cracking methodologies.
   </p>
+
+  <div class="mb-8">
+    <img src="/images/password-security.jpg" alt="Password Security" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Strong password policies and secure hashing are critical for organizational security</p>
+  </div>
 
   <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
   <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
     <ul class="text-slate-300 space-y-2">
-      <li>• Master advanced exploitation frameworks and attack automation</li>
-      <li>• Understand container and cloud security attack vectors</li>
-      <li>• Learn advanced persistent threat (APT) simulation techniques</li>
-      <li>• Practice zero-day vulnerability research and development</li>
-      <li>• Implement advanced evasion and anti-forensics methods</li>
-      <li>• Execute complex multi-stage attack scenarios</li>
+      <li>• Understand password hashing algorithms and their vulnerabilities</li>
+      <li>• Master various password cracking techniques and tools</li>
+      <li>• Learn to implement and assess password policies</li>
+      <li>• Practice rainbow table attacks and hash analysis</li>
+      <li>• Implement multi-factor authentication assessment</li>
+      <li>• Develop password security recommendations and guidelines</li>
     </ul>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Container Security Testing</h3>
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: Password Hashing Algorithms</h3>
+
+  <div class="mb-8">
+    <img src="/images/hashing-algorithms.jpg" alt="Hashing Algorithms" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Different hashing algorithms provide varying levels of security and computational requirements</p>
+  </div>
+
   <p class="text-slate-300 mb-4">
-    Container technologies like Docker and Kubernetes present unique attack surfaces and security challenges.
+    Understanding how passwords are hashed and stored is crucial for both defensive and offensive security operations. Different algorithms provide varying levels of protection against cracking attempts.
   </p>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Docker Attack Vectors</h4>
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-red-400 mb-2">Weak Hashing Algorithms</h4>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Container Escape:</strong> Breaking out of container isolation</li>
-        <li>• <strong>Privileged Containers:</strong> Elevated permission abuse</li>
-        <li>• <strong>Insecure Images:</strong> Vulnerable base images and secrets</li>
-        <li>• <strong>Docker Daemon:</strong> API exposure and socket access</li>
-        <li>• <strong>Volume Mounts:</strong> Host filesystem access</li>
-        <li>• <strong>Network Bridges:</strong> Container-to-host communication</li>
+        <li>• <strong>MD5:</strong> Fast but cryptographically broken</li>
+        <li>• <strong>SHA-1:</strong> Vulnerable to collision attacks</li>
+        <li>• <strong>Plain SHA-256/512:</strong> Too fast for passwords</li>
+        <li>• <strong>DES:</strong> Outdated encryption standard</li>
+        <li>• <strong>LM Hashes:</strong> Extremely weak Windows legacy</li>
+        <li>• <strong>NTLM:</strong> Vulnerable to various attacks</li>
       </ul>
     </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Kubernetes Attacks</h4>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-green-400 mb-2">Strong Hashing Algorithms</h4>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>API Server Attacks:</strong> Unauthorized cluster access</li>
-        <li>• <strong>RBAC Bypass:</strong> Permission escalation</li>
-        <li>• <strong>Pod Security:</strong> Insecure pod configurations</li>
-        <li>• <strong>Service Account Abuse:</strong> Token theft and reuse</li>
-        <li>• <strong>Secrets Management:</strong> Credential exposure</li>
-        <li>• <strong>Admission Controllers:</strong> Policy bypass techniques</li>
+        <li>• <strong>bcrypt:</strong> Adaptive hashing with salt</li>
+        <li>• <strong>scrypt:</strong> Memory-hard function</li>
+        <li>• <strong>Argon2:</strong> Modern password hashing winner</li>
+        <li>• <strong>PBKDF2:</strong> Key derivation with iterations</li>
+        <li>• <strong>Blowfish:</strong> Basis for bcrypt algorithm</li>
+        <li>• <strong>yescrypt:</strong> Enhanced scrypt variant</li>
       </ul>
     </div>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Cloud Security Assessment</h3>
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: Password Cracking Techniques</h3>
+
+  <div class="mb-8">
+    <img src="/images/password-cracking.jpg" alt="Password Cracking" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Various attack methods target different aspects of password security</p>
+  </div>
+
   <p class="text-slate-300 mb-4">
-    Cloud environments require specialized testing approaches to identify misconfigurations and privilege escalation paths.
+    Password cracking involves various techniques ranging from simple dictionary attacks to sophisticated hybrid approaches combining multiple methodologies.
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-blue-400 mb-2">Dictionary Attacks</h5>
+      <p class="text-slate-300 text-sm mb-2">Use predefined wordlists to attempt common passwords</p>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">hashcat -m 0 -a 0 hashes.txt rockyou.txt</span> - MD5 dictionary attack</p>
+          <p><span class="text-cyan-400">john --wordlist=passwords.txt hashes.txt</span> - John the Ripper dictionary</p>
+          <p><span class="text-cyan-400">hydra -L users.txt -P passwords.txt ssh://target</span> - Online dictionary attack</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-yellow-400 mb-2">Brute Force Attacks</h5>
+      <p class="text-slate-300 text-sm mb-2">Systematically try all possible character combinations</p>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">hashcat -m 0 -a 3 hashes.txt ?a?a?a?a?a?a</span> - 6-character brute force</p>
+          <p><span class="text-cyan-400">john --incremental hashes.txt</span> - Incremental brute force</p>
+          <p><span class="text-cyan-400">crunch 8 8 -t @@@@%%%% | hashcat -m 0 hashes.txt</span> - Pattern-based</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-purple-400 mb-2">Rule-Based Attacks</h5>
+      <p class="text-slate-300 text-sm mb-2">Apply transformation rules to base passwords</p>
+      <div class="bg-slate-900 rounded p-3">
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">hashcat -m 0 -a 0 -r best64.rule hashes.txt wordlist.txt</span> - Rule application</p>
+          <p><span class="text-cyan-400">john --rules=Jumbo hashes.txt</span> - John rules engine</p>
+          <p><span class="text-cyan-400">hashcat --stdout -a 0 -r rules.txt wordlist.txt</span> - Generate candidates</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Rainbow Table Attacks</h3>
+
+  <div class="mb-8">
+    <img src="/images/rainbow-tables.jpg" alt="Rainbow Tables" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Rainbow tables provide time-memory trade-offs for password cracking</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Rainbow tables are precomputed tables for reversing cryptographic hash functions, typically used for cracking password hashes by trading computational time for storage space.
   </p>
 
   <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">AWS Security Testing</h4>
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Rainbow Table Tools and Usage</h4>
     <div class="space-y-3">
       <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">IAM Privilege Escalation</h5>
-        <p class="text-slate-300 text-sm mb-1">Exploit overprivileged roles and policies</p>
-        <code class="text-green-400 text-sm">aws sts get-caller-identity</code>
+        <h5 class="font-semibold text-green-400 mb-1">RainbowCrack</h5>
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">rcrack rainbow_tables/ -h hash_to_crack</span> - Single hash lookup</p>
+          <p><span class="text-cyan-400">rcrack rainbow_tables/ -l hash_list.txt</span> - Multiple hash lookup</p>
+          <p><span class="text-cyan-400">rtgen md5 lowercase 1 8 0 3800 33554432 0</span> - Generate tables</p>
+        </div>
       </div>
+
       <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">S3 Bucket Enumeration</h5>
-        <p class="text-slate-300 text-sm mb-1">Discover and access misconfigured storage</p>
-        <code class="text-green-400 text-sm">aws s3 ls s3://bucket-name --no-sign-request</code>
+        <h5 class="font-semibold text-blue-400 mb-1">Ophcrack</h5>
+        <p class="text-slate-300 text-sm">GUI-based tool specializing in Windows password recovery using rainbow tables</p>
       </div>
+
       <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">EC2 Instance Metadata</h5>
-        <p class="text-slate-300 text-sm mb-1">Extract credentials from metadata service</p>
-        <code class="text-green-400 text-sm">curl http://169.254.169.254/latest/meta-data/</code>
+        <h5 class="font-semibold text-yellow-400 mb-1">Online Rainbow Tables</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• CrackStation online lookup service</li>
+          <li>• HashKiller hash database</li>
+          <li>• MD5Decrypt online database</li>
+          <li>• Hashes.org distributed cracking</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Active Directory Domain Dominance</h3>
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Advanced Cracking Techniques</h3>
+
+  <div class="mb-8">
+    <img src="/images/advanced-cracking.jpg" alt="Advanced Cracking" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Modern cracking techniques leverage GPU power and sophisticated algorithms</p>
+  </div>
+
   <p class="text-slate-300 mb-4">
-    Advanced Active Directory attacks focus on achieving domain administrator privileges and maintaining persistence.
+    Advanced password cracking leverages GPU computing, distributed systems, and machine learning to break even complex passwords more efficiently.
   </p>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
     <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Kerberos Attacks</h4>
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">GPU-Accelerated Cracking</h4>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Golden Ticket:</strong> Forge TGT with krbtgt hash</li>
-        <li>• <strong>Silver Ticket:</strong> Forge service tickets</li>
-        <li>• <strong>Diamond Ticket:</strong> Modify existing TGTs</li>
-        <li>• <strong>Sapphire Ticket:</strong> Cross-realm ticket attacks</li>
-        <li>• <strong>Skeleton Key:</strong> Backdoor authentication</li>
-        <li>• <strong>DCShadow:</strong> Rogue domain controller</li>
+        <li>• <strong>CUDA Support:</strong> NVIDIA GPU acceleration</li>
+        <li>• <strong>OpenCL:</strong> Cross-platform GPU computing</li>
+        <li>• <strong>Hashcat:</strong> Premier GPU cracking tool</li>
+        <li>• <strong>John the Ripper:</strong> GPU-enabled variants</li>
+        <li>• <strong>Performance Scaling:</strong> Multiple GPU setups</li>
+        <li>• <strong>Cloud Computing:</strong> AWS/Azure GPU instances</li>
       </ul>
     </div>
+
     <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Certificate Services Attacks</h4>
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Hybrid Attacks</h4>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>ESC1-ESC8:</strong> Certificate template abuse</li>
-        <li>• <strong>NTLM Relay:</strong> Certificate-based authentication</li>
-        <li>• <strong>PetitPotam:</strong> Force NTLM authentication</li>
-        <li>• <strong>PrinterBug:</strong> Coerce authentication</li>
-        <li>• <strong>ShadowCredentials:</strong> Key trust abuse</li>
-        <li>• <strong>UnPAC the Hash:</strong> S4U2self delegation</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Advanced Web Application Attacks</h3>
-  <p class="text-slate-300 mb-4">
-    Sophisticated web application attacks target complex application logic and modern web technologies.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Modern Web Attack Techniques</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">HTTP Request Smuggling</h5>
-        <p class="text-slate-300 text-sm">Exploit differences in HTTP parsing between servers</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">HTTP/2 Attacks</h5>
-        <p class="text-slate-300 text-sm">Target HTTP/2 specific vulnerabilities and features</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Server-Side Template Injection</h5>
-        <p class="text-slate-300 text-sm">Execute code through template engines</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Prototype Pollution</h5>
-        <p class="text-slate-300 text-sm">Modify JavaScript object prototypes</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Binary Exploitation Techniques</h3>
-  <p class="text-slate-300 mb-4">
-    Advanced binary exploitation bypasses modern security mitigations and achieves reliable code execution.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Exploitation Techniques</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>ROP/JOP Chains:</strong> Return/Jump-oriented programming</li>
-        <li>• <strong>Format String Attacks:</strong> Memory corruption via printf</li>
-        <li>• <strong>Use-After-Free:</strong> Heap exploitation technique</li>
-        <li>• <strong>Type Confusion:</strong> Object type manipulation</li>
-        <li>• <strong>Integer Overflow:</strong> Arithmetic operation exploitation</li>
-        <li>• <strong>Race Conditions:</strong> Time-of-check/time-of-use</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Mitigation Bypass</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>ASLR Bypass:</strong> Address space layout randomization</li>
-        <li>• <strong>DEP/NX Bypass:</strong> Data execution prevention</li>
-        <li>• <strong>Stack Canaries:</strong> Stack protection mechanisms</li>
-        <li>• <strong>CFI Bypass:</strong> Control flow integrity</li>
-        <li>• <strong>SMEP/SMAP:</strong> Supervisor mode protections</li>
-        <li>• <strong>Intel CET:</strong> Control-flow enforcement</li>
+        <li>• <strong>Combinator Attacks:</strong> Combine wordlist entries</li>
+        <li>• <strong>Mask Attacks:</strong> Targeted character patterns</li>
+        <li>• <strong>Prince Attack:</strong> Probability-finite automata</li>
+        <li>• <strong>Markov Chains:</strong> Statistical password modeling</li>
+        <li>• <strong>PCFG:</strong> Probabilistic context-free grammars</li>
+        <li>• <strong>Machine Learning:</strong> Neural network approaches</li>
       </ul>
     </div>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Supply Chain Attacks</h3>
-  <p class="text-slate-300 mb-4">
-    Supply chain attacks target third-party dependencies and software distribution mechanisms.
-  </p>
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: Password Policy Assessment</h3>
 
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Attack Vectors</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Dependency Confusion</h5>
-        <p class="text-slate-300 text-sm">Upload malicious packages with higher version numbers</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Typosquatting</h5>
-        <p class="text-slate-300 text-sm">Register similar package names with malicious code</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Package Repository Compromise</h5>
-        <p class="text-slate-300 text-sm">Target package maintainer accounts and repositories</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Build System Poisoning</h5>
-        <p class="text-slate-300 text-sm">Compromise CI/CD pipelines and build processes</p>
-      </div>
-    </div>
+  <div class="mb-8">
+    <img src="/images/password-policy.jpg" alt="Password Policy" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Effective password policies balance security with usability</p>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Machine Learning Security</h3>
   <p class="text-slate-300 mb-4">
-    AI and machine learning systems introduce new attack surfaces and security considerations.
+    Password policy assessment involves evaluating organizational password requirements, implementation effectiveness, and user compliance to identify weaknesses and improvement opportunities.
   </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">AI/ML Attack Types</h4>
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-red-400 mb-2">Common Policy Weaknesses</h5>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Adversarial Examples:</strong> Input manipulation</li>
-        <li>• <strong>Model Poisoning:</strong> Training data corruption</li>
-        <li>• <strong>Model Extraction:</strong> Steal model architecture</li>
-        <li>• <strong>Membership Inference:</strong> Identify training data</li>
-        <li>• <strong>Model Inversion:</strong> Reconstruct training data</li>
-        <li>• <strong>Backdoor Attacks:</strong> Hidden malicious triggers</li>
+        <li>• <strong>Minimum Length:</strong> Too short requirements (less than 12 characters)</li>
+        <li>• <strong>Complexity Rules:</strong> Predictable patterns and substitutions</li>
+        <li>• <strong>Expiration Policies:</strong> Frequent changes leading to weak passwords</li>
+        <li>• <strong>Reuse Restrictions:</strong> Insufficient password history depth</li>
+        <li>• <strong>Account Lockout:</strong> Inadequate protection against brute force</li>
+        <li>• <strong>Recovery Processes:</strong> Weak password reset mechanisms</li>
       </ul>
     </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">MLOps Security</h4>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-green-400 mb-2">Strong Policy Elements</h5>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Model Serving:</strong> API endpoint vulnerabilities</li>
-        <li>• <strong>Data Pipelines:</strong> Input validation weaknesses</li>
-        <li>• <strong>Model Storage:</strong> Unauthorized model access</li>
-        <li>• <strong>Feature Stores:</strong> Data leakage and poisoning</li>
-        <li>• <strong>Experiment Tracking:</strong> Metadata exposure</li>
-        <li>• <strong>Deployment Security:</strong> Container and cloud risks</li>
+        <li>• <strong>Length Requirements:</strong> Minimum 12-15 characters</li>
+        <li>• <strong>Passphrases:</strong> Encourage memorable long passwords</li>
+        <li>• <strong>Blacklists:</strong> Common password and breach databases</li>
+        <li>• <strong>Multi-Factor Authentication:</strong> Reduce password reliance</li>
+        <li>• <strong>Risk-Based:</strong> Adaptive requirements based on context</li>
+        <li>• <strong>User Education:</strong> Security awareness training</li>
       </ul>
     </div>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">IoT and Embedded Device Security</h3>
-  <p class="text-slate-300 mb-4">
-    Internet of Things devices often lack basic security controls and present significant attack surfaces.
-  </p>
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Multi-Factor Authentication</h3>
 
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">IoT Assessment Techniques</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Firmware Analysis</h5>
-        <p class="text-slate-300 text-sm">Extract and analyze embedded firmware</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Hardware Debugging</h5>
-        <p class="text-slate-300 text-sm">JTAG, UART, and SPI interface access</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Radio Frequency Analysis</h5>
-        <p class="text-slate-300 text-sm">Wireless protocol reverse engineering</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Side-Channel Attacks</h5>
-        <p class="text-slate-300 text-sm">Power analysis and timing attacks</p>
-      </div>
-    </div>
+  <div class="mb-8">
+    <img src="/images/multi-factor-auth.jpg" alt="Multi-Factor Authentication" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">MFA provides additional security layers beyond password authentication</p>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Advanced Persistence Techniques</h3>
   <p class="text-slate-300 mb-4">
-    Advanced persistence methods ensure long-term access while evading detection and removal attempts.
+    Multi-factor authentication adds security layers beyond passwords, but implementations can have vulnerabilities that security professionals must understand and test.
   </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
     <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Stealth Techniques</h4>
+      <h4 class="text-lg font-semibold text-blue-400 mb-2">Something You Know</h4>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Rootkits:</strong> Kernel-level hiding mechanisms</li>
-        <li>• <strong>Bootkit:</strong> Boot process manipulation</li>
-        <li>• <strong>UEFI Implants:</strong> Firmware-level persistence</li>
-        <li>• <strong>Hypervisor Rootkits:</strong> Hardware virtualization</li>
-        <li>• <strong>Process Hollowing:</strong> Code injection techniques</li>
-        <li>• <strong>DLL Sideloading:</strong> Library hijacking</li>
+        <li>• Passwords and passphrases</li>
+        <li>• Security questions</li>
+        <li>• PIN numbers</li>
+        <li>• Pattern recognition</li>
       </ul>
     </div>
+
     <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Living-off-the-Land</h4>
+      <h4 class="text-lg font-semibold text-green-400 mb-2">Something You Have</h4>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>PowerShell:</strong> Fileless attack execution</li>
-        <li>• <strong>WMI:</strong> System management abuse</li>
-        <li>• <strong>Scheduled Tasks:</strong> Legitimate service abuse</li>
-        <li>• <strong>Registry Hijacking:</strong> System configuration abuse</li>
-        <li>• <strong>COM Hijacking:</strong> Component object model abuse</li>
-        <li>• <strong>Application Shimming:</strong> Compatibility layer abuse</li>
+        <li>• Hardware tokens</li>
+        <li>• Smartphone apps</li>
+        <li>• Smart cards</li>
+        <li>• SMS/Email codes</li>
       </ul>
     </div>
-  </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Evasion and Anti-Analysis</h3>
-  <p class="text-slate-300 mb-4">
-    Advanced evasion techniques help bypass security controls and complicate incident response efforts.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Anti-Analysis Techniques</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Sandbox Evasion</h5>
-        <p class="text-slate-300 text-sm">Detect and evade analysis environments</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Anti-Debugging</h5>
-        <p class="text-slate-300 text-sm">Prevent reverse engineering and analysis</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Code Obfuscation</h5>
-        <p class="text-slate-300 text-sm">Make code analysis difficult</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Encryption and Packing</h5>
-        <p class="text-slate-300 text-sm">Hide malicious code from static analysis</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Zero-Day Research Process</h3>
-  <p class="text-slate-300 mb-4">
-    Zero-day vulnerability research involves discovering, analyzing, and developing exploits for unknown vulnerabilities.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
     <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Research Methodology</h4>
+      <h4 class="text-lg font-semibold text-yellow-400 mb-2">Something You Are</h4>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Target Selection:</strong> Choose software for analysis</li>
-        <li>• <strong>Static Analysis:</strong> Code review and decompilation</li>
-        <li>• <strong>Dynamic Analysis:</strong> Runtime behavior examination</li>
-        <li>• <strong>Fuzzing:</strong> Automated input testing</li>
-        <li>• <strong>Crash Triage:</strong> Vulnerability classification</li>
-        <li>• <strong>Exploit Development:</strong> Proof-of-concept creation</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Research Tools</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Ghidra:</strong> NSA reverse engineering suite</li>
-        <li>• <strong>IDA Pro:</strong> Interactive disassembler</li>
-        <li>• <strong>AFL++:</strong> American Fuzzy Lop fuzzer</li>
-        <li>• <strong>WinDbg:</strong> Windows debugging toolkit</li>
-        <li>• <strong>GDB:</strong> GNU debugger for Linux</li>
-        <li>• <strong>Frida:</strong> Dynamic instrumentation toolkit</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Attack Automation and Orchestration</h3>
-  <p class="text-slate-300 mb-4">
-    Automated attack platforms enable complex, multi-stage attacks and continuous testing programs.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Automation Frameworks</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">CALDERA</h5>
-        <p class="text-slate-300 text-sm">MITRE's adversary emulation platform</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Atomic Red Team</h5>
-        <p class="text-slate-300 text-sm">Small, focused test cases for security controls</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Purple Team Tools</h5>
-        <p class="text-slate-300 text-sm">Collaborative offensive/defensive exercises</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Custom Automation</h5>
-        <p class="text-slate-300 text-sm">Scripted attack chains and decision trees</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Threat Intelligence Integration</h3>
-  <p class="text-slate-300 mb-4">
-    Threat intelligence helps prioritize testing activities and simulate realistic attack scenarios.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Intelligence Sources</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>CVE Databases:</strong> Known vulnerability information</li>
-        <li>• <strong>Exploit Databases:</strong> Public exploit code</li>
-        <li>• <strong>Threat Actor TTPs:</strong> Tactics, techniques, procedures</li>
-        <li>• <strong>IoC Feeds:</strong> Indicators of compromise</li>
-        <li>• <strong>Dark Web Monitoring:</strong> Underground threat intel</li>
-        <li>• <strong>Security Research:</strong> Academic and industry research</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Threat Modeling</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>MITRE ATT&CK:</strong> Adversary tactics framework</li>
-        <li>• <strong>Kill Chain Analysis:</strong> Attack phase modeling</li>
-        <li>• <strong>Diamond Model:</strong> Adversary, infrastructure, capability</li>
-        <li>• <strong>Threat Landscape:</strong> Industry-specific threats</li>
-        <li>• <strong>Risk Assessment:</strong> Likelihood and impact analysis</li>
-        <li>• <strong>Scenario Planning:</strong> Attack simulation design</li>
+        <li>• Fingerprint scanning</li>
+        <li>• Facial recognition</li>
+        <li>• Iris scanning</li>
+        <li>• Voice recognition</li>
       </ul>
     </div>
   </div>
 
   <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
-  <p class="text-slate-300 mb-4">
-    Advanced exercises challenge practitioners to apply sophisticated techniques in complex scenarios.
-  </p>
 
   <div class="space-y-4 mb-6">
     <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Container Escape Challenge</h5>
-      <p class="text-slate-300 text-sm mb-2">Break out of container isolation:</p>
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Hash Identification and Cracking</h5>
+      <p class="text-slate-300 text-sm mb-2">Practice identifying and cracking various hash types:</p>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Analyze container configuration and identify escape vectors</li>
-        <li>• Exploit privileged containers and volume mounts</li>
-        <li>• Access host filesystem and gain system-level privileges</li>
-        <li>• Establish persistence on container host system</li>
+        <li>• Use hash-identifier to determine hash types</li>
+        <li>• Apply appropriate hashcat modes for different algorithms</li>
+        <li>• Compare dictionary vs. brute force effectiveness</li>
+        <li>• Analyze cracking speed and success rates</li>
       </ul>
     </div>
-    
+
     <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Advanced AD Attack Chain</h5>
-      <p class="text-slate-300 text-sm mb-2">Execute domain dominance attack sequence:</p>
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Rule-Based Attack Development</h5>
+      <p class="text-slate-300 text-sm mb-2">Create custom rules for password transformation:</p>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Perform Kerberoasting and crack service account passwords</li>
-        <li>• Exploit certificate services vulnerabilities (ESC1-ESC8)</li>
-        <li>• Generate golden tickets for domain persistence</li>
-        <li>• Implement DCShadow attack for stealth operations</li>
+        <li>• Analyze common password patterns in breached data</li>
+        <li>• Develop custom hashcat rules for transformations</li>
+        <li>• Test rule effectiveness against sample passwords</li>
+        <li>• Document rule creation methodology</li>
       </ul>
     </div>
-    
+
     <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 3: Zero-Day Research Project</h5>
-      <p class="text-slate-300 text-sm mb-2">Discover and develop novel vulnerability:</p>
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 3: Password Policy Audit</h5>
+      <p class="text-slate-300 text-sm mb-2">Assess organizational password policies:</p>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Select target application for vulnerability research</li>
-        <li>• Perform fuzzing and crash analysis</li>
-        <li>• Develop proof-of-concept exploit code</li>
-        <li>• Create responsible disclosure documentation</li>
+        <li>• Review current password policy documentation</li>
+        <li>• Test policy enforcement mechanisms</li>
+        <li>• Identify weaknesses and improvement opportunities</li>
+        <li>• Develop recommendations for policy enhancement</li>
       </ul>
     </div>
   </div>
 
   <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
   <p class="text-slate-300 mb-6">
-    Advanced attack techniques represent the cutting edge of penetration testing and red team operations. This module covered container security, cloud attacks, advanced persistence, zero-day research, and threat intelligence integration. These sophisticated techniques require extensive practice and deep technical understanding. Always ensure proper authorization and consider the ethical implications of advanced attack methods. Continuous learning and adaptation are essential as new technologies and attack vectors emerge. The goal is to help organizations understand and defend against the most sophisticated threats they may face.
+    Password security remains a critical component of organizational cybersecurity despite advances in authentication technology. This module covered hashing algorithms, cracking techniques, and policy assessment methods essential for security professionals. Understanding both offensive and defensive aspects of password security enables better protection strategies and more effective security assessments. Modern approaches emphasize longer passwords, multi-factor authentication, and risk-based policies over traditional complexity requirements. Regular password policy review and user education are essential for maintaining strong password security postures.
   </p>
+
+  <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 border border-slate-600">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">🔐 Next: Reporting and Documentation</h4>
+    <p class="text-slate-300">
+      Module 12 focuses on professional reporting and documentation practices for penetration testing, including executive summaries, technical findings, and remediation recommendations.
+    </p>
+  </div>
 </div>
