@@ -1,9 +1,15 @@
+
 import { createContext, useContext, useEffect, useState } from 'react';
 
 interface ProgressContextType {
   completedModules: string[];
   markModuleCompleted: (moduleId: string) => void;
   getProgressPercentage: () => number;
+  getCompletedCount: () => number;
+  isModuleCompleted: (moduleId: string) => boolean;
+  toggleModuleCompletion: (moduleId: string) => void;
+  getModuleProgress: (moduleId: string) => number;
+  getTotalProgress: () => number;
 }
 
 const ProgressContext = createContext<ProgressContextType | undefined>(undefined);
@@ -20,9 +26,23 @@ export const ProgressProvider = ({ children }: { children: React.ReactNode }) =>
 
   const markModuleCompleted = (moduleId: string) => {
     setCompletedModules(prev => {
+      if (prev.includes(moduleId)) {
+        return prev; // Already completed
+      }
       const updated = [...prev, moduleId];
       localStorage.setItem('completed-modules', JSON.stringify(updated));
       return updated;
+    });
+  };
+
+  const toggleModuleCompletion = (moduleId: string) => {
+    setCompletedModules(prev => {
+      const newCompleted = prev.includes(moduleId)
+        ? prev.filter(id => id !== moduleId)
+        : [...prev, moduleId];
+
+      localStorage.setItem('completed-modules', JSON.stringify(newCompleted));
+      return newCompleted;
     });
   };
 
@@ -31,11 +51,33 @@ export const ProgressProvider = ({ children }: { children: React.ReactNode }) =>
     return (completedModules.length / totalModules) * 100;
   };
 
+  const getCompletedCount = () => {
+    return completedModules.length;
+  };
+
+  const isModuleCompleted = (moduleId: string) => {
+    return completedModules.includes(moduleId);
+  };
+
+  const getModuleProgress = (moduleId: string) => {
+    return completedModules.includes(moduleId) ? 100 : 0;
+  };
+
+  const getTotalProgress = () => {
+    const totalModules = 12; // Based on the modules page displaying 12 modules
+    return Math.round((completedModules.length / totalModules) * 100);
+  };
+
   return (
     <ProgressContext.Provider value={{ 
       completedModules, 
       markModuleCompleted, 
-      getProgressPercentage 
+      getProgressPercentage,
+      getCompletedCount,
+      isModuleCompleted,
+      toggleModuleCompletion,
+      getModuleProgress,
+      getTotalProgress
     }}>
       {children}
     </ProgressContext.Provider>
