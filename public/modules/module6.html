@@ -1,331 +1,550 @@
 
-<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
-  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 6: Information Gathering and Reconnaissance</h1>
-  
-  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-    Information gathering and reconnaissance form the foundation of any successful penetration test. This comprehensive module covers passive and active intelligence gathering techniques, OSINT methodologies, and systematic approaches to target analysis.
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Gathering and Reconnaissance</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: #0f172a;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1, h2, h3 {
+            color: #00ff88;
+        }
+        h1 {
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 0.5rem;
+        }
+        .highlight {
+            background: #1e293b;
+            padding: 1rem;
+            border-left: 4px solid #00ff88;
+            margin: 1rem 0;
+        }
+        .code {
+            background: #334155;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        ul, ol {
+            padding-left: 2rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        .warning {
+            background: #451a03;
+            border: 1px solid #ea580c;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        .info {
+            background: #0c4a6e;
+            border: 1px solid #0284c7;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #475569;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background: #1e293b;
+            color: #00ff88;
+        }
+        .phase {
+            background: #1e293b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border: 1px solid #334155;
+        }
+        .phase h4 {
+            margin-top: 0;
+            color: #00ff88;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Module 6: Information Gathering and Reconnaissance</h1>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Intelligence Gathering" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Thorough reconnaissance provides the intelligence needed for effective penetration testing</p>
-  </div>
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Master passive information gathering techniques</li>
+            <li>Learn active reconnaissance methods</li>
+            <li>Understand OSINT (Open Source Intelligence) fundamentals</li>
+            <li>Explore social media and public record analysis</li>
+            <li>Learn to map target environments effectively</li>
+        </ul>
 
-  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <ul class="text-slate-300 space-y-2">
-      <li>• Master passive information gathering and OSINT techniques</li>
-      <li>• Learn active reconnaissance methods and tools</li>
-      <li>• Understand DNS enumeration and subdomain discovery</li>
-      <li>• Practice social media intelligence and people searching</li>
-      <li>• Implement automated reconnaissance workflows</li>
-      <li>• Analyze and correlate gathered intelligence effectively</li>
-    </ul>
-  </div>
+        <h2>Introduction to Reconnaissance</h2>
+        <p>
+            Reconnaissance is the systematic process of gathering information about target systems, 
+            networks, and organizations before conducting security testing. It forms the foundation 
+            of any successful penetration test.
+        </p>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: Passive Information Gathering</h3>
-  
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="OSINT Research" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Open source intelligence gathering reveals valuable target information</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Passive information gathering involves collecting intelligence about the target without directly interacting with their systems. This approach minimizes detection risk while maximizing intelligence value.
-  </p>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">OSINT Sources and Techniques</h4>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-blue-400 mb-2">Public Records and Websites</h5>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Corporate websites and documentation</li>
-        <li>• SEC filings and business registrations</li>
-        <li>• Patent and trademark databases</li>
-        <li>• Government contract databases</li>
-        <li>• Press releases and news articles</li>
-        <li>• Academic publications and whitepapers</li>
-      </ul>
-    </div>
-    
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-green-400 mb-2">Technical Resources</h5>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• WHOIS database information</li>
-        <li>• DNS records and historical data</li>
-        <li>• SSL certificate transparency logs</li>
-        <li>• Shodan and Censys search engines</li>
-        <li>• Archive.org wayback machine</li>
-        <li>• Code repositories (GitHub, GitLab)</li>
-      </ul>
-    </div>
-  </div>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">DNS Intelligence Gathering</h4>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h5 class="font-semibold text-cyan-400 mb-3">DNS Enumeration Techniques</h5>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h6 class="font-semibold text-slate-100 mb-1">Basic DNS Queries</h6>
-        <div class="font-mono text-sm text-slate-300 space-y-1">
-          <p><span class="text-cyan-400">nslookup target.com</span> - Basic DNS lookup</p>
-          <p><span class="text-cyan-400">dig target.com ANY</span> - All DNS records</p>
-          <p><span class="text-cyan-400">dig @8.8.8.8 target.com MX</span> - Mail server records</p>
-          <p><span class="text-cyan-400">dig target.com NS</span> - Name server records</p>
+        <div class="highlight">
+            <strong>Key Principle:</strong> The more information you gather during reconnaissance, 
+            the more targeted and effective your attacks will be.
         </div>
-      </div>
-      
-      <div class="bg-slate-900 rounded p-3">
-        <h6 class="font-semibold text-slate-100 mb-1">Advanced DNS Techniques</h6>
-        <div class="font-mono text-sm text-slate-300 space-y-1">
-          <p><span class="text-cyan-400">dnsrecon -d target.com</span> - Comprehensive DNS enumeration</p>
-          <p><span class="text-cyan-400">fierce -dns target.com</span> - Subdomain brute forcing</p>
-          <p><span class="text-cyan-400">dnsenum target.com</span> - DNS enumeration tool</p>
-          <p><span class="text-cyan-400">host -t axfr target.com</span> - Zone transfer attempt</p>
+
+        <h2>Types of Reconnaissance</h2>
+
+        <div class="phase">
+            <h3>Passive Reconnaissance</h3>
+            <h4>Definition:</h4>
+            <p>Gathering information without directly interacting with the target systems or alerting the target organization.</p>
+            
+            <h4>Characteristics:</h4>
+            <ul>
+                <li>No direct contact with target systems</li>
+                <li>Difficult to detect by target</li>
+                <li>Uses publicly available information</li>
+                <li>Lower risk of discovery</li>
+                <li>Can be performed from anywhere</li>
+            </ul>
+
+            <h4>Information Sources:</h4>
+            <ul>
+                <li>Search engines (Google, Bing, DuckDuckGo)</li>
+                <li>Social media platforms</li>
+                <li>Public databases and registries</li>
+                <li>Company websites and documentation</li>
+                <li>Job postings and employee profiles</li>
+                <li>News articles and press releases</li>
+            </ul>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: Subdomain Discovery</h3>
+        <div class="phase">
+            <h3>Active Reconnaissance</h3>
+            <h4>Definition:</h4>
+            <p>Directly interacting with target systems to gather information, which may leave traces in logs.</p>
+            
+            <h4>Characteristics:</h4>
+            <ul>
+                <li>Direct interaction with target systems</li>
+                <li>Higher risk of detection</li>
+                <li>More detailed technical information</li>
+                <li>May trigger security alerts</li>
+                <li>Requires careful timing and approach</li>
+            </ul>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Subdomain Mapping" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Subdomain discovery reveals hidden attack surfaces and forgotten systems</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Subdomain discovery is crucial for identifying the complete attack surface of a target organization. Many security vulnerabilities exist in forgotten or poorly maintained subdomains.
-  </p>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-yellow-400 mb-2">Passive Subdomain Discovery</h5>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
-        <div>
-          <p class="font-semibold mb-2">Certificate Transparency:</p>
-          <ul class="space-y-1">
-            <li>• crt.sh database queries</li>
-            <li>• Google Certificate Transparency</li>
-            <li>• Facebook Certificate Transparency</li>
-            <li>• Censys certificate search</li>
-          </ul>
+            <h4>Techniques:</h4>
+            <ul>
+                <li>Port scanning and service enumeration</li>
+                <li>DNS zone transfers</li>
+                <li>Network mapping</li>
+                <li>Web application crawling</li>
+                <li>Social engineering phone calls</li>
+            </ul>
         </div>
-        <div>
-          <p class="font-semibold mb-2">Search Engine Dorking:</p>
-          <ul class="space-y-1">
-            <li>• site:target.com -www</li>
-            <li>• Google, Bing, Yahoo searches</li>
-            <li>• Virus Total domain reports</li>
-            <li>• Passive DNS databases</li>
-          </ul>
+
+        <h2>OSINT (Open Source Intelligence)</h2>
+
+        <h3>Google Dorking</h3>
+        <p>Advanced Google search techniques to find specific information:</p>
+        <div class="code">
+# Basic Google Dorks
+site:target.com                    # Search specific domain
+filetype:pdf site:target.com       # Find PDFs on target site
+intitle:"index of" site:target.com # Directory listings
+inurl:admin site:target.com        # Admin pages
+cache:target.com                   # Cached version
+
+# Advanced Dorks
+site:target.com filetype:xlsx OR filetype:xls OR filetype:csv
+site:target.com intext:"password" OR intext:"username"
+site:target.com ext:sql OR ext:db OR ext:dbf OR ext:mdb
+inurl:"/phpMyAdmin" "Welcome to phpMyAdmin"
+intitle:"webcam 7" inurl:8080
         </div>
-      </div>
-    </div>
 
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-purple-400 mb-2">Active Subdomain Discovery</h5>
-      <div class="font-mono text-sm text-slate-300 space-y-1">
-        <p><span class="text-cyan-400">subfinder -d target.com</span> - Multi-source subdomain discovery</p>
-        <p><span class="text-cyan-400">amass enum -d target.com</span> - Comprehensive enumeration</p>
-        <p><span class="text-cyan-400">sublist3r -d target.com</span> - Python subdomain enumerator</p>
-        <p><span class="text-cyan-400">gobuster dns -d target.com -w wordlist.txt</span> - Brute force discovery</p>
-      </div>
-    </div>
-  </div>
+        <h3>DNS Reconnaissance</h3>
+        <div class="code">
+# DNS enumeration tools
+nslookup target.com
+dig target.com
+dig @8.8.8.8 target.com
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Social Media Intelligence</h3>
+# DNS record types
+dig target.com A                   # IPv4 addresses
+dig target.com AAAA                # IPv6 addresses
+dig target.com MX                  # Mail servers
+dig target.com NS                  # Name servers
+dig target.com TXT                 # Text records
+dig target.com SOA                 # Start of Authority
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Social Media Research" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Social media platforms contain valuable intelligence about organizations and individuals</p>
-  </div>
+# Zone transfer attempt
+dig @ns1.target.com target.com AXFR
 
-  <p class="text-slate-300 mb-4">
-    Social media intelligence gathering reveals organizational structure, employee information, technology stacks, and potential social engineering vectors.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Employee Intelligence</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• LinkedIn company and employee profiles</li>
-        <li>• Job posting technical requirements</li>
-        <li>• Conference presentations and talks</li>
-        <li>• Professional certifications and skills</li>
-        <li>• Personal social media accounts</li>
-        <li>• Email address patterns and formats</li>
-      </ul>
-    </div>
-    
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Technology Stack Intelligence</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Job posting technology requirements</li>
-        <li>• GitHub repository analysis</li>
-        <li>• Technical blog posts and articles</li>
-        <li>• Conference presentation technologies</li>
-        <li>• Vendor relationship announcements</li>
-        <li>• Technology partnership disclosures</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Search Engine Intelligence</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Search Engine Research" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Advanced search techniques reveal hidden information and sensitive data</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Search engine dorking uses advanced search operators to discover sensitive information, configuration files, and security vulnerabilities exposed through web indexing.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Google Dorking Techniques</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-green-400 mb-2">Basic Operators</h5>
-        <div class="font-mono text-sm text-slate-300 space-y-1">
-          <p><span class="text-cyan-400">site:target.com</span> - Search within specific domain</p>
-          <p><span class="text-cyan-400">filetype:pdf site:target.com</span> - Find PDF documents</p>
-          <p><span class="text-cyan-400">intitle:"index of" site:target.com</span> - Directory listings</p>
-          <p><span class="text-cyan-400">inurl:admin site:target.com</span> - Admin interfaces</p>
+# Reverse DNS lookup
+dig -x 192.168.1.1
         </div>
-      </div>
-      
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-yellow-400 mb-2">Sensitive Information</h5>
-        <div class="font-mono text-sm text-slate-300 space-y-1">
-          <p><span class="text-cyan-400">filetype:sql "INSERT INTO" site:target.com</span> - Database dumps</p>
-          <p><span class="text-cyan-400">filetype:log site:target.com</span> - Log files</p>
-          <p><span class="text-cyan-400">intitle:"config" filetype:txt</span> - Configuration files</p>
-          <p><span class="text-cyan-400">"password" filetype:txt site:target.com</span> - Password files</p>
+
+        <h3>WHOIS Information</h3>
+        <div class="code">
+# WHOIS queries
+whois target.com
+whois 192.168.1.1
+
+# Online WHOIS tools
+- whois.net
+- whois.com
+- domaintools.com
+- viewdns.info
         </div>
-      </div>
-    </div>
-  </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: Technical Reconnaissance</h3>
+        <h2>Social Media Intelligence</h2>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Technical Analysis" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Technical reconnaissance reveals infrastructure details and potential vulnerabilities</p>
-  </div>
+        <h3>LinkedIn Reconnaissance</h3>
+        <ul>
+            <li><strong>Employee enumeration:</strong> Identify key personnel</li>
+            <li><strong>Organizational structure:</strong> Understand company hierarchy</li>
+            <li><strong>Technology stack:</strong> Skills and technologies used</li>
+            <li><strong>Contact information:</strong> Email patterns and contact details</li>
+            <li><strong>Business relationships:</strong> Partners and vendors</li>
+        </ul>
 
-  <p class="text-slate-300 mb-4">
-    Technical reconnaissance focuses on gathering detailed information about the target's technical infrastructure, including servers, services, and security mechanisms.
-  </p>
+        <h3>Twitter/X Intelligence</h3>
+        <ul>
+            <li>Company announcements and updates</li>
+            <li>Employee personal information</li>
+            <li>Location data and check-ins</li>
+            <li>Technical discussions and problems</li>
+            <li>Conference attendance and networking</li>
+        </ul>
 
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-red-400 mb-2">Infrastructure Analysis</h5>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
-        <div>
-          <p class="font-semibold mb-2">Network Infrastructure:</p>
-          <ul class="space-y-1">
-            <li>• BGP routing information</li>
-            <li>• AS number identification</li>
-            <li>• IP range ownership</li>
-            <li>• Geographic distribution</li>
-          </ul>
+        <h3>Facebook and Instagram</h3>
+        <ul>
+            <li>Personal information and interests</li>
+            <li>Family and personal relationships</li>
+            <li>Location data and travel patterns</li>
+            <li>Photos with metadata (EXIF data)</li>
+            <li>Event attendance and activities</li>
+        </ul>
+
+        <h2>Technical Reconnaissance Tools</h2>
+
+        <h3>theHarvester</h3>
+        <p>Comprehensive OSINT tool for email and subdomain gathering:</p>
+        <div class="code">
+# Basic usage
+theHarvester -d target.com -b google
+theHarvester -d target.com -b bing
+theHarvester -d target.com -b linkedin
+
+# Multiple sources
+theHarvester -d target.com -b google,bing,yahoo,linkedin
+
+# Save results
+theHarvester -d target.com -b all -f results.html
+
+# Specific searches
+theHarvester -d target.com -b google -l 200  # Limit results
+theHarvester -d target.com -b shodan          # Shodan search
         </div>
-        <div>
-          <p class="font-semibold mb-2">Technology Stack:</p>
-          <ul class="space-y-1">
-            <li>• Web server identification</li>
-            <li>• Content management systems</li>
-            <li>• JavaScript frameworks</li>
-            <li>• Third-party services</li>
-          </ul>
+
+        <h3>Recon-ng</h3>
+        <p>Web-based reconnaissance framework:</p>
+        <div class="code">
+# Start Recon-ng
+recon-ng
+
+# Workspace management
+workspaces create target_company
+workspaces select target_company
+
+# Module usage
+modules search
+modules load recon/domains-hosts/google_site_web
+options set SOURCE target.com
+run
+
+# Data management
+show hosts
+show contacts
+show companies
         </div>
-      </div>
+
+        <h3>Maltego</h3>
+        <p>Link analysis and data mining tool for OSINT:</p>
+        <ul>
+            <li><strong>Entity mapping:</strong> Visualize relationships between data points</li>
+            <li><strong>Transform hub:</strong> Automated data gathering from multiple sources</li>
+            <li><strong>Graph analysis:</strong> Identify patterns and connections</li>
+            <li><strong>Collaborative investigation:</strong> Share findings with team members</li>
+        </ul>
+
+        <h3>Shodan</h3>
+        <p>Search engine for Internet-connected devices:</p>
+        <div class="code">
+# Shodan search queries
+org:"Target Company"
+net:192.168.1.0/24
+port:22 country:US
+apache country:US
+"default password" port:23
+
+# Shodan CLI
+shodan search "apache country:US"
+shodan host 192.168.1.1
+shodan download results apache-us
+        </div>
+
+        <h2>Website Reconnaissance</h2>
+
+        <h3>Web Technology Identification</h3>
+        <div class="code">
+# Whatweb - Web technology scanner
+whatweb target.com
+whatweb -v target.com              # Verbose output
+whatweb -a 3 target.com            # Aggressive scanning
+
+# Wappalyzer - Browser extension/CLI
+wappalyzer target.com
+
+# BuiltWith - Online service
+# Visit builtwith.com
+        </div>
+
+        <h3>Directory and File Discovery</h3>
+        <div class="code">
+# Dirb - Directory bruteforcer
+dirb http://target.com
+dirb http://target.com /usr/share/dirb/wordlists/big.txt
+
+# Gobuster - Fast directory/file brute-forcer
+gobuster dir -u http://target.com -w /usr/share/wordlists/dirb/common.txt
+gobuster dir -u http://target.com -w wordlist.txt -x php,html,txt
+
+# Nikto - Web vulnerability scanner
+nikto -h http://target.com
+nikto -h http://target.com -p 80,443
+        </div>
+
+        <h3>Web Archive Analysis</h3>
+        <ul>
+            <li><strong>Wayback Machine:</strong> Historical website snapshots</li>
+            <li><strong>Archive.today:</strong> Recent website archives</li>
+            <li><strong>CachedView:</strong> Google cache viewer</li>
+            <li><strong>WebCite:</strong> Academic web archiving</li>
+        </ul>
+
+        <h2>Email and Domain Intelligence</h2>
+
+        <h3>Email Pattern Discovery</h3>
+        <div class="code">
+# Common email patterns
+firstname.lastname@company.com
+first.last@company.com
+flast@company.com
+firstlast@company.com
+f.lastname@company.com
+
+# Tools for email verification
+hunter.io
+verify-email.org
+emailhippo.com
+        </div>
+
+        <h3>Subdomain Enumeration</h3>
+        <div class="code">
+# Sublist3r - Subdomain enumeration
+sublist3r -d target.com
+sublist3r -d target.com -e google,yahoo,virustotal
+
+# Amass - Advanced subdomain enumeration
+amass enum -d target.com
+amass enum -d target.com -src
+amass intel -d target.com
+
+# Manual subdomain discovery
+# Certificate Transparency logs
+# DNS bruteforcing
+# Search engine queries
+        </div>
+
+        <h2>Social Engineering Reconnaissance</h2>
+
+        <h3>Physical Location Intelligence</h3>
+        <ul>
+            <li><strong>Google Street View:</strong> Physical building assessment</li>
+            <li><strong>Satellite imagery:</strong> Facility layout and security</li>
+            <li><strong>Local business directories:</strong> Contact information</li>
+            <li><strong>Property records:</strong> Ownership and facility details</li>
+        </ul>
+
+        <h3>Employee Targeting</h3>
+        <ul>
+            <li><strong>Key personnel identification:</strong> IT staff, executives, HR</li>
+            <li><strong>Contact information gathering:</strong> Email, phone, social media</li>
+            <li><strong>Personal interest research:</strong> Hobbies, family, activities</li>
+            <li><strong>Professional background:</strong> Skills, certifications, experience</li>
+        </ul>
+
+        <h3>Vendor and Partner Intelligence</h3>
+        <ul>
+            <li>Third-party service providers</li>
+            <li>Supply chain relationships</li>
+            <li>Business partnerships</li>
+            <li>Contractor and consultant relationships</li>
+        </ul>
+
+        <div class="warning">
+            <strong>Legal and Ethical Considerations:</strong> Always ensure reconnaissance activities 
+            comply with applicable laws and the scope of your authorized testing. Avoid accessing 
+            private information or violating privacy rights.
+        </div>
+
+        <h2>Reconnaissance Automation</h2>
+
+        <h3>Custom Scripts and Tools</h3>
+        <div class="code">
+#!/bin/bash
+# Basic reconnaissance script
+
+DOMAIN=$1
+OUTPUT_DIR="recon_$DOMAIN"
+
+mkdir -p $OUTPUT_DIR
+
+echo "[+] Starting reconnaissance for $DOMAIN"
+
+# WHOIS information
+echo "[+] Gathering WHOIS information"
+whois $DOMAIN > $OUTPUT_DIR/whois.txt
+
+# DNS enumeration
+echo "[+] DNS enumeration"
+dig $DOMAIN A > $OUTPUT_DIR/dns_a.txt
+dig $DOMAIN MX > $OUTPUT_DIR/dns_mx.txt
+dig $DOMAIN NS > $OUTPUT_DIR/dns_ns.txt
+
+# Subdomain enumeration
+echo "[+] Subdomain enumeration"
+sublist3r -d $DOMAIN -o $OUTPUT_DIR/subdomains.txt
+
+# Web technology detection
+echo "[+] Web technology detection"
+whatweb $DOMAIN > $OUTPUT_DIR/whatweb.txt
+
+echo "[+] Reconnaissance complete. Results saved in $OUTPUT_DIR"
+        </div>
+
+        <h3>Framework Integration</h3>
+        <ul>
+            <li><strong>Metasploit auxiliary modules:</strong> Built-in reconnaissance tools</li>
+            <li><strong>Nmap scripting engine:</strong> Custom reconnaissance scripts</li>
+            <li><strong>Burp Suite extensions:</strong> Web application reconnaissance</li>
+            <li><strong>Custom Python scripts:</strong> Automated data gathering</li>
+        </ul>
+
+        <h2>Information Analysis and Correlation</h2>
+
+        <h3>Data Organization</h3>
+        <ul>
+            <li><strong>Spreadsheet tracking:</strong> Organize findings systematically</li>
+            <li><strong>Mind mapping:</strong> Visualize relationships and connections</li>
+            <li><strong>Database storage:</strong> Structured data management</li>
+            <li><strong>Timeline creation:</strong> Chronological event mapping</li>
+        </ul>
+
+        <h3>Pattern Recognition</h3>
+        <ul>
+            <li>Email address patterns and formats</li>
+            <li>Naming conventions for systems and users</li>
+            <li>Technology stack consistency</li>
+            <li>Security policy indicators</li>
+        </ul>
+
+        <h3>Attack Surface Mapping</h3>
+        <ul>
+            <li><strong>External assets:</strong> Public-facing systems and services</li>
+            <li><strong>Entry points:</strong> Potential attack vectors</li>
+            <li><strong>Trust relationships:</strong> Partner and vendor connections</li>
+            <li><strong>Human factors:</strong> Social engineering targets</li>
+        </ul>
+
+        <div class="info">
+            <strong>Best Practice:</strong> Maintain detailed documentation of all reconnaissance 
+            activities, sources, and findings. This information will be valuable throughout 
+            the entire penetration testing engagement.
+        </div>
+
+        <h2>Reconnaissance Countermeasures</h2>
+
+        <h3>Defensive Strategies</h3>
+        <ul>
+            <li><strong>Information sanitization:</strong> Remove sensitive data from public sources</li>
+            <li><strong>Employee awareness:</strong> Train staff on information disclosure risks</li>
+            <li><strong>Social media policies:</strong> Guidelines for professional online presence</li>
+            <li><strong>DNS security:</strong> Prevent zone transfers and information leakage</li>
+        </ul>
+
+        <h3>Monitoring and Detection</h3>
+        <ul>
+            <li>Monitor for unusual DNS queries</li>
+            <li>Track access to sensitive public information</li>
+            <li>Implement honeypots for early detection</li>
+            <li>Monitor social media for corporate mentions</li>
+        </ul>
+
+        <h2>Legal and Ethical Guidelines</h2>
+
+        <h3>Legal Considerations</h3>
+        <ul>
+            <li><strong>Public information:</strong> Generally legal to access</li>
+            <li><strong>Terms of service:</strong> Respect website usage policies</li>
+            <li><strong>Privacy laws:</strong> Comply with local privacy regulations</li>
+            <li><strong>Authorized scope:</strong> Stay within engagement boundaries</li>
+        </ul>
+
+        <h3>Ethical Guidelines</h3>
+        <ul>
+            <li>Respect individual privacy rights</li>
+            <li>Avoid causing harm or disruption</li>
+            <li>Maintain confidentiality of gathered information</li>
+            <li>Use information only for authorized purposes</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>
+            Information gathering and reconnaissance form the critical foundation of successful 
+            penetration testing. The quality and depth of your reconnaissance directly impact 
+            the effectiveness of subsequent testing phases.
+        </p>
+
+        <div class="highlight">
+            <strong>Remember:</strong> Good reconnaissance is patient, methodical, and thorough. 
+            The time invested in this phase pays dividends throughout the entire engagement.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore network enumeration and scanning techniques to identify live hosts, open ports, and running services.</p>
     </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-blue-400 mb-2">Shodan and Censys Intelligence</h5>
-      <div class="font-mono text-sm text-slate-300 space-y-1">
-        <p><span class="text-cyan-400">shodan search "org:Target Company"</span> - Organization assets</p>
-        <p><span class="text-cyan-400">shodan search "net:192.168.1.0/24"</span> - Network range scan</p>
-        <p><span class="text-cyan-400">censys search "target.com"</span> - Certificate and service data</p>
-        <p><span class="text-cyan-400">shodan search "apache" port:443</span> - Specific service search</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Automated Reconnaissance</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Automation Tools" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Automation tools streamline reconnaissance workflows and improve efficiency</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Automated reconnaissance tools help streamline the information gathering process and ensure comprehensive coverage of potential intelligence sources.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Reconnaissance Frameworks</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Recon-ng:</strong> Modular reconnaissance framework</li>
-        <li>• <strong>theHarvester:</strong> Email and subdomain harvesting</li>
-        <li>• <strong>Maltego:</strong> Visual link analysis platform</li>
-        <li>• <strong>SpiderFoot:</strong> Automated OSINT collection</li>
-        <li>• <strong>Photon:</strong> Web crawler for OSINT</li>
-      </ul>
-    </div>
-    
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Custom Automation</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Bash Scripts:</strong> Command-line automation</li>
-        <li>• <strong>Python Tools:</strong> Custom reconnaissance scripts</li>
-        <li>• <strong>API Integration:</strong> Third-party service automation</li>
-        <li>• <strong>Workflow Orchestration:</strong> Multi-tool coordination</li>
-        <li>• <strong>Data Correlation:</strong> Intelligence analysis automation</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Comprehensive OSINT</h5>
-      <p class="text-slate-300 text-sm mb-2">Conduct thorough OSINT on a target organization:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Gather corporate and technical information</li>
-        <li>• Map organizational structure and key personnel</li>
-        <li>• Identify technology stack and infrastructure</li>
-        <li>• Document potential social engineering vectors</li>
-      </ul>
-    </div>
-    
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Subdomain Enumeration</h5>
-      <p class="text-slate-300 text-sm mb-2">Perform comprehensive subdomain discovery:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Use multiple passive discovery techniques</li>
-        <li>• Implement brute force enumeration</li>
-        <li>• Validate discovered subdomains</li>
-        <li>• Analyze subdomain patterns and naming conventions</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
-  <p class="text-slate-300 mb-6">
-    Effective reconnaissance is the foundation of successful penetration testing. This module covered passive and active information gathering techniques that help you understand the target environment before launching attacks. Remember that thorough reconnaissance often reveals more vulnerabilities than automated scanning tools. The intelligence gathered during this phase directly influences the success of subsequent testing phases. Always document your findings systematically and correlate information from multiple sources for maximum effectiveness.
-  </p>
-
-  <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 border border-slate-600">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">🔍 Next: Network Enumeration</h4>
-    <p class="text-slate-300">
-      Module 7 focuses on network enumeration and scanning techniques to discover live hosts, open ports, and running services in the target environment.
-    </p>
-  </div>
-</div>
+</body>
+</html>
