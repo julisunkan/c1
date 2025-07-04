@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useRoute, Link } from "wouter";
 import { ArrowLeft, Clock, Target, CheckCircle2 } from "lucide-react";
@@ -8,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { useProgress } from "@/hooks/use-progress";
 import modules from "@/data/modules.json";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ModuleDetail() {
   const [, params] = useRoute("/module/:id");
@@ -19,11 +19,16 @@ export default function ModuleDetail() {
   const module = modules.find(m => m.id === params?.id);
   const progress = module ? getModuleProgress(module.id) : 0;
 
+  // Find current module index for navigation
+  const currentIndex = modules.findIndex(m => m.id === params?.id);
+  const previousModule = currentIndex > 0 ? modules[currentIndex - 1] : null;
+  const nextModule = currentIndex < modules.length - 1 ? modules[currentIndex + 1] : null;
+
   useEffect(() => {
     if (module) {
       setLoading(true);
       setError(null);
-      
+
       fetch(`/modules/${module.id}.html`)
         .then(response => {
           if (!response.ok) {
@@ -165,6 +170,24 @@ export default function ModuleDetail() {
           )}
         </CardContent>
       </Card>
+      <div className="flex justify-between">
+        {previousModule && (
+          <Link href={`/module/${previousModule.id}`}>
+            <Button variant="outline">
+              <ChevronLeft className="w-4 h-4 mr-2" />
+              Previous
+            </Button>
+          </Link>
+        )}
+        {nextModule && (
+          <Link href={`/module/${nextModule.id}`}>
+            <Button variant="outline">
+              Next
+              <ChevronRight className="w-4 h-4 ml-2" />
+            </Button>
+          </Link>
+        )}
+      </div>
     </div>
   );
 }
