@@ -132,3 +132,149 @@
     "difficulty": "Beginner"
   }
 ]
+[
+  {
+    "id": "module1",
+    "title": "Introduction to Penetration Testing",
+    "description": "Learn the fundamentals of ethical hacking and penetration testing methodology.",
+    "duration": "45 minutes",
+    "difficulty": "Beginner",
+    "objectives": [
+      "Understand the penetration testing process",
+      "Learn about legal and ethical considerations",
+      "Explore different types of security assessments"
+    ]
+  },
+  {
+    "id": "module2", 
+    "title": "Reconnaissance and Information Gathering",
+    "description": "Master the art of passive and active reconnaissance techniques.",
+    "duration": "60 minutes",
+    "difficulty": "Beginner",
+    "objectives": [
+      "Perform passive reconnaissance",
+      "Use OSINT tools effectively",
+      "Conduct active information gathering"
+    ]
+  },
+  {
+    "id": "module3",
+    "title": "Network Scanning and Enumeration", 
+    "description": "Learn to identify live hosts, open ports, and running services.",
+    "duration": "75 minutes",
+    "difficulty": "Intermediate",
+    "objectives": [
+      "Perform network discovery",
+      "Enumerate services and versions",
+      "Analyze scan results effectively"
+    ]
+  },
+  {
+    "id": "module4",
+    "title": "Vulnerability Assessment",
+    "description": "Identify and classify security vulnerabilities in target systems.",
+    "duration": "90 minutes", 
+    "difficulty": "Intermediate",
+    "objectives": [
+      "Use automated vulnerability scanners",
+      "Perform manual vulnerability assessment",
+      "Prioritize findings by risk"
+    ]
+  },
+  {
+    "id": "module5",
+    "title": "Web Application Security Testing",
+    "description": "Explore common web application vulnerabilities and testing methods.",
+    "duration": "120 minutes",
+    "difficulty": "Advanced",
+    "objectives": [
+      "Test for OWASP Top 10 vulnerabilities", 
+      "Perform manual web app testing",
+      "Use web application testing tools"
+    ]
+  },
+  {
+    "id": "module6",
+    "title": "Network Penetration Testing",
+    "description": "Learn to exploit network services and gain unauthorized access.",
+    "duration": "135 minutes",
+    "difficulty": "Advanced", 
+    "objectives": [
+      "Exploit network services",
+      "Perform lateral movement",
+      "Maintain persistent access"
+    ]
+  },
+  {
+    "id": "module7",
+    "title": "Wireless Security Testing",
+    "description": "Assess the security of wireless networks and protocols.",
+    "duration": "105 minutes",
+    "difficulty": "Intermediate",
+    "objectives": [
+      "Audit wireless network security",
+      "Crack wireless encryption",
+      "Test wireless client security"
+    ]
+  },
+  {
+    "id": "module8",
+    "title": "Social Engineering",
+    "description": "Understand human-based attack vectors and psychological manipulation.",
+    "duration": "60 minutes", 
+    "difficulty": "Beginner",
+    "objectives": [
+      "Recognize social engineering techniques",
+      "Conduct phishing simulations", 
+      "Implement security awareness training"
+    ]
+  },
+  {
+    "id": "module9",
+    "title": "Post-Exploitation Techniques",
+    "description": "Learn advanced techniques for maintaining access and data exfiltration.",
+    "duration": "150 minutes",
+    "difficulty": "Expert",
+    "objectives": [
+      "Establish persistence mechanisms",
+      "Perform privilege escalation",
+      "Conduct data exfiltration"
+    ]
+  },
+  {
+    "id": "module10",
+    "title": "Reporting and Documentation",
+    "description": "Master the art of professional penetration testing reports.",
+    "duration": "90 minutes",
+    "difficulty": "Intermediate", 
+    "objectives": [
+      "Write executive summaries",
+      "Document technical findings",
+      "Provide actionable remediation steps"
+    ]
+  },
+  {
+    "id": "module11",
+    "title": "Legal and Ethical Considerations",
+    "description": "Navigate the legal landscape of ethical hacking and compliance.",
+    "duration": "75 minutes",
+    "difficulty": "Beginner",
+    "objectives": [
+      "Understand legal frameworks",
+      "Create proper documentation",
+      "Maintain ethical standards"
+    ]
+  },
+  {
+    "id": "module12",
+    "title": "Advanced Exploitation Techniques", 
+    "description": "Explore cutting-edge attack vectors and defensive measures.",
+    "duration": "180 minutes",
+    "difficulty": "Expert",
+    "objectives": [
+      "Develop custom exploits",
+      "Bypass modern security controls",
+      "Research zero-day vulnerabilities"
+    ]
+  }
+]

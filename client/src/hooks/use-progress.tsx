@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 interface ProgressContextType {
@@ -6,40 +7,45 @@ interface ProgressContextType {
   isModuleCompleted: (moduleId: string) => boolean;
   getProgressPercentage: () => number;
   getCompletedCount: () => number;
+  getTotalProgress: () => number;
+  getModuleProgress: (moduleId: string) => number;
+  markModuleComplete: (moduleId: string) => void;
 }
 
 const ProgressContext = createContext<ProgressContextType | undefined>(undefined);
 
-interface ProgressProviderProps {
-  children: ReactNode;
-}
+const TOTAL_MODULES = 12;
 
-export function ProgressProvider({ children }: ProgressProviderProps) {
+export function ProgressProvider({ children }: { children: ReactNode }) {
   const [completedModules, setCompletedModules] = useState<string[]>([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem("pentest-progress");
+    const saved = localStorage.getItem("completed-modules");
     if (saved) {
       try {
         setCompletedModules(JSON.parse(saved));
-      } catch {
-        setCompletedModules([]);
+      } catch (error) {
+        console.error("Failed to parse completed modules from localStorage:", error);
       }
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("pentest-progress", JSON.stringify(completedModules));
+    localStorage.setItem("completed-modules", JSON.stringify(completedModules));
   }, [completedModules]);
 
   const toggleModuleComplete = (moduleId: string) => {
-    setCompletedModules(prev => {
-      if (prev.includes(moduleId)) {
-        return prev.filter(id => id !== moduleId);
-      } else {
-        return [...prev, moduleId];
-      }
-    });
+    setCompletedModules(prev => 
+      prev.includes(moduleId)
+        ? prev.filter(id => id !== moduleId)
+        : [...prev, moduleId]
+    );
+  };
+
+  const markModuleComplete = (moduleId: string) => {
+    setCompletedModules(prev => 
+      prev.includes(moduleId) ? prev : [...prev, moduleId]
+    );
   };
 
   const isModuleCompleted = (moduleId: string) => {
@@ -47,11 +53,19 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
   };
 
   const getProgressPercentage = () => {
-    return Math.round((completedModules.length / 12) * 100);
+    return Math.round((completedModules.length / TOTAL_MODULES) * 100);
   };
 
   const getCompletedCount = () => {
     return completedModules.length;
+  };
+
+  const getTotalProgress = () => {
+    return getProgressPercentage();
+  };
+
+  const getModuleProgress = (moduleId: string) => {
+    return isModuleCompleted(moduleId) ? 100 : 0;
   };
 
   return (
@@ -60,7 +74,10 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
       toggleModuleComplete,
       isModuleCompleted,
       getProgressPercentage,
-      getCompletedCount
+      getCompletedCount,
+      getTotalProgress,
+      getModuleProgress,
+      markModuleComplete,
     }}>
       {children}
     </ProgressContext.Provider>
