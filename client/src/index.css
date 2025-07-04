@@ -166,8 +166,9 @@
   margin: 1.5rem 0;
 }
 
-.module-content .bg-slate-800 {
-  @apply bg-slate-800 border border-slate-700 rounded-lg p-4;
+.module-content .info-box {
+  @apply border border-slate-700 rounded-lg p-4;
+  background-color: #1e293b;
   margin-bottom: 1rem;
 }
 
