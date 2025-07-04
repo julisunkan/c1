@@ -101,7 +101,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                   
                   return (
                     <Link key={module.id} href={`/module/${module.id}`}>
-                      <a className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors group ${
+                      <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors group cursor-pointer ${
                         location === `/module/${module.id}`
                           ? 'bg-slate-800 text-[var(--cyber-green)]'
                           : 'text-slate-300 hover:text-[var(--cyber-green)] hover:bg-slate-800'
@@ -118,7 +118,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                           )}
                         </div>
                         <span className="text-sm truncate">{module.title}</span>
-                      </a>
+                      </div>
                     </Link>
                   );
                 })}
