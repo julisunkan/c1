@@ -1,2 +1,18 @@
 
-data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwMCIgaGVpZ2h0PSI2MDAiIHZpZXdCb3g9IjAgMCAxMDAwIDYwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjMUUyOTNCIi8+CjxwYXRoIGQ9Ik01MDAgMTAwTDQwMCAxNTBWMzUwQzQwMCA0MjAgNDUwIDQ4MCA1MDAgNTAwQzU1MCA0ODAgNjAwIDQyMCA2MDAgMzUwVjE1MEw1MDAgMTAwWiIgZmlsbD0iIzBGRjREQyIgc3Ryb2tlPSIjMDBCQ0Q0IiBzdHJva2Utd2lkdGg9IjMiLz4KPHN2Zz4K
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shield" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <path d="M200 50 L170 80 L200 250 L230 80 Z" fill="url(#shield)" stroke="#00ff88" stroke-width="3"/>
+  <circle cx="200" cy="120" r="25" fill="none" stroke="#00ff88" stroke-width="4"/>
+  <path d="M190 120 L198 128 L210 110" stroke="#00ff88" stroke-width="4" fill="none"/>
+  <text x="200" y="280" text-anchor="middle" fill="#00ff88" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Cybersecurity Shield</text>
+</svg>
