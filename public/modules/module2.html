@@ -1,541 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Security Basics</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: #0f172a;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1, h2, h3 {
+            color: #00ff88;
+        }
+        h1 {
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 0.5rem;
+        }
+        .highlight {
+            background: #1e293b;
+            padding: 1rem;
+            border-left: 4px solid #00ff88;
+            margin: 1rem 0;
+        }
+        .code {
+            background: #334155;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+        }
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        ul, ol {
+            padding-left: 2rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        .warning {
+            background: #451a03;
+            border: 1px solid #ea580c;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        .info {
+            background: #0c4a6e;
+            border: 1px solid #0284c7;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #475569;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background: #1e293b;
+            color: #00ff88;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Module 2: Network Security Basics</h1>
 
-<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
-  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 2: Network Security Basics</h1>
-  
-  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-    Network security forms the backbone of cybersecurity defense strategies. This comprehensive module explores network protocols, security architectures, and fundamental protection mechanisms that safeguard data in transit and secure network infrastructure.
-  </p>
+        <div class="image-container">
+            <img src="/images/network-security.jpg" alt="Network Security Infrastructure" />
+        </div>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Network Infrastructure" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Modern network infrastructure requires multiple layers of security</p>
-  </div>
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand fundamental network security concepts</li>
+            <li>Learn about network protocols and their security implications</li>
+            <li>Explore network security devices and their functions</li>
+            <li>Identify common network vulnerabilities and attacks</li>
+            <li>Understand network segmentation and access controls</li>
+        </ul>
 
-  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <ul class="text-slate-300 space-y-2">
-      <li>• Master network security fundamentals and protocols</li>
-      <li>• Understand network architectures and security zones</li>
-      <li>• Learn about firewalls, IDS/IPS, and network monitoring</li>
-      <li>• Explore VPN technologies and secure communications</li>
-      <li>• Practice network vulnerability assessment techniques</li>
-      <li>• Implement network access control mechanisms</li>
-    </ul>
-  </div>
+        <h2>Network Fundamentals</h2>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: Network Protocol Security</h3>
-  
-  <p class="text-slate-300 mb-4">
-    Understanding network protocols is fundamental to securing network communications. Each protocol has inherent security characteristics and vulnerabilities that must be understood and addressed.
-  </p>
+        <h3>OSI Model and Security</h3>
+        <p>The OSI (Open Systems Interconnection) model provides a framework for understanding network communications and security at each layer:</p>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Network Protocols" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Network protocols operate at different layers with varying security implications</p>
-  </div>
+        <table>
+            <tr>
+                <th>Layer</th>
+                <th>Name</th>
+                <th>Security Concerns</th>
+                <th>Protections</th>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Application</td>
+                <td>Malware, Data breaches</td>
+                <td>Application firewalls, Input validation</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Presentation</td>
+                <td>Encryption weaknesses</td>
+                <td>Strong encryption, SSL/TLS</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Session</td>
+                <td>Session hijacking</td>
+                <td>Session management, Authentication</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Transport</td>
+                <td>Port scanning, DoS</td>
+                <td>Firewalls, Rate limiting</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Network</td>
+                <td>IP spoofing, Routing attacks</td>
+                <td>Routers, Network ACLs</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Data Link</td>
+                <td>MAC flooding, VLAN hopping</td>
+                <td>Switch security, VLANs</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Physical</td>
+                <td>Cable tapping, Physical access</td>
+                <td>Physical security, Cable protection</td>
+            </tr>
+        </table>
 
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">OSI Model and Security</h4>
+        <h3>TCP/IP Protocol Suite</h3>
+        <p>Understanding the security implications of core protocols:</p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-    <div class="space-y-2">
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
-        <h5 class="font-semibold text-red-400 mb-1">Layer 7 - Application</h5>
-        <p class="text-slate-300 text-sm">HTTP/HTTPS, FTP, SMTP, DNS</p>
-        <p class="text-slate-400 text-xs">Security: Application firewalls, content filtering</p>
-      </div>
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
-        <h5 class="font-semibold text-orange-400 mb-1">Layer 6 - Presentation</h5>
-        <p class="text-slate-300 text-sm">SSL/TLS, encryption, compression</p>
-        <p class="text-slate-400 text-xs">Security: Encryption protocols, certificate management</p>
-      </div>
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
-        <h5 class="font-semibold text-yellow-400 mb-1">Layer 5 - Session</h5>
-        <p class="text-slate-300 text-sm">Session management, authentication</p>
-        <p class="text-slate-400 text-xs">Security: Session tokens, authentication protocols</p>
-      </div>
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
-        <h5 class="font-semibold text-green-400 mb-1">Layer 4 - Transport</h5>
-        <p class="text-slate-300 text-sm">TCP, UDP, port numbers</p>
-        <p class="text-slate-400 text-xs">Security: Port filtering, stateful inspection</p>
-      </div>
+        <h4>Internet Protocol (IP)</h4>
+        <ul>
+            <li><strong>IPv4:</strong> 32-bit addressing, limited security features</li>
+            <li><strong>IPv6:</strong> 128-bit addressing, built-in IPSec support</li>
+            <li><strong>Vulnerabilities:</strong> IP spoofing, fragmentation attacks</li>
+        </ul>
+
+        <h4>Transmission Control Protocol (TCP)</h4>
+        <ul>
+            <li>Connection-oriented, reliable delivery</li>
+            <li>Three-way handshake process</li>
+            <li><strong>Vulnerabilities:</strong> SYN flooding, sequence number attacks</li>
+        </ul>
+
+        <h4>User Datagram Protocol (UDP)</h4>
+        <ul>
+            <li>Connectionless, faster but unreliable</li>
+            <li>No built-in error correction</li>
+            <li><strong>Vulnerabilities:</strong> UDP flooding, amplification attacks</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>Security Principle:</strong> Defense in depth requires implementing security controls 
+            at multiple layers of the network stack.
+        </div>
+
+        <h2>Network Security Devices</h2>
+
+        <h3>Firewalls</h3>
+        <p>Network security devices that monitor and control incoming and outgoing network traffic based on predetermined security rules.</p>
+
+        <h4>Types of Firewalls</h4>
+        <ul>
+            <li><strong>Packet Filtering:</strong> Examines packets and allows/blocks based on rules</li>
+            <li><strong>Stateful Inspection:</strong> Tracks connection states and context</li>
+            <li><strong>Application Layer:</strong> Deep packet inspection at application layer</li>
+            <li><strong>Next-Generation:</strong> Combines multiple security functions</li>
+        </ul>
+
+        <h4>Firewall Rules</h4>
+        <p>Example firewall rule structure:</p>
+        <div class="code">
+            Action: ALLOW/DENY<br>
+            Source: 192.168.1.0/24<br>
+            Destination: 10.0.0.5<br>
+            Protocol: TCP<br>
+            Port: 80
+        </div>
+
+        <h3>Intrusion Detection Systems (IDS)</h3>
+        <p>Monitor network traffic for suspicious activity and known threats.</p>
+
+        <h4>Types of IDS</h4>
+        <ul>
+            <li><strong>Network-based (NIDS):</strong> Monitor network traffic</li>
+            <li><strong>Host-based (HIDS):</strong> Monitor individual systems</li>
+            <li><strong>Signature-based:</strong> Detect known attack patterns</li>
+            <li><strong>Anomaly-based:</strong> Detect deviations from normal behavior</li>
+        </ul>
+
+        <h3>Intrusion Prevention Systems (IPS)</h3>
+        <p>Active security devices that can automatically block detected threats.</p>
+        <ul>
+            <li>Real-time threat blocking</li>
+            <li>Integration with firewalls</li>
+            <li>Automated response capabilities</li>
+        </ul>
+
+        <h2>Network Vulnerabilities and Attacks</h2>
+
+        <h3>Common Network Attacks</h3>
+
+        <h4>Denial of Service (DoS) Attacks</h4>
+        <ul>
+            <li><strong>SYN Flood:</strong> Overwhelm target with connection requests</li>
+            <li><strong>Ping Flood:</strong> Overwhelm with ICMP packets</li>
+            <li><strong>UDP Flood:</strong> Flood target with UDP packets</li>
+            <li><strong>DDoS:</strong> Distributed attack from multiple sources</li>
+        </ul>
+
+        <h4>Man-in-the-Middle (MITM) Attacks</h4>
+        <ul>
+            <li>ARP spoofing</li>
+            <li>DNS spoofing</li>
+            <li>SSL stripping</li>
+            <li>Rogue access points</li>
+        </ul>
+
+        <h4>Network Reconnaissance</h4>
+        <ul>
+            <li><strong>Port Scanning:</strong> Discovering open ports and services</li>
+            <li><strong>Network Mapping:</strong> Identifying network topology</li>
+            <li><strong>OS Fingerprinting:</strong> Determining operating systems</li>
+            <li><strong>Service Enumeration:</strong> Identifying running services</li>
+        </ul>
+
+        <div class="warning">
+            <strong>Legal Warning:</strong> Port scanning and network reconnaissance activities should only 
+            be performed on networks you own or have explicit permission to test.
+        </div>
+
+        <h2>Network Segmentation</h2>
+
+        <h3>Virtual LANs (VLANs)</h3>
+        <p>Logical segmentation of networks to improve security and performance:</p>
+        <ul>
+            <li>Isolate sensitive systems</li>
+            <li>Reduce broadcast domains</li>
+            <li>Implement access controls</li>
+            <li>Contain security breaches</li>
+        </ul>
+
+        <h3>Demilitarized Zone (DMZ)</h3>
+        <p>A perimeter network that sits between internal networks and external networks:</p>
+        <ul>
+            <li>Hosts public-facing services</li>
+            <li>Provides buffer zone</li>
+            <li>Reduces internal network exposure</li>
+            <li>Enables controlled access</li>
+        </ul>
+
+        <h3>Network Access Control (NAC)</h3>
+        <p>Security approach that enforces policy on devices seeking network access:</p>
+        <ul>
+            <li>Device authentication</li>
+            <li>Compliance checking</li>
+            <li>Policy enforcement</li>
+            <li>Quarantine capabilities</li>
+        </ul>
+
+        <h2>Secure Network Protocols</h2>
+
+        <h3>SSL/TLS</h3>
+        <p>Cryptographic protocols that provide secure communication over networks:</p>
+        <ul>
+            <li><strong>SSL 3.0:</strong> Deprecated due to vulnerabilities</li>
+            <li><strong>TLS 1.2:</strong> Widely supported, secure</li>
+            <li><strong>TLS 1.3:</strong> Latest version, improved security and performance</li>
+        </ul>
+
+        <h3>IPSec</h3>
+        <p>Protocol suite for securing Internet Protocol communications:</p>
+        <ul>
+            <li><strong>Authentication Header (AH):</strong> Provides authentication</li>
+            <li><strong>Encapsulating Security Payload (ESP):</strong> Provides encryption</li>
+            <li><strong>Tunnel Mode:</strong> Protects entire IP packet</li>
+            <li><strong>Transport Mode:</strong> Protects payload only</li>
+        </ul>
+
+        <h3>SSH (Secure Shell)</h3>
+        <p>Protocol for secure remote access and command execution:</p>
+        <ul>
+            <li>Encrypted communication</li>
+            <li>Strong authentication</li>
+            <li>Port forwarding capabilities</li>
+            <li>File transfer support (SCP/SFTP)</li>
+        </ul>
+
+        <div class="info">
+            <strong>Best Practice:</strong> Always use the latest versions of secure protocols and 
+            disable legacy protocols with known vulnerabilities.
+        </div>
+
+        <h2>Wireless Network Security</h2>
+
+        <h3>Wi-Fi Security Protocols</h3>
+        <ul>
+            <li><strong>WEP:</strong> Deprecated, easily broken</li>
+            <li><strong>WPA:</strong> Improved security over WEP</li>
+            <li><strong>WPA2:</strong> Current standard, uses AES encryption</li>
+            <li><strong>WPA3:</strong> Latest standard, enhanced security features</li>
+        </ul>
+
+        <h3>Wireless Threats</h3>
+        <ul>
+            <li>Rogue access points</li>
+            <li>Evil twin attacks</li>
+            <li>Packet sniffing</li>
+            <li>Deauthentication attacks</li>
+        </ul>
+
+        <h2>Network Monitoring and Analysis</h2>
+
+        <h3>Network Monitoring Tools</h3>
+        <ul>
+            <li><strong>Wireshark:</strong> Network protocol analyzer</li>
+            <li><strong>tcpdump:</strong> Command-line packet analyzer</li>
+            <li><strong>Nmap:</strong> Network discovery and security auditing</li>
+            <li><strong>Netstat:</strong> Display network connections and statistics</li>
+        </ul>
+
+        <h3>Log Analysis</h3>
+        <p>Key logs to monitor for security events:</p>
+        <ul>
+            <li>Firewall logs</li>
+            <li>IDS/IPS alerts</li>
+            <li>Router and switch logs</li>
+            <li>DHCP server logs</li>
+            <li>DNS server logs</li>
+        </ul>
+
+        <h2>Network Security Best Practices</h2>
+        <ol>
+            <li><strong>Implement Defense in Depth:</strong> Multiple layers of security controls</li>
+            <li><strong>Regular Security Assessments:</strong> Vulnerability scans and penetration testing</li>
+            <li><strong>Keep Systems Updated:</strong> Apply security patches promptly</li>
+            <li><strong>Use Strong Authentication:</strong> Multi-factor authentication where possible</li>
+            <li><strong>Monitor Network Traffic:</strong> Continuous monitoring for anomalies</li>
+            <li><strong>Segment Networks:</strong> Isolate critical systems and data</li>
+            <li><strong>Encrypt Sensitive Data:</strong> Both in transit and at rest</li>
+            <li><strong>Incident Response Plan:</strong> Prepare for security incidents</li>
+        </ol>
+
+        <h2>Conclusion</h2>
+        <p>
+            Network security is fundamental to protecting organizational assets and maintaining business continuity. 
+            Understanding network protocols, security devices, and common threats enables you to design and 
+            implement effective network security architectures.
+        </p>
+
+        <div class="highlight">
+            <strong>Key Takeaway:</strong> Network security requires a comprehensive approach combining technology, 
+            processes, and people to effectively protect against evolving threats.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore Linux fundamentals essential for penetration testing, including command-line tools and system administration concepts.</p>
     </div>
-    <div class="space-y-2">
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
-        <h5 class="font-semibold text-blue-400 mb-1">Layer 3 - Network</h5>
-        <p class="text-slate-300 text-sm">IP, ICMP, routing protocols</p>
-        <p class="text-slate-400 text-xs">Security: Packet filtering, routing security</p>
-      </div>
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
-        <h5 class="font-semibold text-indigo-400 mb-1">Layer 2 - Data Link</h5>
-        <p class="text-slate-300 text-sm">Ethernet, switches, VLANs</p>
-        <p class="text-slate-400 text-xs">Security: MAC filtering, VLAN segmentation</p>
-      </div>
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
-        <h5 class="font-semibold text-purple-400 mb-1">Layer 1 - Physical</h5>
-        <p class="text-slate-300 text-sm">Cables, wireless, physical connections</p>
-        <p class="text-slate-400 text-xs">Security: Physical access control, emanation protection</p>
-      </div>
-    </div>
-  </div>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">Common Protocol Vulnerabilities</h4>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-red-400 mb-2">HTTP/HTTPS Vulnerabilities</h5>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <p class="text-slate-300 text-sm mb-2">HTTP Weaknesses:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Cleartext transmission</li>
-            <li>• No authentication</li>
-            <li>• Session hijacking</li>
-            <li>• Man-in-the-middle attacks</li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-slate-300 text-sm mb-2">HTTPS Considerations:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Certificate validation</li>
-            <li>• TLS version management</li>
-            <li>• Cipher suite selection</li>
-            <li>• Perfect forward secrecy</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-orange-400 mb-2">DNS Security Issues</h5>
-      <p class="text-slate-300 text-sm mb-2">Domain Name System vulnerabilities and mitigation strategies:</p>
-      <ul class="text-slate-400 text-sm space-y-1 ml-4">
-        <li>• DNS poisoning and cache poisoning attacks</li>
-        <li>• DNS tunneling for data exfiltration</li>
-        <li>• Domain generation algorithms (DGA)</li>
-        <li>• DNSSEC implementation for integrity</li>
-        <li>• DNS over HTTPS (DoH) and DNS over TLS (DoT)</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: Network Architecture and Segmentation</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Network Architecture" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Proper network segmentation is crucial for containing security breaches</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Network architecture design directly impacts security posture. Proper segmentation and zone-based security create multiple layers of defense and limit the impact of security breaches.
-  </p>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">Security Zones and DMZ</h4>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <div class="space-y-4">
-      <div class="border-l-4 border-green-500 pl-4">
-        <h5 class="font-semibold text-green-400 mb-2">Internal/Trusted Zone</h5>
-        <p class="text-slate-300 text-sm">Contains internal corporate resources and systems with high trust levels. Requires authenticated access and internal security controls.</p>
-      </div>
-      <div class="border-l-4 border-yellow-500 pl-4">
-        <h5 class="font-semibold text-yellow-400 mb-2">DMZ (Demilitarized Zone)</h5>
-        <p class="text-slate-300 text-sm">Buffer zone between internal and external networks. Hosts public-facing services like web servers, email servers, and DNS servers.</p>
-      </div>
-      <div class="border-l-4 border-red-500 pl-4">
-        <h5 class="font-semibold text-red-400 mb-2">External/Untrusted Zone</h5>
-        <p class="text-slate-300 text-sm">Internet and other external networks. Considered hostile and requires strict access controls and monitoring.</p>
-      </div>
-    </div>
-  </div>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">VLAN Segmentation</h4>
-
-  <p class="text-slate-300 mb-4">
-    Virtual Local Area Networks (VLANs) provide logical segmentation within physical network infrastructure, enabling micro-segmentation and improved security posture.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-cyan-400 mb-2">VLAN Benefits</h5>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Broadcast domain isolation</li>
-        <li>• Logical network segmentation</li>
-        <li>• Improved performance</li>
-        <li>• Enhanced security boundaries</li>
-        <li>• Simplified network management</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-purple-400 mb-2">VLAN Security Considerations</h5>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• VLAN hopping attacks</li>
-        <li>• Switch spoofing vulnerabilities</li>
-        <li>• Inter-VLAN routing security</li>
-        <li>• VLAN access control lists</li>
-        <li>• Private VLAN implementation</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Firewall Technologies</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Firewall Protection" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Firewalls form the first line of defense in network security</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Firewalls are network security systems that monitor and control incoming and outgoing network traffic based on predetermined security rules. Understanding different firewall types and their capabilities is essential for network security.
-  </p>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">Firewall Types and Evolution</h4>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-blue-400 mb-2">Packet Filtering Firewalls</h5>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Characteristics:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Network layer operation (Layer 3)</li>
-            <li>• Fast processing speed</li>
-            <li>• Basic packet inspection</li>
-            <li>• Stateless operation</li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Limitations:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• No application awareness</li>
-            <li>• Vulnerable to spoofing</li>
-            <li>• Limited logging capabilities</li>
-            <li>• No connection tracking</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-green-400 mb-2">Stateful Inspection Firewalls</h5>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Advanced Features:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Connection state tracking</li>
-            <li>• Dynamic rule creation</li>
-            <li>• Session awareness</li>
-            <li>• Improved security posture</li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Use Cases:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Enterprise perimeter defense</li>
-            <li>• Internal network segmentation</li>
-            <li>• VPN gateway protection</li>
-            <li>• DMZ traffic control</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-purple-400 mb-2">Next-Generation Firewalls (NGFW)</h5>
-      <p class="text-slate-300 text-sm mb-2">Modern firewalls with advanced capabilities:</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div>
-          <p class="text-slate-300 text-sm mb-1">Deep Packet Inspection:</p>
-          <ul class="text-slate-400 text-xs space-y-1 ml-4">
-            <li>• Application identification</li>
-            <li>• Content analysis</li>
-            <li>• Protocol anomaly detection</li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-slate-300 text-sm mb-1">Threat Intelligence:</p>
-          <ul class="text-slate-400 text-xs space-y-1 ml-4">
-            <li>• Real-time threat feeds</li>
-            <li>• Reputation-based filtering</li>
-            <li>• Behavioral analysis</li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-slate-300 text-sm mb-1">Advanced Features:</p>
-          <ul class="text-slate-400 text-xs space-y-1 ml-4">
-            <li>• User identity integration</li>
-            <li>• SSL/TLS inspection</li>
-            <li>• Sandboxing capabilities</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Intrusion Detection and Prevention Systems</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Network Monitoring" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Continuous monitoring is essential for detecting and preventing intrusions</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Intrusion Detection Systems (IDS) and Intrusion Prevention Systems (IPS) provide critical capabilities for detecting, alerting on, and preventing malicious network activity.
-  </p>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">IDS vs IPS Comparison</h4>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-blue-400 mb-2">Intrusion Detection System (IDS)</h5>
-      <div class="space-y-3">
-        <div>
-          <p class="text-slate-300 text-sm mb-1">Deployment:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Out-of-band monitoring</li>
-            <li>• Passive network taps</li>
-            <li>• SPAN port connections</li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-slate-300 text-sm mb-1">Capabilities:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Real-time monitoring</li>
-            <li>• Alert generation</li>
-            <li>• Forensic analysis</li>
-            <li>• No impact on network performance</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-green-400 mb-2">Intrusion Prevention System (IPS)</h5>
-      <div class="space-y-3">
-        <div>
-          <p class="text-slate-300 text-sm mb-1">Deployment:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Inline network placement</li>
-            <li>• Active traffic inspection</li>
-            <li>• Bridge or router mode</li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-slate-300 text-sm mb-1">Capabilities:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Active threat blocking</li>
-            <li>• Real-time prevention</li>
-            <li>• Automatic response</li>
-            <li>• Potential network latency</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">Detection Methodologies</h4>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-yellow-400 mb-2">Signature-Based Detection</h5>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Advantages:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• High accuracy for known threats</li>
-            <li>• Low false positive rates</li>
-            <li>• Fast processing speed</li>
-            <li>• Clear threat identification</li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Limitations:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Cannot detect unknown threats</li>
-            <li>• Requires frequent updates</li>
-            <li>• Vulnerable to evasion techniques</li>
-            <li>• Limited against zero-day attacks</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-orange-400 mb-2">Anomaly-Based Detection</h5>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Techniques:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Statistical analysis</li>
-            <li>• Machine learning algorithms</li>
-            <li>• Behavioral modeling</li>
-            <li>• Traffic pattern analysis</li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Benefits:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Detects unknown threats</li>
-            <li>• Adapts to new attack patterns</li>
-            <li>• Identifies insider threats</li>
-            <li>• Zero-day attack detection</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: Virtual Private Networks (VPNs)</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="VPN Security" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">VPNs provide secure connectivity over untrusted networks</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Virtual Private Networks create secure, encrypted connections over public networks, enabling remote access and site-to-site connectivity while maintaining confidentiality and integrity.
-  </p>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">VPN Technologies and Protocols</h4>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-blue-400 mb-2">IPSec (Internet Protocol Security)</h5>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Components:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Authentication Header (AH)</li>
-            <li>• Encapsulating Security Payload (ESP)</li>
-            <li>• Internet Key Exchange (IKE)</li>
-            <li>• Security Associations (SA)</li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Modes:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Transport mode (host-to-host)</li>
-            <li>• Tunnel mode (network-to-network)</li>
-            <li>• Site-to-site connections</li>
-            <li>• Remote access VPNs</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-green-400 mb-2">SSL/TLS VPN</h5>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Advantages:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Browser-based access</li>
-            <li>• No client software required</li>
-            <li>• Application-layer security</li>
-            <li>• Granular access control</li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-slate-300 text-sm mb-2">Deployment Types:</p>
-          <ul class="text-slate-400 text-sm space-y-1 ml-4">
-            <li>• Portal-based access</li>
-            <li>• Tunnel-based access</li>
-            <li>• Application proxying</li>
-            <li>• Hybrid implementations</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Network Access Control (NAC)</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Access Control" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Network access control ensures only authorized devices connect to the network</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Network Access Control solutions enforce security policies on devices connecting to network resources, ensuring compliance and reducing security risks from unauthorized or compromised devices.
-  </p>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">NAC Implementation Models</h4>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-cyan-400 mb-2">Pre-Admission Control</h5>
-      <ul class="text-slate-300 text-sm space-y-2">
-        <li>• Device authentication and authorization</li>
-        <li>• Security posture assessment</li>
-        <li>• Compliance verification</li>
-        <li>• Certificate-based authentication</li>
-        <li>• 802.1X implementation</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-purple-400 mb-2">Post-Admission Control</h5>
-      <ul class="text-slate-300 text-sm space-y-2">
-        <li>• Continuous monitoring</li>
-        <li>• Behavioral analysis</li>
-        <li>• Policy enforcement</li>
-        <li>• Dynamic quarantine</li>
-        <li>• Incident response automation</li>
-      </ul>
-    </div>
-  </div>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">802.1X Authentication</h4>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <div class="space-y-4">
-      <div class="border-l-4 border-blue-500 pl-4">
-        <h5 class="font-semibold text-blue-400 mb-1">Supplicant</h5>
-        <p class="text-slate-300 text-sm">The client device requesting network access. Must support 802.1X authentication protocols.</p>
-      </div>
-      <div class="border-l-4 border-green-500 pl-4">
-        <h5 class="font-semibold text-green-400 mb-1">Authenticator</h5>
-        <p class="text-slate-300 text-sm">Network switch or wireless access point that controls access. Forwards authentication requests to the authentication server.</p>
-      </div>
-      <div class="border-l-4 border-purple-500 pl-4">
-        <h5 class="font-semibold text-purple-400 mb-1">Authentication Server</h5>
-        <p class="text-slate-300 text-sm">RADIUS server that validates credentials and determines access permissions. Maintains user and device databases.</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Summary and Practical Applications</h3>
-
-  <p class="text-slate-300 mb-4">
-    Network security forms the foundation of organizational cybersecurity. Understanding protocols, architectures, and security technologies enables the design and implementation of robust network defense strategies.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="font-semibold text-[var(--cyber-green)] mb-3">Implementation Checklist</h4>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <ul class="text-slate-300 space-y-2">
-        <li>• Implement network segmentation</li>
-        <li>• Deploy defense-in-depth</li>
-        <li>• Configure stateful firewalls</li>
-        <li>• Enable IDS/IPS monitoring</li>
-        <li>• Establish secure remote access</li>
-        <li>• Implement network access control</li>
-      </ul>
-      <ul class="text-slate-300 space-y-2">
-        <li>• Monitor network traffic patterns</li>
-        <li>• Maintain security policies</li>
-        <li>• Regular security assessments</li>
-        <li>• Incident response procedures</li>
-        <li>• Continuous security monitoring</li>
-        <li>• Staff training and awareness</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="bg-gradient-to-r from-slate-800 to-slate-700 border border-slate-600 rounded-lg p-6">
-    <h4 class="font-semibold text-[var(--cyber-green)] mb-3">Prepare for Module 3</h4>
-    <p class="text-slate-300 mb-3">
-      The next module focuses on password security and authentication mechanisms, exploring multi-factor authentication, identity management, and access control systems.
-    </p>
-    <p class="text-slate-400 text-sm">
-      Recommended preparation: Review authentication concepts, password policies, and identity management principles.
-    </p>
-  </div>
-</div>
+</body>
+</html>

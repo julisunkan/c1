@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useEffect, useState } from 'react';
 
 interface ProgressContextType {
@@ -47,8 +46,8 @@ export const ProgressProvider = ({ children }: { children: React.ReactNode }) =>
   };
 
   const getProgressPercentage = () => {
-    const totalModules = 30;
-    return (completedModules.length / totalModules) * 100;
+    const totalModules = 30; // Updated to match the actual module count in modules.json
+    return Math.round((completedModules.length / totalModules) * 100);
   };
 
   const getCompletedCount = () => {

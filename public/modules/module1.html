@@ -1,319 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Cybersecurity</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: #0f172a;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1, h2, h3 {
+            color: #00ff88;
+        }
+        h1 {
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 0.5rem;
+        }
+        .highlight {
+            background: #1e293b;
+            padding: 1rem;
+            border-left: 4px solid #00ff88;
+            margin: 1rem 0;
+        }
+        .code {
+            background: #334155;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+        }
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        ul, ol {
+            padding-left: 2rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        .warning {
+            background: #451a03;
+            border: 1px solid #ea580c;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        .info {
+            background: #0c4a6e;
+            border: 1px solid #0284c7;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Module 1: Introduction to Cybersecurity</h1>
 
-<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
-  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 1: Introduction to Cybersecurity</h1>
-  
-  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-    Welcome to the comprehensive world of cybersecurity! This foundational module will guide you through the essential concepts, principles, and practices that form the backbone of information security in today's digital landscape.
-  </p>
+        <div class="image-container">
+            <img src="/images/cybersecurity-shield.jpg" alt="Cybersecurity Shield" />
+        </div>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Cybersecurity Shield" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Modern cybersecurity requires a multi-layered approach to protect digital assets</p>
-  </div>
-
-  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <ul class="text-slate-300 space-y-2">
-      <li>• Understand the fundamental principles of cybersecurity</li>
-      <li>• Learn about the CIA triad (Confidentiality, Integrity, Availability)</li>
-      <li>• Explore the current threat landscape and attack vectors</li>
-      <li>• Master basic security terminology and concepts</li>
-      <li>• Understand risk assessment and management principles</li>
-      <li>• Learn about compliance frameworks and standards</li>
-    </ul>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: The Foundation of Cybersecurity</h3>
-  
-  <p class="text-slate-300 mb-4">
-    Cybersecurity, at its core, is the practice of protecting systems, networks, and programs from digital attacks. These cyberattacks are usually aimed at accessing, changing, or destroying sensitive information; extorting money from users; or interrupting normal business processes.
-  </p>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Network Security" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Network infrastructure forms the backbone of modern cybersecurity</p>
-  </div>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">The CIA Triad</h4>
-  <p class="text-slate-300 mb-4">
-    The CIA triad is a widely-used model that forms the foundation for the development of security systems. It consists of three main components:
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-blue-400 mb-2">Confidentiality</h5>
-      <p class="text-slate-300 text-sm">Ensures that information is accessible only to those authorized to have access.</p>
-    </div>
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-green-400 mb-2">Integrity</h5>
-      <p class="text-slate-300 text-sm">Safeguards the accuracy and completeness of information and processing methods.</p>
-    </div>
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-yellow-400 mb-2">Availability</h5>
-      <p class="text-slate-300 text-sm">Ensures that authorized users have access to information and associated assets when required.</p>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: Understanding the Threat Landscape</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Cyber Threats" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">The modern threat landscape is constantly evolving with new attack vectors</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Today's cybersecurity professionals face an increasingly complex and sophisticated threat landscape. Understanding the various types of threats and threat actors is crucial for developing effective defense strategies.
-  </p>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">Types of Cyber Threats</h4>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-red-400 mb-2">Malware</h5>
-      <p class="text-slate-300 text-sm mb-2">Malicious software designed to damage, disrupt, or gain unauthorized access to computer systems.</p>
-      <ul class="text-slate-400 text-sm space-y-1 ml-4">
-        <li>• Viruses: Self-replicating programs that attach to other files</li>
-        <li>• Worms: Standalone malware that replicates across networks</li>
-        <li>• Trojans: Disguised malicious programs</li>
-        <li>• Ransomware: Encrypts files and demands payment for decryption</li>
-        <li>• Spyware: Secretly monitors and collects user information</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-orange-400 mb-2">Social Engineering</h5>
-      <p class="text-slate-300 text-sm mb-2">Psychological manipulation techniques used to trick people into divulging confidential information.</p>
-      <ul class="text-slate-400 text-sm space-y-1 ml-4">
-        <li>• Phishing: Fraudulent emails or websites</li>
-        <li>• Pretexting: Creating false scenarios to gain trust</li>
-        <li>• Baiting: Offering something enticing to trigger actions</li>
-        <li>• Quid pro quo: Offering services in exchange for information</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-purple-400 mb-2">Advanced Persistent Threats (APTs)</h5>
-      <p class="text-slate-300 text-sm mb-2">Prolonged and targeted cyberattacks where an intruder gains access to a network and remains undetected.</p>
-      <ul class="text-slate-400 text-sm space-y-1 ml-4">
-        <li>• State-sponsored attacks</li>
-        <li>• Long-term data exfiltration</li>
-        <li>• Sophisticated evasion techniques</li>
-        <li>• Multiple attack vectors</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Risk Assessment and Management</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Risk Assessment" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Effective risk assessment is crucial for prioritizing security investments</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Risk management is the process of identifying, assessing, and controlling threats to an organization's capital and earnings. In cybersecurity, this involves understanding the likelihood and impact of various security incidents.
-  </p>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">Risk Assessment Framework</h4>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div>
-        <h5 class="font-semibold text-cyan-400 mb-3">Qualitative Assessment</h5>
-        <ul class="text-slate-300 text-sm space-y-2">
-          <li>• High/Medium/Low ratings</li>
-          <li>• Expert judgment</li>
-          <li>• Scenario-based analysis</li>
-          <li>• Quick and cost-effective</li>
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand the fundamentals of cybersecurity</li>
+            <li>Learn about the current threat landscape</li>
+            <li>Explore the CIA triad and security principles</li>
+            <li>Identify different types of cyber threats</li>
+            <li>Understand the importance of cybersecurity in modern organizations</li>
         </ul>
-      </div>
-      <div>
-        <h5 class="font-semibold text-green-400 mb-3">Quantitative Assessment</h5>
-        <ul class="text-slate-300 text-sm space-y-2">
-          <li>• Numerical probability values</li>
-          <li>• Statistical analysis</li>
-          <li>• Cost-benefit calculations</li>
-          <li>• Data-driven decisions</li>
+
+        <h2>What is Cybersecurity?</h2>
+        <p>
+            Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. 
+            These cyberattacks are usually aimed at accessing, changing, or destroying sensitive information; 
+            extorting money from users; or interrupting normal business processes.
+        </p>
+
+        <div class="highlight">
+            <strong>Key Definition:</strong> Cybersecurity encompasses technologies, processes, and controls designed 
+            to protect systems, networks, programs, devices, and data from cyber attacks.
+        </div>
+
+        <h2>The CIA Triad</h2>
+        <p>The foundation of information security is built on three core principles known as the CIA triad:</p>
+
+        <h3>1. Confidentiality</h3>
+        <p>
+            Ensures that information is accessible only to those authorized to have access. 
+            This involves protecting data from unauthorized disclosure.
+        </p>
+        <ul>
+            <li>Encryption of sensitive data</li>
+            <li>Access controls and authentication</li>
+            <li>Data classification policies</li>
         </ul>
-      </div>
+
+        <h3>2. Integrity</h3>
+        <p>
+            Maintains the accuracy and completeness of data. It ensures that information 
+            has not been altered in an unauthorized manner.
+        </p>
+        <ul>
+            <li>Digital signatures and checksums</li>
+            <li>Version control systems</li>
+            <li>Data validation mechanisms</li>
+        </ul>
+
+        <h3>3. Availability</h3>
+        <p>
+            Ensures that information and resources are available to authorized users when needed. 
+            This includes maintaining system uptime and preventing service disruptions.
+        </p>
+        <ul>
+            <li>Redundancy and failover systems</li>
+            <li>Regular backups</li>
+            <li>Disaster recovery planning</li>
+        </ul>
+
+        <h2>Types of Cyber Threats</h2>
+
+        <h3>Malware</h3>
+        <p>Malicious software designed to damage, disrupt, or gain unauthorized access to computer systems.</p>
+        <ul>
+            <li><strong>Viruses:</strong> Self-replicating programs that attach to other files</li>
+            <li><strong>Worms:</strong> Standalone malware that spreads across networks</li>
+            <li><strong>Trojans:</strong> Disguised malware that appears legitimate</li>
+            <li><strong>Ransomware:</strong> Encrypts files and demands payment for decryption</li>
+        </ul>
+
+        <h3>Social Engineering</h3>
+        <p>Psychological manipulation of people to perform actions or divulge confidential information.</p>
+        <ul>
+            <li>Phishing emails</li>
+            <li>Pretexting (creating false scenarios)</li>
+            <li>Baiting (offering something enticing)</li>
+            <li>Tailgating (following authorized personnel)</li>
+        </ul>
+
+        <h3>Network Attacks</h3>
+        <ul>
+            <li><strong>DDoS:</strong> Distributed Denial of Service attacks</li>
+            <li><strong>Man-in-the-Middle:</strong> Intercepting communications</li>
+            <li><strong>SQL Injection:</strong> Exploiting database vulnerabilities</li>
+            <li><strong>Cross-Site Scripting (XSS):</strong> Injecting malicious scripts</li>
+        </ul>
+
+        <div class="warning">
+            <strong>Important:</strong> Cyber threats are constantly evolving. What works today may not work tomorrow. 
+            Staying informed about emerging threats is crucial for effective cybersecurity.
+        </div>
+
+        <h2>The Current Threat Landscape</h2>
+        <p>The cybersecurity landscape has evolved dramatically over the past decade:</p>
+
+        <h3>Key Statistics</h3>
+        <ul>
+            <li>Cyberattacks occur every 39 seconds on average</li>
+            <li>95% of successful cyber attacks are due to human error</li>
+            <li>The average cost of a data breach is $4.35 million</li>
+            <li>Ransomware attacks increased by 41% in 2022</li>
+        </ul>
+
+        <h3>Emerging Threats</h3>
+        <ul>
+            <li><strong>AI-Powered Attacks:</strong> Using artificial intelligence to enhance attack sophistication</li>
+            <li><strong>Supply Chain Attacks:</strong> Targeting third-party vendors to reach primary targets</li>
+            <li><strong>Cloud Security Risks:</strong> New vulnerabilities in cloud infrastructure</li>
+            <li><strong>IoT Vulnerabilities:</strong> Security gaps in Internet of Things devices</li>
+        </ul>
+
+        <h2>Cybersecurity Frameworks</h2>
+        <p>Organizations use various frameworks to structure their cybersecurity efforts:</p>
+
+        <h3>NIST Cybersecurity Framework</h3>
+        <ol>
+            <li><strong>Identify:</strong> Understand your organization's cybersecurity risks</li>
+            <li><strong>Protect:</strong> Implement safeguards to limit or contain impact</li>
+            <li><strong>Detect:</strong> Develop capabilities to identify cybersecurity events</li>
+            <li><strong>Respond:</strong> Take action regarding detected cybersecurity events</li>
+            <li><strong>Recover:</strong> Maintain resilience and restore capabilities</li>
+        </ol>
+
+        <div class="info">
+            <strong>Framework Benefits:</strong> Cybersecurity frameworks provide a structured approach to 
+            managing cybersecurity risks and help organizations align their security efforts with business objectives.
+        </div>
+
+        <h2>Career Paths in Cybersecurity</h2>
+        <p>The cybersecurity field offers diverse career opportunities:</p>
+
+        <h3>Technical Roles</h3>
+        <ul>
+            <li>Security Analyst</li>
+            <li>Penetration Tester</li>
+            <li>Security Engineer</li>
+            <li>Incident Response Specialist</li>
+            <li>Forensics Investigator</li>
+        </ul>
+
+        <h3>Management Roles</h3>
+        <ul>
+            <li>Chief Information Security Officer (CISO)</li>
+            <li>Security Manager</li>
+            <li>Risk Manager</li>
+            <li>Compliance Officer</li>
+        </ul>
+
+        <h2>Best Practices for Personal Cybersecurity</h2>
+        <ol>
+            <li><strong>Use Strong Passwords:</strong> Create unique, complex passwords for each account</li>
+            <li><strong>Enable Two-Factor Authentication:</strong> Add an extra layer of security</li>
+            <li><strong>Keep Software Updated:</strong> Install security patches promptly</li>
+            <li><strong>Be Cautious with Links:</strong> Verify sources before clicking</li>
+            <li><strong>Regular Backups:</strong> Maintain copies of important data</li>
+            <li><strong>Use Antivirus Software:</strong> Keep real-time protection enabled</li>
+            <li><strong>Secure Wi-Fi:</strong> Use WPA3 encryption and avoid public networks for sensitive activities</li>
+        </ol>
+
+        <h2>Conclusion</h2>
+        <p>
+            Cybersecurity is not just a technical challenge but a fundamental business requirement in today's digital world. 
+            Understanding the basics of cybersecurity principles, threats, and defenses is essential for anyone working 
+            in technology or handling sensitive information.
+        </p>
+
+        <div class="highlight">
+            <strong>Remember:</strong> Cybersecurity is everyone's responsibility. Whether you're a developer, administrator, 
+            or end-user, you play a crucial role in maintaining security.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll dive deeper into network security basics and explore how data travels across networks and the security challenges involved.</p>
     </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Security Controls and Frameworks</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Security Frameworks" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Security frameworks provide structured approaches to cybersecurity</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Security controls are safeguards or countermeasures to avoid, detect, counteract, or minimize security risks. They can be categorized into three main types: administrative, technical, and physical controls.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-blue-400 mb-2">Administrative Controls</h5>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Security policies</li>
-        <li>• Procedures and guidelines</li>
-        <li>• Training and awareness</li>
-        <li>• Background checks</li>
-        <li>• Incident response plans</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-green-400 mb-2">Technical Controls</h5>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Firewalls and IDS/IPS</li>
-        <li>• Encryption systems</li>
-        <li>• Access control systems</li>
-        <li>• Antivirus software</li>
-        <li>• Network monitoring</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-yellow-400 mb-2">Physical Controls</h5>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Facility access controls</li>
-        <li>• Surveillance systems</li>
-        <li>• Environmental controls</li>
-        <li>• Secure storage</li>
-        <li>• Cable management</li>
-      </ul>
-    </div>
-  </div>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">Popular Security Frameworks</h4>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-indigo-400 mb-2">NIST Cybersecurity Framework</h5>
-      <p class="text-slate-300 text-sm mb-2">A voluntary framework consisting of standards, guidelines, and best practices to manage cybersecurity-related risk.</p>
-      <div class="grid grid-cols-5 gap-2 text-xs">
-        <div class="bg-slate-700 p-2 rounded text-center">Identify</div>
-        <div class="bg-slate-700 p-2 rounded text-center">Protect</div>
-        <div class="bg-slate-700 p-2 rounded text-center">Detect</div>
-        <div class="bg-slate-700 p-2 rounded text-center">Respond</div>
-        <div class="bg-slate-700 p-2 rounded text-center">Recover</div>
-      </div>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-pink-400 mb-2">ISO 27001</h5>
-      <p class="text-slate-300 text-sm">International standard for information security management systems (ISMS), providing a systematic approach to managing sensitive company information.</p>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-teal-400 mb-2">CIS Controls</h5>
-      <p class="text-slate-300 text-sm">A prioritized set of actions for cyber defense that provide specific and actionable ways to stop today's most pervasive and dangerous attacks.</p>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: Compliance and Regulatory Requirements</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Compliance" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Compliance requirements vary by industry and geographic location</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Compliance in cybersecurity refers to adhering to laws, regulations, guidelines, and specifications relevant to business processes. Failure to comply can result in legal penalties, fines, and loss of reputation.
-  </p>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">Key Compliance Standards</h4>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-red-400 mb-2">GDPR (General Data Protection Regulation)</h5>
-      <p class="text-slate-300 text-sm mb-2">EU regulation on data protection and privacy for individuals within the European Union and European Economic Area.</p>
-      <ul class="text-slate-400 text-sm space-y-1 ml-4">
-        <li>• Data subject rights</li>
-        <li>• Privacy by design</li>
-        <li>• Data breach notifications</li>
-        <li>• Significant penalties for non-compliance</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-blue-400 mb-2">HIPAA (Health Insurance Portability and Accountability Act)</h5>
-      <p class="text-slate-300 text-sm mb-2">US legislation providing data privacy and security provisions for safeguarding medical information.</p>
-      <ul class="text-slate-400 text-sm space-y-1 ml-4">
-        <li>• Protected Health Information (PHI)</li>
-        <li>• Security Rule requirements</li>
-        <li>• Business Associate Agreements</li>
-        <li>• Breach notification requirements</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-green-400 mb-2">SOX (Sarbanes-Oxley Act)</h5>
-      <p class="text-slate-300 text-sm mb-2">US federal law that set new or expanded requirements for all US public company boards, management, and public accounting firms.</p>
-      <ul class="text-slate-400 text-sm space-y-1 ml-4">
-        <li>• Financial reporting controls</li>
-        <li>• IT general controls</li>
-        <li>• Audit requirements</li>
-        <li>• Executive certification</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Building a Security-Aware Culture</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Security Awareness" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Human factors remain the weakest link in cybersecurity</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Technology alone cannot solve cybersecurity challenges. Building a security-aware culture where every employee understands their role in protecting organizational assets is crucial for comprehensive security.
-  </p>
-
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">Security Awareness Training Components</h4>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-cyan-400 mb-2">Phishing Simulations</h5>
-      <p class="text-slate-300 text-sm">Regular simulated phishing attacks to test and improve employee awareness and response to social engineering attempts.</p>
-    </div>
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-purple-400 mb-2">Security Policies Training</h5>
-      <p class="text-slate-300 text-sm">Comprehensive training on organizational security policies, procedures, and acceptable use guidelines.</p>
-    </div>
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-orange-400 mb-2">Incident Reporting</h5>
-      <p class="text-slate-300 text-sm">Training employees on how to recognize, report, and respond to potential security incidents.</p>
-    </div>
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-yellow-400 mb-2">Password Security</h5>
-      <p class="text-slate-300 text-sm">Best practices for creating, managing, and protecting passwords and other authentication credentials.</p>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Summary and Next Steps</h3>
-
-  <p class="text-slate-300 mb-4">
-    This introductory module has provided you with a comprehensive foundation in cybersecurity principles, threat landscapes, risk management, and compliance requirements. Understanding these fundamental concepts is essential for building more advanced cybersecurity skills.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="font-semibold text-[var(--cyber-green)] mb-3">Key Takeaways</h4>
-    <ul class="text-slate-300 space-y-2">
-      <li>• Cybersecurity is built on the foundation of the CIA triad</li>
-      <li>• The threat landscape is constantly evolving and requires continuous vigilance</li>
-      <li>• Risk management is essential for prioritizing security investments</li>
-      <li>• Multiple security frameworks provide structured approaches to cybersecurity</li>
-      <li>• Compliance requirements vary by industry and geography</li>
-      <li>• Human factors are critical to overall security effectiveness</li>
-    </ul>
-  </div>
-
-  <div class="bg-gradient-to-r from-slate-800 to-slate-700 border border-slate-600 rounded-lg p-6">
-    <h4 class="font-semibold text-[var(--cyber-green)] mb-3">Prepare for Module 2</h4>
-    <p class="text-slate-300 mb-3">
-      In the next module, we'll dive deeper into network security basics, exploring network protocols, security architectures, and fundamental protection mechanisms.
-    </p>
-    <p class="text-slate-400 text-sm">
-      Recommended preparation: Review basic networking concepts including TCP/IP, DNS, and common network protocols.
-    </p>
-  </div>
-</div>
+</body>
+</html>

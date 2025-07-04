@@ -1,368 +1,503 @@
-<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
-  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 4: Penetration Testing Methodology</h1>
 
-  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-    Penetration testing methodologies provide structured frameworks for conducting systematic security assessments. This module explores industry-standard methodologies, testing phases, and best practices for comprehensive security evaluations.
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penetration Testing Methodology</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: #0f172a;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1, h2, h3 {
+            color: #00ff88;
+        }
+        h1 {
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 0.5rem;
+        }
+        .highlight {
+            background: #1e293b;
+            padding: 1rem;
+            border-left: 4px solid #00ff88;
+            margin: 1rem 0;
+        }
+        .phase {
+            background: #1e293b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border: 1px solid #334155;
+        }
+        .phase h3 {
+            margin-top: 0;
+            color: #00ff88;
+        }
+        ul, ol {
+            padding-left: 2rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        .warning {
+            background: #451a03;
+            border: 1px solid #ea580c;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        .info {
+            background: #0c4a6e;
+            border: 1px solid #0284c7;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #475569;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background: #1e293b;
+            color: #00ff88;
+        }
+        .methodology-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .flow-item {
+            background: #1e293b;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #00ff88;
+            position: relative;
+        }
+        .flow-item::after {
+            content: "↓";
+            position: absolute;
+            bottom: -1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00ff88;
+            font-size: 1.5rem;
+        }
+        .flow-item:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Module 4: Penetration Testing Methodology</h1>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Methodology Framework" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Structured methodologies ensure comprehensive and repeatable security assessments</p>
-  </div>
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand systematic approaches to penetration testing</li>
+            <li>Learn industry-standard frameworks (OWASP, NIST, PTES)</li>
+            <li>Master the phases of penetration testing</li>
+            <li>Understand documentation and reporting requirements</li>
+            <li>Learn legal and ethical considerations</li>
+        </ul>
 
-  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <ul class="text-slate-300 space-y-2">
-      <li>• Understand major penetration testing methodologies and frameworks</li>
-      <li>• Learn the systematic approach to security assessment planning</li>
-      <li>• Master the penetration testing lifecycle and phases</li>
-      <li>• Implement proper scoping and rules of engagement</li>
-      <li>• Practice documentation and reporting throughout testing phases</li>
-      <li>• Develop consistent and repeatable testing processes</li>
-    </ul>
-  </div>
+        <h2>What is Penetration Testing Methodology?</h2>
+        <p>
+            A penetration testing methodology is a systematic approach that provides a structured framework 
+            for conducting security assessments. It ensures comprehensive testing, consistent results, 
+            and professional reporting standards.
+        </p>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: Overview of Testing Methodologies</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Testing Framework" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Multiple frameworks provide different approaches to penetration testing</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Different penetration testing methodologies offer various approaches to security assessment. Understanding these frameworks helps you choose the right approach for specific engagement types and organizational needs.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-blue-400 mb-2">OWASP Testing Guide</h4>
-      <p class="text-slate-300 text-sm mb-3">Comprehensive web application security testing framework</p>
-      <ul class="text-slate-400 text-sm space-y-1">
-        <li>• Information gathering</li>
-        <li>• Configuration and deployment management</li>
-        <li>• Identity management testing</li>
-        <li>• Authentication and session management</li>
-        <li>• Authorization testing</li>
-        <li>• Data validation testing</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-green-400 mb-2">PTES (Penetration Testing Execution Standard)</h4>
-      <p class="text-slate-300 text-sm mb-3">Comprehensive methodology for penetration testing engagements</p>
-      <ul class="text-slate-400 text-sm space-y-1">
-        <li>• Pre-engagement interactions</li>
-        <li>• Intelligence gathering</li>
-        <li>• Threat modeling</li>
-        <li>• Vulnerability analysis</li>
-        <li>• Exploitation</li>
-        <li>• Post-exploitation</li>
-        <li>• Reporting</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-purple-400 mb-2">NIST SP 800-115</h4>
-      <p class="text-slate-300 text-sm mb-3">Technical guide to information security testing and assessment</p>
-      <ul class="text-slate-400 text-sm space-y-1">
-        <li>• Planning phase</li>
-        <li>• Discovery phase</li>
-        <li>• Attack phase</li>
-        <li>• Reporting phase</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-yellow-400 mb-2">OSSTMM</h4>
-      <p class="text-slate-300 text-sm mb-3">Open Source Security Testing Methodology Manual</p>
-      <ul class="text-slate-400 text-sm space-y-1">
-        <li>• Human security testing</li>
-        <li>• Physical security testing</li>
-        <li>• Wireless security testing</li>
-        <li>• Telecommunications testing</li>
-        <li>• Data networks testing</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: Pre-Engagement Phase</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Planning Meeting" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Proper planning and scoping are critical for successful penetration tests</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    The pre-engagement phase establishes the foundation for a successful penetration test. Proper planning, scoping, and agreement definition prevent misunderstandings and ensure testing objectives are met.
-  </p>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-cyan-400 mb-2">Scoping and Planning</h5>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
-        <div>
-          <p class="font-semibold mb-2">In-Scope Items:</p>
-          <ul class="space-y-1">
-            <li>• Target IP ranges and domains</li>
-            <li>• Specific applications and services</li>
-            <li>• Testing methodologies to be used</li>
-            <li>• Social engineering scenarios</li>
-          </ul>
+        <div class="highlight">
+            <strong>Key Benefits:</strong>
+            <ul style="margin: 0.5rem 0;">
+                <li>Ensures comprehensive coverage</li>
+                <li>Provides repeatable processes</li>
+                <li>Maintains professional standards</li>
+                <li>Supports legal and compliance requirements</li>
+            </ul>
         </div>
-        <div>
-          <p class="font-semibold mb-2">Out-of-Scope Items:</p>
-          <ul class="space-y-1">
-            <li>• Production systems during business hours</li>
-            <li>• Third-party systems and services</li>
-            <li>• Denial of service attacks</li>
-            <li>• Data destruction or modification</li>
-          </ul>
+
+        <h2>Industry Standard Frameworks</h2>
+
+        <h3>1. OWASP Testing Guide</h3>
+        <p>The Open Web Application Security Project (OWASP) provides comprehensive testing methodologies for web applications:</p>
+        
+        <h4>OWASP Testing Framework Phases</h4>
+        <ol>
+            <li><strong>Information Gathering:</strong> Collect information about the target</li>
+            <li><strong>Configuration Management Testing:</strong> Review infrastructure configuration</li>
+            <li><strong>Identity Management Testing:</strong> Test authentication and authorization</li>
+            <li><strong>Authentication Testing:</strong> Verify authentication mechanisms</li>
+            <li><strong>Authorization Testing:</strong> Test access controls</li>
+            <li><strong>Session Management Testing:</strong> Evaluate session handling</li>
+            <li><strong>Input Validation Testing:</strong> Test for injection vulnerabilities</li>
+            <li><strong>Error Handling:</strong> Analyze error messages and handling</li>
+            <li><strong>Cryptography Testing:</strong> Evaluate cryptographic implementations</li>
+            <li><strong>Business Logic Testing:</strong> Test application logic flaws</li>
+        </ol>
+
+        <h3>2. NIST SP 800-115</h3>
+        <p>The National Institute of Standards and Technology provides guidelines for information security testing:</p>
+
+        <div class="methodology-flow">
+            <div class="flow-item">
+                <h4>Planning Phase</h4>
+                <p>Define scope, rules of engagement, and testing approach</p>
+            </div>
+            <div class="flow-item">
+                <h4>Discovery Phase</h4>
+                <p>Gather information about target systems and networks</p>
+            </div>
+            <div class="flow-item">
+                <h4>Attack Phase</h4>
+                <p>Attempt to exploit identified vulnerabilities</p>
+            </div>
+            <div class="flow-item">
+                <h4>Reporting Phase</h4>
+                <p>Document findings and provide recommendations</p>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-orange-400 mb-2">Rules of Engagement (RoE)</h5>
-      <p class="text-slate-300 text-sm mb-2">Clear guidelines for testing activities and limitations:</p>
-      <ul class="text-slate-400 text-sm space-y-1 ml-4">
-        <li>• Authorized testing timeframes</li>
-        <li>• Emergency contact procedures</li>
-        <li>• Data handling and confidentiality requirements</li>
-        <li>• Notification procedures for critical findings</li>
-        <li>• Testing methodology restrictions</li>
-        <li>• Cleanup and restoration responsibilities</li>
-      </ul>
-    </div>
-  </div>
+        <h3>3. PTES (Penetration Testing Execution Standard)</h3>
+        <p>A comprehensive framework covering all aspects of penetration testing:</p>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Information Gathering Phase</h3>
+        <table>
+            <tr>
+                <th>Phase</th>
+                <th>Activities</th>
+                <th>Deliverables</th>
+            </tr>
+            <tr>
+                <td>Pre-engagement</td>
+                <td>Scoping, contracts, rules of engagement</td>
+                <td>SOW, legal agreements</td>
+            </tr>
+            <tr>
+                <td>Intelligence Gathering</td>
+                <td>OSINT, social media, DNS enumeration</td>
+                <td>Target profile, attack surface</td>
+            </tr>
+            <tr>
+                <td>Threat Modeling</td>
+                <td>Risk analysis, attack vectors</td>
+                <td>Threat model, risk assessment</td>
+            </tr>
+            <tr>
+                <td>Vulnerability Analysis</td>
+                <td>Scanning, manual testing</td>
+                <td>Vulnerability report</td>
+            </tr>
+            <tr>
+                <td>Exploitation</td>
+                <td>Exploit development, payload delivery</td>
+                <td>Proof of concept exploits</td>
+            </tr>
+            <tr>
+                <td>Post Exploitation</td>
+                <td>Privilege escalation, persistence</td>
+                <td>Access documentation</td>
+            </tr>
+            <tr>
+                <td>Reporting</td>
+                <td>Document findings, recommendations</td>
+                <td>Executive and technical reports</td>
+            </tr>
+        </table>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Information Gathering" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Thorough intelligence gathering provides the foundation for effective testing</p>
-  </div>
+        <h2>Detailed Penetration Testing Phases</h2>
 
-  <p class="text-slate-300 mb-4">
-    Information gathering, also known as reconnaissance, involves collecting intelligence about the target organization and its infrastructure. This phase builds the knowledge base needed for effective vulnerability identification and exploitation.
-  </p>
+        <div class="phase">
+            <h3>Phase 1: Pre-Engagement</h3>
+            <p><strong>Objective:</strong> Establish clear scope, expectations, and legal framework</p>
+            
+            <h4>Key Activities:</h4>
+            <ul>
+                <li>Define testing scope and objectives</li>
+                <li>Identify target systems and networks</li>
+                <li>Establish rules of engagement (RoE)</li>
+                <li>Create statement of work (SOW)</li>
+                <li>Obtain proper authorization</li>
+                <li>Define communication protocols</li>
+            </ul>
 
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Passive Information Gathering</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-green-400 mb-1">Open Source Intelligence (OSINT)</h5>
-        <p class="text-slate-300 text-sm">Gather information from publicly available sources without directly interacting with target systems</p>
-        <ul class="text-slate-400 text-sm space-y-1 ml-4 mt-2">
-          <li>• Company websites and social media</li>
-          <li>• DNS records and WHOIS information</li>
-          <li>• Job postings and employee profiles</li>
-          <li>• Technical documentation and forums</li>
+            <h4>Important Considerations:</h4>
+            <ul>
+                <li><strong>Legal approval:</strong> Written authorization from asset owners</li>
+                <li><strong>Scope boundaries:</strong> Clearly defined in-scope and out-of-scope items</li>
+                <li><strong>Emergency contacts:</strong> 24/7 contact information</li>
+                <li><strong>Testing windows:</strong> Approved times for testing activities</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h3>Phase 2: Information Gathering/Reconnaissance</h3>
+            <p><strong>Objective:</strong> Collect as much information as possible about the target</p>
+            
+            <h4>Passive Information Gathering:</h4>
+            <ul>
+                <li>Open Source Intelligence (OSINT)</li>
+                <li>DNS enumeration</li>
+                <li>WHOIS queries</li>
+                <li>Social media reconnaissance</li>
+                <li>Public document analysis</li>
+                <li>Search engine discovery</li>
+            </ul>
+
+            <h4>Active Information Gathering:</h4>
+            <ul>
+                <li>Port scanning</li>
+                <li>Service enumeration</li>
+                <li>OS fingerprinting</li>
+                <li>Network mapping</li>
+                <li>Application discovery</li>
+            </ul>
+
+            <h4>Tools and Techniques:</h4>
+            <ul>
+                <li><strong>Nmap:</strong> Network discovery and port scanning</li>
+                <li><strong>Recon-ng:</strong> Web-based reconnaissance framework</li>
+                <li><strong>theHarvester:</strong> Email and subdomain gathering</li>
+                <li><strong>Maltego:</strong> Link analysis and data mining</li>
+                <li><strong>Shodan:</strong> Internet-connected device search</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h3>Phase 3: Vulnerability Assessment</h3>
+            <p><strong>Objective:</strong> Identify potential security weaknesses in target systems</p>
+            
+            <h4>Vulnerability Scanning:</h4>
+            <ul>
+                <li>Automated vulnerability scanners</li>
+                <li>Web application scanners</li>
+                <li>Database vulnerability scanners</li>
+                <li>Wireless security scanners</li>
+            </ul>
+
+            <h4>Manual Testing:</h4>
+            <ul>
+                <li>Configuration reviews</li>
+                <li>Code analysis</li>
+                <li>Business logic testing</li>
+                <li>Authentication bypass attempts</li>
+            </ul>
+
+            <h4>Common Vulnerability Categories:</h4>
+            <ul>
+                <li><strong>OWASP Top 10:</strong> Web application vulnerabilities</li>
+                <li><strong>CWE Top 25:</strong> Common software weaknesses</li>
+                <li><strong>CVE Database:</strong> Known vulnerabilities</li>
+                <li><strong>SANS Top 20:</strong> Critical security controls</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h3>Phase 4: Exploitation</h3>
+            <p><strong>Objective:</strong> Attempt to exploit identified vulnerabilities</p>
+            
+            <h4>Exploitation Approach:</h4>
+            <ol>
+                <li><strong>Prioritize targets:</strong> Focus on high-impact vulnerabilities</li>
+                <li><strong>Develop exploits:</strong> Create or adapt existing exploits</li>
+                <li><strong>Test safely:</strong> Minimize risk to production systems</li>
+                <li><strong>Document everything:</strong> Maintain detailed logs</li>
+            </ol>
+
+            <h4>Exploitation Categories:</h4>
+            <ul>
+                <li><strong>Network-based:</strong> Buffer overflows, protocol exploits</li>
+                <li><strong>Web-based:</strong> SQL injection, XSS, CSRF</li>
+                <li><strong>Client-side:</strong> Malicious documents, browser exploits</li>
+                <li><strong>Physical:</strong> Hardware access, badge cloning</li>
+                <li><strong>Social engineering:</strong> Phishing, pretexting</li>
+            </ul>
+
+            <div class="warning">
+                <strong>Caution:</strong> Always follow the agreed-upon rules of engagement. 
+                Some exploits can cause system instability or data loss.
+            </div>
+        </div>
+
+        <div class="phase">
+            <h3>Phase 5: Post-Exploitation</h3>
+            <p><strong>Objective:</strong> Determine the extent of compromise and potential impact</p>
+            
+            <h4>Post-Exploitation Activities:</h4>
+            <ul>
+                <li><strong>Privilege escalation:</strong> Gain higher-level access</li>
+                <li><strong>Persistence:</strong> Maintain access for future use</li>
+                <li><strong>Lateral movement:</strong> Access other systems</li>
+                <li><strong>Data exfiltration:</strong> Demonstrate data access (with permission)</li>
+                <li><strong>Impact assessment:</strong> Evaluate business impact</li>
+            </ul>
+
+            <h4>Evidence Collection:</h4>
+            <ul>
+                <li>Screenshots of compromised systems</li>
+                <li>Configuration files and sensitive data samples</li>
+                <li>Network diagrams and system information</li>
+                <li>Proof of concept demonstrations</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h3>Phase 6: Reporting</h3>
+            <p><strong>Objective:</strong> Communicate findings and recommendations effectively</p>
+            
+            <h4>Report Components:</h4>
+            <ul>
+                <li><strong>Executive Summary:</strong> High-level overview for management</li>
+                <li><strong>Technical Findings:</strong> Detailed vulnerability descriptions</li>
+                <li><strong>Risk Assessment:</strong> Impact and likelihood ratings</li>
+                <li><strong>Recommendations:</strong> Specific remediation steps</li>
+                <li><strong>Appendices:</strong> Technical details and evidence</li>
+            </ul>
+
+            <h4>Risk Rating Methodology:</h4>
+            <table>
+                <tr>
+                    <th>Risk Level</th>
+                    <th>Criteria</th>
+                    <th>Recommended Action</th>
+                </tr>
+                <tr>
+                    <td style="color: #dc2626;">Critical</td>
+                    <td>Immediate threat to business operations</td>
+                    <td>Fix immediately</td>
+                </tr>
+                <tr>
+                    <td style="color: #ea580c;">High</td>
+                    <td>Significant security risk</td>
+                    <td>Fix within 30 days</td>
+                </tr>
+                <tr>
+                    <td style="color: #d97706;">Medium</td>
+                    <td>Moderate security risk</td>
+                    <td>Fix within 90 days</td>
+                </tr>
+                <tr>
+                    <td style="color: #eab308;">Low</td>
+                    <td>Minor security concern</td>
+                    <td>Fix during next maintenance window</td>
+                </tr>
+                <tr>
+                    <td style="color: #65a30d;">Informational</td>
+                    <td>Best practice recommendation</td>
+                    <td>Consider for future improvements</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Types of Penetration Tests</h2>
+
+        <h3>Based on Knowledge Level</h3>
+        <ul>
+            <li><strong>Black Box:</strong> No prior knowledge of target systems</li>
+            <li><strong>White Box:</strong> Complete knowledge including source code</li>
+            <li><strong>Gray Box:</strong> Limited knowledge, simulating insider threat</li>
         </ul>
-      </div>
 
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-blue-400 mb-1">Technical Reconnaissance</h5>
-        <p class="text-slate-300 text-sm">Collect technical information about target infrastructure</p>
-        <ul class="text-slate-400 text-sm space-y-1 ml-4 mt-2">
-          <li>• Subdomain enumeration</li>
-          <li>• Certificate transparency logs</li>
-          <li>• Shodan and censys searches</li>
-          <li>• Archive.org historical data</li>
+        <h3>Based on Scope</h3>
+        <ul>
+            <li><strong>Network Penetration Testing:</strong> Infrastructure and network devices</li>
+            <li><strong>Web Application Testing:</strong> Web-based applications</li>
+            <li><strong>Mobile Application Testing:</strong> iOS and Android applications</li>
+            <li><strong>Wireless Testing:</strong> Wi-Fi and wireless protocols</li>
+            <li><strong>Social Engineering:</strong> Human factor testing</li>
+            <li><strong>Physical Testing:</strong> Physical security controls</li>
         </ul>
-      </div>
-    </div>
-  </div>
 
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Active Information Gathering</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-yellow-400 mb-1">Network Discovery</h5>
-        <p class="text-slate-300 text-sm">Directly interact with target systems to gather information</p>
-        <ul class="text-slate-400 text-sm space-y-1 ml-4 mt-2">
-          <li>• Host discovery and port scanning</li>
-          <li>• Service enumeration and fingerprinting</li>
-          <li>• Operating system identification</li>
-          <li>• Network topology mapping</li>
+        <h2>Legal and Ethical Considerations</h2>
+
+        <h3>Legal Requirements</h3>
+        <ul>
+            <li><strong>Written Authorization:</strong> Always obtain written permission</li>
+            <li><strong>Scope Limitations:</strong> Stay within defined boundaries</li>
+            <li><strong>Data Protection:</strong> Handle sensitive data appropriately</li>
+            <li><strong>Compliance:</strong> Follow relevant regulations (GDPR, HIPAA, etc.)</li>
         </ul>
-      </div>
+
+        <h3>Ethical Guidelines</h3>
+        <ul>
+            <li><strong>Do No Harm:</strong> Minimize risk to target systems</li>
+            <li><strong>Confidentiality:</strong> Protect client information</li>
+            <li><strong>Professional Conduct:</strong> Maintain professional standards</li>
+            <li><strong>Continuous Learning:</strong> Stay updated with latest threats</li>
+        </ul>
+
+        <div class="info">
+            <strong>Professional Tip:</strong> Always maintain detailed logs of all testing activities. 
+            This documentation is crucial for legal protection and quality reporting.
+        </div>
+
+        <h2>Tools for Methodology Implementation</h2>
+
+        <h3>Framework Tools</h3>
+        <ul>
+            <li><strong>Metasploit:</strong> Exploitation framework</li>
+            <li><strong>Nessus:</strong> Vulnerability scanner</li>
+            <li><strong>Burp Suite:</strong> Web application testing</li>
+            <li><strong>OWASP ZAP:</strong> Web application security scanner</li>
+            <li><strong>Kali Linux:</strong> Penetration testing distribution</li>
+        </ul>
+
+        <h3>Documentation Tools</h3>
+        <ul>
+            <li><strong>Dradis:</strong> Collaboration and reporting framework</li>
+            <li><strong>Faraday:</strong> Integrated penetration testing environment</li>
+            <li><strong>Serpico:</strong> Penetration testing report generation</li>
+            <li><strong>MagicTree:</strong> Penetration testing productivity tool</li>
+        </ul>
+
+        <h2>Quality Assurance in Penetration Testing</h2>
+
+        <h3>Testing Quality Factors</h3>
+        <ul>
+            <li><strong>Completeness:</strong> Comprehensive coverage of attack surface</li>
+            <li><strong>Accuracy:</strong> Minimal false positives and false negatives</li>
+            <li><strong>Reproducibility:</strong> Consistent results across tests</li>
+            <li><strong>Timeliness:</strong> Delivery within agreed timeframes</li>
+        </ul>
+
+        <h3>Continuous Improvement</h3>
+        <ul>
+            <li>Regular methodology updates</li>
+            <li>Lessons learned documentation</li>
+            <li>Tool evaluation and adoption</li>
+            <li>Team training and certification</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>Remember:</strong> A methodology is only as good as its implementation. 
+            Consistent application and continuous improvement are key to successful penetration testing.
+        </div>
+
+        <h2>Conclusion</h2>
+        <p>
+            Penetration testing methodology provides the structured approach necessary for effective 
+            security assessments. By following established frameworks and maintaining professional 
+            standards, penetration testers can deliver consistent, valuable results to their clients.
+        </p>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll dive into vulnerability scanning and assessment techniques, focusing on automated and manual discovery methods.</p>
     </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Vulnerability Assessment Phase</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Vulnerability Assessment" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Systematic vulnerability identification guides exploitation efforts</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    The vulnerability assessment phase identifies potential security weaknesses in the target environment. This systematic approach ensures comprehensive coverage and helps prioritize exploitation efforts.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Automated Scanning</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Network Vulnerability Scanners:</strong> Nessus, OpenVAS</li>
-        <li>• <strong>Web Application Scanners:</strong> Burp Suite, OWASP ZAP</li>
-        <li>• <strong>Database Scanners:</strong> SQLmap, NoSQLmap</li>
-        <li>• <strong>Wireless Scanners:</strong> Aircrack-ng suite</li>
-        <li>• <strong>Mobile App Scanners:</strong> MobSF, QARK</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Manual Testing</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Configuration Review:</strong> Security settings analysis</li>
-        <li>• <strong>Code Review:</strong> Static and dynamic analysis</li>
-        <li>• <strong>Business Logic Testing:</strong> Application workflow flaws</li>
-        <li>• <strong>Privilege Analysis:</strong> Access control weaknesses</li>
-        <li>• <strong>Cryptographic Assessment:</strong> Encryption implementation</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: Exploitation Phase</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Exploitation" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Exploitation demonstrates real-world impact of identified vulnerabilities</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    The exploitation phase validates identified vulnerabilities by demonstrating their exploitability. This phase proves the real-world impact of security weaknesses and provides evidence for remediation prioritization.
-  </p>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-red-400 mb-2">Exploitation Strategy</h5>
-      <div class="space-y-2 text-sm text-slate-300">
-        <p><strong>Risk Assessment:</strong> Evaluate potential impact before exploitation</p>
-        <p><strong>Proof of Concept:</strong> Demonstrate vulnerability without causing damage</p>
-        <p><strong>Evidence Collection:</strong> Document exploitation steps and results</p>
-        <p><strong>System State Preservation:</strong> Maintain system integrity during testing</p>
-      </div>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-purple-400 mb-2">Common Exploitation Techniques</h5>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Buffer Overflows:</strong> Memory corruption vulnerabilities</li>
-        <li>• <strong>Injection Attacks:</strong> SQL, command, and code injection</li>
-        <li>• <strong>Privilege Escalation:</strong> Vertical and horizontal escalation</li>
-        <li>• <strong>Authentication Bypass:</strong> Access control circumvention</li>
-        <li>• <strong>Session Management:</strong> Token manipulation and hijacking</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Post-Exploitation Phase</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Post-Exploitation" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Post-exploitation activities demonstrate the full impact of security breaches</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Post-exploitation activities simulate what an attacker might do after gaining initial access. This phase demonstrates the full impact of security compromises and helps organizations understand their exposure.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Information Gathering</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• System and network enumeration</li>
-        <li>• User and group identification</li>
-        <li>• Installed software inventory</li>
-        <li>• Configuration file analysis</li>
-        <li>• Credential harvesting</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Lateral Movement</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Network pivoting techniques</li>
-        <li>• Credential reuse attacks</li>
-        <li>• Trust relationship exploitation</li>
-        <li>• Service account compromise</li>
-        <li>• Domain escalation paths</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 7: Reporting Phase</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Reporting" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Comprehensive reporting communicates findings effectively to stakeholders</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    The reporting phase transforms technical findings into actionable business intelligence. Effective reporting communicates security risks clearly and provides practical remediation guidance.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Report Structure</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-blue-400 mb-1">Executive Summary</h5>
-        <p class="text-slate-300 text-sm">High-level overview for management and decision makers</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-green-400 mb-1">Technical Findings</h5>
-        <p class="text-slate-300 text-sm">Detailed vulnerability descriptions with evidence and reproduction steps</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-yellow-400 mb-1">Remediation Recommendations</h5>
-        <p class="text-slate-300 text-sm">Prioritized action items with implementation guidance</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-purple-400 mb-1">Supporting Evidence</h5>
-        <p class="text-slate-300 text-sm">Screenshots, logs, and technical appendices</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Methodology Selection</h5>
-      <p class="text-slate-300 text-sm mb-2">Choose appropriate methodologies for different scenarios:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Web application security assessment</li>
-        <li>• Network infrastructure penetration test</li>
-        <li>• Mobile application security review</li>
-        <li>• Social engineering engagement</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Scoping Workshop</h5>
-      <p class="text-slate-300 text-sm mb-2">Develop comprehensive scope documents:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Define testing objectives and success criteria</li>
-        <li>• Identify in-scope and out-of-scope systems</li>
-        <li>• Create rules of engagement document</li>
-        <li>• Establish communication protocols</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
-  <p class="text-slate-300 mb-6">
-    Penetration testing methodologies provide structured approaches to security assessment that ensure comprehensive coverage and consistent results. Understanding different frameworks allows you to choose the most appropriate approach for specific engagement types. Proper planning, systematic execution, and clear reporting are essential components of professional penetration testing services. The methodology you choose should align with the client's objectives, regulatory requirements, and organizational maturity.
-  </p>
-
-  <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 border border-slate-600">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">🎯 Next: Vulnerability Scanning</h4>
-    <p class="text-slate-300">
-      Module 5 dives deep into vulnerability scanning and assessment techniques, covering both automated tools and manual testing methods for comprehensive security evaluation.
-    </p>
-  </div>
-</div>
+</body>
+</html>

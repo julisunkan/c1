@@ -1,344 +1,624 @@
-<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
-  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 3: Linux Fundamentals for Penetration Testing</h1>
 
-  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-    Linux is the backbone of penetration testing, providing powerful command-line tools and flexibility essential for security professionals. This comprehensive module covers Linux fundamentals specifically tailored for penetration testing workflows and methodologies.
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Fundamentals for Penetration Testing</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: #0f172a;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1, h2, h3 {
+            color: #00ff88;
+        }
+        h1 {
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 0.5rem;
+        }
+        .highlight {
+            background: #1e293b;
+            padding: 1rem;
+            border-left: 4px solid #00ff88;
+            margin: 1rem 0;
+        }
+        .code {
+            background: #334155;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        .inline-code {
+            background: #334155;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+        }
+        ul, ol {
+            padding-left: 2rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        .warning {
+            background: #451a03;
+            border: 1px solid #ea580c;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        .info {
+            background: #0c4a6e;
+            border: 1px solid #0284c7;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #475569;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background: #1e293b;
+            color: #00ff88;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Module 3: Linux Fundamentals for Penetration Testing</h1>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1629654291663-b91ad427698f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Linux Terminal" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Linux command line mastery is essential for effective penetration testing</p>
-  </div>
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Master essential Linux commands for penetration testing</li>
+            <li>Understand Linux file system structure and permissions</li>
+            <li>Learn process management and system monitoring</li>
+            <li>Explore networking tools and utilities</li>
+            <li>Understand shell scripting basics for automation</li>
+        </ul>
 
-  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <ul class="text-slate-300 space-y-2">
-      <li>• Master essential Linux commands for penetration testing</li>
-      <li>• Understand Linux file systems, permissions, and security models</li>
-      <li>• Learn process management and system administration basics</li>
-      <li>• Practice shell scripting for automation and tool development</li>
-      <li>• Configure and customize penetration testing distributions</li>
-      <li>• Implement secure practices for testing environments</li>
-    </ul>
-  </div>
+        <h2>Why Linux for Penetration Testing?</h2>
+        <p>Linux is the preferred platform for penetration testing due to:</p>
+        <ul>
+            <li>Open-source nature and transparency</li>
+            <li>Extensive command-line tools</li>
+            <li>Rich networking capabilities</li>
+            <li>Large community and tool ecosystem</li>
+            <li>Customization and scripting flexibility</li>
+        </ul>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: Linux Command Line Essentials</h3>
+        <h2>Linux File System Structure</h2>
+        
+        <h3>Directory Hierarchy</h3>
+        <table>
+            <tr>
+                <th>Directory</th>
+                <th>Purpose</th>
+                <th>Penetration Testing Relevance</th>
+            </tr>
+            <tr>
+                <td>/</td>
+                <td>Root directory</td>
+                <td>Starting point for all file operations</td>
+            </tr>
+            <tr>
+                <td>/bin</td>
+                <td>Essential user binaries</td>
+                <td>Core system commands</td>
+            </tr>
+            <tr>
+                <td>/sbin</td>
+                <td>System binaries</td>
+                <td>Administrative commands</td>
+            </tr>
+            <tr>
+                <td>/etc</td>
+                <td>Configuration files</td>
+                <td>System and service configurations</td>
+            </tr>
+            <tr>
+                <td>/var</td>
+                <td>Variable data</td>
+                <td>Log files, temporary data</td>
+            </tr>
+            <tr>
+                <td>/home</td>
+                <td>User home directories</td>
+                <td>User data and configurations</td>
+            </tr>
+            <tr>
+                <td>/tmp</td>
+                <td>Temporary files</td>
+                <td>Often world-writable, privilege escalation</td>
+            </tr>
+            <tr>
+                <td>/proc</td>
+                <td>Process information</td>
+                <td>System and process information</td>
+            </tr>
+        </table>
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Command Line Interface" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Command line proficiency accelerates penetration testing workflows</p>
-  </div>
+        <h2>Essential Linux Commands</h2>
 
-  <p class="text-slate-300 mb-4">
-    The Linux command line is your primary interface for penetration testing activities. Mastering these fundamental commands will significantly improve your efficiency and effectiveness.
-  </p>
+        <h3>File and Directory Operations</h3>
+        
+        <h4>Navigation Commands</h4>
+        <div class="code">
+# List directory contents
+ls -la
 
-  <h4 class="text-lg font-semibold text-slate-100 mb-3">File System Navigation</h4>
+# Change directory
+cd /path/to/directory
 
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <div class="space-y-4">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-green-400 mb-2">Basic Navigation Commands</h5>
-        <div class="font-mono text-sm text-slate-300 space-y-1">
-          <p><span class="text-cyan-400">pwd</span> - Print working directory</p>
-          <p><span class="text-cyan-400">ls -la</span> - List files with detailed information</p>
-          <p><span class="text-cyan-400">cd /path/to/directory</span> - Change directory</p>
-          <p><span class="text-cyan-400">find / -name "*.conf" 2>/dev/null</span> - Find configuration files</p>
-          <p><span class="text-cyan-400">locate filename</span> - Quick file location</p>
+# Print working directory
+pwd
+
+# Create directory
+mkdir directory_name
+
+# Remove directory
+rmdir directory_name
+rm -rf directory_name  # Force remove with contents
+</div>
+
+        <h4>File Operations</h4>
+        <div class="code">
+# Copy files
+cp source destination
+cp -r source_dir destination_dir  # Recursive copy
+
+# Move/rename files
+mv source destination
+
+# Remove files
+rm filename
+rm -f filename  # Force remove
+
+# Create empty file
+touch filename
+
+# View file contents
+cat filename
+less filename
+head filename
+tail filename
+</div>
+
+        <h3>File Permissions and Ownership</h3>
+        
+        <h4>Understanding Permissions</h4>
+        <p>Linux uses a three-tier permission system:</p>
+        <ul>
+            <li><strong>Owner (u):</strong> File creator/owner</li>
+            <li><strong>Group (g):</strong> Members of the file's group</li>
+            <li><strong>Others (o):</strong> All other users</li>
+        </ul>
+
+        <h4>Permission Types</h4>
+        <ul>
+            <li><strong>Read (r/4):</strong> View file contents or list directory</li>
+            <li><strong>Write (w/2):</strong> Modify file or create/delete files in directory</li>
+            <li><strong>Execute (x/1):</strong> Run file as program or access directory</li>
+        </ul>
+
+        <h4>Permission Commands</h4>
+        <div class="code">
+# View detailed permissions
+ls -la
+
+# Change permissions (symbolic)
+chmod u+x filename      # Add execute for owner
+chmod g-w filename      # Remove write for group
+chmod o=r filename      # Set read-only for others
+
+# Change permissions (numeric)
+chmod 755 filename      # rwxr-xr-x
+chmod 644 filename      # rw-r--r--
+
+# Change ownership
+chown user:group filename
+chgrp group filename
+</div>
+
+        <div class="warning">
+            <strong>Security Note:</strong> Misconfigured permissions are a common source of privilege escalation vulnerabilities. Always review file permissions carefully.
         </div>
-      </div>
 
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-yellow-400 mb-2">File Manipulation</h5>
-        <div class="font-mono text-sm text-slate-300 space-y-1">
-          <p><span class="text-cyan-400">cat /etc/passwd</span> - Display file contents</p>
-          <p><span class="text-cyan-400">grep -r "password" /var/log/</span> - Search for patterns</p>
-          <p><span class="text-cyan-400">tail -f /var/log/auth.log</span> - Monitor log files</p>
-          <p><span class="text-cyan-400">head -n 20 file.txt</span> - Display first 20 lines</p>
-          <p><span class="text-cyan-400">wc -l file.txt</span> - Count lines in file</p>
-        </div>
-      </div>
-    </div>
-  </div>
+        <h3>Text Processing Commands</h3>
+        
+        <div class="code">
+# Search text patterns
+grep "pattern" filename
+grep -r "pattern" directory/
+grep -i "pattern" filename     # Case insensitive
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: File Permissions and Security</h3>
+# Stream editor
+sed 's/old/new/g' filename
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="File Security" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Understanding file permissions is crucial for privilege escalation</p>
-  </div>
+# Text processing
+awk '{print $1}' filename      # Print first column
+cut -d: -f1 /etc/passwd        # Extract usernames
 
-  <p class="text-slate-300 mb-4">
-    Linux file permissions control access to files and directories. Understanding permission models is essential for identifying privilege escalation opportunities during penetration tests.
-  </p>
+# Sort and unique
+sort filename
+uniq filename
+sort filename | uniq
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Permission Types</h4>
-      <div class="space-y-2 text-sm">
-        <div class="flex items-center">
-          <span class="font-mono text-green-400 w-8">r</span>
-          <span class="text-slate-300">Read - View file contents or list directory</span>
-        </div>
-        <div class="flex items-center">
-          <span class="font-mono text-yellow-400 w-8">w</span>
-          <span class="text-slate-300">Write - Modify file or directory contents</span>
-        </div>
-        <div class="flex items-center">
-          <span class="font-mono text-red-400 w-8">x</span>
-          <span class="text-slate-300">Execute - Run file or access directory</span>
-        </div>
-      </div>
-    </div>
+# Word count
+wc -l filename                 # Line count
+wc -w filename                 # Word count
+</div>
 
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Special Permissions</h4>
-      <div class="space-y-2 text-sm">
-        <div class="flex items-center">
-          <span class="font-mono text-purple-400 w-8">s</span>
-          <span class="text-slate-300">SUID/SGID - Run with owner/group privileges</span>
-        </div>
-        <div class="flex items-center">
-          <span class="font-mono text-cyan-400 w-8">t</span>
-          <span class="text-slate-300">Sticky bit - Restrict deletion in directories</span>
-        </div>
-      </div>
-    </div>
-  </div>
+        <h2>Process Management</h2>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Process Management</h3>
+        <h3>Process Monitoring</h3>
+        <div class="code">
+# List running processes
+ps aux
+ps -ef
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="System Processes" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Process management skills help identify running services and potential vulnerabilities</p>
-  </div>
+# Real-time process monitor
+top
+htop    # Enhanced version
 
-  <p class="text-slate-3 মাঝারি mb-4">
-    Understanding process management enables you to monitor system activity, identify running services, and manage your penetration testing tools effectively.
-  </p>
+# Process tree
+pstree
 
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Process Commands</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <div class="font-mono text-sm text-slate-300 space-y-1">
-          <p><span class="text-cyan-400">ps aux</span> - List all running processes</p>
-          <p><span class="text-cyan-400">top</span> - Real-time process monitor</p>
-          <p><span class="text-cyan-400">htop</span> - Enhanced process viewer</p>
-          <p><span class="text-cyan-400">pgrep -f "apache"</span> - Find processes by name</p>
-          <p><span class="text-cyan-400">kill -9 PID</span> - Terminate process forcefully</p>
-          <p><span class="text-cyan-400">nohup command &</span> - Run process in background</p>
-        </div>
-      </div>
-    </div>
-  </div>
+# Find processes by name
+pgrep process_name
+pidof process_name
+</div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Network Commands</h3>
+        <h3>Process Control</h3>
+        <div class="code">
+# Kill processes
+kill PID
+kill -9 PID                    # Force kill
+killall process_name
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Network Analysis" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Network commands are essential for reconnaissance and enumeration</p>
-  </div>
+# Background processes
+command &                      # Run in background
+nohup command &               # Run detached
 
-  <p class="text-slate-300 mb-4">
-    Network-related commands form the foundation of network reconnaissance and analysis during penetration testing engagements.
-  </p>
+# Job control
+jobs                          # List background jobs
+fg %1                         # Bring job to foreground
+bg %1                         # Send job to background
+</div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Network Information</h4>
-      <div class="font-mono text-sm text-slate-300 space-y-1">
-        <p><span class="text-cyan-400">ifconfig</span> - Network interface configuration</p>
-        <p><span class="text-cyan-400">ip addr show</span> - Modern interface information</p>
-        <p><span class="text-cyan-400">netstat -tulpn</span> - Active network connections</p>
-        <p><span class="text-cyan-400">ss -tulpn</span> - Modern socket statistics</p>
-        <p><span class="text-cyan-400">route -n</span> - Routing table information</p>
-      </div>
-    </div>
+        <h2>Network Commands</h2>
 
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Network Testing</h4>
-      <div class="font-mono text-sm text-slate-300 space-y-1">
-        <p><span class="text-cyan-400">ping -c 4 target.com</span> - Test connectivity</p>
-        <p><span class="text-cyan-400">traceroute target.com</span> - Trace network path</p>
-        <p><span class="text-cyan-400">nslookup target.com</span> - DNS lookup</p>
-        <p><span class="text-cyan-400">dig target.com</span> - Advanced DNS queries</p>
-        <p><span class="text-cyan-400">wget -r http://target.com</span> - Download content</p>
-      </div>
-    </div>
-  </div>
+        <h3>Network Information</h3>
+        <div class="code">
+# Network interfaces
+ifconfig
+ip addr show
+ip a
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: Text Processing and Analysis</h3>
+# Network statistics
+netstat -tulpn
+ss -tulpn                     # Modern replacement
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Data Analysis" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Text processing skills are vital for analyzing logs and scan results</p>
-  </div>
+# Routing table
+route -n
+ip route show
 
-  <p class="text-slate-300 mb-4">
-    Text processing capabilities allow you to efficiently analyze large datasets, log files, and tool outputs during penetration testing activities.
-  </p>
+# ARP table
+arp -a
+ip neigh show
+</div>
 
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-blue-400 mb-2">Advanced Grep Usage</h5>
-      <div class="font-mono text-sm text-slate-300 space-y-1">
-        <p><span class="text-cyan-400">grep -E "^admin|^root" /etc/passwd</span> - Multiple patterns</p>
-        <p><span class="text-cyan-400">grep -v "^#" /etc/ssh/sshd_config</span> - Exclude comments</p>
-        <p><span class="text-cyan-400">grep -A 5 -B 5 "error" /var/log/syslog</span> - Context lines</p>
-        <p><span class="text-cyan-400">zgrep "pattern" *.gz</span> - Search compressed files</p>
-      </div>
-    </div>
+        <h3>Network Testing Tools</h3>
+        <div class="code">
+# Ping connectivity
+ping target_ip
+ping -c 4 target_ip           # Send 4 packets
 
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-green-400 mb-2">Stream Processing</h5>
-      <div class="font-mono text-sm text-slate-300 space-y-1">
-        <p><span class="text-cyan-400">awk '{print $1}' access.log | sort | uniq -c</span> - Count IPs</p>
-        <p><span class="text-cyan-400">sed 's/old/new/g' file.txt</span> - Replace text</p>
-        <p><span class="text-cyan-400">cut -d: -f1 /etc/passwd</span> - Extract usernames</p>
-        <p><span class="text-cyan-400">sort file.txt | uniq</span> - Remove duplicates</p>
-      </div>
-    </div>
-  </div>
+# Trace route
+traceroute target_ip
+tracepath target_ip
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Shell Scripting for Automation</h3>
+# DNS lookup
+nslookup domain.com
+dig domain.com
+host domain.com
 
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Automation Scripts" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Shell scripting enables automation of repetitive penetration testing tasks</p>
-  </div>
+# Download files
+wget http://example.com/file
+curl -O http://example.com/file
+</div>
 
-  <p class="text-slate-300 mb-4">
-    Shell scripting allows you to automate repetitive tasks, create custom tools, and streamline your penetration testing workflow.
-  </p>
+        <h2>System Information Commands</h2>
 
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Basic Script Structure</h4>
-    <div class="bg-slate-900 rounded p-4">
-      <pre class="text-slate-300 text-sm font-mono overflow-x-auto">
+        <div class="code">
+# System information
+uname -a                      # System information
+whoami                        # Current user
+id                           # User and group IDs
+w                            # Logged in users
+last                         # Login history
+
+# Hardware information
+lscpu                        # CPU information
+lsmem                        # Memory information
+lsblk                        # Block devices
+lsusb                        # USB devices
+lspci                        # PCI devices
+
+# Disk usage
+df -h                        # Filesystem usage
+du -sh directory             # Directory size
+free -h                      # Memory usage
+</div>
+
+        <h2>Log Analysis</h2>
+
+        <h3>Important Log Files</h3>
+        <table>
+            <tr>
+                <th>Log File</th>
+                <th>Purpose</th>
+                <th>Penetration Testing Use</th>
+            </tr>
+            <tr>
+                <td>/var/log/auth.log</td>
+                <td>Authentication events</td>
+                <td>Login attempts, privilege escalation</td>
+            </tr>
+            <tr>
+                <td>/var/log/syslog</td>
+                <td>System messages</td>
+                <td>General system events</td>
+            </tr>
+            <tr>
+                <td>/var/log/messages</td>
+                <td>Kernel and system messages</td>
+                <td>System errors and events</td>
+            </tr>
+            <tr>
+                <td>/var/log/secure</td>
+                <td>Security-related events</td>
+                <td>Failed logins, sudo usage</td>
+            </tr>
+            <tr>
+                <td>/var/log/apache2/</td>
+                <td>Apache web server logs</td>
+                <td>Web application attacks</td>
+            </tr>
+        </table>
+
+        <h3>Log Analysis Commands</h3>
+        <div class="code">
+# Monitor logs in real-time
+tail -f /var/log/syslog
+
+# Search for failed logins
+grep "Failed password" /var/log/auth.log
+
+# Count unique IP addresses
+awk '{print $11}' /var/log/apache2/access.log | sort | uniq -c
+
+# Filter logs by date
+grep "Dec 25" /var/log/syslog
+</div>
+
+        <h2>Package Management</h2>
+
+        <h3>Debian/Ubuntu (apt)</h3>
+        <div class="code">
+# Update package list
+sudo apt update
+
+# Upgrade packages
+sudo apt upgrade
+
+# Install package
+sudo apt install package_name
+
+# Remove package
+sudo apt remove package_name
+
+# Search packages
+apt search keyword
+</div>
+
+        <h3>Red Hat/CentOS (yum/dnf)</h3>
+        <div class="code">
+# Install package
+sudo yum install package_name
+sudo dnf install package_name
+
+# Update packages
+sudo yum update
+sudo dnf update
+
+# Search packages
+yum search keyword
+dnf search keyword
+</div>
+
+        <h2>Shell Scripting Basics</h2>
+
+        <h3>Basic Script Structure</h3>
+        <div class="code">
 #!/bin/bash
 
-# Port Scanner Script
-target=$1
-if [ -z "$target" ]; then
-    echo "Usage: $0 <target_ip>"
-    exit 1
+# Variables
+name="John"
+age=25
+
+# Echo output
+echo "Hello, $name"
+echo "You are $age years old"
+
+# Command substitution
+current_date=$(date)
+echo "Current date: $current_date"
+</div>
+
+        <h3>Control Structures</h3>
+        <div class="code">
+#!/bin/bash
+
+# If statement
+if [ $age -gt 18 ]; then
+    echo "Adult"
+else
+    echo "Minor"
 fi
 
-echo "Scanning $target..."
-for port in {1..1000}; do
-    timeout 1 bash -c "echo >/dev/tcp/$target/$port" 2>/dev/null && 
-    echo "Port $port is open"
+# For loop
+for i in {1..5}; do
+    echo "Number: $i"
 done
-      </pre>
-    </div>
-  </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 7: Package Management</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Package Management" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Effective package management ensures you have the right tools available</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    Understanding package management systems helps you install, update, and maintain penetration testing tools and dependencies.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">APT (Debian/Ubuntu)</h4>
-      <div class="font-mono text-sm text-slate-300 space-y-1">
-        <p><span class="text-cyan-400">apt update</span> - Update package lists</p>
-        <p><span class="text-cyan-400">apt upgrade</span> - Upgrade packages</p>
-        <p><span class="text-cyan-400">apt install nmap</span> - Install package</p>
-        <p><span class="text-cyan-400">apt search keyword</span> - Search packages</p>
-        <p><span class="text-cyan-400">dpkg -l | grep nmap</span> - List installed</p>
-      </div>
-    </div>
-
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">YUM/DNF (RedHat/Fedora)</h4>
-      <div class="font-mono text-sm text-slate-300 space-y-1">
-        <p><span class="text-cyan-400">dnf update</span> - Update packages</p>
-        <p><span class="text-cyan-400">dnf install nmap</span> - Install package</p>
-        <p><span class="text-cyan-400">dnf search keyword</span> - Search packages</p>
-        <p><span class="text-cyan-400">rpm -qa | grep nmap</span> - List installed</p>
-        <p><span class="text-cyan-400">dnf remove package</span> - Remove package</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 8: System Monitoring and Logs</h3>
-
-  <div class="mb-8">
-    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="System Monitoring" class="w-full h-64 object-cover rounded-lg mb-4">
-    <p class="text-slate-400 text-sm text-center">Log analysis reveals system behavior and potential security incidents</p>
-  </div>
-
-  <p class="text-slate-300 mb-4">
-    System monitoring and log analysis skills help you understand system behavior, identify anomalies, and maintain operational security during testing.
-  </p>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-red-400 mb-2">Important Log Files</h5>
-      <div class="font-mono text-sm text-slate-300 space-y-1">
-        <p><span class="text-cyan-400">/var/log/auth.log</span> - Authentication events</p>
-        <p><span class="text-cyan-400">/var/log/syslog</span> - System messages</p>
-        <p><span class="text-cyan-400">/var/log/apache2/access.log</span> - Web server access</p>
-        <p><span class="text-cyan-400">/var/log/kern.log</span> - Kernel messages</p>
-        <p><span class="text-cyan-400">/var/log/cron.log</span> - Scheduled tasks</p>
-      </div>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-purple-400 mb-2">Monitoring Commands</h5>
-      <div class="font-mono text-sm text-slate-300 space-y-1">
-        <p><span class="text-cyan-400">journalctl -f</span> - Follow systemd logs</p>
-        <p><span class="text-cyan-400">dmesg | tail</span> - Kernel ring buffer</p>
-        <p><span class="text-cyan-400">who</span> - Currently logged in users</p>
-        <p><span class="text-cyan-400">last</span> - Login history</p>
-        <p><span class="text-cyan-400">uptime</span> - System load information</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
-
-  <div class="space-y-4 mb-6">
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: File System Analysis</h5>
-      <p class="text-slate-300 text-sm mb-2">Practice finding and analyzing system files:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Find all SUID binaries on the system</li>
-        <li>• Locate world-writable files and directories</li>
-        <li>• Analyze /etc/passwd for user accounts</li>
-        <li>• Search for configuration files containing passwords</li>
-      </ul>
-    </div>
-
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Process and Network Analysis</h5>
-      <p class="text-slate-300 text-sm mb-2">Monitor system activity and network connections:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Identify all listening network services</li>
-        <li>• Monitor system processes for anomalies</li>
-        <li>• Analyze network connections and their owners</li>
-        <li>• Create a script to automate network enumeration</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
-  <p class="text-slate-300 mb-6">
-    Linux command line mastery is fundamental to penetration testing success. This module covered essential commands, file system navigation, process management, and automation techniques. Practice these skills regularly to build muscle memory and efficiency. The combination of command line proficiency and security knowledge forms the foundation for advanced penetration testing techniques covered in subsequent modules.
-  </p>
-
-  <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 border border-slate-600">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">🚀 Ready for Module 4?</h4>
-    <p class="text-slate-300">
-      Next, we'll explore penetration testing methodologies and frameworks that provide structured approaches to security assessments. You'll learn industry-standard methodologies like OWASP, NIST, and PTES.
-    </p>
-  </div>
+# While loop
+counter=1
+while [ $counter -le 5 ]; do
+    echo "Counter: $counter"
+    ((counter++))
+done
 </div>
+
+        <h3>Functions</h3>
+        <div class="code">
+#!/bin/bash
+
+# Function definition
+check_port() {
+    local host=$1
+    local port=$2
+    
+    if nc -z $host $port 2>/dev/null; then
+        echo "Port $port is open on $host"
+    else
+        echo "Port $port is closed on $host"
+    fi
+}
+
+# Function call
+check_port "192.168.1.1" "22"
+</div>
+
+        <h2>Penetration Testing Specific Tools</h2>
+
+        <h3>Network Scanning</h3>
+        <div class="code">
+# Nmap - Network scanner
+nmap -sS target_ip            # SYN scan
+nmap -sV target_ip            # Version detection
+nmap -A target_ip             # Aggressive scan
+
+# Netcat - Network utility
+nc -nv target_ip port         # Connect to port
+nc -nlvp port                 # Listen on port
+</div>
+
+        <h3>File Transfers</h3>
+        <div class="code">
+# SCP - Secure copy
+scp file.txt user@host:/path/
+
+# SFTP - Secure FTP
+sftp user@host
+
+# Python HTTP server
+python3 -m http.server 8000
+
+# Base64 encoding/decoding
+echo "text" | base64
+echo "dGV4dAo=" | base64 -d
+</div>
+
+        <div class="info">
+            <strong>Tip:</strong> Create aliases for frequently used commands to improve efficiency:
+            <br><span class="inline-code">alias ll='ls -la'</span>
+            <br><span class="inline-code">alias grep='grep --color=auto'</span>
+        </div>
+
+        <h2>Environment Customization</h2>
+
+        <h3>Shell Configuration</h3>
+        <div class="code">
+# Bash configuration files
+~/.bashrc                     # User bash configuration
+~/.bash_profile              # Login shell configuration
+~/.bash_aliases              # User-defined aliases
+
+# Environment variables
+export PATH=$PATH:/new/path
+export EDITOR=vim
+
+# View environment
+env
+printenv
+echo $PATH
+</div>
+
+        <h3>Useful Aliases for Penetration Testing</h3>
+        <div class="code">
+# Add to ~/.bashrc
+alias ll='ls -la'
+alias la='ls -A'
+alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ports='netstat -tulpn'
+alias myip='curl -s ipinfo.io/ip'
+alias scan='nmap -sS'
+</div>
+
+        <h2>Security Best Practices</h2>
+        <ol>
+            <li><strong>Use sudo instead of root:</strong> Minimize time spent as root user</li>
+            <li><strong>Secure SSH:</strong> Use key-based authentication</li>
+            <li><strong>Regular updates:</strong> Keep system and packages updated</li>
+            <li><strong>Monitor logs:</strong> Regularly check system logs</li>
+            <li><strong>File permissions:</strong> Follow principle of least privilege</li>
+            <li><strong>Backup important data:</strong> Regular backups of critical files</li>
+            <li><strong>Use strong passwords:</strong> Complex passwords for all accounts</li>
+        </ol>
+
+        <div class="highlight">
+            <strong>Remember:</strong> The command line is your most powerful tool in penetration testing. 
+            Mastering these fundamentals will significantly improve your efficiency and effectiveness.
+        </div>
+
+        <h2>Practice Exercises</h2>
+        <ol>
+            <li>Create a script to scan multiple hosts for open ports</li>
+            <li>Write a log analysis script to find failed login attempts</li>
+            <li>Set up a simple file sharing server using Python</li>
+            <li>Create a backup script that compresses and timestamps files</li>
+            <li>Practice privilege escalation techniques in a lab environment</li>
+        </ol>
+
+        <h2>Conclusion</h2>
+        <p>
+            Linux command-line proficiency is essential for effective penetration testing. These fundamentals 
+            provide the foundation for more advanced techniques and tools covered in subsequent modules.
+        </p>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore penetration testing methodology and frameworks that guide systematic security assessments.</p>
+    </div>
+</body>
+</html>
