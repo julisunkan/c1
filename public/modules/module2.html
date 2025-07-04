@@ -1,454 +1,541 @@
+
 <div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
-  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 2: Linux Fundamentals for Penetration Testers</h1>
+  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 2: Network Security Basics</h1>
   
   <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-    Linux proficiency is essential for penetration testing. This module covers the fundamental Linux concepts, commands, and system administration skills necessary for effective security testing on Debian-based systems.
+    Network security forms the backbone of cybersecurity defense strategies. This comprehensive module explores network protocols, security architectures, and fundamental protection mechanisms that safeguard data in transit and secure network infrastructure.
   </p>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Network Infrastructure" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Modern network infrastructure requires multiple layers of security</p>
+  </div>
 
   <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
   <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
     <ul class="text-slate-300 space-y-2">
-      <li>• Master essential Linux commands for navigation and file manipulation</li>
-      <li>• Understand Linux file systems, permissions, and security models</li>
-      <li>• Learn process management and system monitoring techniques</li>
-      <li>• Configure network settings and services on Debian-based systems</li>
-      <li>• Practice shell scripting for automation and efficiency</li>
-      <li>• Implement security hardening techniques</li>
+      <li>• Master network security fundamentals and protocols</li>
+      <li>• Understand network architectures and security zones</li>
+      <li>• Learn about firewalls, IDS/IPS, and network monitoring</li>
+      <li>• Explore VPN technologies and secure communications</li>
+      <li>• Practice network vulnerability assessment techniques</li>
+      <li>• Implement network access control mechanisms</li>
     </ul>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Linux Distribution Overview</h3>
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: Network Protocol Security</h3>
+  
   <p class="text-slate-300 mb-4">
-    Understanding different Linux distributions helps you adapt to various target environments during penetration testing.
+    Understanding network protocols is fundamental to securing network communications. Each protocol has inherent security characteristics and vulnerabilities that must be understood and addressed.
   </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Debian-based Systems</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Debian:</strong> Stable, security-focused foundation</li>
-        <li>• <strong>Ubuntu:</strong> User-friendly with regular updates</li>
-        <li>• <strong>Kali Linux:</strong> Specialized for penetration testing</li>
-        <li>• <strong>Parrot OS:</strong> Privacy and security focused</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Red Hat-based Systems</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>RHEL:</strong> Enterprise-grade stability</li>
-        <li>• <strong>CentOS:</strong> Free RHEL alternative</li>
-        <li>• <strong>Fedora:</strong> Cutting-edge features</li>
-        <li>• <strong>Rocky Linux:</strong> CentOS successor</li>
-      </ul>
-    </div>
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Network Protocols" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Network protocols operate at different layers with varying security implications</p>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Essential Command Line Navigation</h3>
-  <p class="text-slate-300 mb-4">
-    Mastering command line navigation is crucial for efficient penetration testing workflows.
-  </p>
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">OSI Model and Security</h4>
 
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Basic Navigation Commands</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">pwd</code>
-        <span class="text-slate-300 ml-4">Print working directory</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">ls -la</code>
-        <span class="text-slate-300 ml-4">List all files with detailed information</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">cd /path/to/directory</code>
-        <span class="text-slate-300 ml-4">Change directory</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">find / -name "*.conf" 2>/dev/null</code>
-        <span class="text-slate-300 ml-4">Find configuration files system-wide</span>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">File System Structure</h3>
-  <p class="text-slate-300 mb-4">
-    Understanding the Linux file system hierarchy is essential for locating important files during security assessments.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">System Directories</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>/etc:</strong> System configuration files</li>
-        <li>• <strong>/var:</strong> Variable data (logs, databases)</li>
-        <li>• <strong>/usr:</strong> User programs and libraries</li>
-        <li>• <strong>/home:</strong> User home directories</li>
-        <li>• <strong>/root:</strong> Root user home directory</li>
-        <li>• <strong>/tmp:</strong> Temporary files</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Important Files</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>/etc/passwd:</strong> User account information</li>
-        <li>• <strong>/etc/shadow:</strong> Password hashes</li>
-        <li>• <strong>/etc/group:</strong> Group information</li>
-        <li>• <strong>/var/log/:</strong> System log files</li>
-        <li>• <strong>/etc/crontab:</strong> Scheduled tasks</li>
-        <li>• <strong>/etc/hosts:</strong> Local hostname resolution</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">File Permissions and Ownership</h3>
-  <p class="text-slate-300 mb-4">
-    Linux permissions control access to files and directories, making them critical for security assessments.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Permission Types</h4>
-    <div class="grid grid-cols-3 gap-4 mb-4">
-      <div class="text-center">
-        <div class="bg-slate-900 rounded p-3 mb-2">
-          <code class="text-green-400 text-lg">r</code>
-        </div>
-        <p class="text-slate-300 text-sm">Read (4)</p>
-      </div>
-      <div class="text-center">
-        <div class="bg-slate-900 rounded p-3 mb-2">
-          <code class="text-yellow-400 text-lg">w</code>
-        </div>
-        <p class="text-slate-300 text-sm">Write (2)</p>
-      </div>
-      <div class="text-center">
-        <div class="bg-slate-900 rounded p-3 mb-2">
-          <code class="text-red-400 text-lg">x</code>
-        </div>
-        <p class="text-slate-300 text-sm">Execute (1)</p>
-      </div>
-    </div>
-    
-    <h5 class="font-semibold text-slate-100 mb-2">Common Permission Examples</h5>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
     <div class="space-y-2">
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">chmod 755 script.sh</code>
-        <span class="text-slate-300 ml-4">Owner: rwx, Group: r-x, Others: r-x</span>
+      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
+        <h5 class="font-semibold text-red-400 mb-1">Layer 7 - Application</h5>
+        <p class="text-slate-300 text-sm">HTTP/HTTPS, FTP, SMTP, DNS</p>
+        <p class="text-slate-400 text-xs">Security: Application firewalls, content filtering</p>
       </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">chmod +x program</code>
-        <span class="text-slate-300 ml-4">Add execute permission for all</span>
+      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
+        <h5 class="font-semibold text-orange-400 mb-1">Layer 6 - Presentation</h5>
+        <p class="text-slate-300 text-sm">SSL/TLS, encryption, compression</p>
+        <p class="text-slate-400 text-xs">Security: Encryption protocols, certificate management</p>
       </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">chown user:group file.txt</code>
-        <span class="text-slate-300 ml-4">Change ownership</span>
+      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
+        <h5 class="font-semibold text-yellow-400 mb-1">Layer 5 - Session</h5>
+        <p class="text-slate-300 text-sm">Session management, authentication</p>
+        <p class="text-slate-400 text-xs">Security: Session tokens, authentication protocols</p>
+      </div>
+      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
+        <h5 class="font-semibold text-green-400 mb-1">Layer 4 - Transport</h5>
+        <p class="text-slate-300 text-sm">TCP, UDP, port numbers</p>
+        <p class="text-slate-400 text-xs">Security: Port filtering, stateful inspection</p>
+      </div>
+    </div>
+    <div class="space-y-2">
+      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
+        <h5 class="font-semibold text-blue-400 mb-1">Layer 3 - Network</h5>
+        <p class="text-slate-300 text-sm">IP, ICMP, routing protocols</p>
+        <p class="text-slate-400 text-xs">Security: Packet filtering, routing security</p>
+      </div>
+      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
+        <h5 class="font-semibold text-indigo-400 mb-1">Layer 2 - Data Link</h5>
+        <p class="text-slate-300 text-sm">Ethernet, switches, VLANs</p>
+        <p class="text-slate-400 text-xs">Security: MAC filtering, VLAN segmentation</p>
+      </div>
+      <div class="bg-slate-800 border border-slate-700 rounded-lg p-3">
+        <h5 class="font-semibold text-purple-400 mb-1">Layer 1 - Physical</h5>
+        <p class="text-slate-300 text-sm">Cables, wireless, physical connections</p>
+        <p class="text-slate-400 text-xs">Security: Physical access control, emanation protection</p>
       </div>
     </div>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Process Management</h3>
-  <p class="text-slate-300 mb-4">
-    Understanding and managing processes is crucial for system monitoring and identifying security issues.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Process Viewing Commands</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">ps aux</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">top</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">htop</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">pstree</code>
-        </div>
-      </div>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Process Control Commands</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">kill -9 PID</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">killall process_name</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">nohup command &</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">jobs</code>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Network Configuration and Monitoring</h3>
-  <p class="text-slate-300 mb-4">
-    Network knowledge is essential for penetration testing, from reconnaissance to lateral movement.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Network Commands</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">ip addr show</code>
-        <span class="text-slate-300 ml-4">Display network interfaces</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">ip route show</code>
-        <span class="text-slate-300 ml-4">Display routing table</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">netstat -tulpn</code>
-        <span class="text-slate-300 ml-4">Show listening ports and processes</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">ss -tulpn</code>
-        <span class="text-slate-300 ml-4">Modern alternative to netstat</span>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Text Processing and Manipulation</h3>
-  <p class="text-slate-300 mb-4">
-    Efficient text processing is crucial for analyzing log files, configuration files, and command outputs.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Viewing and Searching</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">cat file.txt</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">less file.txt</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">grep "pattern" file.txt</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">grep -r "pattern" /path/</code>
-        </div>
-      </div>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Processing and Filtering</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">awk '{print $1}' file.txt</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">sed 's/old/new/g' file.txt</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">cut -d: -f1 /etc/passwd</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">sort file.txt | uniq</code>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Package Management</h3>
-  <p class="text-slate-300 mb-4">
-    Understanding package management is essential for installing tools and maintaining systems.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">APT Package Manager (Debian/Ubuntu)</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">apt update && apt upgrade</code>
-        <span class="text-slate-300 ml-4">Update package lists and upgrade system</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">apt install package_name</code>
-        <span class="text-slate-300 ml-4">Install a package</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">apt search keyword</code>
-        <span class="text-slate-300 ml-4">Search for packages</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">dpkg -l | grep package</code>
-        <span class="text-slate-300 ml-4">List installed packages</span>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">System Monitoring and Logging</h3>
-  <p class="text-slate-300 mb-4">
-    Monitoring system activity and analyzing logs is crucial for security assessment and incident response.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">System Information</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">uname -a</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">df -h</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">free -h</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">lscpu</code>
-        </div>
-      </div>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Log Analysis</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">tail -f /var/log/syslog</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">journalctl -f</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">grep "ERROR" /var/log/*</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">last</code>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Shell Scripting Basics</h3>
-  <p class="text-slate-300 mb-4">
-    Basic shell scripting skills help automate repetitive tasks and create custom tools for penetration testing.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Basic Script Structure</h4>
-    <div class="bg-slate-900 rounded p-4">
-      <pre class="text-green-400 text-sm"><code>#!/bin/bash
-
-# Variable assignment
-TARGET_IP="192.168.1.1"
-PORT_RANGE="1-1000"
-
-# Function definition
-scan_ports() {
-    echo "Scanning $1 on ports $2"
-    nmap -p $2 $1
-}
-
-# Conditional statement
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <target_ip>"
-    exit 1
-fi
-
-# Loop example
-for port in 21 22 23 25 53 80 443; do
-    echo "Checking port $port"
-    nc -zv $1 $port 2>&1 | grep succeeded
-done
-
-# Call function
-scan_ports $TARGET_IP $PORT_RANGE</code></pre>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Security Hardening Basics</h3>
-  <p class="text-slate-300 mb-4">
-    Understanding security hardening helps you identify weaknesses and recommend improvements.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">User Account Security</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Disable unnecessary user accounts</li>
-        <li>• Enforce strong password policies</li>
-        <li>• Configure account lockout policies</li>
-        <li>• Use sudo instead of root login</li>
-        <li>• Monitor user activity logs</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">System Security</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Keep system and packages updated</li>
-        <li>• Configure firewall rules (iptables/ufw)</li>
-        <li>• Disable unnecessary services</li>
-        <li>• Secure SSH configuration</li>
-        <li>• Enable audit logging</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Common Security Misconfigurations</h3>
-  <p class="text-slate-300 mb-4">
-    Recognizing common misconfigurations helps you identify potential attack vectors during assessments.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Frequent Issues to Check</h4>
-    <ul class="text-slate-300 space-y-2">
-      <li>• <strong>World-writable files:</strong> <code class="text-green-400">find / -perm -002 -type f 2>/dev/null</code></li>
-      <li>• <strong>SUID/SGID files:</strong> <code class="text-green-400">find / -perm -4000 -o -perm -2000 2>/dev/null</code></li>
-      <li>• <strong>Default passwords:</strong> Check for unchanged default credentials</li>
-      <li>• <strong>Open network services:</strong> Unnecessary services listening on network</li>
-      <li>• <strong>Weak file permissions:</strong> Sensitive files readable by all users</li>
-      <li>• <strong>Outdated software:</strong> Unpatched systems and applications</li>
-    </ul>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
-  <p class="text-slate-300 mb-4">
-    Practice these exercises to reinforce your Linux skills for penetration testing scenarios.
-  </p>
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">Common Protocol Vulnerabilities</h4>
 
   <div class="space-y-4 mb-6">
     <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: System Reconnaissance</h5>
-      <p class="text-slate-300 text-sm mb-2">Gather comprehensive system information:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Identify the operating system version and kernel</li>
-        <li>• List all running services and their ports</li>
-        <li>• Find all users with shell access</li>
-        <li>• Locate configuration files for web servers</li>
-      </ul>
+      <h5 class="font-semibold text-red-400 mb-2">HTTP/HTTPS Vulnerabilities</h5>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <p class="text-slate-300 text-sm mb-2">HTTP Weaknesses:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Cleartext transmission</li>
+            <li>• No authentication</li>
+            <li>• Session hijacking</li>
+            <li>• Man-in-the-middle attacks</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-slate-300 text-sm mb-2">HTTPS Considerations:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Certificate validation</li>
+            <li>• TLS version management</li>
+            <li>• Cipher suite selection</li>
+            <li>• Perfect forward secrecy</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    
+
     <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Log Analysis</h5>
-      <p class="text-slate-300 text-sm mb-2">Analyze system logs for security events:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Find failed SSH login attempts</li>
-        <li>• Identify unusual network connections</li>
-        <li>• Look for privilege escalation attempts</li>
-        <li>• Create a timeline of security events</li>
-      </ul>
-    </div>
-    
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 3: Automation Script</h5>
-      <p class="text-slate-300 text-sm mb-2">Create a bash script that:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Performs basic system enumeration</li>
-        <li>• Checks for common misconfigurations</li>
-        <li>• Generates a summary report</li>
-        <li>• Handles command line arguments</li>
+      <h5 class="font-semibold text-orange-400 mb-2">DNS Security Issues</h5>
+      <p class="text-slate-300 text-sm mb-2">Domain Name System vulnerabilities and mitigation strategies:</p>
+      <ul class="text-slate-400 text-sm space-y-1 ml-4">
+        <li>• DNS poisoning and cache poisoning attacks</li>
+        <li>• DNS tunneling for data exfiltration</li>
+        <li>• Domain generation algorithms (DGA)</li>
+        <li>• DNSSEC implementation for integrity</li>
+        <li>• DNS over HTTPS (DoH) and DNS over TLS (DoT)</li>
       </ul>
     </div>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
-  <p class="text-slate-300 mb-6">
-    This module provided essential Linux knowledge for penetration testing. You learned command line navigation, file system structure, process management, network configuration, and basic security concepts. These fundamentals form the foundation for advanced penetration testing techniques covered in subsequent modules. Practice these skills regularly to maintain proficiency and discover new ways to leverage Linux capabilities during security assessments.
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: Network Architecture and Segmentation</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Network Architecture" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Proper network segmentation is crucial for containing security breaches</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Network architecture design directly impacts security posture. Proper segmentation and zone-based security create multiple layers of defense and limit the impact of security breaches.
   </p>
+
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">Security Zones and DMZ</h4>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <div class="space-y-4">
+      <div class="border-l-4 border-green-500 pl-4">
+        <h5 class="font-semibold text-green-400 mb-2">Internal/Trusted Zone</h5>
+        <p class="text-slate-300 text-sm">Contains internal corporate resources and systems with high trust levels. Requires authenticated access and internal security controls.</p>
+      </div>
+      <div class="border-l-4 border-yellow-500 pl-4">
+        <h5 class="font-semibold text-yellow-400 mb-2">DMZ (Demilitarized Zone)</h5>
+        <p class="text-slate-300 text-sm">Buffer zone between internal and external networks. Hosts public-facing services like web servers, email servers, and DNS servers.</p>
+      </div>
+      <div class="border-l-4 border-red-500 pl-4">
+        <h5 class="font-semibold text-red-400 mb-2">External/Untrusted Zone</h5>
+        <p class="text-slate-300 text-sm">Internet and other external networks. Considered hostile and requires strict access controls and monitoring.</p>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">VLAN Segmentation</h4>
+
+  <p class="text-slate-300 mb-4">
+    Virtual Local Area Networks (VLANs) provide logical segmentation within physical network infrastructure, enabling micro-segmentation and improved security posture.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-cyan-400 mb-2">VLAN Benefits</h5>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Broadcast domain isolation</li>
+        <li>• Logical network segmentation</li>
+        <li>• Improved performance</li>
+        <li>• Enhanced security boundaries</li>
+        <li>• Simplified network management</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-purple-400 mb-2">VLAN Security Considerations</h5>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• VLAN hopping attacks</li>
+        <li>• Switch spoofing vulnerabilities</li>
+        <li>• Inter-VLAN routing security</li>
+        <li>• VLAN access control lists</li>
+        <li>• Private VLAN implementation</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Firewall Technologies</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Firewall Protection" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Firewalls form the first line of defense in network security</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Firewalls are network security systems that monitor and control incoming and outgoing network traffic based on predetermined security rules. Understanding different firewall types and their capabilities is essential for network security.
+  </p>
+
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">Firewall Types and Evolution</h4>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-blue-400 mb-2">Packet Filtering Firewalls</h5>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Characteristics:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Network layer operation (Layer 3)</li>
+            <li>• Fast processing speed</li>
+            <li>• Basic packet inspection</li>
+            <li>• Stateless operation</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Limitations:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• No application awareness</li>
+            <li>• Vulnerable to spoofing</li>
+            <li>• Limited logging capabilities</li>
+            <li>• No connection tracking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-green-400 mb-2">Stateful Inspection Firewalls</h5>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Advanced Features:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Connection state tracking</li>
+            <li>• Dynamic rule creation</li>
+            <li>• Session awareness</li>
+            <li>• Improved security posture</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Use Cases:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Enterprise perimeter defense</li>
+            <li>• Internal network segmentation</li>
+            <li>• VPN gateway protection</li>
+            <li>• DMZ traffic control</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-purple-400 mb-2">Next-Generation Firewalls (NGFW)</h5>
+      <p class="text-slate-300 text-sm mb-2">Modern firewalls with advanced capabilities:</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <p class="text-slate-300 text-sm mb-1">Deep Packet Inspection:</p>
+          <ul class="text-slate-400 text-xs space-y-1 ml-4">
+            <li>• Application identification</li>
+            <li>• Content analysis</li>
+            <li>• Protocol anomaly detection</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-slate-300 text-sm mb-1">Threat Intelligence:</p>
+          <ul class="text-slate-400 text-xs space-y-1 ml-4">
+            <li>• Real-time threat feeds</li>
+            <li>• Reputation-based filtering</li>
+            <li>• Behavioral analysis</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-slate-300 text-sm mb-1">Advanced Features:</p>
+          <ul class="text-slate-400 text-xs space-y-1 ml-4">
+            <li>• User identity integration</li>
+            <li>• SSL/TLS inspection</li>
+            <li>• Sandboxing capabilities</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Intrusion Detection and Prevention Systems</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Network Monitoring" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Continuous monitoring is essential for detecting and preventing intrusions</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Intrusion Detection Systems (IDS) and Intrusion Prevention Systems (IPS) provide critical capabilities for detecting, alerting on, and preventing malicious network activity.
+  </p>
+
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">IDS vs IPS Comparison</h4>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-blue-400 mb-2">Intrusion Detection System (IDS)</h5>
+      <div class="space-y-3">
+        <div>
+          <p class="text-slate-300 text-sm mb-1">Deployment:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Out-of-band monitoring</li>
+            <li>• Passive network taps</li>
+            <li>• SPAN port connections</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-slate-300 text-sm mb-1">Capabilities:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Real-time monitoring</li>
+            <li>• Alert generation</li>
+            <li>• Forensic analysis</li>
+            <li>• No impact on network performance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-green-400 mb-2">Intrusion Prevention System (IPS)</h5>
+      <div class="space-y-3">
+        <div>
+          <p class="text-slate-300 text-sm mb-1">Deployment:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Inline network placement</li>
+            <li>• Active traffic inspection</li>
+            <li>• Bridge or router mode</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-slate-300 text-sm mb-1">Capabilities:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Active threat blocking</li>
+            <li>• Real-time prevention</li>
+            <li>• Automatic response</li>
+            <li>• Potential network latency</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">Detection Methodologies</h4>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-yellow-400 mb-2">Signature-Based Detection</h5>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Advantages:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• High accuracy for known threats</li>
+            <li>• Low false positive rates</li>
+            <li>• Fast processing speed</li>
+            <li>• Clear threat identification</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Limitations:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Cannot detect unknown threats</li>
+            <li>• Requires frequent updates</li>
+            <li>• Vulnerable to evasion techniques</li>
+            <li>• Limited against zero-day attacks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-orange-400 mb-2">Anomaly-Based Detection</h5>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Techniques:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Statistical analysis</li>
+            <li>• Machine learning algorithms</li>
+            <li>• Behavioral modeling</li>
+            <li>• Traffic pattern analysis</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Benefits:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Detects unknown threats</li>
+            <li>• Adapts to new attack patterns</li>
+            <li>• Identifies insider threats</li>
+            <li>• Zero-day attack detection</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: Virtual Private Networks (VPNs)</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="VPN Security" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">VPNs provide secure connectivity over untrusted networks</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Virtual Private Networks create secure, encrypted connections over public networks, enabling remote access and site-to-site connectivity while maintaining confidentiality and integrity.
+  </p>
+
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">VPN Technologies and Protocols</h4>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-blue-400 mb-2">IPSec (Internet Protocol Security)</h5>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Components:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Authentication Header (AH)</li>
+            <li>• Encapsulating Security Payload (ESP)</li>
+            <li>• Internet Key Exchange (IKE)</li>
+            <li>• Security Associations (SA)</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Modes:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Transport mode (host-to-host)</li>
+            <li>• Tunnel mode (network-to-network)</li>
+            <li>• Site-to-site connections</li>
+            <li>• Remote access VPNs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-green-400 mb-2">SSL/TLS VPN</h5>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Advantages:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Browser-based access</li>
+            <li>• No client software required</li>
+            <li>• Application-layer security</li>
+            <li>• Granular access control</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-slate-300 text-sm mb-2">Deployment Types:</p>
+          <ul class="text-slate-400 text-sm space-y-1 ml-4">
+            <li>• Portal-based access</li>
+            <li>• Tunnel-based access</li>
+            <li>• Application proxying</li>
+            <li>• Hybrid implementations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Network Access Control (NAC)</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Access Control" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Network access control ensures only authorized devices connect to the network</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Network Access Control solutions enforce security policies on devices connecting to network resources, ensuring compliance and reducing security risks from unauthorized or compromised devices.
+  </p>
+
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">NAC Implementation Models</h4>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-cyan-400 mb-2">Pre-Admission Control</h5>
+      <ul class="text-slate-300 text-sm space-y-2">
+        <li>• Device authentication and authorization</li>
+        <li>• Security posture assessment</li>
+        <li>• Compliance verification</li>
+        <li>• Certificate-based authentication</li>
+        <li>• 802.1X implementation</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-purple-400 mb-2">Post-Admission Control</h5>
+      <ul class="text-slate-300 text-sm space-y-2">
+        <li>• Continuous monitoring</li>
+        <li>• Behavioral analysis</li>
+        <li>• Policy enforcement</li>
+        <li>• Dynamic quarantine</li>
+        <li>• Incident response automation</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">802.1X Authentication</h4>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <div class="space-y-4">
+      <div class="border-l-4 border-blue-500 pl-4">
+        <h5 class="font-semibold text-blue-400 mb-1">Supplicant</h5>
+        <p class="text-slate-300 text-sm">The client device requesting network access. Must support 802.1X authentication protocols.</p>
+      </div>
+      <div class="border-l-4 border-green-500 pl-4">
+        <h5 class="font-semibold text-green-400 mb-1">Authenticator</h5>
+        <p class="text-slate-300 text-sm">Network switch or wireless access point that controls access. Forwards authentication requests to the authentication server.</p>
+      </div>
+      <div class="border-l-4 border-purple-500 pl-4">
+        <h5 class="font-semibold text-purple-400 mb-1">Authentication Server</h5>
+        <p class="text-slate-300 text-sm">RADIUS server that validates credentials and determines access permissions. Maintains user and device databases.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Summary and Practical Applications</h3>
+
+  <p class="text-slate-300 mb-4">
+    Network security forms the foundation of organizational cybersecurity. Understanding protocols, architectures, and security technologies enables the design and implementation of robust network defense strategies.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="font-semibold text-[var(--cyber-green)] mb-3">Implementation Checklist</h4>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <ul class="text-slate-300 space-y-2">
+        <li>• Implement network segmentation</li>
+        <li>• Deploy defense-in-depth</li>
+        <li>• Configure stateful firewalls</li>
+        <li>• Enable IDS/IPS monitoring</li>
+        <li>• Establish secure remote access</li>
+        <li>• Implement network access control</li>
+      </ul>
+      <ul class="text-slate-300 space-y-2">
+        <li>• Monitor network traffic patterns</li>
+        <li>• Maintain security policies</li>
+        <li>• Regular security assessments</li>
+        <li>• Incident response procedures</li>
+        <li>• Continuous security monitoring</li>
+        <li>• Staff training and awareness</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bg-gradient-to-r from-slate-800 to-slate-700 border border-slate-600 rounded-lg p-6">
+    <h4 class="font-semibold text-[var(--cyber-green)] mb-3">Prepare for Module 3</h4>
+    <p class="text-slate-300 mb-3">
+      The next module focuses on password security and authentication mechanisms, exploring multi-factor authentication, identity management, and access control systems.
+    </p>
+    <p class="text-slate-400 text-sm">
+      Recommended preparation: Review authentication concepts, password policies, and identity management principles.
+    </p>
+  </div>
 </div>

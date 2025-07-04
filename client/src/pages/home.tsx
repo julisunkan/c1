@@ -13,7 +13,7 @@ export default function Home() {
           alt="Professional cybersecurity workspace with multiple monitors" 
           className="rounded-2xl shadow-2xl w-full h-64 object-cover mb-8"
         />
-        
+
         <h1 className="text-5xl font-bold text-slate-100 mb-6">
           Ultimate Guide to{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--cyber-green)] to-blue-400">

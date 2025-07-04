@@ -1,17 +1,19 @@
+
 import { Link, useLocation } from "wouter";
-import { Book, Home, GraduationCap, Shield } from "lucide-react";
+import { Book, Home, GraduationCap, Shield, CheckCircle } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { Progress } from "@/components/ui/progress";
+import modules from "@/data/modules.json";
 
 export default function Sidebar() {
   const [location] = useLocation();
-  const { getTotalProgress } = useProgress();
+  const { getTotalProgress, isModuleCompleted } = useProgress();
 
   const progress = getTotalProgress();
 
   const navItems = [
     { href: "/", icon: Home, label: "Home" },
-    { href: "/modules", icon: Book, label: "Modules" },
+    { href: "/modules", icon: Book, label: "All Modules" },
   ];
 
   return (
@@ -20,7 +22,7 @@ export default function Sidebar() {
         <div className="flex items-center gap-2 mb-8">
           <Shield className="h-8 w-8 text-[var(--cyber-green)]" />
           <div>
-            <h1 className="text-xl font-bold text-white">CyberSec</h1>
+            <h1 className="text-xl font-bold text-white">&lt;/&gt;</h1>
             <p className="text-sm text-slate-400">Security Academy</p>
           </div>
         </div>
@@ -34,8 +36,8 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <nav className="flex-1 px-4">
-        <div className="space-y-2">
+      <nav className="flex-1 px-4 overflow-y-auto">
+        <div className="space-y-2 mb-6">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = location === item.href;
@@ -55,6 +57,35 @@ export default function Sidebar() {
               </Link>
             );
           })}
+        </div>
+
+        <div className="border-t border-slate-800 pt-4">
+          <h3 className="text-sm font-medium text-slate-400 mb-3 px-3">Modules</h3>
+          <div className="space-y-1">
+            {modules.map((module) => {
+              const isActive = location === `/module/${module.id}`;
+              const isCompleted = isModuleCompleted(module.id);
+
+              return (
+                <Link key={module.id} href={`/module/${module.id}`}>
+                  <div
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors text-sm ${
+                      isActive
+                        ? "bg-[var(--cyber-green)] text-black font-medium"
+                        : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                    }`}
+                  >
+                    {isCompleted ? (
+                      <CheckCircle className="h-4 w-4 text-[var(--cyber-green)]" />
+                    ) : (
+                      <div className="h-4 w-4 rounded-full border border-slate-600" />
+                    )}
+                    <span className="truncate">{module.title}</span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </nav>
 

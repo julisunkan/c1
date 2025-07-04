@@ -4,6 +4,7 @@ import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ProgressProvider } from "@/hooks/use-progress";
+import { Shield } from "lucide-react";
 import Sidebar from "@/components/sidebar";
 import Header from "@/components/header";
 import ScrollToTop from "@/components/scroll-to-top";
@@ -32,8 +33,21 @@ function AppLayout({ children }: { children: React.ReactNode }) {
             {children}
           </div>
         </main>
+        <footer className="bg-slate-900 border-t border-slate-800 px-6 py-4">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center gap-2 mb-2 md:mb-0">
+              <Shield className="h-5 w-5 text-[var(--cyber-green)]" />
+              <span className="text-slate-300 text-sm">&copy; 2024 Security Academy. All rights reserved.</span>
+            </div>
+            <div className="flex items-center gap-4 text-slate-400 text-sm">
+              <span>Built for cybersecurity professionals</span>
+              <span>•</span>
+              <span>Debian-based penetration testing</span>
+            </div>
+          </div>
+        </footer>
+        <ScrollToTop />
       </div>
-      <ScrollToTop />
     </div>
   );
 }
