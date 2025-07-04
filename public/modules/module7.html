@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,612 +6,500 @@
     <title>Network Enumeration and Scanning</title>
     <style>
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #e2e8f0;
-            background: #0f172a;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             margin: 0;
             padding: 0;
+            min-height: 100vh;
         }
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 40px 20px;
         }
-        h1, h2, h3 {
-            color: #00ff88;
+        .header {
+            background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
         }
         h1 {
-            border-bottom: 2px solid #00ff88;
-            padding-bottom: 0.5rem;
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .subtitle {
+            margin-top: 10px;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .content {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        h2 {
+            color: #14b8a6;
+            border-bottom: 2px solid #14b8a6;
+            padding-bottom: 10px;
+            margin-top: 30px;
         }
         .highlight {
-            background: #1e293b;
-            padding: 1rem;
-            border-left: 4px solid #00ff88;
-            margin: 1rem 0;
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #10b981;
         }
-        .code {
-            background: #334155;
-            padding: 1rem;
-            border-radius: 4px;
-            font-family: 'Fira Code', monospace;
-            overflow-x: auto;
-            white-space: pre;
-        }
-        ul, ol {
-            padding-left: 2rem;
-        }
-        li {
-            margin: 0.5rem 0;
+        .command-box {
+            background: #0f172a;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #10b981;
         }
         .warning {
-            background: #451a03;
-            border: 1px solid #ea580c;
-            padding: 1rem;
-            border-radius: 6px;
-            margin: 1rem 0;
+            background: linear-gradient(135deg, #7c2d12 0%, #dc2626 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ef4444;
         }
-        .info {
-            background: #0c4a6e;
-            border: 1px solid #0284c7;
-            padding: 1rem;
-            border-radius: 6px;
-            margin: 1rem 0;
+        .scan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
         }
-        table {
+        .scan-card {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        .protocol-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1rem 0;
+            margin: 20px 0;
         }
-        th, td {
-            border: 1px solid #475569;
-            padding: 0.75rem;
+        .protocol-table th,
+        .protocol-table td {
+            border: 1px solid #374151;
+            padding: 10px;
             text-align: left;
         }
-        th {
+        .protocol-table th {
             background: #1e293b;
-            color: #00ff88;
+            color: #14b8a6;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Module 7: Network Enumeration and Scanning</h1>
+        <div class="header">
+            <h1>Network Enumeration and Scanning</h1>
+            <p class="subtitle">Discover live hosts, open ports, and running services using advanced scanning techniques</p>
+        </div>
 
-        <h2>Learning Objectives</h2>
-        <ul>
-            <li>Master network discovery and host enumeration techniques</li>
-            <li>Understand various port scanning methods and their applications</li>
-            <li>Learn service enumeration and version detection</li>
-            <li>Explore advanced Nmap techniques and scripting</li>
-            <li>Understand scanning countermeasures and evasion techniques</li>
-        </ul>
+        <div class="content">
+            <h2>Introduction</h2>
+            <p>
+                Network enumeration and scanning form the backbone of penetration testing, allowing security professionals 
+                to discover live hosts, identify open ports, and enumerate running services. This module covers comprehensive 
+                scanning techniques using various tools and methodologies to map target networks effectively while 
+                maintaining stealth and avoiding detection.
+            </p>
 
-        <h2>Introduction to Network Enumeration</h2>
-        <p>
-            Network enumeration is the process of systematically gathering information about 
-            network resources, live hosts, open ports, and running services. This phase builds 
-            upon reconnaissance to create a detailed map of the target network infrastructure.
-        </p>
-
-        <div class="highlight">
-            <strong>Enumeration Goals:</strong>
-            <ul style="margin: 0.5rem 0;">
-                <li>Identify live hosts on the network</li>
-                <li>Discover open ports and services</li>
-                <li>Determine service versions and configurations</li>
-                <li>Map network topology and trust relationships</li>
+            <h2>Learning Objectives</h2>
+            <ul>
+                <li>Master network discovery techniques</li>
+                <li>Understand different port scanning methods</li>
+                <li>Learn service enumeration and banner grabbing</li>
+                <li>Implement stealth scanning techniques</li>
+                <li>Analyze scan results effectively</li>
+                <li>Avoid detection systems</li>
+                <li>Document findings systematically</li>
             </ul>
-        </div>
 
-        <h2>Network Discovery Techniques</h2>
+            <h2>Network Discovery</h2>
+            <p>The first step in network enumeration is discovering live hosts on the target network.</p>
 
-        <h3>Host Discovery Methods</h3>
-        <div class="code">
-# ICMP Echo (Ping) Sweep
-nmap -sn 192.168.1.0/24              # Ping sweep
-ping -c 1 192.168.1.1                # Single host ping
-fping -a -g 192.168.1.0/24           # Fast ping sweep
+            <h3>Host Discovery Techniques</h3>
+            <div class="scan-grid">
+                <div class="scan-card">
+                    <h4>🔍 Ping Sweep</h4>
+                    <div class="command-box">
+# Nmap ping sweep
+nmap -sn 192.168.1.0/24
+nmap -sn 10.0.0.0/8
 
-# ARP Scan (Local Network)
-nmap -PR 192.168.1.0/24              # ARP ping
-arp-scan -l                          # Local network ARP scan
-arp-scan 192.168.1.0/24              # Specific subnet
+# Disable ping (stealth)
+nmap -Pn 192.168.1.1
 
-# TCP Connect Scan for Discovery
-nmap -PS80,443,22 192.168.1.0/24     # TCP SYN ping on specific ports
-nmap -PA80,443,22 192.168.1.0/24     # TCP ACK ping
+# Custom ping types
+nmap -PE -sn 192.168.1.0/24  # ICMP echo
+nmap -PP -sn 192.168.1.0/24  # ICMP timestamp
+nmap -PM -sn 192.168.1.0/24  # ICMP netmask
+</div>
+                </div>
+                <div class="scan-card">
+                    <h4>🎯 ARP Scan</h4>
+                    <div class="command-box">
+# ARP scanning (local network)
+nmap -PR -sn 192.168.1.0/24
+arp-scan -l
+arp-scan 192.168.1.0/24
 
-# UDP Discovery
-nmap -PU53,67,123 192.168.1.0/24     # UDP ping on common ports
-        </div>
+# Netdiscover
+netdiscover -r 192.168.1.0/24
+netdiscover -p -r 192.168.1.0/24
+</div>
+                </div>
+                <div class="scan-card">
+                    <h4>📡 TCP SYN Ping</h4>
+                    <div class="command-box">
+# TCP SYN to specific ports
+nmap -PS22,80,443 192.168.1.0/24
+nmap -PS21,22,25,53,80,110,443,993,995 target
 
-        <h3>Live Host Identification</h3>
-        <table>
-            <tr>
-                <th>Method</th>
-                <th>Protocol</th>
-                <th>Use Case</th>
-                <th>Stealth Level</th>
-            </tr>
-            <tr>
-                <td>ICMP Echo</td>
-                <td>ICMP</td>
-                <td>Basic connectivity test</td>
-                <td>Low</td>
-            </tr>
-            <tr>
-                <td>ARP Scan</td>
-                <td>ARP</td>
-                <td>Local network discovery</td>
-                <td>Medium</td>
-            </tr>
-            <tr>
-                <td>TCP SYN Ping</td>
-                <td>TCP</td>
-                <td>Firewall evasion</td>
-                <td>Medium</td>
-            </tr>
-            <tr>
-                <td>TCP ACK Ping</td>
-                <td>TCP</td>
-                <td>Stateful firewall bypass</td>
-                <td>High</td>
-            </tr>
-            <tr>
-                <td>UDP Ping</td>
-                <td>UDP</td>
-                <td>Alternative discovery method</td>
-                <td>Medium</td>
-            </tr>
-        </table>
+# TCP ACK ping
+nmap -PA80,443 192.168.1.0/24
+</div>
+                </div>
+                <div class="scan-card">
+                    <h4>🔊 UDP Ping</h4>
+                    <div class="command-box">
+# UDP ping to common ports
+nmap -PU53,161,500 192.168.1.0/24
+nmap -PU40125 192.168.1.0/24
 
-        <h2>Port Scanning Techniques</h2>
+# Combined techniques
+nmap -PE -PS22,80,443 -PA80,443 -PU53,161,500 192.168.1.0/24
+</div>
+                </div>
+            </div>
 
-        <h3>TCP Port Scanning</h3>
-        <div class="code">
-# TCP SYN Scan (Half-open scan)
-nmap -sS target                      # Default scan type
-nmap -sS -p 1-1000 target          # Scan ports 1-1000
-nmap -sS -p- target                 # Scan all 65535 ports
+            <h2>Port Scanning Techniques</h2>
+            <p>Once live hosts are identified, the next step is to discover open ports and services.</p>
 
-# TCP Connect Scan
-nmap -sT target                     # Full TCP connection
-nmap -sT -p 80,443,22 target       # Specific ports
+            <h3>TCP Scanning Methods</h3>
+            <div class="command-box">
+# TCP Connect Scan (full connection)
+nmap -sT target
 
-# TCP ACK Scan
-nmap -sA target                     # Firewall rule detection
-nmap -sA -p 1-1000 target          # ACK scan on port range
+# TCP SYN Scan (stealth scan)
+nmap -sS target
+
+# TCP ACK Scan (firewall detection)
+nmap -sA target
 
 # TCP Window Scan
-nmap -sW target                     # Window size analysis
+nmap -sW target
+
+# TCP Maimon Scan
+nmap -sM target
 
 # TCP FIN Scan
-nmap -sF target                     # FIN packet scan
-
-# TCP Xmas Scan
-nmap -sX target                     # FIN, PSH, and URG flags set
+nmap -sF target
 
 # TCP Null Scan
-nmap -sN target                     # No flags set
-        </div>
+nmap -sN target
 
-        <h3>UDP Port Scanning</h3>
-        <div class="code">
-# UDP Scan
-nmap -sU target                     # UDP port scan
-nmap -sU -p 53,67,123,161 target    # Common UDP ports
-nmap -sU --top-ports 100 target     # Top 100 UDP ports
+# TCP Xmas Scan
+nmap -sX target
+</div>
 
-# UDP scan optimization
-nmap -sU -F target                  # Fast UDP scan
-nmap -sU --max-retries 1 target     # Reduce retries
-        </div>
+            <h3>UDP Scanning</h3>
+            <div class="command-box">
+# UDP Scan (slower but important)
+nmap -sU target
+nmap -sU --top-ports 1000 target
 
-        <h3>Port Scan Types Comparison</h3>
-        <table>
-            <tr>
-                <th>Scan Type</th>
-                <th>Flags Sent</th>
-                <th>Detection Difficulty</th>
-                <th>Speed</th>
-                <th>Accuracy</th>
-            </tr>
-            <tr>
-                <td>TCP SYN</td>
-                <td>SYN</td>
-                <td>Medium</td>
-                <td>Fast</td>
-                <td>High</td>
-            </tr>
-            <tr>
-                <td>TCP Connect</td>
-                <td>Full Handshake</td>
-                <td>Low</td>
-                <td>Slow</td>
-                <td>High</td>
-            </tr>
-            <tr>
-                <td>TCP FIN</td>
-                <td>FIN</td>
-                <td>High</td>
-                <td>Fast</td>
-                <td>Medium</td>
-            </tr>
-            <tr>
-                <td>TCP Xmas</td>
-                <td>FIN, PSH, URG</td>
-                <td>High</td>
-                <td>Fast</td>
-                <td>Medium</td>
-            </tr>
-            <tr>
-                <td>TCP Null</td>
-                <td>None</td>
-                <td>High</td>
-                <td>Fast</td>
-                <td>Medium</td>
-            </tr>
-            <tr>
-                <td>UDP</td>
-                <td>UDP Packet</td>
-                <td>Medium</td>
-                <td>Very Slow</td>
-                <td>Low</td>
-            </tr>
-        </table>
+# Combined TCP/UDP scanning
+nmap -sS -sU target
 
-        <h2>Service Enumeration and Version Detection</h2>
+# UDP with version detection
+nmap -sU -sV target
+</div>
 
-        <h3>Service Version Detection</h3>
-        <div class="code">
-# Basic version detection
-nmap -sV target                     # Service version detection
-nmap -sV --version-intensity 5 target # Aggressive version detection
-nmap -sV --version-light target     # Light version detection
+            <h3>Port Specification</h3>
+            <div class="command-box">
+# Specific ports
+nmap -p 80,443,22 target
+nmap -p 1-1000 target
 
-# Version detection with specific ports
-nmap -sV -p 22,80,443 target       # Specific ports only
+# All ports
+nmap -p- target
+nmap -p 1-65535 target
 
-# Aggressive scanning (includes version detection)
-nmap -A target                      # OS detection, version detection, scripts
-        </div>
+# Top ports
+nmap --top-ports 100 target
+nmap --top-ports 1000 target
 
-        <h3>Banner Grabbing</h3>
-        <div class="code">
+# Common ports by service
+nmap -p http,https,ssh,ftp target
+</div>
+
+            <h2>Service Enumeration</h2>
+            <p>Identifying services running on discovered ports is crucial for vulnerability assessment.</p>
+
+            <h3>Service and Version Detection</h3>
+            <div class="command-box">
+# Version detection
+nmap -sV target
+nmap -sV --version-intensity 5 target
+
+# Service detection with NSE
+nmap -sC target
+nmap -sC -sV target
+
+# Aggressive scanning
+nmap -A target
+
+# OS detection
+nmap -O target
+</div>
+
+            <h3>Banner Grabbing</h3>
+            <div class="command-box">
 # Manual banner grabbing
+nc -nv target 80
 telnet target 80
-GET / HTTP/1.1
-Host: target
-[Enter twice]
+curl -I http://target
 
-# Netcat banner grabbing
-nc target 22                        # SSH banner
-nc target 25                        # SMTP banner
-nc target 80                        # HTTP banner (manual request needed)
-
-# Using nmap scripts for banner grabbing
+# Automated banner grabbing
 nmap --script banner target
-nmap --script ssh-hostkey target
 nmap --script http-headers target
-        </div>
 
-        <h3>Service-Specific Enumeration</h3>
+# Service-specific enumeration
+nmap --script ssh-* target
+nmap --script ftp-* target
+nmap --script smtp-* target
+</div>
 
-        <h4>HTTP/HTTPS Services</h4>
-        <div class="code">
-# HTTP enumeration
+            <h2>Common Network Services</h2>
+            <table class="protocol-table">
+                <thead>
+                    <tr>
+                        <th>Port</th>
+                        <th>Service</th>
+                        <th>Protocol</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>21</td><td>FTP</td><td>TCP</td><td>File Transfer Protocol</td></tr>
+                    <tr><td>22</td><td>SSH</td><td>TCP</td><td>Secure Shell</td></tr>
+                    <tr><td>23</td><td>Telnet</td><td>TCP</td><td>Telnet Protocol</td></tr>
+                    <tr><td>25</td><td>SMTP</td><td>TCP</td><td>Simple Mail Transfer Protocol</td></tr>
+                    <tr><td>53</td><td>DNS</td><td>TCP/UDP</td><td>Domain Name System</td></tr>
+                    <tr><td>80</td><td>HTTP</td><td>TCP</td><td>HyperText Transfer Protocol</td></tr>
+                    <tr><td>110</td><td>POP3</td><td>TCP</td><td>Post Office Protocol</td></tr>
+                    <tr><td>143</td><td>IMAP</td><td>TCP</td><td>Internet Message Access Protocol</td></tr>
+                    <tr><td>443</td><td>HTTPS</td><td>TCP</td><td>HTTP Secure</td></tr>
+                    <tr><td>993</td><td>IMAPS</td><td>TCP</td><td>IMAP Secure</td></tr>
+                    <tr><td>995</td><td>POP3S</td><td>TCP</td><td>POP3 Secure</td></tr>
+                </tbody>
+            </table>
+
+            <h2>Nmap Scripting Engine (NSE)</h2>
+            <p>NSE provides powerful scripting capabilities for advanced enumeration.</p>
+
+            <h3>NSE Categories</h3>
+            <div class="command-box">
+# Script categories
+nmap --script auth target      # Authentication
+nmap --script broadcast target # Broadcast scripts
+nmap --script brute target     # Brute force
+nmap --script default target   # Default scripts
+nmap --script discovery target # Discovery scripts
+nmap --script dos target       # Denial of service
+nmap --script exploit target   # Exploit scripts
+nmap --script fuzzer target    # Fuzzing scripts
+nmap --script intrusive target # Intrusive scripts
+nmap --script malware target   # Malware detection
+nmap --script safe target      # Safe scripts
+nmap --script version target   # Version detection
+nmap --script vuln target      # Vulnerability scripts
+</div>
+
+            <h3>Service-Specific NSE Scripts</h3>
+            <div class="command-box">
+# Web services
 nmap --script http-enum target
 nmap --script http-headers target
 nmap --script http-methods target
-nmap --script http-title target
+nmap --script http-robots.txt target
 
-# Directory enumeration
-dirb http://target
-gobuster dir -u http://target -w /usr/share/wordlists/dirb/common.txt
-nikto -h http://target
-
-# SSL/TLS enumeration
-nmap --script ssl-enum-ciphers -p 443 target
-sslscan target:443
-sslyze target:443
-        </div>
-
-        <h4>SMB/NetBIOS Services</h4>
-        <div class="code">
 # SMB enumeration
 nmap --script smb-enum-shares target
 nmap --script smb-enum-users target
 nmap --script smb-os-discovery target
-nmap --script smb-security-mode target
 
-# NetBIOS enumeration
-nbtscan target
-enum4linux target
-smbclient -L //target
-
-# SMB vulnerability scanning
-nmap --script smb-vuln-* target
-        </div>
-
-        <h4>SSH Services</h4>
-        <div class="code">
-# SSH enumeration
-nmap --script ssh-hostkey target
-nmap --script ssh-auth-methods target
-ssh-audit target
-
-# SSH version and configuration
-ssh -v target
-nc target 22
-        </div>
-
-        <h4>DNS Services</h4>
-        <div class="code">
 # DNS enumeration
-nmap --script dns-* target
-dig @target any example.com
-nslookup
-> server target
-> ls -d example.com
+nmap --script dns-brute target
+nmap --script dns-zone-transfer target
 
-# DNS zone transfer
-dig @target example.com AXFR
-host -l example.com target
-        </div>
-
-        <h4>SNMP Services</h4>
-        <div class="code">
 # SNMP enumeration
-nmap --script snmp-* target
-snmpwalk -c public -v1 target
-snmpcheck -t target
-
-# SNMP community string bruteforce
+nmap --script snmp-info target
 nmap --script snmp-brute target
-onesixtyone -c community.txt target
-        </div>
+</div>
 
-        <h2>Advanced Nmap Techniques</h2>
+            <h2>Stealth Scanning Techniques</h2>
+            <p>Avoiding detection is crucial in real-world penetration testing.</p>
 
-        <h3>Nmap Scripting Engine (NSE)</h3>
-        <div class="code">
-# Script categories
-nmap --script safe target           # Safe scripts only
-nmap --script vuln target           # Vulnerability scripts
-nmap --script auth target           # Authentication scripts
-nmap --script discovery target      # Discovery scripts
-nmap --script intrusive target      # Intrusive scripts
-
-# Specific script execution
-nmap --script ssh-brute target
-nmap --script http-sql-injection target
-nmap --script ssl-cert target
-
-# Script with arguments
-nmap --script http-enum --script-args http-enum.basepath=/admin target
-
-# Update script database
-nmap --script-updatedb
-        </div>
-
-        <h3>Timing and Performance</h3>
-        <div class="code">
+            <h3>Timing and Performance</h3>
+            <div class="command-box">
 # Timing templates
-nmap -T0 target                     # Paranoid (very slow)
-nmap -T1 target                     # Sneaky
-nmap -T2 target                     # Polite
-nmap -T3 target                     # Normal (default)
-nmap -T4 target                     # Aggressive
-nmap -T5 target                     # Insane (very fast)
+nmap -T0 target  # Paranoid (very slow)
+nmap -T1 target  # Sneaky (slow)
+nmap -T2 target  # Polite (slow)
+nmap -T3 target  # Normal (default)
+nmap -T4 target  # Aggressive (fast)
+nmap -T5 target  # Insane (very fast)
 
-# Custom timing options
-nmap --min-rate 1000 target         # Minimum packet rate
-nmap --max-rate 5000 target         # Maximum packet rate
-nmap --min-parallelism 10 target    # Minimum parallel probes
-nmap --max-parallelism 100 target   # Maximum parallel probes
+# Custom timing
+nmap --min-rate 100 target
+nmap --max-rate 1000 target
+nmap --scan-delay 1s target
+</div>
 
-# Scan optimization
-nmap -F target                      # Fast scan (100 most common ports)
-nmap --top-ports 1000 target        # Scan top 1000 ports
-nmap --reason target                # Show reason for port state
-        </div>
-
-        <h3>Output and Reporting</h3>
-        <div class="code">
-# Output formats
-nmap -oN scan.txt target            # Normal output
-nmap -oX scan.xml target            # XML output
-nmap -oG scan.grep target           # Grepable output
-nmap -oA scan target                # All formats
-
-# Verbose output
-nmap -v target                      # Verbose
-nmap -vv target                     # Very verbose
-nmap -d target                      # Debug information
-
-# Resume scans
-nmap --resume scan.xml
-        </div>
-
-        <h2>Scanning Evasion Techniques</h2>
-
-        <h3>Firewall and IDS Evasion</h3>
-        <div class="code">
+            <h3>Fragmentation and Decoys</h3>
+            <div class="command-box">
 # Fragmentation
-nmap -f target                      # Fragment packets
-nmap --mtu 24 target                # Set MTU size
+nmap -f target           # Fragment packets
+nmap -ff target          # Use smaller fragments
+nmap --mtu 16 target     # Custom MTU
 
 # Decoy scanning
-nmap -D RND:10 target               # Random decoys
-nmap -D decoy1,decoy2,ME,decoy3 target # Specific decoys
+nmap -D RND:10 target    # Random decoys
+nmap -D decoy1,decoy2,ME target
 
-# Source port manipulation
-nmap --source-port 53 target        # Use DNS source port
-nmap -g 53 target                   # Same as above
+# Source port specification
+nmap --source-port 53 target
+nmap -g 53 target
+</div>
 
-# Timing evasion
-nmap -T0 target                     # Paranoid timing
-nmap --scan-delay 1s target         # Delay between probes
+            <h2>Firewall and IDS Evasion</h2>
+            <div class="command-box">
+# Firewall evasion techniques
+nmap -sA target          # ACK scan for firewall detection
+nmap -sW target          # Window scan
+nmap -sM target          # Maimon scan
 
-# Randomization
-nmap --randomize-hosts target1 target2 # Randomize host order
-nmap --data-length 25 target        # Append random data
-        </div>
+# IDS evasion
+nmap -f -D RND:10 -T1 target  # Combined evasion
+nmap --badsum target     # Invalid checksums
+nmap --data-length 25 target  # Append random data
+</div>
 
-        <h3>Protocol-Level Evasion</h3>
-        <div class="code">
-# IP spoofing
-nmap -S spoofed_ip target           # Spoof source IP
-nmap -e interface target            # Specify interface
+            <h2>Alternative Scanning Tools</h2>
 
-# IPv6 scanning
-nmap -6 target                      # IPv6 scan
-nmap -6 -sS target                  # IPv6 SYN scan
-
-# Proxy chains
-proxychains nmap target             # Through proxy chain
-nmap --proxies proxy1,proxy2 target # Nmap built-in proxy support
-        </div>
-
-        <h2>Alternative Scanning Tools</h2>
-
-        <h3>Masscan</h3>
-        <p>High-speed port scanner designed for scanning the entire Internet:</p>
-        <div class="code">
-# Basic masscan usage
-masscan -p 80,443 192.168.1.0/24   # Scan specific ports
-masscan -p 1-1000 192.168.1.1      # Port range
-masscan --top-ports 100 192.168.1.0/24 # Top ports
-
-# High-speed scanning
-masscan -p 80,443 0.0.0.0/0 --rate=1000000 # Internet scan
-masscan -p 80 192.168.1.0/24 --rate=10000  # Fast local scan
+            <h3>Masscan</h3>
+            <div class="command-box">
+# High-speed port scanner
+masscan -p1-65535 192.168.1.0/24 --rate=1000
+masscan -p80,443 10.0.0.0/8 --rate=10000
 
 # Output formats
-masscan -p 80,443 192.168.1.0/24 -oJ scan.json
-masscan -p 80,443 192.168.1.0/24 -oX scan.xml
+masscan -p80,443 192.168.1.0/24 --rate=1000 -oG masscan.gnmap
+masscan -p80,443 192.168.1.0/24 --rate=1000 -oX masscan.xml
+</div>
+
+            <h3>Zmap</h3>
+            <div class="command-box">
+# Internet-wide scanning
+zmap -p 80 -o results.csv
+zmap -p 443 -N 1000 10.0.0.0/8
+
+# With specific probes
+zmap -p 80 --probe-module=http 192.168.1.0/24
+</div>
+
+            <h3>Unicornscan</h3>
+            <div class="command-box">
+# Unicornscan usage
+unicornscan -mT 192.168.1.1:1-65535
+unicornscan -mU 192.168.1.1:1-1024
+unicornscan -mT -r 1000 192.168.1.0/24:22,80,443
+</div>
+
+            <h2>Scanning Methodology</h2>
+            <ol>
+                <li><strong>Host Discovery:</strong> Identify live hosts</li>
+                <li><strong>Port Scanning:</strong> Find open ports</li>
+                <li><strong>Service Enumeration:</strong> Identify services and versions</li>
+                <li><strong>OS Detection:</strong> Determine operating systems</li>
+                <li><strong>Script Scanning:</strong> Run specialized scripts</li>
+                <li><strong>Vulnerability Assessment:</strong> Identify potential vulnerabilities</li>
+                <li><strong>Documentation:</strong> Record all findings</li>
+            </ol>
+
+            <h2>Output Formats and Reporting</h2>
+            <div class="command-box">
+# Nmap output formats
+nmap -oN normal.txt target      # Normal output
+nmap -oX scan.xml target        # XML output
+nmap -oG greppable.txt target   # Greppable output
+nmap -oA scan_results target    # All formats
+
+# Parse XML results
+nmap --stylesheet=nmap.xsl -oX scan.xml target
+</div>
+
+            <h2>Common Enumeration Scenarios</h2>
+
+            <h3>Web Server Enumeration</h3>
+            <div class="command-box">
+# Web server scanning
+nmap -p80,443,8080,8443 --script http-* target
+nmap -p80,443 --script ssl-* target
+
+# Directory enumeration
+gobuster dir -u http://target -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+dirb http://target
+</div>
+
+            <h3>Database Server Enumeration</h3>
+            <div class="command-box">
+# Database ports
+nmap -p1433,3306,5432,1521 target
+
+# MySQL enumeration
+nmap --script mysql-* target
+
+# MSSQL enumeration
+nmap --script ms-sql-* target
+</div>
+
+            <div class="warning">
+                <strong>Legal and Ethical Considerations:</strong>
+                <ul>
+                    <li>Always obtain proper authorization before scanning</li>
+                    <li>Respect network resources and bandwidth</li>
+                    <li>Use appropriate timing to avoid service disruption</li>
+                    <li>Be mindful of intrusion detection systems</li>
+                    <li>Document your scanning methodology</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <strong>Key Takeaway:</strong> Network enumeration and scanning require a systematic approach 
+                combining multiple techniques and tools. Balance thoroughness with stealth to avoid detection 
+                while gathering comprehensive information about target systems.
+            </div>
+
+            <h2>Next Steps</h2>
+            <p>In the next module, we'll explore web application security testing, focusing on identifying and exploiting common web vulnerabilities including the OWASP Top 10.</p>
         </div>
-
-        <h3>Zmap</h3>
-        <p>Fast single-port network scanner:</p>
-        <div class="code">
-# Basic zmap usage
-zmap -p 80 192.168.1.0/24           # Scan port 80
-zmap -p 443 -o results.txt 192.168.1.0/24
-
-# Internet-scale scanning
-zmap -p 80 -n 1000000 -o web_servers.txt
-zmap -p 22 -B 10M -o ssh_servers.txt
-
-# With specific interface
-zmap -p 80 -i eth0 192.168.1.0/24
-        </div>
-
-        <h3>Unicornscan</h3>
-        <p>Flexible and efficient port scanner:</p>
-        <div class="code">
-# TCP scanning
-unicornscan 192.168.1.1:1-1000     # TCP scan
-unicornscan -mT 192.168.1.1:80,443 # TCP specific ports
-
-# UDP scanning
-unicornscan -mU 192.168.1.1:53,161 # UDP scan
-
-# Advanced options
-unicornscan -mT -I 192.168.1.1:1-1000  # Immediate mode
-unicornscan -mT -r 1000 192.168.1.1:1-65535 # Set rate
-        </div>
-
-        <h2>Network Mapping and Visualization</h2>
-
-        <h3>Network Topology Discovery</h3>
-        <div class="code">
-# Traceroute techniques
-traceroute target                   # Standard traceroute
-mtr target                          # Continuous traceroute
-nmap --traceroute target            # Nmap traceroute
-
-# Network discovery
-nmap --script targets-asn target    # ASN information
-nmap --script ip-geolocation-* target # Geolocation data
-
-# Route discovery
-ip route show                       # Local routing table
-netstat -rn                         # Network routes
-        </div>
-
-        <h3>Network Documentation</h3>
-        <ul>
-            <li><strong>Network diagrams:</strong> Visual representation of discovered infrastructure</li>
-            <li><strong>Host inventories:</strong> Detailed lists of discovered systems</li>
-            <li><strong>Service catalogs:</strong> Running services and versions</li>
-            <li><strong>Vulnerability matrices:</strong> Security findings mapped to hosts</li>
-        </ul>
-
-        <h2>Scanning Countermeasures</h2>
-
-        <h3>Detection Methods</h3>
-        <ul>
-            <li><strong>IDS/IPS signatures:</strong> Pattern-based detection of scanning activity</li>
-            <li><strong>Anomaly detection:</strong> Unusual network traffic patterns</li>
-            <li><strong>Rate limiting:</strong> Detecting high-volume requests</li>
-            <li><strong>Log analysis:</strong> Identifying scanning patterns in logs</li>
-        </ul>
-
-        <h3>Defensive Strategies</h3>
-        <ul>
-            <li><strong>Firewall rules:</strong> Block or rate-limit scanning sources</li>
-            <li><strong>Port knocking:</strong> Hide services behind authentication sequences</li>
-            <li><strong>Honeypots:</strong> Decoy services to detect and track attackers</li>
-            <li><strong>Network segmentation:</strong> Limit scan scope through network isolation</li>
-        </ul>
-
-        <h3>Response Tactics</h3>
-        <ul>
-            <li><strong>Automated blocking:</strong> Dynamic firewall rule creation</li>
-            <li><strong>Tar pitting:</strong> Slow down scanning attempts</li>
-            <li><strong>Deception:</strong> Provide false information to scanners</li>
-            <li><strong>Legal action:</strong> Pursue unauthorized scanning legally</li>
-        </ul>
-
-        <div class="warning">
-            <strong>Legal Notice:</strong> Network scanning should only be performed on networks 
-            you own or have explicit written permission to test. Unauthorized scanning may 
-            violate computer crime laws and organizational policies.
-        </div>
-
-        <h2>Best Practices for Network Enumeration</h2>
-
-        <ol>
-            <li><strong>Start with passive techniques:</strong> Gather information without direct interaction</li>
-            <li><strong>Use appropriate timing:</strong> Balance speed with stealth requirements</li>
-            <li><strong>Document everything:</strong> Maintain detailed records of all activities</li>
-            <li><strong>Validate findings:</strong> Confirm scan results with additional techniques</li>
-            <li><strong>Respect system resources:</strong> Avoid overwhelming target systems</li>
-            <li><strong>Follow authorization scope:</strong> Stay within approved testing boundaries</li>
-        </ol>
-
-        <div class="info">
-            <strong>Pro Tip:</strong> Combine multiple scanning techniques to get a complete picture 
-            of the target network. No single tool or method will reveal everything.
-        </div>
-
-        <h2>Conclusion</h2>
-        <p>
-            Network enumeration and scanning provide the detailed intelligence needed to understand 
-            target infrastructure and identify potential attack vectors. Mastering these techniques 
-            is essential for effective penetration testing.
-        </p>
-
-        <div class="highlight">
-            <strong>Key Takeaway:</strong> Systematic enumeration combined with careful analysis 
-            reveals the true attack surface of target networks and systems.
-        </div>
-
-        <h2>Next Steps</h2>
-        <p>In the next module, we'll explore web application security testing, focusing on the OWASP Top 10 vulnerabilities and testing methodologies.</p>
     </div>
 </body>
 </html>
