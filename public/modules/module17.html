@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 17: Cloud Security Assessment</title>
+    <link rel="stylesheet" href="/modules/module-style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 17: Cloud Security Assessment</h1>
+
+        <div class="image-container">
+            <img src="/images/cloud-security.jpg" alt="Cloud Security Assessment" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand cloud security fundamentals across AWS, Azure, and GCP</li>
+            <li>Learn to identify cloud misconfigurations and vulnerabilities</li>
+            <li>Master cloud-specific penetration testing methodologies</li>
+            <li>Explore Identity and Access Management (IAM) security testing</li>
+            <li>Understand cloud storage and network security assessment</li>
+        </ul>
+
+        <h2>Cloud Security Fundamentals</h2>
+        <p>
+            Cloud security assessment involves evaluating the security posture of cloud infrastructure, 
+            applications, and data across various cloud service providers. This requires understanding 
+            the shared responsibility model and cloud-specific attack vectors.
+        </p>
+
+        <h3>Shared Responsibility Model</h3>
+        <div class="highlight">
+            <strong>Cloud Provider Responsibilities:</strong>
+            <ul>
+                <li>Physical security of data centers</li>
+                <li>Infrastructure security</li>
+                <li>Hypervisor security</li>
+                <li>Network controls</li>
+            </ul>
+        </div>
+
+        <div class="highlight">
+            <strong>Customer Responsibilities:</strong>
+            <ul>
+                <li>Data encryption</li>
+                <li>Identity and access management</li>
+                <li>Operating system updates</li>
+                <li>Application security</li>
+                <li>Network traffic protection</li>
+            </ul>
+        </div>
+
+        <h2>AWS Security Assessment</h2>
+        <h3>Common AWS Misconfigurations</h3>
+        <ul>
+            <li><strong>S3 Buckets:</strong> Public read/write permissions, versioning disabled</li>
+            <li><strong>EC2 Instances:</strong> Default security groups, unpatched systems</li>
+            <li><strong>IAM Policies:</strong> Overly permissive policies, unused access keys</li>
+            <li><strong>RDS Databases:</strong> Public accessibility, weak encryption</li>
+            <li><strong>CloudTrail:</strong> Disabled logging, insufficient log retention</li>
+        </ul>
+
+        <h3>AWS Assessment Tools</h3>
+        <pre><code># AWS CLI enumeration
+aws s3 ls --no-sign-request
+aws ec2 describe-instances
+aws iam list-users
+aws rds describe-db-instances
+
+# Scout Suite for AWS
+python scout.py aws --report-name aws-security-report</code></pre>
+
+        <h2>Azure Security Assessment</h2>
+        <h3>Azure-Specific Vulnerabilities</h3>
+        <ul>
+            <li><strong>Azure Blob Storage:</strong> Anonymous access, insufficient access controls</li>
+            <li><strong>Azure AD:</strong> Weak password policies, privileged account misuse</li>
+            <li><strong>Virtual Machines:</strong> Exposed RDP/SSH, missing security updates</li>
+            <li><strong>Resource Groups:</strong> Overly broad permissions, missing RBAC</li>
+        </ul>
+
+        <h3>Azure Assessment Commands</h3>
+        <pre><code># Azure CLI enumeration
+az account list
+az vm list
+az storage account list
+az ad user list
+
+# PowerShell Azure AD assessment
+Get-AzureADUser
+Get-AzureADGroup
+Get-AzureADApplication</code></pre>
+
+        <h2>Google Cloud Platform (GCP) Security</h2>
+        <h3>GCP Security Considerations</h3>
+        <ul>
+            <li><strong>Cloud Storage:</strong> Public buckets, weak access controls</li>
+            <li><strong>Compute Engine:</strong> Default service accounts, firewall misconfigurations</li>
+            <li><strong>BigQuery:</strong> Data exposure, insufficient access controls</li>
+            <li><strong>IAM:</strong> Overprivileged service accounts, weak policies</li>
+        </ul>
+
+        <h3>GCP Assessment Tools</h3>
+        <pre><code># gcloud CLI enumeration
+gcloud projects list
+gcloud compute instances list
+gcloud storage buckets list
+gcloud iam service-accounts list
+
+# BigQuery enumeration
+bq ls --max_results=100</code></pre>
+
+        <h2>Container Security Assessment</h2>
+        <h3>Docker Security Testing</h3>
+        <pre><code># Docker security scanning
+docker scan image-name
+docker history image-name
+docker inspect container-id
+
+# Check for privileged containers
+docker ps --filter "label=privileged=true"</code></pre>
+
+        <h3>Kubernetes Security</h3>
+        <ul>
+            <li><strong>Pod Security:</strong> Privileged containers, host network access</li>
+            <li><strong>RBAC:</strong> Overpermissive roles, service account misuse</li>
+            <li><strong>Network Policies:</strong> Missing segmentation, exposed services</li>
+            <li><strong>Secrets Management:</strong> Hardcoded secrets, insecure storage</li>
+        </ul>
+
+        <pre><code># Kubernetes security assessment
+kubectl get pods --all-namespaces
+kubectl get services --all-namespaces
+kubectl auth can-i --list
+kubectl get clusterrolebindings</code></pre>
+
+        <h2>Cloud Storage Security</h2>
+        <h3>S3 Bucket Security Testing</h3>
+        <pre><code># Test S3 bucket permissions
+aws s3 ls s3://bucket-name --no-sign-request
+aws s3 cp test.txt s3://bucket-name --no-sign-request
+aws s3 sync s3://bucket-name local-folder --no-sign-request
+
+# Check bucket ACLs
+aws s3api get-bucket-acl --bucket bucket-name</code></pre>
+
+        <h3>Azure Blob Storage Testing</h3>
+        <pre><code># Test Azure Blob access
+az storage blob list --container-name container --account-name storage
+
+# Check for anonymous access
+curl https://storageaccount.blob.core.windows.net/container/</code></pre>
+
+        <h2>Identity and Access Management Testing</h2>
+        <h3>IAM Policy Analysis</h3>
+        <ul>
+            <li><strong>Policy Evaluation:</strong> Understand effective permissions</li>
+            <li><strong>Privilege Escalation:</strong> Identify paths to higher privileges</li>
+            <li><strong>Cross-Account Access:</strong> Assess trust relationships</li>
+            <li><strong>Temporary Credentials:</strong> Analyze STS token usage</li>
+        </ul>
+
+        <h3>Common IAM Vulnerabilities</h3>
+        <div class="warning">
+            <strong>High-Risk Permissions:</strong>
+            <ul>
+                <li>iam:CreateRole, iam:AttachRolePolicy</li>
+                <li>sts:AssumeRole with wildcard resources</li>
+                <li>s3:* permissions on sensitive buckets</li>
+                <li>ec2:* permissions for compute resources</li>
+            </ul>
+        </div>
+
+        <h2>Cloud Network Security</h2>
+        <h3>Security Group Assessment</h3>
+        <pre><code># AWS Security Groups
+aws ec2 describe-security-groups
+aws ec2 describe-security-group-rules
+
+# Check for overly permissive rules
+aws ec2 describe-security-groups --query 'SecurityGroups[?IpPermissions[?IpRanges[?CidrIp==`0.0.0.0/0`]]]'</code></pre>
+
+        <h3>VPC Security Testing</h3>
+        <ul>
+            <li><strong>Network ACLs:</strong> Default allow rules, missing restrictions</li>
+            <li><strong>Route Tables:</strong> Unintended routing, internet gateway exposure</li>
+            <li><strong>VPC Peering:</strong> Excessive cross-VPC access</li>
+            <li><strong>NAT Gateways:</strong> Unnecessary internet access</li>
+        </ul>
+
+        <h2>Cloud Compliance and Governance</h2>
+        <h3>Compliance Frameworks</h3>
+        <ul>
+            <li><strong>SOC 2:</strong> Security, availability, processing integrity</li>
+            <li><strong>ISO 27001:</strong> Information security management</li>
+            <li><strong>GDPR:</strong> Data protection and privacy</li>
+            <li><strong>HIPAA:</strong> Healthcare data protection</li>
+        </ul>
+
+        <h3>Governance Controls</h3>
+        <ul>
+            <li><strong>Resource Tagging:</strong> Consistent naming and categorization</li>
+            <li><strong>Cost Management:</strong> Budget alerts, resource optimization</li>
+            <li><strong>Logging and Monitoring:</strong> Centralized log management</li>
+            <li><strong>Backup and Recovery:</strong> Data protection strategies</li>
+        </ul>
+
+        <h2>Cloud Security Tools</h2>
+        <h3>Assessment Frameworks</h3>
+        <ul>
+            <li><strong>Scout Suite:</strong> Multi-cloud security auditing</li>
+            <li><strong>Prowler:</strong> AWS security assessment</li>
+            <li><strong>CloudSploit:</strong> Cloud security monitoring</li>
+            <li><strong>Pacu:</strong> AWS penetration testing framework</li>
+        </ul>
+
+        <h3>Automated Security Testing</h3>
+        <pre><code># Prowler AWS assessment
+./prowler -p profile-name -r region-name
+
+# Scout Suite multi-cloud
+python scout.py aws --report-name security-assessment
+python scout.py azure --report-name azure-assessment
+python scout.py gcp --report-name gcp-assessment</code></pre>
+
+        <h2>Best Practices for Cloud Security</h2>
+        <ol>
+            <li><strong>Principle of Least Privilege:</strong> Grant minimum necessary permissions</li>
+            <li><strong>Defense in Depth:</strong> Multiple layers of security controls</li>
+            <li><strong>Encryption Everywhere:</strong> Data at rest and in transit</li>
+            <li><strong>Continuous Monitoring:</strong> Real-time security assessment</li>
+            <li><strong>Regular Audits:</strong> Periodic security reviews</li>
+            <li><strong>Incident Response:</strong> Prepared response procedures</li>
+        </ol>
+
+        <h2>Conclusion</h2>
+        <p>
+            Cloud security assessment requires a comprehensive understanding of cloud service models, 
+            shared responsibility concepts, and cloud-specific attack vectors. Regular assessment and 
+            continuous monitoring are essential for maintaining a strong cloud security posture.
+        </p>
+
+        <div class="highlight">
+            <strong>Remember:</strong> Cloud security is a shared responsibility. Understanding what you're 
+            responsible for versus what the cloud provider manages is crucial for effective security.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore IoT and embedded systems security, learning how to assess Internet of Things devices and embedded systems for vulnerabilities.</p>
+    </div>
+</body>
+</html>

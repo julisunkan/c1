@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 18: IoT and Embedded Systems Security</title>
+    <link rel="stylesheet" href="/modules/module-style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 18: IoT and Embedded Systems Security</h1>
+
+        <div class="image-container">
+            <img src="/images/iot-security.jpg" alt="IoT and Embedded Systems Security" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand IoT and embedded systems architecture</li>
+            <li>Learn common IoT vulnerabilities and attack vectors</li>
+            <li>Master hardware and firmware analysis techniques</li>
+            <li>Explore wireless communication security testing</li>
+            <li>Understand industrial IoT (IIoT) security considerations</li>
+        </ul>
+
+        <h2>IoT Security Fundamentals</h2>
+        <p>
+            Internet of Things (IoT) devices are interconnected computing devices that collect and exchange 
+            data over networks. These devices often have limited processing power, memory, and security 
+            features, making them attractive targets for attackers.
+        </p>
+
+        <h3>IoT Architecture Components</h3>
+        <ul>
+            <li><strong>Device Layer:</strong> Sensors, actuators, embedded processors</li>
+            <li><strong>Connectivity Layer:</strong> WiFi, Bluetooth, Zigbee, cellular</li>
+            <li><strong>Data Processing:</strong> Edge computing, gateways</li>
+            <li><strong>Application Layer:</strong> Cloud services, mobile apps</li>
+        </ul>
+
+        <h2>Common IoT Vulnerabilities</h2>
+        <h3>OWASP IoT Top 10 (2018)</h3>
+        <ol>
+            <li><strong>Weak, Guessable, or Hardcoded Passwords</strong></li>
+            <li><strong>Insecure Network Services</strong></li>
+            <li><strong>Insecure Ecosystem Interfaces</strong></li>
+            <li><strong>Lack of Secure Update Mechanism</strong></li>
+            <li><strong>Use of Insecure or Outdated Components</strong></li>
+            <li><strong>Insufficient Privacy Protection</strong></li>
+            <li><strong>Insecure Data Transfer and Storage</strong></li>
+            <li><strong>Lack of Device Management</strong></li>
+            <li><strong>Insecure Default Settings</strong></li>
+            <li><strong>Lack of Physical Hardening</strong></li>
+        </ol>
+
+        <h2>Hardware Security Testing</h2>
+        <h3>Physical Interface Analysis</h3>
+        <ul>
+            <li><strong>UART (Universal Asynchronous Receiver-Transmitter)</strong></li>
+            <li><strong>SPI (Serial Peripheral Interface)</strong></li>
+            <li><strong>I2C (Inter-Integrated Circuit)</strong></li>
+            <li><strong>JTAG (Joint Test Action Group)</strong></li>
+        </ul>
+
+        <h3>Hardware Tools and Techniques</h3>
+        <pre><code># UART connection analysis
+screen /dev/ttyUSB0 115200
+minicom -D /dev/ttyUSB0 -b 115200
+
+# Logic analyzer for protocol analysis
+sigrok-cli -d fx2lafw -c samplerate=1MHz -o capture.sr
+
+# GPIO manipulation
+gpio -g mode 18 out
+gpio -g write 18 1</code></pre>
+
+        <h3>Side-Channel Attacks</h3>
+        <ul>
+            <li><strong>Power Analysis:</strong> Differential Power Analysis (DPA)</li>
+            <li><strong>Timing Attacks:</strong> Measuring execution time variations</li>
+            <li><strong>Electromagnetic Analysis:</strong> EM radiation monitoring</li>
+            <li><strong>Fault Injection:</strong> Voltage/clock glitching</li>
+        </ul>
+
+        <h2>Firmware Analysis</h2>
+        <h3>Firmware Extraction Methods</h3>
+        <ul>
+            <li><strong>JTAG/SWD:</strong> Direct memory access</li>
+            <li><strong>Flash Dumping:</strong> SPI flash memory extraction</li>
+            <li><strong>Bootloader Exploitation:</strong> Boot process manipulation</li>
+            <li><strong>Update Mechanism:</strong> Firmware update interception</li>
+        </ul>
+
+        <h3>Firmware Analysis Tools</h3>
+        <pre><code># Binwalk for firmware analysis
+binwalk -E firmware.bin
+binwalk -A firmware.bin
+binwalk --extract firmware.bin
+
+# Ghidra for reverse engineering
+ghidra firmware.bin
+
+# Radare2 for binary analysis
+r2 firmware.bin
+aaa
+afl</code></pre>
+
+        <h3>Firmware Vulnerability Analysis</h3>
+        <ul>
+            <li><strong>Hardcoded Credentials:</strong> Embedded passwords/keys</li>
+            <li><strong>Buffer Overflows:</strong> Memory corruption vulnerabilities</li>
+            <li><strong>Format String Bugs:</strong> Input validation issues</li>
+            <li><strong>Cryptographic Weaknesses:</strong> Weak encryption/hashing</li>
+        </ul>
+
+        <h2>Network Communication Security</h2>
+        <h3>Wireless Protocol Analysis</h3>
+        <h4>WiFi Security Testing</h4>
+        <pre><code># WiFi network scanning
+iwlist scan
+nmap -sn 192.168.1.0/24
+
+# WPA/WPA2 security testing
+airmon-ng start wlan0
+airodump-ng wlan0mon
+aireplay-ng -0 5 -a [AP_MAC] wlan0mon</code></pre>
+
+        <h4>Bluetooth Security Testing</h4>
+        <pre><code># Bluetooth device discovery
+hcitool scan
+bluetoothctl
+scan on
+
+# Bluetooth Low Energy (BLE) analysis
+gatttool -b [MAC_ADDRESS] --interactive
+connect
+primary</code></pre>
+
+        <h4>Zigbee Security Testing</h4>
+        <pre><code># Zigbee network analysis with Killerbee
+zbdump -c 11 -w capture.pcap
+zbdsniff -c 11
+zbstumbler</code></pre>
+
+        <h2>IoT Protocol Security</h2>
+        <h3>MQTT Security Testing</h3>
+        <pre><code># MQTT broker enumeration
+nmap -p 1883,8883 --script mqtt-subscribe target
+
+# MQTT client testing
+mosquitto_pub -h broker.example.com -t "test/topic" -m "payload"
+mosquitto_sub -h broker.example.com -t "#" -v</code></pre>
+
+        <h3>CoAP Security Testing</h3>
+        <pre><code># CoAP resource discovery
+coap-client -m get coap://[target]/.well-known/core
+
+# CoAP testing with aiocoap
+aiocoap-client coap://[target]/temperature</code></pre>
+
+        <h2>Mobile Application Security</h2>
+        <h3>IoT Mobile App Analysis</h3>
+        <ul>
+            <li><strong>API Communication:</strong> REST/GraphQL endpoint analysis</li>
+            <li><strong>Authentication:</strong> Token-based authentication testing</li>
+            <li><strong>Data Storage:</strong> Local data protection analysis</li>
+            <li><strong>Device Pairing:</strong> Bluetooth/WiFi pairing security</li>
+        </ul>
+
+        <h3>Mobile Testing Tools</h3>
+        <pre><code># Android APK analysis
+apktool d app.apk
+jadx -d output app.apk
+
+# iOS IPA analysis
+class-dump -H app.ipa
+otool -L app.ipa</code></pre>
+
+        <h2>Cloud and Backend Security</h2>
+        <h3>IoT Cloud Platform Testing</h3>
+        <ul>
+            <li><strong>Device Registration:</strong> Authentication mechanisms</li>
+            <li><strong>Data Transmission:</strong> Encryption and integrity</li>
+            <li><strong>Device Management:</strong> Remote control capabilities</li>
+            <li><strong>Data Processing:</strong> Analytics and storage security</li>
+        </ul>
+
+        <h3>API Security Testing</h3>
+        <pre><code># IoT API enumeration
+curl -X GET https://api.iot-service.com/devices
+curl -X POST https://api.iot-service.com/devices/control \
+  -H "Authorization: Bearer token" \
+  -d '{"command": "turn_on"}'</code></pre>
+
+        <h2>Industrial IoT (IIoT) Security</h2>
+        <h3>Industrial Control Systems</h3>
+        <ul>
+            <li><strong>SCADA:</strong> Supervisory Control and Data Acquisition</li>
+            <li><strong>PLC:</strong> Programmable Logic Controllers</li>
+            <li><strong>HMI:</strong> Human Machine Interfaces</li>
+            <li><strong>DCS:</strong> Distributed Control Systems</li>
+        </ul>
+
+        <h3>Industrial Protocol Testing</h3>
+        <pre><code># Modbus protocol testing
+nmap --script modbus-discover -p 502 target
+mbtget -r -t 4 -a 1 target 502
+
+# DNP3 protocol analysis
+nmap --script dnp3-info -p 20000 target</code></pre>
+
+        <h2>IoT Penetration Testing Methodology</h2>
+        <h3>Information Gathering</h3>
+        <ol>
+            <li><strong>Device Identification:</strong> Model, firmware version, manufacturer</li>
+            <li><strong>Network Topology:</strong> Communication protocols, network architecture</li>
+            <li><strong>Attack Surface:</strong> Interfaces, services, communication channels</li>
+            <li><strong>Documentation Review:</strong> Manuals, specifications, APIs</li>
+        </ol>
+
+        <h3>Vulnerability Assessment</h3>
+        <ol>
+            <li><strong>Firmware Analysis:</strong> Static and dynamic analysis</li>
+            <li><strong>Hardware Testing:</strong> Physical interface analysis</li>
+            <li><strong>Network Testing:</strong> Protocol and communication security</li>
+            <li><strong>Application Testing:</strong> Mobile and web application security</li>
+        </ol>
+
+        <h2>IoT Security Testing Tools</h2>
+        <h3>Hardware Tools</h3>
+        <ul>
+            <li><strong>Logic Analyzers:</strong> Protocol analysis and debugging</li>
+            <li><strong>Oscilloscopes:</strong> Signal analysis and timing</li>
+            <li><strong>Multimeters:</strong> Electrical measurements</li>
+            <li><strong>JTAG Debuggers:</strong> Hardware debugging interfaces</li>
+        </ul>
+
+        <h3>Software Tools</h3>
+        <ul>
+            <li><strong>Firmware Analysis:</strong> Binwalk, Ghidra, Radare2</li>
+            <li><strong>Network Analysis:</strong> Wireshark, Nmap, Burp Suite</li>
+            <li><strong>Hardware Interface:</strong> OpenOCD, Flashrom, Minicom</li>
+            <li><strong>Protocol Testing:</strong> Scapy, Killerbee, RF tools</li>
+        </ul>
+
+        <h2>IoT Security Best Practices</h2>
+        <h3>Secure Development Guidelines</h3>
+        <ul>
+            <li><strong>Secure Boot:</strong> Verified boot process with cryptographic signatures</li>
+            <li><strong>Encryption:</strong> End-to-end encryption for data transmission</li>
+            <li><strong>Authentication:</strong> Strong device and user authentication</li>
+            <li><strong>Updates:</strong> Secure over-the-air (OTA) update mechanisms</li>
+            <li><strong>Monitoring:</strong> Device health and security monitoring</li>
+        </ul>
+
+        <h3>Deployment Security</h3>
+        <ul>
+            <li><strong>Network Segmentation:</strong> Isolate IoT devices from critical networks</li>
+            <li><strong>Access Control:</strong> Implement proper authentication and authorization</li>
+            <li><strong>Monitoring:</strong> Continuous security monitoring and alerting</li>
+            <li><strong>Incident Response:</strong> Prepared response procedures for IoT incidents</li>
+        </ul>
+
+        <h2>Regulatory and Compliance</h2>
+        <h3>IoT Security Standards</h3>
+        <ul>
+            <li><strong>NIST Cybersecurity Framework:</strong> Risk management approach</li>
+            <li><strong>ISO 27001:</strong> Information security management systems</li>
+            <li><strong>IEC 62443:</strong> Industrial automation and control systems security</li>
+            <li><strong>ENISA Guidelines:</strong> European IoT security guidelines</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>
+            IoT and embedded systems security requires a multidisciplinary approach combining hardware, 
+            software, and network security expertise. The diverse nature of IoT devices and protocols 
+            presents unique challenges that require specialized knowledge and tools.
+        </p>
+
+        <div class="warning">
+            <strong>Important:</strong> Always ensure proper authorization before testing IoT devices, 
+            especially in industrial or critical infrastructure environments.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore Active Directory security testing, learning how to assess Windows domain environments and identify common AD vulnerabilities.</p>
+    </div>
+</body>
+</html>

