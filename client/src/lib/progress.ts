@@ -13,8 +13,8 @@ export interface CourseStats {
   estimatedHoursRemaining: number;
 }
 
-export const TOTAL_MODULES = 12;
-export const ESTIMATED_TOTAL_HOURS = 24;
+export const TOTAL_MODULES = 30;
+export const ESTIMATED_TOTAL_HOURS = 65;
 
 export function calculateProgressPercentage(completedCount: number): number {
   return Math.round((completedCount / TOTAL_MODULES) * 100);

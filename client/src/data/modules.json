@@ -1,3 +1,4 @@
+
 [
   {
     "id": "module1",
@@ -17,82 +18,226 @@
   },
   {
     "id": "module3",
-    "title": "Password Security & Authentication",
-    "description": "Best practices for password security, multi-factor authentication, and identity management.",
-    "duration": "40 minutes",
+    "title": "Linux Fundamentals for Penetration Testing",
+    "description": "Master essential Linux commands, file systems, and tools required for penetration testing.",
+    "duration": "90 minutes",
     "difficulty": "Beginner", 
-    "category": "Authentication"
+    "category": "Operating Systems"
   },
   {
     "id": "module4",
-    "title": "Social Engineering & Phishing",
-    "description": "Recognize and defend against social engineering attacks and phishing attempts.",
-    "duration": "50 minutes",
+    "title": "Penetration Testing Methodology",
+    "description": "Learn systematic approaches to penetration testing including OWASP, NIST, and PTES frameworks.",
+    "duration": "75 minutes",
+    "difficulty": "Intermediate",
+    "category": "Methodology"
+  },
+  {
+    "id": "module5",
+    "title": "Vulnerability Scanning and Assessment",
+    "description": "Master automated and manual vulnerability scanning techniques using industry-standard tools.",
+    "duration": "85 minutes",
+    "difficulty": "Intermediate",
+    "category": "Vulnerability Assessment"
+  },
+  {
+    "id": "module6",
+    "title": "Information Gathering and Reconnaissance",
+    "description": "Learn passive and active information gathering techniques to map target environments.",
+    "duration": "95 minutes",
+    "difficulty": "Intermediate",
+    "category": "Reconnaissance"
+  },
+  {
+    "id": "module7",
+    "title": "Network Enumeration and Scanning", 
+    "description": "Discover live hosts, open ports, and running services using advanced scanning techniques.",
+    "duration": "80 minutes",
+    "difficulty": "Intermediate",
+    "category": "Enumeration"
+  },
+  {
+    "id": "module8",
+    "title": "Web Application Security Testing",
+    "description": "Comprehensive web application security testing including OWASP Top 10 vulnerabilities.",
+    "duration": "120 minutes",
+    "difficulty": "Advanced",
+    "category": "Web Security"
+  },
+  {
+    "id": "module9",
+    "title": "System Exploitation Techniques",
+    "description": "Learn to exploit system vulnerabilities and gain unauthorized access to target systems.",
+    "duration": "110 minutes",
+    "difficulty": "Advanced",
+    "category": "Exploitation"
+  },
+  {
+    "id": "module10",
+    "title": "Post-Exploitation and Privilege Escalation",
+    "description": "Master post-exploitation techniques including privilege escalation and maintaining persistence.",
+    "duration": "100 minutes",
+    "difficulty": "Advanced",
+    "category": "Post-Exploitation"
+  },
+  {
+    "id": "module11",
+    "title": "Password Security and Cracking",
+    "description": "Understanding password security, hash cracking, and authentication bypass techniques.",
+    "duration": "85 minutes",
+    "difficulty": "Intermediate",
+    "category": "Authentication"
+  },
+  {
+    "id": "module12",
+    "title": "Social Engineering and Human Factors",
+    "description": "Explore social engineering tactics, phishing campaigns, and human vulnerability exploitation.",
+    "duration": "70 minutes",
     "difficulty": "Intermediate",
     "category": "Social Engineering"
   },
   {
-    "id": "module5",
-    "title": "Malware & Virus Protection",
-    "description": "Understanding different types of malware and how to protect against them.",
-    "duration": "55 minutes",
-    "difficulty": "Intermediate",
-    "category": "Malware Protection"
-  },
-  {
-    "id": "module6",
-    "title": "Web Application Security",
-    "description": "Security vulnerabilities in web applications and how to mitigate them.",
-    "duration": "70 minutes",
-    "difficulty": "Intermediate",
-    "category": "Web Security"
-  },
-  {
-    "id": "module7",
-    "title": "Digital Forensics Fundamentals", 
-    "description": "Introduction to digital forensics, evidence collection, and analysis techniques.",
-    "duration": "65 minutes",
+    "id": "module13",
+    "title": "Wireless Network Security Testing",
+    "description": "Learn wireless security assessment including Wi-Fi, Bluetooth, and mobile communication testing.",
+    "duration": "90 minutes",
     "difficulty": "Advanced",
-    "category": "Forensics"
+    "category": "Wireless Security"
   },
   {
-    "id": "module8",
-    "title": "Incident Response Planning",
-    "description": "Creating and implementing effective incident response plans and procedures.",
-    "duration": "60 minutes",
+    "id": "module14",
+    "title": "Database Security and SQL Injection",
+    "description": "Master database security testing and advanced SQL injection techniques.",
+    "duration": "95 minutes",
     "difficulty": "Advanced",
-    "category": "Incident Response"
+    "category": "Database Security"
   },
   {
-    "id": "module9",
-    "title": "Cryptography Essentials",
-    "description": "Understanding encryption, hashing, and cryptographic protocols.",
-    "duration": "75 minutes",
+    "id": "module15",
+    "title": "Mobile Application Security",
+    "description": "Comprehensive mobile app security testing for Android and iOS applications.",
+    "duration": "105 minutes",
+    "difficulty": "Advanced",
+    "category": "Mobile Security"
+  },
+  {
+    "id": "module16",
+    "title": "Cloud Security Assessment",
+    "description": "Cloud infrastructure security testing including AWS, Azure, and GCP environments.",
+    "duration": "100 minutes",
+    "difficulty": "Advanced",
+    "category": "Cloud Security"
+  },
+  {
+    "id": "module17",
+    "title": "Active Directory and Domain Testing",
+    "description": "Windows Active Directory security assessment and domain exploitation techniques.",
+    "duration": "110 minutes",
+    "difficulty": "Advanced",
+    "category": "Windows Security"
+  },
+  {
+    "id": "module18",
+    "title": "Cryptography and Encryption Analysis",
+    "description": "Understanding cryptographic implementations and encryption vulnerability analysis.",
+    "duration": "85 minutes",
     "difficulty": "Advanced",
     "category": "Cryptography"
   },
   {
-    "id": "module10",
-    "title": "Risk Assessment & Management",
-    "description": "Conducting security risk assessments and developing risk management strategies.",
-    "duration": "50 minutes",
-    "difficulty": "Intermediate",
-    "category": "Risk Management"
+    "id": "module19",
+    "title": "Malware Analysis and Reverse Engineering",
+    "description": "Learn static and dynamic malware analysis techniques and reverse engineering fundamentals.",
+    "duration": "120 minutes",
+    "difficulty": "Expert",
+    "category": "Malware Analysis"
   },
   {
-    "id": "module11",
-    "title": "Compliance & Regulations",
-    "description": "Understanding cybersecurity compliance requirements and regulatory frameworks.",
-    "duration": "45 minutes",
-    "difficulty": "Intermediate",
-    "category": "Compliance"
+    "id": "module20",
+    "title": "Digital Forensics for Penetration Testers",
+    "description": "Digital forensics techniques and evidence collection during penetration testing engagements.",
+    "duration": "95 minutes",
+    "difficulty": "Advanced",
+    "category": "Digital Forensics"
   },
   {
-    "id": "module12",
-    "title": "Advanced Threat Detection",
-    "description": "Advanced techniques for detecting and analyzing sophisticated cyber threats.",
+    "id": "module21",
+    "title": "SCADA and IoT Security Testing",
+    "description": "Industrial control systems and Internet of Things security assessment methodologies.",
+    "duration": "105 minutes",
+    "difficulty": "Expert",
+    "category": "Industrial Security"
+  },
+  {
+    "id": "module22",
+    "title": "Red Team Operations and TTPs",
+    "description": "Advanced red team tactics, techniques, and procedures for realistic adversary simulation.",
+    "duration": "115 minutes",
+    "difficulty": "Expert",
+    "category": "Red Teaming"
+  },
+  {
+    "id": "module23",
+    "title": "Evasion Techniques and Anti-Forensics",
+    "description": "Learn detection evasion, anti-forensics, and steganography techniques.",
+    "duration": "100 minutes",
+    "difficulty": "Expert",
+    "category": "Evasion"
+  },
+  {
+    "id": "module24",
+    "title": "Physical Security Assessment",
+    "description": "Physical penetration testing including lock picking, RFID cloning, and social engineering.",
+    "duration": "90 minutes",
+    "difficulty": "Advanced",
+    "category": "Physical Security"
+  },
+  {
+    "id": "module25",
+    "title": "Threat Intelligence and OSINT",
+    "description": "Open source intelligence gathering and threat intelligence analysis for penetration testing.",
+    "duration": "85 minutes",
+    "difficulty": "Intermediate",
+    "category": "Threat Intelligence"
+  },
+  {
+    "id": "module26",
+    "title": "Incident Response and Blue Team Tactics",
+    "description": "Understanding defensive measures and incident response from an attacker's perspective.",
     "duration": "80 minutes",
-    "difficulty": "Advanced", 
-    "category": "Threat Detection"
+    "difficulty": "Advanced",
+    "category": "Incident Response"
+  },
+  {
+    "id": "module27",
+    "title": "Automated Penetration Testing",
+    "description": "Automation frameworks, custom tool development, and CI/CD security integration.",
+    "duration": "95 minutes",
+    "difficulty": "Expert",
+    "category": "Automation"
+  },
+  {
+    "id": "module28",
+    "title": "Legal and Ethical Considerations",
+    "description": "Legal frameworks, ethical guidelines, and compliance requirements for penetration testing.",
+    "duration": "60 minutes",
+    "difficulty": "Intermediate",
+    "category": "Legal & Ethics"
+  },
+  {
+    "id": "module29",
+    "title": "Advanced Reporting and Communication",
+    "description": "Professional reporting techniques, executive communication, and remediation guidance.",
+    "duration": "75 minutes",
+    "difficulty": "Advanced",
+    "category": "Reporting"
+  },
+  {
+    "id": "module30",
+    "title": "Career Development and Certification Prep",
+    "description": "Industry certifications, career paths, and continuous learning in cybersecurity.",
+    "duration": "55 minutes",
+    "difficulty": "Beginner",
+    "category": "Career Development"
   }
 ]

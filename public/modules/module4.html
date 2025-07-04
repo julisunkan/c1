@@ -1,501 +1,368 @@
 <div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
-  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 4: Reconnaissance and Information Gathering</h1>
-  
+  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 4: Penetration Testing Methodology</h1>
+
   <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-    Reconnaissance is the foundation of successful penetration testing. This module teaches systematic information gathering techniques to identify potential attack vectors and understand target environments before launching attacks.
+    Penetration testing methodologies provide structured frameworks for conducting systematic security assessments. This module explores industry-standard methodologies, testing phases, and best practices for comprehensive security evaluations.
   </p>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Methodology Framework" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Structured methodologies ensure comprehensive and repeatable security assessments</p>
+  </div>
 
   <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
   <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
     <ul class="text-slate-300 space-y-2">
-      <li>• Master passive and active reconnaissance techniques</li>
-      <li>• Perform comprehensive network discovery and enumeration</li>
-      <li>• Analyze target infrastructure and identify attack surfaces</li>
-      <li>• Use OSINT (Open Source Intelligence) for information gathering</li>
-      <li>• Document findings systematically for planning attack strategies</li>
-      <li>• Understand legal and ethical boundaries in reconnaissance</li>
+      <li>• Understand major penetration testing methodologies and frameworks</li>
+      <li>• Learn the systematic approach to security assessment planning</li>
+      <li>• Master the penetration testing lifecycle and phases</li>
+      <li>• Implement proper scoping and rules of engagement</li>
+      <li>• Practice documentation and reporting throughout testing phases</li>
+      <li>• Develop consistent and repeatable testing processes</li>
     </ul>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Reconnaissance Methodology</h3>
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 1: Overview of Testing Methodologies</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Testing Framework" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Multiple frameworks provide different approaches to penetration testing</p>
+  </div>
+
   <p class="text-slate-300 mb-4">
-    A systematic approach to reconnaissance ensures comprehensive coverage while maintaining stealth and staying within legal boundaries.
+    Different penetration testing methodologies offer various approaches to security assessment. Understanding these frameworks helps you choose the right approach for specific engagement types and organizational needs.
   </p>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Passive Reconnaissance</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• No direct interaction with target systems</li>
-        <li>• Difficult to detect or attribute</li>
-        <li>• Uses publicly available information</li>
-        <li>• OSINT techniques and search engines</li>
-        <li>• Social media and public records</li>
-        <li>• DNS and WHOIS queries</li>
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-blue-400 mb-2">OWASP Testing Guide</h4>
+      <p class="text-slate-300 text-sm mb-3">Comprehensive web application security testing framework</p>
+      <ul class="text-slate-400 text-sm space-y-1">
+        <li>• Information gathering</li>
+        <li>• Configuration and deployment management</li>
+        <li>• Identity management testing</li>
+        <li>• Authentication and session management</li>
+        <li>• Authorization testing</li>
+        <li>• Data validation testing</li>
       </ul>
     </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Active Reconnaissance</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Direct interaction with target systems</li>
-        <li>• More detailed information gathering</li>
-        <li>• Higher risk of detection</li>
-        <li>• Port scanning and service enumeration</li>
-        <li>• Banner grabbing and fingerprinting</li>
-        <li>• Vulnerability scanning</li>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-green-400 mb-2">PTES (Penetration Testing Execution Standard)</h4>
+      <p class="text-slate-300 text-sm mb-3">Comprehensive methodology for penetration testing engagements</p>
+      <ul class="text-slate-400 text-sm space-y-1">
+        <li>• Pre-engagement interactions</li>
+        <li>• Intelligence gathering</li>
+        <li>• Threat modeling</li>
+        <li>• Vulnerability analysis</li>
+        <li>• Exploitation</li>
+        <li>• Post-exploitation</li>
+        <li>• Reporting</li>
       </ul>
     </div>
   </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Open Source Intelligence (OSINT)</h3>
-  <p class="text-slate-300 mb-4">
-    OSINT involves collecting information from publicly available sources to build a comprehensive picture of the target organization.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">OSINT Sources and Techniques</h4>
-    <div class="space-y-4">
-      <div class="bg-slate-900 rounded p-4">
-        <h5 class="font-semibold text-slate-100 mb-2">Search Engine Intelligence</h5>
-        <ul class="text-slate-300 text-sm space-y-1">
-          <li>• <strong>Google Dorking:</strong> site:target.com filetype:pdf</li>
-          <li>• <strong>Bing/Yahoo:</strong> Alternative search engines for different results</li>
-          <li>• <strong>Shodan:</strong> Search engine for internet-connected devices</li>
-          <li>• <strong>Censys:</strong> Internet-wide scanning and search platform</li>
-        </ul>
-      </div>
-      <div class="bg-slate-900 rounded p-4">
-        <h5 class="font-semibold text-slate-100 mb-2">Social Media Intelligence</h5>
-        <ul class="text-slate-300 text-sm space-y-1">
-          <li>• <strong>LinkedIn:</strong> Employee information and company structure</li>
-          <li>• <strong>Twitter/X:</strong> Real-time information and sentiment</li>
-          <li>• <strong>Facebook:</strong> Personal and professional connections</li>
-          <li>• <strong>GitHub:</strong> Source code and configuration files</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Domain and DNS Reconnaissance</h3>
-  <p class="text-slate-300 mb-4">
-    DNS information provides valuable insights into network infrastructure and potential attack vectors.
-  </p>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">DNS Enumeration Tools</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">nslookup target.com</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">dig target.com ANY</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">host -a target.com</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">dnsrecon -d target.com</code>
-        </div>
-      </div>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">DNS Record Types</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2 text-sm">
-          <strong class="text-slate-100">A:</strong> <span class="text-slate-300">IPv4 address</span>
-        </div>
-        <div class="bg-slate-900 rounded p-2 text-sm">
-          <strong class="text-slate-100">AAAA:</strong> <span class="text-slate-300">IPv6 address</span>
-        </div>
-        <div class="bg-slate-900 rounded p-2 text-sm">
-          <strong class="text-slate-100">MX:</strong> <span class="text-slate-300">Mail exchange</span>
-        </div>
-        <div class="bg-slate-900 rounded p-2 text-sm">
-          <strong class="text-slate-100">NS:</strong> <span class="text-slate-300">Name server</span>
-        </div>
-        <div class="bg-slate-900 rounded p-2 text-sm">
-          <strong class="text-slate-100">TXT:</strong> <span class="text-slate-300">Text records (SPF, DKIM)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Network Discovery and Scanning</h3>
-  <p class="text-slate-300 mb-4">
-    Network scanning reveals active hosts, open ports, and running services within the target infrastructure.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Nmap Scanning Techniques</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Host Discovery</h5>
-        <code class="text-green-400 text-sm">nmap -sn 192.168.1.0/24</code>
-        <p class="text-slate-300 text-sm mt-1">Ping sweep to identify live hosts</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">TCP SYN Scan</h5>
-        <code class="text-green-400 text-sm">nmap -sS -p 1-65535 target.com</code>
-        <p class="text-slate-300 text-sm mt-1">Stealthy port scan using SYN packets</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">Service Detection</h5>
-        <code class="text-green-400 text-sm">nmap -sV -p 80,443,22,21 target.com</code>
-        <p class="text-slate-300 text-sm mt-1">Identify service versions on open ports</p>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">OS Detection</h5>
-        <code class="text-green-400 text-sm">nmap -O target.com</code>
-        <p class="text-slate-300 text-sm mt-1">Attempt to identify operating system</p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Service Enumeration</h3>
-  <p class="text-slate-300 mb-4">
-    Once services are identified, detailed enumeration reveals configuration details and potential vulnerabilities.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Web Services (80/443)</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">nikto -h http://target.com</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">dirb http://target.com</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">gobuster dir -u http://target.com -w wordlist.txt</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">whatweb http://target.com</code>
-        </div>
-      </div>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">SSH Services (22)</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">ssh-keyscan target.com</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">nmap --script ssh-hostkey target.com</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">nmap --script ssh-auth-methods target.com</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">hydra -l admin -P passwords.txt ssh://target.com</code>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">SMB and NetBIOS Enumeration</h3>
-  <p class="text-slate-300 mb-4">
-    Windows environments often expose valuable information through SMB and NetBIOS services.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">SMB Enumeration Commands</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">enum4linux -a target.com</code>
-        <span class="text-slate-300 ml-4">Comprehensive SMB enumeration</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">smbclient -L //target.com -N</code>
-        <span class="text-slate-300 ml-4">List available shares</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">rpcclient -U "" -N target.com</code>
-        <span class="text-slate-300 ml-4">Connect via RPC for enumeration</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">nmap --script smb-enum-shares target.com</code>
-        <span class="text-slate-300 ml-4">Nmap SMB share enumeration</span>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Database Service Enumeration</h3>
-  <p class="text-slate-300 mb-4">
-    Database services often contain sensitive information and may have weak authentication mechanisms.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">MySQL (3306)</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">nmap --script mysql-info target.com</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">mysql -h target.com -u root -p</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">nmap --script mysql-enum target.com</code>
-        </div>
-      </div>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">MSSQL (1433)</h4>
-      <div class="space-y-2">
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">nmap --script ms-sql-info target.com</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">sqsh -S target.com -U sa</code>
-        </div>
-        <div class="bg-slate-900 rounded p-2">
-          <code class="text-green-400 text-sm">nmap --script ms-sql-empty-password target.com</code>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Email and Communication Services</h3>
-  <p class="text-slate-300 mb-4">
-    Email services provide valuable information about users and may have authentication vulnerabilities.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Email Service Enumeration</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">SMTP Enumeration (25)</h5>
-        <code class="text-green-400 text-sm">nmap --script smtp-enum-users --script-args smtp-enum-users.methods={VRFY,EXPN,RCPT} target.com</code>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">POP3 Testing (110)</h5>
-        <code class="text-green-400 text-sm">telnet target.com 110</code>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <h5 class="font-semibold text-slate-100 mb-1">IMAP Testing (143)</h5>
-        <code class="text-green-400 text-sm">nmap --script imap-capabilities target.com</code>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Web Application Reconnaissance</h3>
-  <p class="text-slate-300 mb-4">
-    Web applications present a large attack surface and require specialized reconnaissance techniques.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Technology Identification</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Wappalyzer:</strong> Browser extension for tech stack</li>
-        <li>• <strong>Whatweb:</strong> Command-line web technology scanner</li>
-        <li>• <strong>BuiltWith:</strong> Online technology profiler</li>
-        <li>• <strong>HTTP Headers:</strong> Server and framework information</li>
-        <li>• <strong>robots.txt:</strong> Discover hidden directories</li>
-        <li>• <strong>sitemap.xml:</strong> Map website structure</li>
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-purple-400 mb-2">NIST SP 800-115</h4>
+      <p class="text-slate-300 text-sm mb-3">Technical guide to information security testing and assessment</p>
+      <ul class="text-slate-400 text-sm space-y-1">
+        <li>• Planning phase</li>
+        <li>• Discovery phase</li>
+        <li>• Attack phase</li>
+        <li>• Reporting phase</li>
       </ul>
     </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Content Discovery</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Directory Brute Force:</strong> Find hidden paths</li>
-        <li>• <strong>File Extension Discovery:</strong> Backup and config files</li>
-        <li>• <strong>Parameter Discovery:</strong> Hidden form parameters</li>
-        <li>• <strong>Subdomain Enumeration:</strong> Find additional services</li>
-        <li>• <strong>Virtual Host Discovery:</strong> Identify hosted sites</li>
-        <li>• <strong>API Endpoint Discovery:</strong> Hidden API functionality</li>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-yellow-400 mb-2">OSSTMM</h4>
+      <p class="text-slate-300 text-sm mb-3">Open Source Security Testing Methodology Manual</p>
+      <ul class="text-slate-400 text-sm space-y-1">
+        <li>• Human security testing</li>
+        <li>• Physical security testing</li>
+        <li>• Wireless security testing</li>
+        <li>• Telecommunications testing</li>
+        <li>• Data networks testing</li>
       </ul>
     </div>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Subdomain Enumeration</h3>
-  <p class="text-slate-300 mb-4">
-    Subdomains often host development environments, APIs, and services with weaker security controls.
-  </p>
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 2: Pre-Engagement Phase</h3>
 
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Subdomain Discovery Tools</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">sublist3r -d target.com</code>
-        <span class="text-slate-300 ml-4">Passive subdomain enumeration</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">amass enum -d target.com</code>
-        <span class="text-slate-300 ml-4">Comprehensive subdomain discovery</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">gobuster dns -d target.com -w subdomains.txt</code>
-        <span class="text-slate-300 ml-4">Brute force subdomain discovery</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">dnsrecon -d target.com -t brt -D subdomains.txt</code>
-        <span class="text-slate-300 ml-4">DNS brute force enumeration</span>
-      </div>
-    </div>
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Planning Meeting" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Proper planning and scoping are critical for successful penetration tests</p>
   </div>
 
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Social Engineering Information Gathering</h3>
   <p class="text-slate-300 mb-4">
-    Understanding the human element is crucial for comprehensive security assessments.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Employee Information</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>LinkedIn profiles:</strong> Job titles and connections</li>
-        <li>• <strong>Company websites:</strong> Staff directories and bios</li>
-        <li>• <strong>Social media:</strong> Personal information and habits</li>
-        <li>• <strong>Professional networks:</strong> Industry connections</li>
-        <li>• <strong>Conference presentations:</strong> Technical expertise</li>
-        <li>• <strong>Email patterns:</strong> Naming conventions</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Company Intelligence</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Organizational structure:</strong> Hierarchy and departments</li>
-        <li>• <strong>Technology stack:</strong> Job postings reveal tech used</li>
-        <li>• <strong>Physical locations:</strong> Office addresses and layouts</li>
-        <li>• <strong>Business relationships:</strong> Partners and vendors</li>
-        <li>• <strong>Financial information:</strong> Public filings and reports</li>
-        <li>• <strong>News and press:</strong> Recent developments</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Metadata Analysis</h3>
-  <p class="text-slate-300 mb-4">
-    Document metadata often contains valuable information about internal systems and users.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Metadata Extraction Tools</h4>
-    <div class="space-y-3">
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">exiftool document.pdf</code>
-        <span class="text-slate-300 ml-4">Extract metadata from files</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">metagoofil -d target.com -t pdf,doc,xls</code>
-        <span class="text-slate-300 ml-4">Search and analyze documents</span>
-      </div>
-      <div class="bg-slate-900 rounded p-3">
-        <code class="text-green-400">foca</code>
-        <span class="text-slate-300 ml-4">Windows-based metadata analysis tool</span>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Reconnaissance Documentation</h3>
-  <p class="text-slate-300 mb-4">
-    Systematic documentation of reconnaissance findings is crucial for attack planning and reporting.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Information Organization</h4>
-    <ul class="text-slate-300 space-y-2">
-      <li>• <strong>Network Infrastructure:</strong> IP ranges, domains, subdomains</li>
-      <li>• <strong>Service Inventory:</strong> Open ports, service versions, configurations</li>
-      <li>• <strong>Application Catalog:</strong> Web apps, APIs, file structures</li>
-      <li>• <strong>User Database:</strong> Email addresses, usernames, social profiles</li>
-      <li>• <strong>Technology Stack:</strong> Operating systems, frameworks, databases</li>
-      <li>• <strong>Security Controls:</strong> Firewalls, IDS/IPS, monitoring systems</li>
-    </ul>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Automated Reconnaissance Frameworks</h3>
-  <p class="text-slate-300 mb-4">
-    Automated tools streamline the reconnaissance process and ensure comprehensive coverage.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Reconnaissance Frameworks</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Recon-ng:</strong> Modular reconnaissance framework</li>
-        <li>• <strong>theHarvester:</strong> Email and subdomain gathering</li>
-        <li>• <strong>SpiderFoot:</strong> Automated OSINT collection</li>
-        <li>• <strong>Maltego:</strong> Visual link analysis platform</li>
-        <li>• <strong>Shodan CLI:</strong> Internet device search</li>
-        <li>• <strong>Aquatone:</strong> Domain flyover tool</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800 rounded-lg p-4">
-      <h4 class="text-lg font-semibold text-slate-100 mb-2">Custom Automation</h4>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• <strong>Bash scripts:</strong> Chain multiple tools together</li>
-        <li>• <strong>Python frameworks:</strong> Custom reconnaissance tools</li>
-        <li>• <strong>API integration:</strong> Automate online services</li>
-        <li>• <strong>Database storage:</strong> Organize findings systematically</li>
-        <li>• <strong>Report generation:</strong> Automated documentation</li>
-        <li>• <strong>Continuous monitoring:</strong> Track changes over time</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Legal and Ethical Considerations</h3>
-  <p class="text-slate-300 mb-4">
-    Understanding legal boundaries ensures reconnaissance activities remain within authorized scope.
-  </p>
-
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-    <h4 class="text-lg font-semibold text-slate-100 mb-3">Reconnaissance Guidelines</h4>
-    <ul class="text-slate-300 space-y-2">
-      <li>• <strong>Stay in Scope:</strong> Only target systems explicitly authorized</li>
-      <li>• <strong>Passive First:</strong> Begin with passive techniques to minimize risk</li>
-      <li>• <strong>Rate Limiting:</strong> Avoid overwhelming target systems</li>
-      <li>• <strong>Document Everything:</strong> Maintain detailed logs of activities</li>
-      <li>• <strong>Respect Privacy:</strong> Handle personal information responsibly</li>
-      <li>• <strong>Legal Compliance:</strong> Follow local laws and regulations</li>
-    </ul>
-  </div>
-
-  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
-  <p class="text-slate-300 mb-4">
-    Hands-on practice reinforces reconnaissance techniques and builds systematic investigation skills.
+    The pre-engagement phase establishes the foundation for a successful penetration test. Proper planning, scoping, and agreement definition prevent misunderstandings and ensure testing objectives are met.
   </p>
 
   <div class="space-y-4 mb-6">
     <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Passive Reconnaissance</h5>
-      <p class="text-slate-300 text-sm mb-2">Perform comprehensive passive reconnaissance on a target domain:</p>
-      <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Gather domain registration information (WHOIS)</li>
-        <li>• Enumerate subdomains using passive techniques</li>
-        <li>• Collect email addresses and social media profiles</li>
-        <li>• Analyze company documents for metadata</li>
+      <h5 class="font-semibold text-cyan-400 mb-2">Scoping and Planning</h5>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+        <div>
+          <p class="font-semibold mb-2">In-Scope Items:</p>
+          <ul class="space-y-1">
+            <li>• Target IP ranges and domains</li>
+            <li>• Specific applications and services</li>
+            <li>• Testing methodologies to be used</li>
+            <li>• Social engineering scenarios</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold mb-2">Out-of-Scope Items:</p>
+          <ul class="space-y-1">
+            <li>• Production systems during business hours</li>
+            <li>• Third-party systems and services</li>
+            <li>• Denial of service attacks</li>
+            <li>• Data destruction or modification</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-orange-400 mb-2">Rules of Engagement (RoE)</h5>
+      <p class="text-slate-300 text-sm mb-2">Clear guidelines for testing activities and limitations:</p>
+      <ul class="text-slate-400 text-sm space-y-1 ml-4">
+        <li>• Authorized testing timeframes</li>
+        <li>• Emergency contact procedures</li>
+        <li>• Data handling and confidentiality requirements</li>
+        <li>• Notification procedures for critical findings</li>
+        <li>• Testing methodology restrictions</li>
+        <li>• Cleanup and restoration responsibilities</li>
       </ul>
     </div>
-    
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Network Discovery</h5>
-      <p class="text-slate-300 text-sm mb-2">Map network infrastructure using active scanning:</p>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 3: Information Gathering Phase</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Information Gathering" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Thorough intelligence gathering provides the foundation for effective testing</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Information gathering, also known as reconnaissance, involves collecting intelligence about the target organization and its infrastructure. This phase builds the knowledge base needed for effective vulnerability identification and exploitation.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Passive Information Gathering</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-green-400 mb-1">Open Source Intelligence (OSINT)</h5>
+        <p class="text-slate-300 text-sm">Gather information from publicly available sources without directly interacting with target systems</p>
+        <ul class="text-slate-400 text-sm space-y-1 ml-4 mt-2">
+          <li>• Company websites and social media</li>
+          <li>• DNS records and WHOIS information</li>
+          <li>• Job postings and employee profiles</li>
+          <li>• Technical documentation and forums</li>
+        </ul>
+      </div>
+
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-blue-400 mb-1">Technical Reconnaissance</h5>
+        <p class="text-slate-300 text-sm">Collect technical information about target infrastructure</p>
+        <ul class="text-slate-400 text-sm space-y-1 ml-4 mt-2">
+          <li>• Subdomain enumeration</li>
+          <li>• Certificate transparency logs</li>
+          <li>• Shodan and censys searches</li>
+          <li>• Archive.org historical data</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Active Information Gathering</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-yellow-400 mb-1">Network Discovery</h5>
+        <p class="text-slate-300 text-sm">Directly interact with target systems to gather information</p>
+        <ul class="text-slate-400 text-sm space-y-1 ml-4 mt-2">
+          <li>• Host discovery and port scanning</li>
+          <li>• Service enumeration and fingerprinting</li>
+          <li>• Operating system identification</li>
+          <li>• Network topology mapping</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 4: Vulnerability Assessment Phase</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Vulnerability Assessment" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Systematic vulnerability identification guides exploitation efforts</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    The vulnerability assessment phase identifies potential security weaknesses in the target environment. This systematic approach ensures comprehensive coverage and helps prioritize exploitation efforts.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Automated Scanning</h4>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Perform host discovery on target networks</li>
-        <li>• Conduct comprehensive port scans</li>
-        <li>• Enumerate services and versions</li>
-        <li>• Create network topology diagram</li>
+        <li>• <strong>Network Vulnerability Scanners:</strong> Nessus, OpenVAS</li>
+        <li>• <strong>Web Application Scanners:</strong> Burp Suite, OWASP ZAP</li>
+        <li>• <strong>Database Scanners:</strong> SQLmap, NoSQLmap</li>
+        <li>• <strong>Wireless Scanners:</strong> Aircrack-ng suite</li>
+        <li>• <strong>Mobile App Scanners:</strong> MobSF, QARK</li>
       </ul>
     </div>
-    
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-      <h5 class="font-semibold text-slate-100 mb-2">Exercise 3: Web Application Reconnaissance</h5>
-      <p class="text-slate-300 text-sm mb-2">Thoroughly analyze web application attack surface:</p>
+
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Manual Testing</h4>
       <ul class="text-slate-300 text-sm space-y-1">
-        <li>• Identify web technologies and frameworks</li>
-        <li>• Discover hidden directories and files</li>
-        <li>• Enumerate parameters and endpoints</li>
-        <li>• Map application functionality and data flow</li>
+        <li>• <strong>Configuration Review:</strong> Security settings analysis</li>
+        <li>• <strong>Code Review:</strong> Static and dynamic analysis</li>
+        <li>• <strong>Business Logic Testing:</strong> Application workflow flaws</li>
+        <li>• <strong>Privilege Analysis:</strong> Access control weaknesses</li>
+        <li>• <strong>Cryptographic Assessment:</strong> Encryption implementation</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 5: Exploitation Phase</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Exploitation" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Exploitation demonstrates real-world impact of identified vulnerabilities</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    The exploitation phase validates identified vulnerabilities by demonstrating their exploitability. This phase proves the real-world impact of security weaknesses and provides evidence for remediation prioritization.
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-red-400 mb-2">Exploitation Strategy</h5>
+      <div class="space-y-2 text-sm text-slate-300">
+        <p><strong>Risk Assessment:</strong> Evaluate potential impact before exploitation</p>
+        <p><strong>Proof of Concept:</strong> Demonstrate vulnerability without causing damage</p>
+        <p><strong>Evidence Collection:</strong> Document exploitation steps and results</p>
+        <p><strong>System State Preservation:</strong> Maintain system integrity during testing</p>
+      </div>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-purple-400 mb-2">Common Exploitation Techniques</h5>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Buffer Overflows:</strong> Memory corruption vulnerabilities</li>
+        <li>• <strong>Injection Attacks:</strong> SQL, command, and code injection</li>
+        <li>• <strong>Privilege Escalation:</strong> Vertical and horizontal escalation</li>
+        <li>• <strong>Authentication Bypass:</strong> Access control circumvention</li>
+        <li>• <strong>Session Management:</strong> Token manipulation and hijacking</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 6: Post-Exploitation Phase</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Post-Exploitation" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Post-exploitation activities demonstrate the full impact of security breaches</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    Post-exploitation activities simulate what an attacker might do after gaining initial access. This phase demonstrates the full impact of security compromises and helps organizations understand their exposure.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Information Gathering</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• System and network enumeration</li>
+        <li>• User and group identification</li>
+        <li>• Installed software inventory</li>
+        <li>• Configuration file analysis</li>
+        <li>• Credential harvesting</li>
+      </ul>
+    </div>
+
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Lateral Movement</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Network pivoting techniques</li>
+        <li>• Credential reuse attacks</li>
+        <li>• Trust relationship exploitation</li>
+        <li>• Service account compromise</li>
+        <li>• Domain escalation paths</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Chapter 7: Reporting Phase</h3>
+
+  <div class="mb-8">
+    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Reporting" class="w-full h-64 object-cover rounded-lg mb-4">
+    <p class="text-slate-400 text-sm text-center">Comprehensive reporting communicates findings effectively to stakeholders</p>
+  </div>
+
+  <p class="text-slate-300 mb-4">
+    The reporting phase transforms technical findings into actionable business intelligence. Effective reporting communicates security risks clearly and provides practical remediation guidance.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Report Structure</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-blue-400 mb-1">Executive Summary</h5>
+        <p class="text-slate-300 text-sm">High-level overview for management and decision makers</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-green-400 mb-1">Technical Findings</h5>
+        <p class="text-slate-300 text-sm">Detailed vulnerability descriptions with evidence and reproduction steps</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-yellow-400 mb-1">Remediation Recommendations</h5>
+        <p class="text-slate-300 text-sm">Prioritized action items with implementation guidance</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-purple-400 mb-1">Supporting Evidence</h5>
+        <p class="text-slate-300 text-sm">Screenshots, logs, and technical appendices</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Methodology Selection</h5>
+      <p class="text-slate-300 text-sm mb-2">Choose appropriate methodologies for different scenarios:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Web application security assessment</li>
+        <li>• Network infrastructure penetration test</li>
+        <li>• Mobile application security review</li>
+        <li>• Social engineering engagement</li>
+      </ul>
+    </div>
+
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Scoping Workshop</h5>
+      <p class="text-slate-300 text-sm mb-2">Develop comprehensive scope documents:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Define testing objectives and success criteria</li>
+        <li>• Identify in-scope and out-of-scope systems</li>
+        <li>• Create rules of engagement document</li>
+        <li>• Establish communication protocols</li>
       </ul>
     </div>
   </div>
 
   <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
   <p class="text-slate-300 mb-6">
-    Effective reconnaissance forms the foundation of successful penetration testing. This module covered passive and active information gathering techniques, from OSINT collection to network scanning and service enumeration. Systematic documentation and automation improve efficiency and ensure comprehensive coverage. Remember that reconnaissance should always begin with passive techniques and progress to active scanning only when authorized. The information gathered during this phase directly influences the success of subsequent attack phases.
+    Penetration testing methodologies provide structured approaches to security assessment that ensure comprehensive coverage and consistent results. Understanding different frameworks allows you to choose the most appropriate approach for specific engagement types. Proper planning, systematic execution, and clear reporting are essential components of professional penetration testing services. The methodology you choose should align with the client's objectives, regulatory requirements, and organizational maturity.
   </p>
+
+  <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 border border-slate-600">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">🎯 Next: Vulnerability Scanning</h4>
+    <p class="text-slate-300">
+      Module 5 dives deep into vulnerability scanning and assessment techniques, covering both automated tools and manual testing methods for comprehensive security evaluation.
+    </p>
+  </div>
 </div>
