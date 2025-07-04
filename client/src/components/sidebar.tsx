@@ -1,4 +1,7 @@
+The prompt requests modifications to the sidebar component, adding color, animations, and transitions to improve the visual appeal. The changes involve updating the background, text colors, adding animations like pulse and floating effects, and using gradients for a more vibrant look.
+```
 
+```replit_final_file
 import { Link, useLocation } from "wouter";
 import { Book, Home, GraduationCap, Shield, CheckCircle } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
@@ -17,20 +20,20 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="w-64 bg-slate-900 border-r border-slate-800 flex flex-col">
+    <aside className="w-64 bg-gradient-to-br from-purple-900/80 to-blue-900/80 backdrop-blur-xl border-r border-white/20 flex flex-col">
       <div className="p-6">
         <div className="flex items-center gap-2 mb-8">
-          <Shield className="h-8 w-8 text-[var(--cyber-green)]" />
+          <Shield className="h-8 w-8 text-[var(--cyber-green)] animate-pulse" />
           <div>
-            <h1 className="text-xl font-bold text-white">&lt;/&gt;</h1>
-            <p className="text-sm text-slate-400">Security Academy</p>
+            <h1 className="text-xl font-bold text-white rainbow-text">&lt;/&gt;</h1>
+            <p className="text-sm text-slate-300">Security Academy</p>
           </div>
         </div>
 
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-slate-300">Progress</span>
-            <span className="text-sm text-slate-400">{progress}%</span>
+            <span className="text-sm font-medium text-white">Progress</span>
+            <span className="text-sm text-slate-300">{progress}%</span>
           </div>
           <Progress value={progress} className="h-2" />
         </div>
@@ -45,13 +48,13 @@ export default function Sidebar() {
             return (
               <Link key={item.href} href={item.href}>
                 <div
-                  className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
+                  className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-300  ${
                     isActive
-                      ? "bg-[var(--cyber-green)] text-black font-medium"
-                      : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                      ? "bg-gradient-to-r from-cyan-400 to-purple-500 text-white font-medium shadow-md"
+                      : "text-slate-300 hover:bg-white/10 hover:text-cyan-200"
                   }`}
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-5 w-5 animate-pulse" />
                   {item.label}
                 </div>
               </Link>
@@ -59,8 +62,8 @@ export default function Sidebar() {
           })}
         </div>
 
-        <div className="border-t border-slate-800 pt-4">
-          <h3 className="text-sm font-medium text-slate-400 mb-3 px-3">Modules</h3>
+        <div className="border-t border-white/20 pt-4">
+          <h3 className="text-sm font-medium text-slate-300 mb-3 px-3 rainbow-text">Modules</h3>
           <div className="space-y-1">
             {modules.map((module) => {
               const isActive = location === `/module/${module.id}`;
@@ -69,14 +72,14 @@ export default function Sidebar() {
               return (
                 <Link key={module.id} href={`/module/${module.id}`}>
                   <div
-                    className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors text-sm ${
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 text-sm hover:bg-white/10 hover:transform hover:scale-105 hover:shadow-lg ${
                       isActive
-                        ? "bg-[var(--cyber-green)] text-black font-medium"
-                        : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                        ? "bg-white/10 shadow-lg"
+                        : "text-slate-300 hover:bg-white/10 hover:text-white"
                     }`}
                   >
                     {isCompleted ? (
-                      <CheckCircle className="h-4 w-4 text-[var(--cyber-green)]" />
+                      <CheckCircle className="h-4 w-4 text-[var(--cyber-green)] animate-pulse" />
                     ) : (
                       <div className="h-4 w-4 rounded-full border border-slate-600" />
                     )}
@@ -89,9 +92,9 @@ export default function Sidebar() {
         </div>
       </nav>
 
-      <div className="p-4 border-t border-slate-800">
-        <div className="flex items-center gap-2 text-slate-400">
-          <GraduationCap className="h-4 w-4" />
+      <div className="p-4 border-t border-white/20">
+        <div className="flex items-center gap-2 text-slate-300">
+          <GraduationCap className="h-4 w-4 animate-pulse" />
           <span className="text-sm">Cybersecurity Course</span>
         </div>
       </div>

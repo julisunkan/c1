@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { Search, Menu, X } from "lucide-react";
@@ -6,12 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import modules from "@/data/modules.json";
+import { Link } from "wouter";
 
 export default function Header() {
   const [location, navigate] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const progress = 75; // Example progress value. Replace with actual progress calculation if needed.
 
   const getPageTitle = () => {
     if (location === "/") return "Dashboard";
@@ -49,62 +50,30 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-slate-900 border-b border-slate-800 px-6 py-4">
+    <header className="bg-gradient-to-r from-purple-900/90 to-blue-900/90 backdrop-blur-xl text-white p-4 border-b border-white/20">
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden text-slate-400"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
-          <h1 className="text-xl font-semibold text-slate-100">{getPageTitle()}</h1>
+        <div className="flex items-center gap-4">
+          <Link to="/" className="text-xl font-bold hover:text-cyan-400 transition-all duration-300 hover:scale-110 rainbow-text">
+            &lt;/&gt;
+          </Link>
+          <nav className="flex items-center gap-4">
+            <Link to="/" className="hover:text-cyan-400 transition-all duration-300 hover:scale-105 relative group">
+              Home
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/modules" className="hover:text-cyan-400 transition-all duration-300 hover:scale-105 relative group">
+              Modules
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+          </nav>
         </div>
-        
-        <div className="flex items-center space-x-4">
-          <div className="relative">
-            <form onSubmit={handleSearchSubmit} className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-4 w-4" />
-              <Input
-                type="text"
-                placeholder="Search modules..."
-                value={searchTerm}
-                onChange={(e) => handleSearchChange(e.target.value)}
-                onFocus={() => searchTerm && setShowResults(true)}
-                onBlur={() => setTimeout(() => setShowResults(false), 200)}
-                className="pl-10 w-64 bg-slate-800 border-slate-700 text-slate-100 placeholder-slate-400 focus:border-[var(--cyber-green)]"
-              />
-            </form>
-            
-            {showResults && filteredModules.length > 0 && (
-              <Card className="absolute top-full left-0 right-0 mt-2 z-50 bg-slate-800 border-slate-700">
-                <CardContent className="p-0">
-                  <div className="max-h-64 overflow-auto">
-                    {filteredModules.map((module) => (
-                      <button
-                        key={module.id}
-                        onClick={() => handleModuleSelect(module.id)}
-                        className="w-full text-left px-4 py-3 hover:bg-slate-700 transition-colors border-b border-slate-700 last:border-b-0"
-                      >
-                        <div className="font-medium text-slate-200 text-sm">{module.title}</div>
-                        <div className="text-slate-400 text-xs mt-1 line-clamp-2">{module.description}</div>
-                        <div className="text-[var(--cyber-green)] text-xs mt-1">{module.category} • {module.difficulty}</div>
-                      </button>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-            
-            {showResults && searchTerm && filteredModules.length === 0 && (
-              <Card className="absolute top-full left-0 right-0 mt-2 z-50 bg-slate-800 border-slate-700">
-                <CardContent className="p-4 text-center">
-                  <p className="text-slate-400 text-sm">No modules found</p>
-                </CardContent>
-              </Card>
-            )}
+        <div className="flex items-center gap-4">
+          <span className="text-sm text-gray-300 hover:text-white transition-colors duration-300">Progress: {Math.round(progress)}%</span>
+          <div className="w-32 h-2 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm">
+            <div 
+              className="h-full bg-gradient-to-r from-green-400 to-blue-500 rounded-full transition-all duration-500 shadow-lg"
+              style={{ width: `${progress}%` }}
+            />
           </div>
         </div>
       </div>

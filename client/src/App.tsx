@@ -12,6 +12,7 @@ import Home from "@/pages/home";
 import Modules from "@/pages/modules";
 import ModuleDetail from "@/pages/module-detail";
 import NotFound from "@/pages/not-found";
+import { Link } from "wouter";
 
 const queryClient = new QueryClient({
   defaultOptions: {
