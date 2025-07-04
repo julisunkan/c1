@@ -19,8 +19,13 @@ export default function ModuleDetail() {
 
   useEffect(() => {
     if (module) {
-      fetch(module.file)
-        .then(response => response.text())
+      fetch(`/modules/${module.id}.html`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.text();
+        })
         .then(html => {
           setContent(html);
           setLoading(false);

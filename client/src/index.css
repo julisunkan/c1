@@ -106,6 +106,7 @@
 /* Module content styles */
 .module-content {
   @apply prose prose-invert max-w-none;
+  color: #cbd5e1;
 }
 
 .module-content h1,
@@ -114,25 +115,62 @@
 .module-content h4,
 .module-content h5,
 .module-content h6 {
-  @apply text-slate-100;
+  @apply text-slate-100 font-semibold;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.module-content h2 {
+  @apply text-2xl;
+}
+
+.module-content h3 {
+  @apply text-xl;
+}
+
+.module-content h4 {
+  @apply text-lg;
 }
 
 .module-content p {
+  @apply text-slate-300 leading-relaxed;
+  margin-bottom: 1rem;
+}
+
+.module-content ul,
+.module-content ol {
+  @apply text-slate-300 space-y-1;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.module-content li {
   @apply text-slate-300;
 }
 
 .module-content code {
-  @apply bg-slate-800 text-cyber-green px-1 py-0.5 rounded;
+  @apply bg-slate-800 text-green-400 px-1 py-0.5 rounded text-sm;
 }
 
 .module-content pre {
   @apply bg-slate-800 border border-slate-700 rounded-lg p-4 overflow-x-auto;
+  margin-bottom: 1rem;
 }
 
 .module-content pre code {
-  @apply bg-transparent text-cyber-green p-0;
+  @apply bg-transparent text-green-400 p-0;
 }
 
 .module-content img {
   @apply rounded-xl shadow-lg w-full h-auto;
+  margin: 1.5rem 0;
+}
+
+.module-content .bg-slate-800 {
+  @apply bg-slate-800 border border-slate-700 rounded-lg p-4;
+  margin-bottom: 1rem;
+}
+
+.module-content strong {
+  @apply text-slate-100 font-semibold;
 }
