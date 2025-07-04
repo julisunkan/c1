@@ -1,0 +1,517 @@
+<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
+  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 12: Reporting and Documentation</h1>
+  
+  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
+    Professional reporting and documentation are critical components of penetration testing. This module covers comprehensive reporting frameworks, effective communication strategies, and documentation best practices for delivering actionable security assessments.
+  </p>
+
+  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <ul class="text-slate-300 space-y-2">
+      <li>• Master professional penetration testing reporting methodologies</li>
+      <li>• Learn to communicate technical findings to diverse stakeholder audiences</li>
+      <li>• Understand risk assessment and vulnerability prioritization frameworks</li>
+      <li>• Practice creating executive summaries and technical appendices</li>
+      <li>• Implement systematic documentation and evidence collection processes</li>
+      <li>• Develop remediation roadmaps and security improvement recommendations</li>
+    </ul>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Report Structure and Components</h3>
+  <p class="text-slate-300 mb-4">
+    A well-structured penetration testing report provides clear, actionable information for both technical and business stakeholders.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Standard Report Structure</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Executive Summary</h5>
+        <p class="text-slate-300 text-sm">High-level overview for senior management and decision makers</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Methodology</h5>
+        <p class="text-slate-300 text-sm">Testing approach, scope, and limitations</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Findings Overview</h5>
+        <p class="text-slate-300 text-sm">Summary of vulnerabilities organized by risk level</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Detailed Findings</h5>
+        <p class="text-slate-300 text-sm">Technical vulnerability descriptions with evidence</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Recommendations</h5>
+        <p class="text-slate-300 text-sm">Prioritized remediation guidance and best practices</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Appendices</h5>
+        <p class="text-slate-300 text-sm">Supporting evidence, tool output, and reference materials</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Executive Summary Development</h3>
+  <p class="text-slate-300 mb-4">
+    The executive summary communicates key findings and business impact to senior leadership and decision makers.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Key Components</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Assessment Scope:</strong> What was tested and timeframe</li>
+        <li>• <strong>Overall Risk Rating:</strong> High-level security posture</li>
+        <li>• <strong>Critical Findings:</strong> Most severe vulnerabilities</li>
+        <li>• <strong>Business Impact:</strong> Potential consequences</li>
+        <li>• <strong>Key Recommendations:</strong> Priority remediation actions</li>
+        <li>• <strong>Compliance Status:</strong> Regulatory requirement adherence</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Writing Guidelines</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Business Language:</strong> Avoid technical jargon</li>
+        <li>• <strong>Concise Format:</strong> Maximum 1-2 pages</li>
+        <li>• <strong>Visual Elements:</strong> Charts and risk matrices</li>
+        <li>• <strong>Action-Oriented:</strong> Focus on next steps</li>
+        <li>• <strong>Risk Context:</strong> Industry and threat landscape</li>
+        <li>• <strong>Resource Requirements:</strong> Budget and timeline estimates</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Risk Assessment and Scoring</h3>
+  <p class="text-slate-300 mb-4">
+    Consistent risk assessment helps organizations prioritize remediation efforts and allocate resources effectively.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">CVSS Scoring Framework</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Base Score Metrics</h5>
+        <div class="grid grid-cols-2 gap-4 text-sm text-slate-300">
+          <div>
+            <p><strong>Attack Vector:</strong> Network, Adjacent, Local, Physical</p>
+            <p><strong>Attack Complexity:</strong> Low, High</p>
+            <p><strong>Privileges Required:</strong> None, Low, High</p>
+          </div>
+          <div>
+            <p><strong>User Interaction:</strong> None, Required</p>
+            <p><strong>Scope:</strong> Unchanged, Changed</p>
+            <p><strong>CIA Impact:</strong> None, Low, High</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Risk Rating Scale</h5>
+        <div class="space-y-2">
+          <div class="flex items-center">
+            <div class="w-16 h-4 bg-red-500 rounded mr-3"></div>
+            <span class="text-sm text-slate-300">Critical (9.0-10.0) - Immediate action required</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-16 h-4 bg-orange-500 rounded mr-3"></div>
+            <span class="text-sm text-slate-300">High (7.0-8.9) - High priority remediation</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-16 h-4 bg-yellow-500 rounded mr-3"></div>
+            <span class="text-sm text-slate-300">Medium (4.0-6.9) - Moderate risk level</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-16 h-4 bg-green-500 rounded mr-3"></div>
+            <span class="text-sm text-slate-300">Low (0.1-3.9) - Lower priority</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Vulnerability Documentation</h3>
+  <p class="text-slate-300 mb-4">
+    Detailed vulnerability documentation provides technical teams with information needed for effective remediation.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Required Elements</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Vulnerability Title:</strong> Clear, descriptive name</li>
+        <li>• <strong>Risk Rating:</strong> CVSS score and rationale</li>
+        <li>• <strong>Affected Systems:</strong> Specific hosts and applications</li>
+        <li>• <strong>Description:</strong> Technical vulnerability details</li>
+        <li>• <strong>Impact:</strong> Potential exploitation consequences</li>
+        <li>• <strong>Evidence:</strong> Screenshots and proof-of-concept</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Supporting Information</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Steps to Reproduce:</strong> Detailed exploitation process</li>
+        <li>• <strong>Root Cause Analysis:</strong> Underlying security weakness</li>
+        <li>• <strong>Remediation Steps:</strong> Specific fix instructions</li>
+        <li>• <strong>References:</strong> CVE numbers and external resources</li>
+        <li>• <strong>Timeline:</strong> Discovery and validation dates</li>
+        <li>• <strong>Testing Notes:</strong> Tools and techniques used</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Evidence Collection and Management</h3>
+  <p class="text-slate-300 mb-4">
+    Systematic evidence collection ensures comprehensive documentation and supports vulnerability validation.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Evidence Types and Standards</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Screenshots</h5>
+        <p class="text-slate-300 text-sm">High-resolution images showing vulnerability exploitation</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Command Output</h5>
+        <p class="text-slate-300 text-sm">Terminal sessions and tool outputs demonstrating findings</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Network Captures</h5>
+        <p class="text-slate-300 text-sm">Packet captures showing traffic analysis and exploitation</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Log Files</h5>
+        <p class="text-slate-300 text-sm">System and application logs supporting findings</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Source Code</h5>
+        <p class="text-slate-300 text-sm">Vulnerable code snippets and configuration files</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Remediation Recommendations</h3>
+  <p class="text-slate-300 mb-4">
+    Effective remediation guidance provides actionable steps for resolving identified vulnerabilities.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Recommendation Categories</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Immediate Actions:</strong> Critical security fixes</li>
+        <li>• <strong>Short-term Fixes:</strong> Quick wins and patches</li>
+        <li>• <strong>Long-term Strategy:</strong> Architectural improvements</li>
+        <li>• <strong>Process Changes:</strong> Operational security enhancements</li>
+        <li>• <strong>Training Needs:</strong> Staff education requirements</li>
+        <li>• <strong>Technology Upgrades:</strong> Infrastructure modernization</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Implementation Guidance</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Priority Matrix:</strong> Risk versus effort assessment</li>
+        <li>• <strong>Resource Requirements:</strong> Budget and staffing needs</li>
+        <li>• <strong>Timeline Estimates:</strong> Realistic implementation schedules</li>
+        <li>• <strong>Dependencies:</strong> Prerequisites and sequencing</li>
+        <li>• <strong>Validation Methods:</strong> How to verify fixes</li>
+        <li>• <strong>Rollback Plans:</strong> Recovery procedures if needed</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Audience-Specific Communication</h3>
+  <p class="text-slate-300 mb-4">
+    Different stakeholders require tailored communication approaches to effectively understand and act on findings.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Stakeholder Communication Matrix</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Executive Leadership</h5>
+        <p class="text-slate-300 text-sm">Business impact, risk exposure, resource requirements, compliance status</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">IT Management</h5>
+        <p class="text-slate-300 text-sm">Technical overview, system impact, remediation timeline, resource allocation</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">System Administrators</h5>
+        <p class="text-slate-300 text-sm">Detailed technical findings, step-by-step fixes, configuration changes</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Developers</h5>
+        <p class="text-slate-300 text-sm">Code-level vulnerabilities, secure coding practices, testing recommendations</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Security Team</h5>
+        <p class="text-slate-300 text-sm">Attack vectors, detection methods, monitoring recommendations, threat intelligence</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Visual Presentation Techniques</h3>
+  <p class="text-slate-300 mb-4">
+    Effective visual elements enhance report readability and help communicate complex information clearly.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Charts and Graphs</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Risk Distribution:</strong> Pie charts showing vulnerability breakdown</li>
+        <li>• <strong>Trend Analysis:</strong> Historical security posture changes</li>
+        <li>• <strong>Compliance Metrics:</strong> Progress tracking dashboards</li>
+        <li>• <strong>Attack Surface:</strong> Network topology diagrams</li>
+        <li>• <strong>Impact Assessment:</strong> Heat maps and matrices</li>
+        <li>• <strong>Remediation Progress:</strong> Timeline and milestone tracking</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Formatting Standards</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Consistent Styling:</strong> Professional template usage</li>
+        <li>• <strong>Color Coding:</strong> Risk level standardization</li>
+        <li>• <strong>Table Formatting:</strong> Clear data presentation</li>
+        <li>• <strong>Code Blocks:</strong> Syntax highlighting and formatting</li>
+        <li>• <strong>Image Quality:</strong> High-resolution screenshots</li>
+        <li>• <strong>Navigation Aids:</strong> Table of contents and bookmarks</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Quality Assurance Process</h3>
+  <p class="text-slate-300 mb-4">
+    Systematic quality assurance ensures report accuracy, completeness, and professional presentation.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Review Checklist</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Technical Accuracy</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• Vulnerability descriptions are accurate and complete</li>
+          <li>• Risk ratings align with CVSS methodology</li>
+          <li>• Evidence supports all findings</li>
+          <li>• Remediation steps are technically sound</li>
+        </ul>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Content Completeness</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• All scope items are addressed</li>
+          <li>• Executive summary covers key points</li>
+          <li>• Methodology section is comprehensive</li>
+          <li>• Appendices include all supporting materials</li>
+        </ul>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Professional Presentation</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• Grammar and spelling are correct</li>
+          <li>• Formatting is consistent throughout</li>
+          <li>• Visual elements enhance readability</li>
+          <li>• Client-specific information is accurate</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Report Delivery and Follow-up</h3>
+  <p class="text-slate-300 mb-4">
+    Effective report delivery includes presentation, discussion, and ongoing support for remediation activities.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Delivery Methods</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Executive Briefing:</strong> Leadership presentation</li>
+        <li>• <strong>Technical Review:</strong> Deep-dive with IT teams</li>
+        <li>• <strong>Written Report:</strong> Comprehensive documentation</li>
+        <li>• <strong>Remediation Workshop:</strong> Implementation planning</li>
+        <li>• <strong>Q&A Sessions:</strong> Clarification and discussion</li>
+        <li>• <strong>Follow-up Testing:</strong> Validation of fixes</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Ongoing Support</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Remediation Guidance:</strong> Implementation assistance</li>
+        <li>• <strong>Progress Tracking:</strong> Milestone monitoring</li>
+        <li>• <strong>Re-testing Services:</strong> Validation testing</li>
+        <li>• <strong>Trend Analysis:</strong> Security posture evolution</li>
+        <li>• <strong>Training Support:</strong> Staff education assistance</li>
+        <li>• <strong>Continuous Improvement:</strong> Process enhancement</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Compliance and Regulatory Reporting</h3>
+  <p class="text-slate-300 mb-4">
+    Many organizations require specific reporting formats to meet regulatory compliance requirements.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Regulatory Frameworks</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">PCI DSS</h5>
+        <p class="text-slate-300 text-sm">Payment card industry requirements for quarterly external scans</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">HIPAA</h5>
+        <p class="text-slate-300 text-sm">Healthcare security assessments and risk analysis requirements</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">SOX</h5>
+        <p class="text-slate-300 text-sm">Financial reporting controls and IT general controls testing</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">NIST Cybersecurity Framework</h5>
+        <p class="text-slate-300 text-sm">Identify, Protect, Detect, Respond, Recover assessment mapping</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Automation and Tool Integration</h3>
+  <p class="text-slate-300 mb-4">
+    Modern reporting tools and automation help streamline documentation processes and maintain consistency.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Reporting Tools</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Dradis:</strong> Collaborative reporting platform</li>
+        <li>• <strong>PlexTrac:</strong> Security reporting and workflow</li>
+        <li>• <strong>AttackForge:</strong> Vulnerability management platform</li>
+        <li>• <strong>WriteHat:</strong> Penetration testing reporting</li>
+        <li>• <strong>Ghostwriter:</strong> Red team documentation</li>
+        <li>• <strong>Custom Templates:</strong> Organization-specific formats</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Integration Benefits</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Consistency:</strong> Standardized formatting and structure</li>
+        <li>• <strong>Efficiency:</strong> Automated evidence compilation</li>
+        <li>• <strong>Collaboration:</strong> Team-based report development</li>
+        <li>• <strong>Version Control:</strong> Change tracking and history</li>
+        <li>• <strong>Quality Assurance:</strong> Built-in review processes</li>
+        <li>• <strong>Archive Management:</strong> Historical report storage</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Metrics and KPIs</h3>
+  <p class="text-slate-300 mb-4">
+    Tracking key performance indicators helps organizations measure security improvement over time.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Security Metrics Framework</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Vulnerability Metrics</h5>
+        <p class="text-slate-300 text-sm">Total vulnerabilities, severity distribution, remediation rates, time to fix</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Risk Metrics</h5>
+        <p class="text-slate-300 text-sm">Overall risk score, critical system exposure, attack surface reduction</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Compliance Metrics</h5>
+        <p class="text-slate-300 text-sm">Regulatory adherence, control effectiveness, audit readiness</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Process Metrics</h5>
+        <p class="text-slate-300 text-sm">Testing frequency, coverage percentage, remediation workflow efficiency</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
+  <p class="text-slate-300 mb-4">
+    Hands-on exercises develop professional reporting skills using realistic penetration testing scenarios.
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Executive Summary Writing</h5>
+      <p class="text-slate-300 text-sm mb-2">Create executive summary for penetration test findings:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Analyze provided vulnerability findings and risk assessments</li>
+        <li>• Write business-focused executive summary (1-2 pages)</li>
+        <li>• Include risk visualization and priority recommendations</li>
+        <li>• Present to simulated executive audience for feedback</li>
+      </ul>
+    </div>
+    
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Technical Finding Documentation</h5>
+      <p class="text-slate-300 text-sm mb-2">Document detailed vulnerability findings:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Create comprehensive vulnerability descriptions with evidence</li>
+        <li>• Develop step-by-step reproduction instructions</li>
+        <li>• Assign appropriate CVSS scores and risk ratings</li>
+        <li>• Write detailed remediation recommendations</li>
+      </ul>
+    </div>
+    
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 3: Complete Report Assembly</h5>
+      <p class="text-slate-300 text-sm mb-2">Assemble full penetration testing report:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Combine executive summary and technical findings</li>
+        <li>• Add methodology, scope, and appendices</li>
+        <li>• Apply professional formatting and visual elements</li>
+        <li>• Conduct peer review and quality assurance</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Course Conclusion</h3>
+  <p class="text-slate-300 mb-4">
+    This comprehensive penetration testing course has covered the essential knowledge and skills needed for professional security assessment work.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Course Summary</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Foundation Knowledge</h5>
+        <p class="text-slate-300 text-sm">Ethics, legal frameworks, Linux fundamentals, and lab setup</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Core Testing Skills</h5>
+        <p class="text-slate-300 text-sm">Reconnaissance, vulnerability scanning, system exploitation, and web application testing</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Advanced Techniques</h5>
+        <p class="text-slate-300 text-sm">Post-exploitation, wireless security, social engineering, and advanced attack methods</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Professional Practice</h5>
+        <p class="text-slate-300 text-sm">Comprehensive reporting, documentation, and communication skills</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
+  <p class="text-slate-300 mb-6">
+    Professional penetration testing reporting transforms technical findings into actionable business intelligence. This module covered report structure, risk assessment, audience-specific communication, and quality assurance processes. Remember that effective reporting requires understanding both technical vulnerabilities and business context. Clear communication helps organizations make informed security decisions and allocate resources effectively. Continuous improvement in reporting skills enhances the value and impact of penetration testing services. Always maintain professional standards and ethical practices throughout the security assessment and reporting process.
+  </p>
+
+  <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 border border-slate-600">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">🎓 Congratulations!</h4>
+    <p class="text-slate-300 mb-4">
+      You have completed the "Ultimate Guide to Penetration Testing with Debian-based OS" course. You now have comprehensive knowledge spanning from basic ethical hacking principles to advanced attack techniques and professional reporting.
+    </p>
+    <p class="text-slate-300">
+      Continue practicing these skills in authorized lab environments, stay updated with the latest security research, and always remember to use your knowledge ethically and responsibly. Good luck in your cybersecurity journey!
+    </p>
+  </div>
+</div>

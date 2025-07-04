@@ -1,0 +1,414 @@
+<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
+  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 3: Lab Setup and Networking Fundamentals</h1>
+  
+  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
+    Setting up a proper penetration testing lab environment is crucial for practicing techniques safely and legally. This module covers virtualization, network configuration, and creating realistic testing scenarios.
+  </p>
+
+  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <ul class="text-slate-300 space-y-2">
+      <li>• Design and implement isolated penetration testing lab environments</li>
+      <li>• Configure virtual machines and network segments for testing</li>
+      <li>• Understand networking fundamentals for security testing</li>
+      <li>• Set up vulnerable applications and systems for practice</li>
+      <li>• Implement network monitoring and traffic analysis tools</li>
+      <li>• Create realistic attack scenarios and defensive measures</li>
+    </ul>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Virtualization Platforms</h3>
+  <p class="text-slate-300 mb-4">
+    Choosing the right virtualization platform is essential for creating flexible and isolated testing environments.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">VMware Products</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>VMware Workstation Pro:</strong> Professional features, snapshots</li>
+        <li>• <strong>VMware Workstation Player:</strong> Free personal use</li>
+        <li>• <strong>VMware vSphere:</strong> Enterprise virtualization</li>
+        <li>• <strong>Advantages:</strong> Performance, stability, hardware support</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Alternative Platforms</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>VirtualBox:</strong> Free, open-source, cross-platform</li>
+        <li>• <strong>Hyper-V:</strong> Windows native virtualization</li>
+        <li>• <strong>KVM/QEMU:</strong> Linux kernel-based virtualization</li>
+        <li>• <strong>Proxmox:</strong> Enterprise open-source platform</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Lab Architecture Design</h3>
+  <p class="text-slate-300 mb-4">
+    A well-designed lab architecture mimics real-world networks while maintaining isolation from production systems.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Network Segmentation Strategy</h4>
+    <div class="space-y-4">
+      <div class="bg-slate-900 rounded p-4">
+        <h5 class="font-semibold text-slate-100 mb-2">Management Network (192.168.1.0/24)</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• Hypervisor management interfaces</li>
+          <li>• Administrative access to lab systems</li>
+          <li>• Monitoring and logging servers</li>
+          <li>• Backup and update services</li>
+        </ul>
+      </div>
+      <div class="bg-slate-900 rounded p-4">
+        <h5 class="font-semibold text-slate-100 mb-2">DMZ Network (192.168.10.0/24)</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• Web servers and public-facing services</li>
+          <li>• Email servers and DNS servers</li>
+          <li>• Load balancers and reverse proxies</li>
+          <li>• Jump boxes and bastion hosts</li>
+        </ul>
+      </div>
+      <div class="bg-slate-900 rounded p-4">
+        <h5 class="font-semibold text-slate-100 mb-2">Internal Network (192.168.20.0/24)</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• Domain controllers and file servers</li>
+          <li>• Database servers and application servers</li>
+          <li>• Workstations and user endpoints</li>
+          <li>• Network attached storage devices</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Essential Lab Components</h3>
+  <p class="text-slate-300 mb-4">
+    Building a comprehensive lab requires various types of systems and services to simulate real environments.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Attacking Systems</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Kali Linux:</strong> Primary penetration testing platform</li>
+        <li>• <strong>Parrot Security:</strong> Alternative pentesting distribution</li>
+        <li>• <strong>BlackArch:</strong> Arch-based security distribution</li>
+        <li>• <strong>Custom tools:</strong> Specialized scripts and exploits</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Target Systems</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Metasploitable:</strong> Intentionally vulnerable Linux</li>
+        <li>• <strong>VulnHub VMs:</strong> Community-created challenges</li>
+        <li>• <strong>HackTheBox:</strong> Online pentesting platform</li>
+        <li>• <strong>DVWA:</strong> Damn Vulnerable Web Application</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Network Configuration</h3>
+  <p class="text-slate-300 mb-4">
+    Proper network configuration ensures realistic testing scenarios while maintaining security isolation.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Virtual Network Setup</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Host-Only Networks</h5>
+        <p class="text-slate-300 text-sm">Isolated from physical network, VMs can communicate with each other and host</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">NAT Networks</h5>
+        <p class="text-slate-300 text-sm">VMs share host's IP address, can access internet but isolated from physical network</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Bridged Networks</h5>
+        <p class="text-slate-300 text-sm">VMs appear as separate devices on physical network (use with caution)</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Internal Networks</h5>
+        <p class="text-slate-300 text-sm">Completely isolated, no host or internet access</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Networking Fundamentals</h3>
+  <p class="text-slate-300 mb-4">
+    Understanding network protocols and architectures is essential for effective penetration testing.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">OSI Model Layers</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">7. Application:</strong> <span class="text-slate-300">HTTP, HTTPS, FTP, SSH</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">6. Presentation:</strong> <span class="text-slate-300">SSL/TLS, encryption</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">5. Session:</strong> <span class="text-slate-300">Session management</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">4. Transport:</strong> <span class="text-slate-300">TCP, UDP ports</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">3. Network:</strong> <span class="text-slate-300">IP addresses, routing</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">2. Data Link:</strong> <span class="text-slate-300">MAC addresses, switches</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">1. Physical:</strong> <span class="text-slate-300">Cables, signals</span>
+        </div>
+      </div>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Common Protocols</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">TCP/21:</strong> <span class="text-slate-300">FTP file transfer</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">TCP/22:</strong> <span class="text-slate-300">SSH secure shell</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">TCP/23:</strong> <span class="text-slate-300">Telnet remote access</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">TCP/80:</strong> <span class="text-slate-300">HTTP web traffic</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">TCP/443:</strong> <span class="text-slate-300">HTTPS secure web</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">UDP/53:</strong> <span class="text-slate-300">DNS name resolution</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-slate-100">UDP/161:</strong> <span class="text-slate-300">SNMP monitoring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Installing and Configuring Kali Linux</h3>
+  <p class="text-slate-300 mb-4">
+    Kali Linux is the de facto standard for penetration testing distributions, packed with security tools.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Installation Steps</h4>
+    <ol class="text-slate-300 space-y-2">
+      <li>1. <strong>Download Kali Linux ISO:</strong> Get the latest version from official website</li>
+      <li>2. <strong>Create Virtual Machine:</strong> Allocate at least 4GB RAM and 40GB storage</li>
+      <li>3. <strong>Boot from ISO:</strong> Start installation process</li>
+      <li>4. <strong>Configure Network:</strong> Set up network interfaces and hostname</li>
+      <li>5. <strong>Create User Account:</strong> Avoid using root as primary account</li>
+      <li>6. <strong>Install VMware Tools:</strong> Enable enhanced features and integration</li>
+      <li>7. <strong>Update System:</strong> Run apt update && apt full-upgrade</li>
+      <li>8. <strong>Install Additional Tools:</strong> Add specialized tools as needed</li>
+    </ol>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Essential Kali Linux Tools</h3>
+  <p class="text-slate-300 mb-4">
+    Kali Linux comes pre-installed with hundreds of security tools organized into categories.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Information Gathering</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Nmap:</strong> Network discovery and port scanning</li>
+        <li>• <strong>Masscan:</strong> High-speed port scanner</li>
+        <li>• <strong>Nikto:</strong> Web server scanner</li>
+        <li>• <strong>Dirb/Dirbuster:</strong> Directory brute forcing</li>
+        <li>• <strong>Enum4linux:</strong> SMB enumeration tool</li>
+        <li>• <strong>DNSrecon:</strong> DNS enumeration and discovery</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Exploitation Tools</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Metasploit:</strong> Exploitation framework</li>
+        <li>• <strong>Sqlmap:</strong> SQL injection testing</li>
+        <li>• <strong>Burp Suite:</strong> Web application testing</li>
+        <li>• <strong>John the Ripper:</strong> Password cracking</li>
+        <li>• <strong>Hydra:</strong> Network logon cracker</li>
+        <li>• <strong>Hashcat:</strong> Advanced password recovery</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Setting Up Vulnerable Targets</h3>
+  <p class="text-slate-300 mb-4">
+    Practice targets provide safe environments to learn and test penetration testing techniques.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Popular Vulnerable Applications</h4>
+    <div class="space-y-4">
+      <div class="bg-slate-900 rounded p-4">
+        <h5 class="font-semibold text-slate-100 mb-2">Metasploitable 2</h5>
+        <p class="text-slate-300 text-sm mb-2">Intentionally vulnerable Linux distribution</p>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• Multiple vulnerable services (FTP, SSH, HTTP, SMB)</li>
+          <li>• Weak passwords and misconfigurations</li>
+          <li>• Perfect for beginners learning exploitation</li>
+          <li>• Well-documented with multiple attack paths</li>
+        </ul>
+      </div>
+      <div class="bg-slate-900 rounded p-4">
+        <h5 class="font-semibold text-slate-100 mb-2">DVWA (Damn Vulnerable Web Application)</h5>
+        <p class="text-slate-300 text-sm mb-2">PHP/MySQL web application with multiple vulnerabilities</p>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• SQL injection, XSS, CSRF vulnerabilities</li>
+          <li>• Multiple difficulty levels (low, medium, high)</li>
+          <li>• Great for learning web application testing</li>
+          <li>• Includes help and explanation for each vulnerability</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Network Monitoring and Analysis</h3>
+  <p class="text-slate-300 mb-4">
+    Monitoring network traffic helps understand attack patterns and defensive measures.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Traffic Analysis Tools</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Wireshark:</strong> GUI packet analyzer</li>
+        <li>• <strong>tcpdump:</strong> Command-line packet capture</li>
+        <li>• <strong>tshark:</strong> Terminal version of Wireshark</li>
+        <li>• <strong>NetworkMiner:</strong> Network forensic analysis</li>
+        <li>• <strong>Ntopng:</strong> Web-based traffic analysis</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Common Capture Filters</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">host 192.168.1.10</code>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">port 80 or port 443</code>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">tcp and not ssh</code>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">src net 192.168.1.0/24</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Lab Security and Isolation</h3>
+  <p class="text-slate-300 mb-4">
+    Maintaining proper isolation prevents lab activities from affecting production networks.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Security Best Practices</h4>
+    <ul class="text-slate-300 space-y-2">
+      <li>• <strong>Network Isolation:</strong> Use host-only or internal networks for sensitive testing</li>
+      <li>• <strong>Firewall Rules:</strong> Block lab traffic from reaching production networks</li>
+      <li>• <strong>VM Snapshots:</strong> Create clean states for repeatable testing</li>
+      <li>• <strong>Resource Limits:</strong> Prevent lab VMs from consuming all host resources</li>
+      <li>• <strong>Malware Handling:</strong> Use isolated environments for malware analysis</li>
+      <li>• <strong>Data Protection:</strong> Encrypt sensitive lab data and configurations</li>
+    </ul>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Advanced Lab Configurations</h3>
+  <p class="text-slate-300 mb-4">
+    More complex lab setups simulate enterprise environments and advanced attack scenarios.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Enterprise Simulation</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Active Directory domain controller</li>
+        <li>• Exchange email server</li>
+        <li>• File shares and print servers</li>
+        <li>• Database servers (MySQL, MSSQL)</li>
+        <li>• Web applications and APIs</li>
+        <li>• Network infrastructure devices</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Cloud Environments</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• AWS/Azure/GCP lab instances</li>
+        <li>• Container environments (Docker/Kubernetes)</li>
+        <li>• Serverless applications</li>
+        <li>• Cloud storage and databases</li>
+        <li>• Identity and access management</li>
+        <li>• Cloud-native security tools</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Documentation and Reporting Setup</h3>
+  <p class="text-slate-300 mb-4">
+    Proper documentation tools and templates are essential for professional penetration testing.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Documentation Tools</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Note-Taking Applications</h5>
+        <p class="text-slate-300 text-sm">CherryTree, Obsidian, Notion, OneNote for organized documentation</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Screenshot Tools</h5>
+        <p class="text-slate-300 text-sm">Flameshot, Shutter, Greenshot for capturing evidence</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Report Templates</h5>
+        <p class="text-slate-300 text-sm">PTES, OWASP, NIST frameworks for structured reporting</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Troubleshooting Common Issues</h3>
+  <p class="text-slate-300 mb-4">
+    Understanding and resolving common lab issues ensures smooth penetration testing workflows.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Network Issues</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• VM network adapter not connecting</li>
+        <li>• DHCP not assigning IP addresses</li>
+        <li>• DNS resolution problems</li>
+        <li>• Firewall blocking traffic</li>
+        <li>• NAT network configuration errors</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Performance Issues</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Insufficient RAM allocation</li>
+        <li>• Disk space running low</li>
+        <li>• CPU overcommitment</li>
+        <li>• Network bandwidth limitations</li>
+        <li>• VM tools not installed</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
+  <p class="text-slate-300 mb-6">
+    A well-designed penetration testing lab is the foundation for developing and maintaining security skills. This module covered virtualization platforms, network design, tool installation, and security considerations. Practice setting up different lab configurations to simulate various enterprise environments. Remember that proper isolation and documentation are crucial for both learning and professional penetration testing work. Your lab will evolve as you learn new techniques and encounter different target environments.
+  </p>
+</div>

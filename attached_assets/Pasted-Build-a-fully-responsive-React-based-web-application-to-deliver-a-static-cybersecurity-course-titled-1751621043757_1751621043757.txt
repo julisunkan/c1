@@ -1,0 +1,116 @@
+Build a fully responsive React-based web application to deliver a static cybersecurity course titled:
+"Ultimate Guide to Penetration Testing with Debian-based OS"
+
+🧩 Functional Requirements:
+No backend or database.
+
+Use a static JSON file (modules.json) to store module metadata.
+
+Each module should load full content from .html files in a /modules/ folder.
+
+Pages:
+
+Home Page – course overview.
+
+Modules List Page – shows all course modules with titles and summaries and icons.
+
+Module Detail Page – loads and displays full module content.
+
+Use React Router for navigation.
+
+Track user progress using localStorage (e.g., mark modules as completed).
+
+Optional: Markdown rendering via react-markdown, dark mode toggle.
+
+🎨 UI Suggestions:
+Use Tailwind CSS or Bootstrap.
+
+Mobile‑responsive layout with sidebar navigation or collapsible menu.
+
+Optional: “Scroll to top” and “Progress bar” on module pages.
+
+🗃 Folder Structure:
+bash
+Copy
+Edit
+/public
+  /downloads/
+  /modules/
+/src
+  /components/
+  /pages/
+  /data/
+  App.jsx
+  index.js
+modules.json
+📚 Course Content (modules.json)
+Populate the course with these modules, also include relevant images for explanation:
+
+🧭 Module Plan:
+Getting Started
+
+What is penetration testing, ethics, and course objectives
+
+Linux Basics for Pen Testers
+
+Terminal, file system, permissions, networking commands
+
+Lab Setup
+
+Installing Kali & Parrot OS, Metasploitable2, DVWA, network setup
+
+Reconnaissance & Information Gathering
+
+Passive/active recon, Nmap, DNS, Shodan, banner grabbing
+
+Vulnerability Scanning
+
+Nikto, OpenVAS, Searchsploit, Nessus
+
+Exploitation Basics
+
+Metasploit, msfvenom, CVE exploitation, payloads
+
+Gaining Access
+
+Brute force (Hydra), SSH/FTP/SMB exploits, credential attacks
+
+Post-Exploitation
+
+Privilege escalation, persistence, looting, pivoting
+
+Web App Testing
+
+OWASP Top 10, Burp Suite, XSS, SQLi, CSRF, file upload exploits
+
+Wireless Network Attacks
+
+WPA/WPA2 cracking, MITM, Evil Twin, Aircrack-ng
+
+Pen Test Reporting
+
+Writing reports, CVSS scoring, evidence screenshots
+
+Next Steps & Certifications
+
+OSCP, PNPT, TryHackMe/HTB challenges, community links
+
+🔄 Example JSON structure:
+json
+Copy
+Edit
+[
+  {
+    "id": "module1",
+    "title": "Linux Basics for Pen Testers",
+    "summary": "Learn basic Linux commands useful in penetration testing.",
+    "file": "/modules/module1.html"
+  },
+  ...
+]
+🧪 Bonus:
+Include Mark as complete toggles for modules (localStorage-based)
+
+Add search/filter functionality for module titles or tags
+
+Ready for static deployment (Netlify, Vercel, GitHub Pages)

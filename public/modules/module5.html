@@ -1,0 +1,427 @@
+<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
+  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 5: Vulnerability Scanning and Assessment</h1>
+  
+  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
+    Vulnerability scanning is a systematic approach to identifying security weaknesses in systems and applications. This module covers automated scanning tools, manual assessment techniques, and vulnerability prioritization for effective penetration testing.
+  </p>
+
+  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <ul class="text-slate-300 space-y-2">
+      <li>• Master automated vulnerability scanning tools and techniques</li>
+      <li>• Understand different types of vulnerabilities and their classifications</li>
+      <li>• Learn manual vulnerability assessment and validation methods</li>
+      <li>• Implement effective vulnerability management workflows</li>
+      <li>• Prioritize vulnerabilities based on risk and exploitability</li>
+      <li>• Generate comprehensive vulnerability assessment reports</li>
+    </ul>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Vulnerability Classifications</h3>
+  <p class="text-slate-300 mb-4">
+    Understanding vulnerability types and severity classifications helps prioritize remediation efforts effectively.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">CVSS Scoring System</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-red-400">Critical (9.0-10.0):</strong> <span class="text-slate-300">Immediate action required</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-orange-400">High (7.0-8.9):</strong> <span class="text-slate-300">High priority remediation</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-yellow-400">Medium (4.0-6.9):</strong> <span class="text-slate-300">Moderate risk level</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2 text-sm">
+          <strong class="text-green-400">Low (0.1-3.9):</strong> <span class="text-slate-300">Lower priority</span>
+        </div>
+      </div>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Common Vulnerability Types</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Buffer Overflows:</strong> Memory corruption vulnerabilities</li>
+        <li>• <strong>SQL Injection:</strong> Database query manipulation</li>
+        <li>• <strong>XSS:</strong> Cross-site scripting attacks</li>
+        <li>• <strong>CSRF:</strong> Cross-site request forgery</li>
+        <li>• <strong>Path Traversal:</strong> Directory traversal attacks</li>
+        <li>• <strong>Privilege Escalation:</strong> Unauthorized access elevation</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Network Vulnerability Scanners</h3>
+  <p class="text-slate-300 mb-4">
+    Network scanners identify vulnerabilities in network services, operating systems, and infrastructure components.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Popular Network Scanners</h4>
+    <div class="space-y-4">
+      <div class="bg-slate-900 rounded p-4">
+        <h5 class="font-semibold text-slate-100 mb-2">Nessus</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• Comprehensive vulnerability database</li>
+          <li>• Authenticated and unauthenticated scanning</li>
+          <li>• Compliance checking and reporting</li>
+          <li>• Plugin-based architecture for extensibility</li>
+          <li>• Web-based interface for easy management</li>
+        </ul>
+      </div>
+      <div class="bg-slate-900 rounded p-4">
+        <h5 class="font-semibold text-slate-100 mb-2">OpenVAS</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• Open-source vulnerability scanner</li>
+          <li>• Regular feed updates for new vulnerabilities</li>
+          <li>• Network vulnerability testing (NVT) framework</li>
+          <li>• Greenbone Security Assistant web interface</li>
+          <li>• Integration with security management platforms</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Nmap Scripting Engine (NSE)</h3>
+  <p class="text-slate-300 mb-4">
+    NSE provides powerful vulnerability detection capabilities through custom scripts and community contributions.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Vulnerability Detection Scripts</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">nmap --script vuln target.com</code>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">nmap --script smb-vuln* target.com</code>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">nmap --script http-vuln* target.com</code>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">nmap --script ssl-* target.com</code>
+        </div>
+      </div>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Specific Vulnerability Checks</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">ms17-010</code>
+          <span class="text-slate-300 text-xs ml-2">EternalBlue SMB</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">heartbleed</code>
+          <span class="text-slate-300 text-xs ml-2">OpenSSL vulnerability</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">shellshock</code>
+          <span class="text-slate-300 text-xs ml-2">Bash CGI vulnerability</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">ssl-poodle</code>
+          <span class="text-slate-300 text-xs ml-2">SSL 3.0 vulnerability</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Web Application Scanners</h3>
+  <p class="text-slate-300 mb-4">
+    Web application scanners identify security flaws in web applications and APIs through automated testing.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Commercial Solutions</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Burp Suite Professional:</strong> Comprehensive web app testing</li>
+        <li>• <strong>OWASP ZAP:</strong> Free and open-source scanner</li>
+        <li>• <strong>Acunetix:</strong> Automated web vulnerability scanner</li>
+        <li>• <strong>AppScan:</strong> IBM's web application security testing</li>
+        <li>• <strong>Veracode:</strong> Static and dynamic analysis platform</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Specialized Tools</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>SQLMap:</strong> Automated SQL injection testing</li>
+        <li>• <strong>XSSer:</strong> Cross-site scripting detection</li>
+        <li>• <strong>Nikto:</strong> Web server vulnerability scanner</li>
+        <li>• <strong>W3AF:</strong> Web application attack framework</li>
+        <li>• <strong>Wapiti:</strong> Web application vulnerability scanner</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Database Vulnerability Assessment</h3>
+  <p class="text-slate-300 mb-4">
+    Database systems require specialized scanning techniques to identify configuration weaknesses and security flaws.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Database Security Checks</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Authentication Weaknesses</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• Default or blank passwords</li>
+          <li>• Weak password policies</li>
+          <li>• Unnecessary user accounts</li>
+          <li>• Excessive privileges</li>
+        </ul>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Configuration Issues</h5>
+        <ul class="text-slate-300 text-sm space-y-1">
+          <li>• Unpatched database software</li>
+          <li>• Insecure network configurations</li>
+          <li>• Missing encryption settings</li>
+          <li>• Inadequate logging and monitoring</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Manual Vulnerability Assessment</h3>
+  <p class="text-slate-300 mb-4">
+    Manual testing complements automated scanning by identifying logic flaws and complex vulnerabilities.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Manual Testing Techniques</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Source Code Review:</strong> Static analysis of application code</li>
+        <li>• <strong>Configuration Analysis:</strong> Security settings review</li>
+        <li>• <strong>Business Logic Testing:</strong> Workflow and process flaws</li>
+        <li>• <strong>Authentication Testing:</strong> Login mechanism analysis</li>
+        <li>• <strong>Session Management:</strong> Token and session security</li>
+        <li>• <strong>Input Validation:</strong> Data handling verification</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Validation Methods</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Proof of Concept:</strong> Demonstrate exploitability</li>
+        <li>• <strong>False Positive Analysis:</strong> Verify scanner results</li>
+        <li>• <strong>Impact Assessment:</strong> Evaluate potential damage</li>
+        <li>• <strong>Exploit Development:</strong> Create working exploits</li>
+        <li>• <strong>Remediation Testing:</strong> Verify fixes effectiveness</li>
+        <li>• <strong>Regression Testing:</strong> Ensure no new issues</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Vulnerability Prioritization</h3>
+  <p class="text-slate-300 mb-4">
+    Effective prioritization ensures critical vulnerabilities receive immediate attention while managing resource constraints.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Risk Assessment Factors</h4>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="space-y-3">
+        <div class="bg-slate-900 rounded p-3">
+          <h5 class="font-semibold text-slate-100 mb-1">Technical Factors</h5>
+          <ul class="text-slate-300 text-sm space-y-1">
+            <li>• CVSS base score</li>
+            <li>• Exploitability rating</li>
+            <li>• Attack complexity</li>
+            <li>• Required privileges</li>
+            <li>• User interaction needed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="space-y-3">
+        <div class="bg-slate-900 rounded p-3">
+          <h5 class="font-semibold text-slate-100 mb-1">Business Factors</h5>
+          <ul class="text-slate-300 text-sm space-y-1">
+            <li>• Asset criticality</li>
+            <li>• Data sensitivity</li>
+            <li>• Regulatory requirements</li>
+            <li>• Business impact</li>
+            <li>• Remediation cost</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Scanner Configuration and Tuning</h3>
+  <p class="text-slate-300 mb-4">
+    Proper scanner configuration maximizes effectiveness while minimizing false positives and system impact.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Scan Configuration</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Scope Definition:</strong> Target systems and networks</li>
+        <li>• <strong>Timing Settings:</strong> Scan frequency and duration</li>
+        <li>• <strong>Intensity Levels:</strong> Aggressive vs. safe scanning</li>
+        <li>• <strong>Authentication:</strong> Credentialed vs. uncredentialed</li>
+        <li>• <strong>Plugin Selection:</strong> Relevant vulnerability checks</li>
+        <li>• <strong>Exclusions:</strong> Critical systems and maintenance windows</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Performance Optimization</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Network Bandwidth:</strong> Throttling and rate limiting</li>
+        <li>• <strong>Concurrent Scans:</strong> Parallel scanning optimization</li>
+        <li>• <strong>Resource Usage:</strong> Memory and CPU considerations</li>
+        <li>• <strong>Scan Policies:</strong> Customized scanning profiles</li>
+        <li>• <strong>Update Management:</strong> Plugin and signature updates</li>
+        <li>• <strong>Result Storage:</strong> Database optimization and archiving</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Compliance Scanning</h3>
+  <p class="text-slate-300 mb-4">
+    Compliance scanning ensures systems meet regulatory requirements and industry standards.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Common Compliance Frameworks</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">PCI DSS (Payment Card Industry)</h5>
+        <p class="text-slate-300 text-sm">Credit card data protection requirements with quarterly scanning mandates</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">HIPAA (Healthcare)</h5>
+        <p class="text-slate-300 text-sm">Protected health information security requirements for healthcare organizations</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">NIST Cybersecurity Framework</h5>
+        <p class="text-slate-300 text-sm">Risk-based approach to cybersecurity with continuous monitoring requirements</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Vulnerability Management Lifecycle</h3>
+  <p class="text-slate-300 mb-4">
+    A structured approach to vulnerability management ensures consistent and effective security practices.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Discovery Phase</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Asset inventory and classification</li>
+        <li>• Automated vulnerability scanning</li>
+        <li>• Manual security testing</li>
+        <li>• Threat intelligence integration</li>
+        <li>• Third-party security assessments</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Response Phase</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Risk assessment and prioritization</li>
+        <li>• Remediation planning and scheduling</li>
+        <li>• Patch management and deployment</li>
+        <li>• Verification and validation testing</li>
+        <li>• Documentation and reporting</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">False Positive Management</h3>
+  <p class="text-slate-300 mb-4">
+    Effective false positive management reduces noise and focuses attention on genuine security issues.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">False Positive Reduction Strategies</h4>
+    <ul class="text-slate-300 space-y-2">
+      <li>• <strong>Scanner Tuning:</strong> Adjust sensitivity and detection rules</li>
+      <li>• <strong>Manual Verification:</strong> Validate high-priority findings</li>
+      <li>• <strong>Baseline Establishment:</strong> Create known-good configurations</li>
+      <li>• <strong>Exception Management:</strong> Document accepted risks</li>
+      <li>• <strong>Contextual Analysis:</strong> Consider environmental factors</li>
+      <li>• <strong>Historical Trending:</strong> Track false positive patterns</li>
+    </ul>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Reporting and Metrics</h3>
+  <p class="text-slate-300 mb-4">
+    Comprehensive reporting provides stakeholders with actionable insights and progress tracking.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Technical Reports</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Detailed vulnerability descriptions</li>
+        <li>• Proof-of-concept exploits</li>
+        <li>• Technical remediation steps</li>
+        <li>• Risk ratings and CVSS scores</li>
+        <li>• Asset and system inventories</li>
+        <li>• Trend analysis and comparisons</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Executive Dashboards</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• High-level risk summaries</li>
+        <li>• Compliance status indicators</li>
+        <li>• Remediation progress tracking</li>
+        <li>• Business impact assessments</li>
+        <li>• Resource allocation recommendations</li>
+        <li>• Key performance indicators</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
+  <p class="text-slate-300 mb-4">
+    Hands-on exercises develop practical skills in vulnerability assessment and management.
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: Network Vulnerability Scanning</h5>
+      <p class="text-slate-300 text-sm mb-2">Perform comprehensive vulnerability assessment:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Configure and run OpenVAS against target network</li>
+        <li>• Analyze scan results and identify critical vulnerabilities</li>
+        <li>• Validate findings through manual testing</li>
+        <li>• Create prioritized remediation recommendations</li>
+      </ul>
+    </div>
+    
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Web Application Scanning</h5>
+      <p class="text-slate-300 text-sm mb-2">Assess web application security:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Use OWASP ZAP to scan vulnerable web application</li>
+        <li>• Configure authentication and session handling</li>
+        <li>• Analyze results and reduce false positives</li>
+        <li>• Develop proof-of-concept exploits</li>
+      </ul>
+    </div>
+    
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 3: Vulnerability Management</h5>
+      <p class="text-slate-300 text-sm mb-2">Implement complete vulnerability management process:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Establish scanning schedules and policies</li>
+        <li>• Create risk-based prioritization framework</li>
+        <li>• Design remediation tracking workflow</li>
+        <li>• Generate executive and technical reports</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
+  <p class="text-slate-300 mb-6">
+    Vulnerability scanning and assessment provide the foundation for effective security programs. This module covered automated scanning tools, manual assessment techniques, and comprehensive vulnerability management processes. Effective vulnerability management requires combining automated tools with manual validation, proper prioritization based on business risk, and systematic tracking of remediation efforts. Remember that vulnerability scanning is an ongoing process, not a one-time activity, and should be integrated into continuous security monitoring programs.
+  </p>
+</div>

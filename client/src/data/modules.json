@@ -1,0 +1,134 @@
+[
+  {
+    "id": "module1",
+    "title": "Getting Started",
+    "summary": "What is penetration testing, ethics, and course objectives",
+    "file": "/modules/module1.html",
+    "icon": "fas fa-play",
+    "color": "from-green-400 to-green-600",
+    "duration": "45 min",
+    "lessons": 5,
+    "difficulty": "Beginner"
+  },
+  {
+    "id": "module2",
+    "title": "Linux Basics for Pen Testers",
+    "summary": "Terminal, file system, permissions, networking commands",
+    "file": "/modules/module2.html",
+    "icon": "fas fa-terminal",
+    "color": "from-blue-400 to-blue-600",
+    "duration": "2 hours",
+    "lessons": 8,
+    "difficulty": "Beginner"
+  },
+  {
+    "id": "module3",
+    "title": "Lab Setup",
+    "summary": "Installing Kali & Parrot OS, Metasploitable2, DVWA, network setup",
+    "file": "/modules/module3.html",
+    "icon": "fas fa-cogs",
+    "color": "from-purple-400 to-purple-600",
+    "duration": "3 hours",
+    "lessons": 12,
+    "difficulty": "Intermediate"
+  },
+  {
+    "id": "module4",
+    "title": "Reconnaissance & Information Gathering",
+    "summary": "Passive/active recon, Nmap, DNS, Shodan, banner grabbing",
+    "file": "/modules/module4.html",
+    "icon": "fas fa-search",
+    "color": "from-yellow-400 to-yellow-600",
+    "duration": "2.5 hours",
+    "lessons": 10,
+    "difficulty": "Intermediate"
+  },
+  {
+    "id": "module5",
+    "title": "Vulnerability Scanning",
+    "summary": "Nikto, OpenVAS, Searchsploit, Nessus",
+    "file": "/modules/module5.html",
+    "icon": "fas fa-bug",
+    "color": "from-red-400 to-red-600",
+    "duration": "2 hours",
+    "lessons": 9,
+    "difficulty": "Intermediate"
+  },
+  {
+    "id": "module6",
+    "title": "Exploitation Basics",
+    "summary": "Metasploit, msfvenom, CVE exploitation, payloads",
+    "file": "/modules/module6.html",
+    "icon": "fas fa-bomb",
+    "color": "from-indigo-400 to-indigo-600",
+    "duration": "3.5 hours",
+    "lessons": 14,
+    "difficulty": "Advanced"
+  },
+  {
+    "id": "module7",
+    "title": "Gaining Access",
+    "summary": "Brute force (Hydra), SSH/FTP/SMB exploits, credential attacks",
+    "file": "/modules/module7.html",
+    "icon": "fas fa-key",
+    "color": "from-cyan-400 to-cyan-600",
+    "duration": "2.5 hours",
+    "lessons": 11,
+    "difficulty": "Advanced"
+  },
+  {
+    "id": "module8",
+    "title": "Post-Exploitation",
+    "summary": "Privilege escalation, persistence, looting, pivoting",
+    "file": "/modules/module8.html",
+    "icon": "fas fa-crown",
+    "color": "from-orange-400 to-orange-600",
+    "duration": "2.5 hours",
+    "lessons": 10,
+    "difficulty": "Advanced"
+  },
+  {
+    "id": "module9",
+    "title": "Web App Testing",
+    "summary": "OWASP Top 10, Burp Suite, XSS, SQLi, CSRF, file upload exploits",
+    "file": "/modules/module9.html",
+    "icon": "fas fa-globe",
+    "color": "from-pink-400 to-pink-600",
+    "duration": "4 hours",
+    "lessons": 16,
+    "difficulty": "Advanced"
+  },
+  {
+    "id": "module10",
+    "title": "Wireless Network Attacks",
+    "summary": "WPA/WPA2 cracking, MITM, Evil Twin, Aircrack-ng",
+    "file": "/modules/module10.html",
+    "icon": "fas fa-wifi",
+    "color": "from-emerald-400 to-emerald-600",
+    "duration": "2 hours",
+    "lessons": 8,
+    "difficulty": "Advanced"
+  },
+  {
+    "id": "module11",
+    "title": "Pen Test Reporting",
+    "summary": "Writing reports, CVSS scoring, evidence screenshots",
+    "file": "/modules/module11.html",
+    "icon": "fas fa-file-alt",
+    "color": "from-violet-400 to-violet-600",
+    "duration": "1.5 hours",
+    "lessons": 6,
+    "difficulty": "Intermediate"
+  },
+  {
+    "id": "module12",
+    "title": "Next Steps & Certifications",
+    "summary": "OSCP, PNPT, TryHackMe/HTB challenges, community links",
+    "file": "/modules/module12.html",
+    "icon": "fas fa-graduation-cap",
+    "color": "from-teal-400 to-teal-600",
+    "duration": "1 hour",
+    "lessons": 4,
+    "difficulty": "Beginner"
+  }
+]

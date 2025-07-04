@@ -1,0 +1,316 @@
+<div class="max-w-4xl mx-auto p-6 bg-slate-900 text-slate-100">
+  <h1 class="text-3xl font-bold mb-6 text-slate-100">Module 9: Wireless Network Security Testing</h1>
+  
+  <p class="text-slate-300 mb-6 text-lg leading-relaxed">
+    Wireless networks present unique security challenges and attack vectors. This module covers wireless security assessment techniques, from basic WEP cracking to advanced WPA3 attacks and rogue access point detection.
+  </p>
+
+  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Learning Objectives</h2>
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <ul class="text-slate-300 space-y-2">
+      <li>• Master wireless security protocols and their vulnerabilities</li>
+      <li>• Learn wireless reconnaissance and network discovery techniques</li>
+      <li>• Practice WEP, WPA, and WPA2/3 cracking methodologies</li>
+      <li>• Understand rogue access point detection and prevention</li>
+      <li>• Implement wireless monitoring and traffic analysis</li>
+      <li>• Execute advanced wireless attack scenarios</li>
+    </ul>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Wireless Security Protocols</h3>
+  <p class="text-slate-300 mb-4">
+    Understanding wireless security protocols helps identify weaknesses and select appropriate attack methods.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Legacy Protocols</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>WEP:</strong> Fundamentally broken, easily cracked</li>
+        <li>• <strong>WPS:</strong> PIN-based authentication vulnerabilities</li>
+        <li>• <strong>Open Networks:</strong> No encryption protection</li>
+        <li>• <strong>MAC Filtering:</strong> Easily bypassed access control</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Modern Protocols</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>WPA/WPA2:</strong> TKIP and AES encryption</li>
+        <li>• <strong>WPA3:</strong> Enhanced security with SAE</li>
+        <li>• <strong>Enterprise (802.1X):</strong> Certificate-based authentication</li>
+        <li>• <strong>OWE:</strong> Opportunistic Wireless Encryption</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Wireless Reconnaissance</h3>
+  <p class="text-slate-300 mb-4">
+    Wireless reconnaissance involves discovering and analyzing wireless networks within range.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Network Discovery Tools</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Airodump-ng</h5>
+        <p class="text-slate-300 text-sm mb-1">Comprehensive wireless network scanner</p>
+        <code class="text-green-400 text-sm">airodump-ng wlan0mon</code>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Kismet</h5>
+        <p class="text-slate-300 text-sm mb-1">Wireless network detector and analyzer</p>
+        <code class="text-green-400 text-sm">kismet -c wlan0</code>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">WiFi Explorer</h5>
+        <p class="text-slate-300 text-sm mb-1">GUI-based wireless network scanner</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">WEP Attacks</h3>
+  <p class="text-slate-300 mb-4">
+    WEP (Wired Equivalent Privacy) has fundamental cryptographic flaws that make it trivial to crack.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Attack Methods</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">aircrack-ng capture.cap</code>
+          <span class="text-slate-300 text-xs ml-2">Statistical attack</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">aireplay-ng -1 0 -a [BSSID] wlan0mon</code>
+          <span class="text-slate-300 text-xs ml-2">Fake authentication</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">aireplay-ng -3 -b [BSSID] wlan0mon</code>
+          <span class="text-slate-300 text-xs ml-2">ARP replay attack</span>
+        </div>
+      </div>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Attack Scenarios</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Passive Collection:</strong> Capture enough IVs</li>
+        <li>• <strong>Active Injection:</strong> Generate traffic for IVs</li>
+        <li>• <strong>Client-based:</strong> Target connected clients</li>
+        <li>• <strong>Fragmentation:</strong> Extract keystream</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">WPA/WPA2 Attacks</h3>
+  <p class="text-slate-300 mb-4">
+    WPA/WPA2 attacks typically focus on capturing the 4-way handshake and cracking the Pre-Shared Key (PSK).
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Handshake Capture and Cracking</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Capture Handshake</h5>
+        <code class="text-green-400 text-sm">airodump-ng -c [channel] --bssid [BSSID] -w capture wlan0mon</code>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Force Deauthentication</h5>
+        <code class="text-green-400 text-sm">aireplay-ng --deauth 10 -a [BSSID] wlan0mon</code>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Crack PSK</h5>
+        <code class="text-green-400 text-sm">aircrack-ng -w wordlist.txt capture.cap</code>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Hashcat Cracking</h5>
+        <code class="text-green-400 text-sm">hashcat -m 2500 capture.hccapx wordlist.txt</code>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">WPS Attacks</h3>
+  <p class="text-slate-300 mb-4">
+    WiFi Protected Setup (WPS) vulnerabilities allow PIN-based attacks against WPA/WPA2 networks.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">PIN Attack Tools</h4>
+      <div class="space-y-2">
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">reaver -i wlan0mon -b [BSSID] -vv</code>
+          <span class="text-slate-300 text-xs ml-2">Reaver WPS attack</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">bully -b [BSSID] -c [channel] wlan0mon</code>
+          <span class="text-slate-300 text-xs ml-2">Bully WPS attack</span>
+        </div>
+        <div class="bg-slate-900 rounded p-2">
+          <code class="text-green-400 text-sm">wifite --wps</code>
+          <span class="text-slate-300 text-xs ml-2">Automated WPS testing</span>
+        </div>
+      </div>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Attack Vectors</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>PIN Brute Force:</strong> 11,000 possible combinations</li>
+        <li>• <strong>Pixie Dust:</strong> Weak random number generation</li>
+        <li>• <strong>Rate Limiting:</strong> Access point lockout mechanisms</li>
+        <li>• <strong>NULL PIN:</strong> Empty PIN acceptance</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Evil Twin Attacks</h3>
+  <p class="text-slate-300 mb-4">
+    Evil twin attacks involve creating rogue access points to intercept user credentials and traffic.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Evil Twin Setup</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Create Access Point</h5>
+        <code class="text-green-400 text-sm">hostapd /etc/hostapd/hostapd.conf</code>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">DHCP Server</h5>
+        <code class="text-green-400 text-sm">dnsmasq --interface=wlan0 --dhcp-range=192.168.1.2,192.168.1.30</code>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Captive Portal</h5>
+        <code class="text-green-400 text-sm">apache2 -D FOREGROUND</code>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Automated Tools</h5>
+        <code class="text-green-400 text-sm">fluxion</code>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Enterprise Wireless Attacks</h3>
+  <p class="text-slate-300 mb-4">
+    Enterprise wireless networks using 802.1X authentication present different attack vectors and challenges.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">EAP Attacks</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>EAP-MD5:</strong> Dictionary attacks on hashes</li>
+        <li>• <strong>PEAP-MSCHAPv2:</strong> Capture and crack challenges</li>
+        <li>• <strong>EAP-TLS:</strong> Certificate-based authentication</li>
+        <li>• <strong>EAP-FAST:</strong> Protected access credentials</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Certificate Attacks</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Certificate Spoofing:</strong> Rogue RADIUS servers</li>
+        <li>• <strong>CA Validation:</strong> Trust anchor bypass</li>
+        <li>• <strong>Certificate Pinning:</strong> Client-side validation</li>
+        <li>• <strong>Credential Harvesting:</strong> Fake authentication</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Bluetooth Attacks</h3>
+  <p class="text-slate-300 mb-4">
+    Bluetooth technology presents additional wireless attack vectors often overlooked in security assessments.
+  </p>
+
+  <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <h4 class="text-lg font-semibold text-slate-100 mb-3">Bluetooth Attack Techniques</h4>
+    <div class="space-y-3">
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Device Discovery</h5>
+        <code class="text-green-400 text-sm">hcitool scan</code>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Service Enumeration</h5>
+        <code class="text-green-400 text-sm">sdptool browse [MAC]</code>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Bluejacking</h5>
+        <p class="text-slate-300 text-sm">Send unsolicited messages to devices</p>
+      </div>
+      <div class="bg-slate-900 rounded p-3">
+        <h5 class="font-semibold text-slate-100 mb-1">Bluesnarfing</h5>
+        <p class="text-slate-300 text-sm">Unauthorized access to device data</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Wireless Defense Techniques</h3>
+  <p class="text-slate-300 mb-4">
+    Understanding defensive measures helps assess the effectiveness of wireless security implementations.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Detection Systems</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>WIDS/WIPS:</strong> Intrusion detection/prevention</li>
+        <li>• <strong>Rogue AP Detection:</strong> Unauthorized access points</li>
+        <li>• <strong>Spectrum Analysis:</strong> RF interference detection</li>
+        <li>• <strong>Client Monitoring:</strong> Device behavior analysis</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800 rounded-lg p-4">
+      <h4 class="text-lg font-semibold text-slate-100 mb-2">Mitigation Strategies</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• <strong>Strong Encryption:</strong> WPA3 implementation</li>
+        <li>• <strong>Certificate-based Auth:</strong> 802.1X deployment</li>
+        <li>• <strong>Network Segmentation:</strong> VLAN isolation</li>
+        <li>• <strong>Regular Updates:</strong> Firmware patching</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Practical Exercises</h3>
+  <p class="text-slate-300 mb-4">
+    Hands-on exercises provide experience with various wireless attack techniques and tools.
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 1: WPA2 Handshake Capture</h5>
+      <p class="text-slate-300 text-sm mb-2">Capture and crack WPA2 handshakes:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Set up wireless interface in monitor mode</li>
+        <li>• Discover target networks using airodump-ng</li>
+        <li>• Capture 4-way handshake through deauthentication</li>
+        <li>• Attempt password cracking with dictionary attacks</li>
+      </ul>
+    </div>
+    
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 2: Evil Twin Attack</h5>
+      <p class="text-slate-300 text-sm mb-2">Create rogue access point for credential harvesting:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Configure hostapd for access point creation</li>
+        <li>• Set up captive portal for credential collection</li>
+        <li>• Monitor client connections and captured data</li>
+        <li>• Analyze effectiveness of social engineering</li>
+      </ul>
+    </div>
+    
+    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <h5 class="font-semibold text-slate-100 mb-2">Exercise 3: Wireless Defense Assessment</h5>
+      <p class="text-slate-300 text-sm mb-2">Evaluate wireless security controls:</p>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li>• Test rogue access point detection capabilities</li>
+        <li>• Assess wireless intrusion prevention systems</li>
+        <li>• Evaluate client isolation and segmentation</li>
+        <li>• Document security posture and recommendations</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-slate-100 mb-4">Key Takeaways</h3>
+  <p class="text-slate-300 mb-6">
+    Wireless network security testing requires understanding various protocols, attack vectors, and defense mechanisms. This module covered WEP/WPA/WPA2 attacks, WPS vulnerabilities, evil twin attacks, and enterprise wireless security. Modern wireless networks have significantly improved security, but legacy systems and misconfigurations still present opportunities for attackers. Always test wireless security with proper authorization and consider the impact on legitimate users. Regular security assessments help organizations maintain strong wireless security postures and detect potential threats.
+  </p>
+</div>
