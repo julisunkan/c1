@@ -29,6 +29,12 @@ export default function ModuleDetail() {
       setLoading(true);
       setError(null);
 
+      // Scroll to top when module changes
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
       fetch(`/modules/${module.id}.html`)
         .then(response => {
           if (!response.ok) {
