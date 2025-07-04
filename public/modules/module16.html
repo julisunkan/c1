@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -413,7 +412,7 @@ Java.perform(function() {
         console.log("[+] Activity.onCreate() called");
         this.onCreate(savedInstanceState);
     };
-    
+
     // Hook crypto operations
     var CipherClass = Java.use("javax.crypto.Cipher");
     CipherClass.doFinal.overload('[B').implementation = function(input) {
@@ -475,7 +474,7 @@ cat > ios_hooks.js << 'EOF'
 if (ObjC.available) {
     var NSString = ObjC.classes.NSString;
     var originalMethod = NSString["- stringWithString:"];
-    
+
     Interceptor.attach(originalMethod.implementation, {
         onEnter: function(args) {
             console.log("[+] stringWithString called");
