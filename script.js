@@ -169,7 +169,7 @@ async function loadModule(module) {
     
     try {
         // Try to load the module content from the public/modules folder
-        const response = await fetch(`/public/modules/${module.file}`);
+        const response = await fetch(`public/modules/${module.file}`);
         
         if (response.ok) {
             const content = await response.text();
